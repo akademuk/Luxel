@@ -1850,6 +1850,17 @@ a[class] {
   background: var(--color-light);
   box-shadow: 0 6px 28.1px 8px rgba(0, 0, 0, 0.25);
 }
+@media (width <= 63.99875rem) {
+  .modal {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 351px;
+    height: max-content;
+    border-radius: 16px;
+    padding: 24px;
+  }
+}
 .modal.active {
   display: flex;
 }
@@ -1859,6 +1870,11 @@ a[class] {
   padding: 24px;
   height: 100%;
   position: relative;
+}
+@media (width <= 63.99875rem) {
+  .modal__content {
+    padding: 0;
+  }
 }
 .modal__close {
   position: absolute;
@@ -1872,6 +1888,12 @@ a[class] {
   flex-shrink: 0;
   cursor: pointer;
 }
+@media (width <= 63.99875rem) {
+  .modal__close {
+    top: 0;
+    right: 0;
+  }
+}
 .modal__title {
   margin: 49px 0 16px 0;
   font-size: 32px;
@@ -1879,16 +1901,34 @@ a[class] {
   line-height: 120%;
   letter-spacing: 0.16px;
 }
+@media (width <= 63.99875rem) {
+  .modal__title {
+    margin: 0 0 16px 0;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+  }
+}
 .modal__text {
   font-weight: 400;
   line-height: 24px;
   letter-spacing: 0.08px;
   margin-bottom: 40px;
 }
+@media (width <= 63.99875rem) {
+  .modal__text {
+    margin-bottom: 24px;
+  }
+}
 .modal__form {
   display: flex;
   flex-direction: column;
   row-gap: 24px;
+}
+@media (width <= 63.99875rem) {
+  .modal__form {
+    row-gap: 16px;
+  }
 }
 .modal__form-col {
   display: flex;
@@ -1896,6 +1936,7 @@ a[class] {
   align-items: flex-start;
   gap: 8px;
   align-self: stretch;
+  position: relative;
 }
 .modal__form-col label {
   font-weight: 500;
@@ -1916,6 +1957,15 @@ a[class] {
   letter-spacing: 0.08px;
   resize: none;
 }
+@media (width <= 63.99875rem) {
+  .modal__form-col input, .modal__form-col textarea {
+    height: 44px;
+    padding: 13px 12px;
+    font-size: 14px;
+    line-height: 18px;
+    border-radius: 12px;
+  }
+}
 .modal__form-col input::placeholder, .modal__form-col textarea::placeholder {
   color: var(--color-gray-label);
   font-family: var(--font-family-base);
@@ -1923,6 +1973,19 @@ a[class] {
   font-weight: 400;
   line-height: 24px;
   letter-spacing: 0.08px;
+}
+@media (width <= 63.99875rem) {
+  .modal__form-col input::placeholder, .modal__form-col textarea::placeholder {
+    height: 44px;
+    padding: 13px 12px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+@media (width <= 63.99875rem) {
+  .modal__form-col textarea {
+    padding: 0 12px;
+  }
 }
 .modal__form-btn {
   height: 56px;
@@ -1944,6 +2007,14 @@ a[class] {
   background-color: var(--color-red);
   cursor: pointer;
 }
+@media (width <= 63.99875rem) {
+  .modal__form-btn {
+    height: 44px;
+    border-radius: 12px;
+    padding: 13px 12px;
+    margin-top: 16px;
+  }
+}
 .modal__form .novalid-style {
   overflow: hidden;
   color: var(--color-red);
@@ -1954,6 +2025,15 @@ a[class] {
   letter-spacing: 0.08px;
   display: block;
   width: 100%;
+  position: absolute;
+  top: 100%;
+  right: 0;
+}
+@media (width <= 63.99875rem) {
+  .modal__form .novalid-style {
+    font-size: 12px;
+    line-height: 16px;
+  }
 }
 .modal__form .label-required {
   display: flex;

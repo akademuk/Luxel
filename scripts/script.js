@@ -189,6 +189,7 @@ function initHeader() {
     backButton2: '#back2',
     closeModal2: '#closeModal2',
     callForm2: '#callForm2',
+    burgerMenu: '.header-burger__menu',
   };
 
   const stateClasses = {
@@ -210,6 +211,7 @@ function initHeader() {
   const backButton2 = document.querySelector(selectors.backButton2);
   const closeModal2 = document.querySelector(selectors.closeModal2);
   const callForm2 = document.querySelector(selectors.callForm2);
+  const burgerMenu = document.querySelector(selectors.burgerMenu);
 
   if (!burgerButtonElement || !overlayElement) {
     console.warn('Burger button or overlay not found');
@@ -295,27 +297,8 @@ function initHeader() {
   function handleFormSubmit(e) {
     e.preventDefault();
     
-    // Здесь ваша логика отправки формы (AJAX и т.д.)
     const formData = new FormData(callForm2);
     
-    // Пример: отправка через fetch
-    /*
-    fetch('/your-endpoint', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Success:', data);
-      // После успешной отправки закрываем всё меню
-      closeMenu();
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-    */
-    
-    // Временно: просто закрываем меню после "отправки"
     console.log('Форма отправлена');
     
     // Сбрасываем форму
@@ -372,10 +355,17 @@ function initHeader() {
     callForm2.addEventListener('submit', handleFormSubmit);
   }
 
-  // Закрытие меню при клике на overlay (вне меню)
-  overlayElement.addEventListener('click', (e) => {
-    if (e.target === overlayElement) {
-      closeMenu();
+  // Закрытие меню при клике ВНЕ области .header-burger__menu
+  document.addEventListener('click', function(e) {
+    // Проверяем, открыто ли меню
+    if (overlayElement.classList.contains(stateClasses.isActive)) {
+      // Проверяем, что клик НЕ внутри меню и НЕ по кнопке бургера
+      const isClickInsideMenu = burgerMenu && burgerMenu.contains(e.target);
+      const isClickOnBurger = burgerButtonElement.contains(e.target);
+      
+      if (!isClickInsideMenu && !isClickOnBurger) {
+        closeMenu();
+      }
     }
   });
 
@@ -395,6 +385,7 @@ function initHeader() {
 
 // Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', initHeader);
+
 
 // Функция для управления каталогом меню
 function initCatalogMenu() {
@@ -766,7 +757,6 @@ function initModals() {
     const closeModal = document.getElementById('closeModal');
     const body = document.body;
 
-    // Check if all required elements exist
     if (!requestCallBtn || !callModal || !successModal || !callForm || !closeModal) {
         console.warn('Some modal elements are missing from the DOM');
         return;
@@ -782,37 +772,48 @@ function initModals() {
         body.classList.remove('modal-open');
     }
 
+    // Открытие модального окна
     requestCallBtn.addEventListener('click', function (e) {
-        e.stopPropagation();
+        e.preventDefault();
         openModal(callModal);
     });
 
-    closeModal.addEventListener('click', function () {
-        closeModalFunc(callModal);
-    });
-
-
-    callModal.addEventListener('click', function (e) {
-        if (e.target === callModal || e.target.classList.contains('modal__overlay')) {
-            closeModalFunc(callModal);
-        }
-    });
-
-    successModal.addEventListener('click', function (e) {
-        if (e.target === successModal || e.target.classList.contains('modal__overlay')) {
-            closeModalFunc(successModal);
-        }
-    });
-
-    document.querySelectorAll('.modal__content').forEach(content => {
-        content.addEventListener('click', function (e) {
-            e.stopPropagation();
-        });
-    });
-
-    callForm.addEventListener('submit', function (e) {
+    // Закрытие по кнопке крестика
+    closeModal.addEventListener('click', function (e) {
         e.preventDefault();
         closeModalFunc(callModal);
+    });
+
+    // Закрытие при клике ВНЕ modal__content
+    document.addEventListener('click', function(e) {
+        // Проверяем, открыто ли модальное окно
+        if (callModal.classList.contains('active')) {
+            // Проверяем, что клик НЕ внутри modal__content и НЕ по кнопке открытия
+            const modalContent = callModal.querySelector('.modal__content');
+            const isClickInsideContent = modalContent && modalContent.contains(e.target);
+            const isClickOnOpenButton = requestCallBtn.contains(e.target);
+            
+            if (!isClickInsideContent && !isClickOnOpenButton) {
+                closeModalFunc(callModal);
+            }
+        }
+        
+        if (successModal.classList.contains('active')) {
+            const modalContent = successModal.querySelector('.modal__content');
+            const isClickInsideContent = modalContent && modalContent.contains(e.target);
+            
+            if (!isClickInsideContent) {
+                closeModalFunc(successModal);
+            }
+        }
+    });
+
+    // Обработка отправки формы
+    callForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        
+        closeModalFunc(callModal);
+        
         setTimeout(() => {
             openModal(successModal);
 
@@ -822,19 +823,32 @@ function initModals() {
                 }
             }, 5000);
         }, 300);
+        
         callForm.reset();
     });
 
+    // Закрытие по клавише Escape
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
-            closeModalFunc(callModal);
-            closeModalFunc(successModal);
+            if (callModal.classList.contains('active')) {
+                closeModalFunc(callModal);
+            }
+            if (successModal.classList.contains('active')) {
+                closeModalFunc(successModal);
+            }
         }
     });
 
+    // Маска для телефона
     if (typeof jQuery !== 'undefined' && jQuery.fn.mask) {
         jQuery('input[type="tel"]').mask('+38(999)999-99-99');
     }
+}
+
+// Защита от двойной инициализации
+if (!window.modalsInitialized) {
+    document.addEventListener('DOMContentLoaded', initModals);
+    window.modalsInitialized = true;
 }
 
 // Функция для управления модальным окном "Написать нам"
