@@ -302,7 +302,7 @@ svg * {
 }
 
 html.is-lock {
-  overflow: hidden !important;
+  overflow-y: hidden;
   position: relative;
 }
 html.is-lock .header::after {
@@ -318,11 +318,11 @@ html.is-lock .header::after {
 }
 
 body.is-lock {
-  overflow: hidden !important;
+  overflow-y: hidden;
   position: relative;
 }
 body.is-lock .overflow-hidden {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -332,11 +332,11 @@ body.is-lock .overflow-hidden {
   z-index: 100;
 }
 body.modal-open {
-  overflow: hidden !important;
+  overflow-y: hidden;
   position: relative;
 }
 body.modal-open .overflow-hidden {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
