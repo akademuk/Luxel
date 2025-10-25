@@ -2,7 +2,7 @@
 
 html {
   &.is-lock {
-    overflow: hidden;
+    overflow: hidden !important;
     position: relative;
 
     .header {
@@ -23,7 +23,7 @@ html {
 
 body {
   &.is-lock {
-    overflow: hidden;
+    overflow: hidden !important;
     position: relative;
 
     .overflow-hidden {
@@ -41,6 +41,9 @@ body {
   }
 
   &.modal-open {
+    overflow: hidden !important;
+    position: relative;
+    
     .overflow-hidden {
       position: absolute;
       top: 0;

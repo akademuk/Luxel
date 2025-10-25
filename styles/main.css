@@ -297,7 +297,7 @@ svg * {
 }
 
 html.is-lock {
-  overflow: hidden;
+  overflow: hidden !important;
   position: relative;
 }
 html.is-lock .header::after {
@@ -313,7 +313,7 @@ html.is-lock .header::after {
 }
 
 body.is-lock {
-  overflow: hidden;
+  overflow: hidden !important;
   position: relative;
 }
 body.is-lock .overflow-hidden {
@@ -325,6 +325,10 @@ body.is-lock .overflow-hidden {
   background: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(12.5px);
   z-index: 100;
+}
+body.modal-open {
+  overflow: hidden !important;
+  position: relative;
 }
 body.modal-open .overflow-hidden {
   position: absolute;
