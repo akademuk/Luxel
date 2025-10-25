@@ -1,0 +1,147 @@
+@use '../helpers' as *;
+
+.cta-info {
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        row-gap: 50px;
+
+        @include mobile {
+            row-gap: 24px;
+        }
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        row-gap: 16px;
+
+        h2 {
+            font-size: 40px;
+            
+            @include mobile {
+                font-size: 20px;
+                line-height: 24px; 
+                letter-spacing: 0.1px;
+            }
+        }
+
+        p {
+            font-weight: 400;
+            letter-spacing: 0.08px;
+
+            @include mobile {
+               letter-spacing: normal;
+               line-height: normal;
+            }
+        }
+    }
+
+    &__body {
+        border: var(--border);
+        background: var(--color-light);
+        border-radius: 20px;
+
+        @include mobile {
+            border-radius: 12px;
+            background-color: var(--color-gray-primary);
+            border: none;
+        }
+
+        &-item {
+            &:nth-last-of-type(1) {
+                .cta-info__accordion {
+                    border-bottom: none;
+
+                    &.active {
+                        border-bottom: none;
+                    }
+                }
+                .cta-info__panel {
+                    &.active {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+    }
+
+    &__accordion {
+        display: flex;
+        padding: 25px;
+        align-items: center;
+        gap: 50px;
+        justify-content: space-between;
+        background: transparent;
+        border: none;
+        font-size: 32px;
+        text-align: left;
+        line-height: 40px;
+        letter-spacing: 0.16px;
+        width: 100%;
+        border-bottom: var(--border);
+
+        @include tablet {
+            font-size: 20px;
+        }
+
+        @include mobile {
+            padding: 11px 16px;
+            font-size: 16px;
+            line-height: 20px;
+            letter-spacing: 0.08px;
+            flex-wrap: nowrap;
+        }
+
+
+        &.active {
+            border-bottom: 1px solid transparent;
+
+            &::after {
+                transform: rotate(180deg);
+            }
+        }
+
+        &::after {
+            content: "";
+            background-image: url('../icons/accardion-arrow.svg');
+            background-repeat: no-repeat;
+            background-size: auto;
+            background-position: center;
+            display: flex;
+            width: 56px;
+            height: 56px;
+            padding: 0 12px;
+            justify-content: center;
+            align-items: center;
+            transition-duration: var(--transition-duration);
+
+            @include mobile {
+                width: 44px;
+                height: 44px;
+                padding: 10px;
+            }
+        }
+    }
+
+    &__panel {
+        font-weight: 400;
+        letter-spacing: 0.08px;
+        max-height: 0;
+        padding: 0 25px;
+        overflow: hidden;
+        transition-duration: var(--transition-duration);
+
+        @include mobile {
+            padding: 0 16px;
+        }
+
+        &.active {
+            border-bottom: var(--border);
+            max-height: 500px;
+            overflow: auto;
+            padding-bottom: 25px;
+        }
+    }
+}

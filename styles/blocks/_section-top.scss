@@ -1,0 +1,92 @@
+@use '../helpers' as *;
+
+.section-top {
+
+    padding-bottom: 96px;
+
+    @include mobile {
+        padding-bottom: 0;
+    }
+    
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        row-gap: 19px;
+
+        @include mobile {
+            row-gap: 16px;
+        }
+    }
+
+    &__tabs {
+        display: flex;
+        gap: 16px;
+
+        @include mobile {
+            gap: 8px;
+        }
+    }
+
+        &__tab-button {
+        display: flex;
+        padding: 16px 24px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 16px;
+        background: var(--color-gray-primary);
+        border: none;
+        letter-spacing: 0.08px;
+
+        &.active {
+            background: var(--color-dark);
+            color: var(--color-light);
+        }
+
+        @include mobile {
+            padding: 9px 12px;
+            font-size: 14px;
+            line-height: 18px;
+            border-radius: 12px;
+        }
+    }
+
+    &-content {
+        display: none;
+
+        &.active {
+            display: block;
+        }
+
+        &-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 16px;
+
+            @include mobile {
+                gap: 5px;
+                flex-direction: column;
+            }
+        }
+
+        &-item {
+            flex: 1 1 calc((100% - 32px) / 3);
+            padding: 4px 0;
+
+            @include mobile {
+                padding: 0;
+                flex: 1 1 100%;
+            }
+        }
+
+        &-link {
+            letter-spacing: 0.08px;
+            color: var(--color-red);
+            text-decoration: underline !important;
+
+            @include hover {
+                color: var(--color-hover);
+                text-decoration: none !important;
+            }
+        }
+    }
+}

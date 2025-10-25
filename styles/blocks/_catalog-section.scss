@@ -1,0 +1,73 @@
+@use '../helpers' as *;
+
+.catalog-section {
+    display: none;
+
+    @include tablet {
+        display: block;
+        margin-top: -5px;
+    }
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        row-gap: 24px;
+
+        h2 {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 24px; 
+            letter-spacing: 0.1px;
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        row-gap: 24px;
+
+        &-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px 8px;
+        }
+
+        &-item {
+            flex: 1 1 calc((100% - 32px) / 3);
+            min-width: 110px;
+            max-width: 300px;
+        }
+
+        &-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+
+            &-image {
+                display: flex;
+                max-width: 110px;
+                width: 100%;
+                height: 112px;
+                padding: 16px;
+                justify-content: center;
+                align-items: center;
+                border-radius: 12px;
+                background: var(--color-gray-primary);
+            }
+
+            &-title {
+                overflow: hidden;
+                text-align: center;
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 18px; 
+                letter-spacing: 0.07px;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+        }
+    }
+}

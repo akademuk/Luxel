@@ -1,0 +1,108 @@
+@use 'helpers' as *;
+
+:root {
+  --color-light: #FFFFFF;
+  --color-dark: #000000;
+  --color-gray-primary: #F2F2F2;
+  --color-gray-light: #E3E3E3;
+  --color-gray-label: #727272;
+  --color-gray-dark: #555555;
+
+  --color-red: #EF0022;
+  --color-sale: #F20070;
+  --color-hover: #C9001D;
+  --color-active: #950015;
+  --color-badge: #D79484;
+
+  --font-size-14: 14px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --border: #{rem(1)} solid var(--color-gray-light);
+
+
+  --font-family-base: 'Onest', sans-serif;
+
+  --container-width: #{rem(1340)};
+  --container-padding-x: #{rem(30)};
+
+  --transition-duration: 0.2s;
+
+  --100vw: calc(100vw - var(--scrollbar-width));
+
+  @include laptop {
+    --container-width: #{rem(1340)};
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.swiper-pagination-bullet {
+
+  position: relative;
+  overflow: hidden;
+  opacity: 1;
+  margin: 0 !important;
+  transition: background 0.3s;
+}
+
+
+
+/* Прогрес-бар всередині точки */
+.swiper-pagination-bullet-progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: #000000; /* Колір заповнення */
+  border-radius: 2px;
+  transition: width 0.1s linear;
+
+
+}
+
+.swiper-pagination-bullet-active .swiper-pagination-bullet-progress {
+  animation: none; /* Видаляємо анімацію, бо вона керується через JS */
+}

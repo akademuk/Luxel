@@ -1,0 +1,166 @@
+@use '../helpers' as *;
+
+.reviews {
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        row-gap: 50px;
+
+        @include mobile {
+            row-gap: 24px;
+        }
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        @include mobile {
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        &-link {
+            display: flex;
+            padding: 16px;
+            align-items: center;
+            color: var(--color-red);
+            letter-spacing: 0.08px;
+
+            &::after {
+                content: '';
+                display: block;
+                width: 24px;
+                height: 24px;
+                background: url('../icons/arrow-red.svg') no-repeat center;
+                background-size: contain;
+                margin-left: 8px;
+
+                @include mobile {
+                    content: none;
+                }
+            }
+
+            strong {
+                text-decoration: underline;
+                font-weight: 500;
+                white-space: nowrap;
+            }
+
+            @include mobile {
+                padding: 0;
+            }
+        }
+    }
+
+    &__slider {
+        &-box {
+            display: flex;
+            min-height: 200px;
+            padding: 24px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 24px;
+            flex: 1 0 0;
+            border-radius: 20px;
+            border: 1.5px solid var(--color-gray-light);
+            background: var(--color-light);
+
+            @include mobile {
+                padding: 16px;
+                gap: 16px;
+                min-height: 142px;
+                border-radius: 12px;
+            }
+
+            &-header {
+                width: 100%;
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 16px;
+
+                &-info {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4px;
+
+                    &--name {
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                        overflow: hidden;
+                        font-size: 20px;
+                        line-height: 28px;
+
+                        @include mobile {
+                            font-size: 14px;
+                            line-height: 18px;
+                            letter-spacing: 0.07px;
+                        }
+                    }
+
+                    &--date {
+                        color: var(--color-gray-label);
+                        letter-spacing: 0.08px;
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                        overflow: hidden;
+
+                        @include mobile  {
+                            font-size: 14px;
+                            line-height: 18px;
+                        }
+                    }
+
+                    &-raiting {
+                        width: 136px;
+                        height: 24px;
+                        flex-shrink: 0;
+
+                        @include mobile {
+                            width: 106px;
+                            height: 18px;
+                        }
+                    }
+                }
+            }
+
+            &-body {
+                p {
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 5;
+                    overflow: hidden;
+                    font-weight: 400;
+                    letter-spacing: 0.08px;
+                }
+            }
+        }
+    }
+
+    .reviews-content {
+        position: relative;
+    }
+
+    .reviews-swiper-next,
+    .reviews-swiper-prev {
+        top: 115px;
+        background: var(--color-gray-primary);
+
+        @include mobile {
+            display: none;
+        }
+    }
+
+    .reviews-swiper-prev {
+        left: -30px;
+    }
+
+    .reviews-swiper-next {
+        right: -30px;
+    }
+}

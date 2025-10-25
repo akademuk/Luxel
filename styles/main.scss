@@ -1,0 +1,21 @@
+@use 'normalize';
+@use 'fonts';
+@use 'variables';
+@use 'utils';
+@use 'globals';
+
+@use 'blocks/header';
+@use 'blocks/burger-menu';
+@use 'blocks/hero';
+@use 'blocks/modal';
+@use 'blocks/offers';
+@use 'blocks/promotions';
+@use 'blocks/premium-products';
+@use 'blocks/trust';
+@use 'blocks/blog';
+@use 'blocks/reviews';
+@use 'blocks/cta-info';
+@use 'blocks/section-top';
+@use 'blocks/mailing-banner';
+@use 'blocks/footer';
+@use 'blocks/catalog-section';
