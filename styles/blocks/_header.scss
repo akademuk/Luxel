@@ -751,7 +751,8 @@
       inset: 0;
       width: 320px;
       overflow: hidden;
-      height: calc(100vh - 64px);
+      // height: calc(100vh - 64px);
+      height: 100%;
       padding: 0 12px 12px 12px;
       background: var(--color-light);
       transition-duration: var(--transition-duration);

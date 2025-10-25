@@ -1,0 +1,1235 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Luxel перший магазин електротоварів в Україні! | Catalog</title>
+
+    <link rel="stylesheet" href="styles/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./styles/main.css" />
+    <script src="./scripts/main.js" type="module"></script> 
+</head>
+
+<body data-js-header>
+    <header class="header">
+        <div class="header__promo">
+            <div class="header__promo-inner container">
+                <nav class="header__promo-navigation">
+                    <ul class="header__promo-navigation-list">
+                        <li class="header__promo-navigation-item">
+                            <a class="header__promo-navigation-link" href="/">Відгуки</a>
+                        </li>
+                        <li class="header__promo-navigation-item">
+                            <a class="header__promo-navigation-link" href="/">Доставка</a>
+                        </li>
+                        <li class="header__promo-navigation-item">
+                            <a class="header__promo-navigation-link" href="/">Оплата</a>
+                        </li>
+                        <li class="header__promo-navigation-item">
+                            <a class="header__promo-navigation-link" href="/">Контакти</a>
+                        </li>
+                        <li class="header__promo-navigation-item">
+                            <a class="header__promo-navigation-link" href="/">Блог</a>
+                        </li>
+                        <li class="header__promo-navigation-item header__promo-navigation-item--highlighted">
+                            <a class="header__promo-navigation-link" href="/">Співпраця</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header__promo-contacts">
+                    <a href="tel:+380730415111" class="header__promo-contacts-phone">
+                        <img src="icons/phone.svg" width="24" height="24" alt="">
+                        +38 (073) 041-5111
+                    </a>
+                    <div class="header__promo-dropdown">
+                        <div class="header__promo-dropdown-header" onclick="toggleDropdown()">
+                            <span class="header__promo-dropdown-text">Зв'язатися з нами</span>
+                            <img src="icons/dropdown.svg" class="header__promo-dropdown-arrow" id="dropdownArrow"
+                                width="14" height="8" alt="">
+                        </div>
+
+                        <div class="header__promo-dropdown-content" id="dropdownContent">
+                            <ul class="header__promo-dropdown-content-list">
+                                <li class="header__promo-dropdown-content-item">
+                                    <a href="/"
+                                        class="header__promo-dropdown-content-link header__promo-dropdown-content-link--viber">
+                                        <img src="icons/viber.svg" width="24" height="24" alt="">
+                                        Viber
+                                    </a>
+                                </li>
+                                <li class="header__promo-dropdown-content-item">
+                                    <button
+                                        class="header__promo-dropdown-content-link header__promo-dropdown-content-link--chat">
+                                        <img src="icons/chat.svg" width="24" height="24" alt="">
+                                        Написати в чат
+                                    </button>
+                                </li>
+                                <li class="header__promo-dropdown-content-item">
+                                    <span
+                                        class="header__promo-dropdown-content-link header__promo-dropdown-content-link--mail"
+                                        id="openwriteUsModal">
+                                        <img src="icons/mail.svg" width="24" height="24" alt="">
+                                        Написати на пошту
+                                    </span>
+                                </li>
+                                <li
+                                    class="header__promo-dropdown-content-item header__promo-dropdown-content-item--phone">
+                                    <div
+                                        class="header__promo-dropdown-content-link header__promo-dropdown-content-link--phone">
+                                        <img src="icons/phone-black.svg" width="24" height="24" alt="">
+                                        <address class="header__promo-dropdown-address">
+                                            <div class="header__promo-dropdown-address-col">
+                                                <span class="header__promo-dropdown-address-label">Інтернет
+                                                    магазин</span>
+                                                <a href="tel:+380730415111"
+                                                    class="header__promo-dropdown-address-link">+38 (073) 041-51-11</a>
+                                            </div>
+                                            <div class="header__promo-dropdown-address-col">
+                                                <span class="header__promo-dropdown-address-label">Офіс</span>
+                                                <a href="tel:+380500415111"
+                                                    class="header__promo-dropdown-address-link">+38 (050) 041-51-11</a>
+                                                <a href="tel:+380970145111"
+                                                    class="header__promo-dropdown-address-link">+38 (097) 014-51-11</a>
+                                            </div>
+                                        </address>
+                                <li class="header__promo-dropdown-content-item">
+                                    <a href="mailto:odessa@luxel.ua"
+                                        class="header__promo-dropdown-content-link header__promo-dropdown-content-link--email">
+                                        <img src="icons/google.svg" width="24" height="24" alt="">
+                                        <div class="header__promo-dropdown-content-info">
+                                            <span class="header__promo-dropdown-content-label">Пошта</span>
+                                            <span class="header__promo-dropdown-content-value">odessa@luxel.ua</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="header__promo-language-dropdown">
+                        <div class="header__promo-language-dropdown-header" onclick="toggleDropdownLanguage()">
+                            <span class="header__promo-language-dropdown-text" id="selectedLanguage">UA</span>
+                            <img src="icons/dropdown.svg" class="header__promo-language-arrow"
+                                id="dropdownArrowLanguage" width="14" height="8" alt="">
+                        </div>
+
+                        <div class="header__promo-language-dropdown-menu" id="dropdownMenuLanguage">
+                            <div class="header__promo-language-dropdown-option active"
+                                onclick="selectLanguage('UA', event)">
+                                Українська
+                            </div>
+                            <div class="header__promo-language-dropdown-option" onclick="selectLanguage('RU', event)">
+                                Русский
+                            </div>
+                            <div class="header__promo-language-dropdown-option" onclick="selectLanguage('EN', event)">
+                                English
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header__body">
+            <div class="header__body-inner container">
+                <a class="header__logo logo" href="/" aria-label="Home" title="Home">
+                    <img class="logo__image" src="./images/logo.png" alt="" width="175" height="42" />
+                </a>
+                <button class="header__body-btn-catalog" id="catalogBtn">
+                    <img src="icons/catalog-icons.svg" width="24" height="24" alt="">
+                    Каталог
+                </button>
+                <div class="header__body-btn-search">
+                    <span class="header__body-btn-search-icons">
+                        <img src="icons/search.svg" width="22" height="22" alt="">
+                    </span>
+                    <form action="">
+                        <input type="search" name="" id="" placeholder="Шукати товари">
+                    </form>
+                    <span class="header__body-btn-search-icons2">
+                        <img src="icons/search-icon.svg" width="22" height="22" alt="">
+                    </span>
+                </div>
+                <div class="header__body-btn-nav">
+                    <button class="header__body-btn-nav-box">
+                        <img src="icons/icon1.svg" width="24" height="24" alt="">
+                        <span class="header__body-btn-nav-text visible-desktop">Обране</span>
+                    </button>
+                    <button class="header__body-btn-nav-box">
+                        <img src="icons/icon2.svg" width="24" height="24" alt="">
+                        <span class="header__body-btn-nav-text visible-desktop">Кошик</span>
+                    </button>
+                    <button class="header__body-btn-nav-box">
+                        <img src="icons/icon3.svg" width="24" height="24" alt="">
+                        <span class="header__body-btn-nav-text visible-desktop">Олексій</span>
+                    </button>
+                </div>
+                <div class="header__promo-language-dropdown header__promo-language-dropdown--mobile">
+                    <div class="header__promo-language-dropdown-header" onclick="toggleDropdownLanguage2()">
+                        <span class="header__promo-language-dropdown-text" id="selectedLanguage2">UA</span>
+                        <img src="icons/dropdown.svg" class="header__promo-language-arrow" id="dropdownArrowLanguage2"
+                            width="14" height="8" alt="">
+                    </div>
+
+                    <div class="header__promo-language-dropdown-menu" id="dropdownMenuLanguage2">
+                        <div class="header__promo-language-dropdown-option active"
+                            onclick="selectLanguage('UA', event)">
+                            Українська
+                        </div>
+                        <div class="header__promo-language-dropdown-option" onclick="selectLanguage('RU', event)">
+                            Русский
+                        </div>
+                        <div class="header__promo-language-dropdown-option" onclick="selectLanguage('EN', event)">
+                            English
+                        </div>
+                    </div>
+                </div>
+                <button class="header__burger-button burger-button visible-mobile" type="button" aria-label="Open menu"
+                    title="Open menu" data-js-header-burger-button>
+                    <span class="burger-button__line"></span>
+                    <span class="burger-button__line"></span>
+                    <span class="burger-button__line"></span>
+                </button>
+            </div>
+        </div>
+        <div class="header__body-search-mobile">
+            <div class="header__promo-inner container">
+                <div class="header__body-btn-search">
+                    <span class="header__body-btn-search-icons">
+                        <img src="icons/search.svg" width="22" height="22" alt="">
+                    </span>
+                    <form action="">
+                        <input type="search" name="" id="" placeholder="Шукати товари">
+                    </form>
+                    <span class="header__body-btn-search-icons2">
+                        <img src="icons/search-icon.svg" width="22" height="22" alt="">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <aside class="filters" data-js-filters>
+        <h2 class="filters__title">Фільтри</h2>
+
+        <!-- Колірова температура -->
+        <section class="filters__group" data-js-filter-group>
+            <header class="filters__group-header" data-js-filter-header>
+            <h3 class="filters__group-title">Колірова температура</h3>
+            <span class="filters__group-toggle" aria-hidden="true">−</span>
+            </header>
+            <div class="filters__group-content">
+            <label class="filters__option">
+                <input 
+                type="checkbox" 
+                class="filters__checkbox" 
+                name="temperature" 
+                value="4000"
+                data-js-filter-checkbox
+                >
+                <span class="filters__label">
+                <span>4000</span>
+                <span class="filters__count">(19)</span>
+                </span>
+            </label>
+            <label class="filters__option">
+                <input 
+                type="checkbox" 
+                class="filters__checkbox" 
+                name="temperature" 
+                value="5000"
+                data-js-filter-checkbox
+                >
+                <span class="filters__label">
+                <span>5000</span>
+                <span class="filters__count">(4)</span>
+                </span>
+            </label>
+            <label class="filters__option">
+                <input 
+                type="checkbox" 
+                class="filters__checkbox" 
+                name="temperature" 
+                value="6000"
+                data-js-filter-checkbox
+                >
+                <span class="filters__label">
+                <span>6000</span>
+                <span class="filters__count">(12)</span>
+                </span>
+            </label>
+            <label class="filters__option">
+                <input 
+                type="checkbox" 
+                class="filters__checkbox" 
+                name="temperature" 
+                value="6500"
+                data-js-filter-checkbox
+                >
+                <span class="filters__label">
+                <span>6500</span>
+                <span class="filters__count">(15)</span>
+                </span>
+            </label>
+            </div>
+        </section>
+
+        <!-- Потужність (ВТ) -->
+        <section class="filters__group" data-js-filter-group>
+            <header class="filters__group-header" data-js-filter-header>
+            <h3 class="filters__group-title">Потужність (ВТ)</h3>
+            <span class="filters__group-toggle" aria-hidden="true">+</span>
+            </header>
+            <div class="filters__group-content">
+            <label class="filters__option">
+                <input 
+                type="checkbox" 
+                class="filters__checkbox" 
+                name="power" 
+                value="12"
+                data-js-filter-checkbox
+                >
+                <span class="filters__label">
+                <span>12 Вт</span>
+                <span class="filters__count">(8)</span>
+                </span>
+            </label>
+            <label class="filters__option">
+                <input 
+                type="checkbox" 
+                class="filters__checkbox" 
+                name="power" 
+                value="18"
+                data-js-filter-checkbox
+                >
+                <span class="filters__label">
+                <span>18 Вт</span>
+                <span class="filters__count">(25)</span>
+                </span>
+            </label>
+            <label class="filters__option">
+                <input 
+                type="checkbox" 
+                class="filters__checkbox" 
+                name="power" 
+                value="24"
+                data-js-filter-checkbox
+                >
+                <span class="filters__label">
+                <span>24 Вт</span>
+                <span class="filters__count">(12)</span>
+                </span>
+            </label>
+            </div>
+        </section>
+
+        <!-- Кут розсіювання -->
+        <section class="filters__group" data-js-filter-group>
+            <header class="filters__group-header" data-js-filter-header>
+            <h3 class="filters__group-title">Кут розсіювання</h3>
+            <span class="filters__group-toggle" aria-hidden="true">+</span>
+            </header>
+            <div class="filters__group-content">
+            <label class="filters__option">
+                <input 
+                type="checkbox" 
+                class="filters__checkbox" 
+                name="angle" 
+                value="120"
+                data-js-filter-checkbox
+                >
+                <span class="filters__label">
+                <span>120°</span>
+                <span class="filters__count">(15)</span>
+                </span>
+            </label>
+            <label class="filters__option">
+                <input 
+                type="checkbox" 
+                class="filters__checkbox" 
+                name="angle" 
+                value="240"
+                data-js-filter-checkbox
+                >
+                <span class="filters__label">
+                <span>240°</span>
+                <span class="filters__count">(10)</span>
+                </span>
+            </label>
+            </div>
+        </section>
+
+        <!-- Ступінь захисту -->
+        <section class="filters__group" data-js-filter-group>
+            <header class="filters__group-header" data-js-filter-header>
+            <h3 class="filters__group-title">Ступінь захисту</h3>
+            <span class="filters__group-toggle" aria-hidden="true">+</span>
+            </header>
+            <div class="filters__group-content">
+            <label class="filters__option">
+                <input 
+                type="checkbox" 
+                class="filters__checkbox" 
+                name="protection" 
+                value="IP20"
+                data-js-filter-checkbox
+                >
+                <span class="filters__label">
+                <span>IP20</span>
+                <span class="filters__count">(7)</span>
+                </span>
+            </label>
+            <label class="filters__option">
+                <input 
+                type="checkbox" 
+                class="filters__checkbox" 
+                name="protection" 
+                value="IP40"
+                data-js-filter-checkbox
+                >
+                <span class="filters__label">
+                <span>IP40</span>
+                <span class="filters__count">(18)</span>
+                </span>
+            </label>
+            <label class="filters__option">
+                <input 
+                type="checkbox" 
+                class="filters__checkbox" 
+                name="protection" 
+                value="IP65"
+                data-js-filter-checkbox
+                >
+                <span class="filters__label">
+                <span>IP65</span>
+                <span class="filters__count">(9)</span>
+                </span>
+            </label>
+            </div>
+        </section>
+
+        <!-- Тип установки -->
+        <section class="filters__group" data-js-filter-group>
+            <header class="filters__group-header" data-js-filter-header>
+            <h3 class="filters__group-title">Тип установки</h3>
+            <span class="filters__group-toggle" aria-hidden="true">+</span>
+            </header>
+            <div class="filters__group-content">
+            <label class="filters__option">
+                <input 
+                type="checkbox" 
+                class="filters__checkbox" 
+                name="installation" 
+                value="outdoor"
+                data-js-filter-checkbox
+                >
+                <span class="filters__label">
+                <span>Вулична</span>
+                <span class="filters__count">(12)</span>
+                </span>
+            </label>
+            <label class="filters__option">
+                <input 
+                type="checkbox" 
+                class="filters__checkbox" 
+                name="installation" 
+                value="indoor"
+                data-js-filter-checkbox
+                >
+                <span class="filters__label">
+                <span>Внутрішня</span>
+                <span class="filters__count">(23)</span>
+                </span>
+            </label>
+            </div>
+        </section>
+
+        <!-- Ціна -->
+        <section class="filters__group" data-js-filter-group>
+            <header class="filters__group-header" data-js-filter-header>
+            <h3 class="filters__group-title">Ціна</h3>
+            <span class="filters__group-toggle" aria-hidden="true">−</span>
+            </header>
+            <div class="filters__group-content">
+            <div class="filters__range">
+                <div class="filters__range-inputs">
+                <div class="filters__range-input-wrapper">
+                    <label class="filters__range-label" for="price-from">Від</label>
+                    <input 
+                    type="number" 
+                    id="price-from" 
+                    class="filters__range-input" 
+                    data-js-range-from
+                    value="100"
+                    min="100"
+                    max="10000"
+                    step="10"
+                    aria-label="Ціна від"
+                    >
+                    <span aria-hidden="true">₴</span>
+                </div>
+                <div class="filters__range-input-wrapper">
+                    <label class="filters__range-label" for="price-to">До</label>
+                    <input 
+                    type="number" 
+                    id="price-to" 
+                    class="filters__range-input" 
+                    data-js-range-to
+                    value="10000"
+                    min="100"
+                    max="10000"
+                    step="10"
+                    aria-label="Ціна до"
+                    >
+                    <span aria-hidden="true">₴</span>
+                </div>
+                </div>
+                <div class="filters__slider" data-js-slider>
+                <div class="filters__slider-track" data-js-slider-track></div>
+                <div class="filters__slider-thumb" data-js-slider-thumb="from" role="slider" aria-label="Мінімальна ціна"></div>
+                <div class="filters__slider-thumb" data-js-slider-thumb="to" role="slider" aria-label="Максимальна ціна"></div>
+                </div>
+            </div>
+            </div>
+        </section>
+        </aside>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__inner container">
+            <div class="footer__logo">
+                <a href="/" class="footer__logo-link">
+                    <img src="images/black-logo.png" width="150" height="34" alt="Luxel footer logo">
+                </a>
+            </div>
+            <div class="footer__content">
+                <div class="footer__content-box">
+                    <div class="footer__content-col">
+                        <h3 class="footer__content-col-title">Контакти</h3>
+                        <div class="footer__content-col-contact">
+                            <h4>Гаряча лінія</h4>
+                            <div class="footer__content-col-contact-row">
+                                <a href="tel:+380730415111">+38 (073) 041-5111</a>
+                                <span class="footer__content-col-contact-grafic">(пн-пт 10:00-18:00)</span>
+                            </div>
+                        </div>
+                        <div class="footer__content-col-contact">
+                            <h4>Офіс</h4>
+                            <a href="tel:+380500415111">+38 (050) 041-51-11</a>
+                            <a href="tel:+380970145111">+38 (097) 014-51-11</a>
+                        </div>
+                        <div class="footer__content-col-contact footer__content-col-contact--email">
+                            <h4>Email</h4>
+                            <a href="mailto:odessa@luxel.ua">odessa@luxel.ua</a>
+                        </div>
+                        <div class="footer__accordion">
+                            <div class="footer__accordion-item">
+                                <h3 class="footer__accordion-header">
+                                    <button class="footer__accordion-button" type="button" aria-expanded="false"
+                                        aria-controls="accordion-panel-1">
+                                        <span class="footer__accordion-title">Про компанію</span>
+                                        <span class="footer__accordion-icon" aria-hidden="true">
+                                            <img src="icons/accardion-arrow.svg" width="24" height="24" alt="">
+                                        </span>
+                                    </button>
+                                </h3>
+                                <div class="footer__accordion-panel" id="accordion-panel-1" role="region"
+                                    aria-labelledby="accordion-panel-1">
+                                    <div class="footer__accordion-content">
+                                        <ul class="footer__accordion-list">
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Доставка</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Оплата</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Умови повернення і
+                                                    гарантії</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Задати питання експертам</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Завантажити каталог</a>
+                                            </li>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Вiдео файли</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Політика конфіденційності</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="footer__accordion-item">
+                                <h3 class="footer__accordion-header">
+                                    <button class="footer__accordion-button" type="button" aria-expanded="false"
+                                        aria-controls="accordion-panel-2">
+                                        <span class="footer__accordion-title">Послуги</span>
+                                        <span class="footer__accordion-icon" aria-hidden="true">
+                                            <img src="icons/accardion-arrow.svg" width="24" height="24" alt="">
+                                        </span>
+                                    </button>
+                                </h3>
+                                <div class="footer__accordion-panel" id="accordion-panel-2" role="region"
+                                    aria-labelledby="accordion-panel-2">
+                                    <div class="footer__accordion-content">
+                                        <ul class="footer__accordion-list">
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Консультації</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Розробка</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Підтримка</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer__content-col-contact footer__content-col-contact--social">
+                            <h4>Соцмережі</h4>
+                            <a href="/">
+                                <img src="icons/tg-red.svg" width="21" height="18" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer__content-col footer__content-col--descktop">
+                        <h3 class="footer__content-col-title">Допомога</h3>
+                        <ul class="footer__content-list">
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Гаряча лінія</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Оплата</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Умови повернення і гарантії</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Задати питання експертам</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Завантажити каталог</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Вiдео файли</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Політика конфіденційності</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__content-help">
+                    <h3>Підпишіться, щоб отримувати найкращі знижки та пропозиції</h3>
+                    <p>Підписуйтеся на розсилку, щоб слідкувати за останніми новинами та акційними пропозиціями та
+                        отримайте
+                        знижку на перше замовлення в нашому магазині! </p>
+                    <form action="" class="footer-form">
+                        <input type="email" name="eamil" id="footerEmail" placeholder="Ваш Email">
+                        <button type="button" class="footer-btn">Підписатися</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__bottom-copiright">Luxel © 2025. Усі права захищені</p>
+                <ul class="footer__bottom-list">
+                    <li class="footer__bottom-item">
+                        <img src="icons/bank1.svg" width="22" height="22" alt="">
+                    </li>
+                    <li class="footer__bottom-item">
+                        <img src="icons/bank2.svg" width="22" height="22" alt="">
+                    </li>
+                    <li class="footer__bottom-item">
+                        <img src="icons/bank3.svg" width="22" height="22" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <div class="request-call">
+        <button class="request-call-btn" id="requestCallBtn">
+            <img src="icons/phone-white.svg" width="22" height="22" alt="">
+            Замовити дзвінок
+        </button>
+    </div>
+
+
+    <!-- Модалка с формой -->
+    <div class="modal" id="callModal">
+        <div class="modal__content">
+            <button class="modal__close" id="closeModal">
+                <img src="icons/close-black.svg" width="13" height="13" alt="">
+            </button>
+            <h2 class="modal__title">Замовити дзвінок</h2>
+            <p class="modal__text">Залиште свій номер, ми перетелефонуємовам якнайшвидше.</p>
+            <form class="modal__form" id="callForm">
+                <div class="modal__form-col">
+                    <label for="name" class="label-required">Ім’я</label>
+                    <input type="text" name="name" id="name" placeholder="Ваше ім’я" required>
+                </div>
+                <div class="modal__form-col">
+                    <label for="phone" class="label-required">Номер телефону</label>
+                    <input type="tel" name="phone" id="phone" placeholder="+380" required>
+                    <span class="novalid-style">Невірний формат номеру телефона</span>
+                </div>
+
+                <button type="submit" class="modal__form-btn">Замовити дзвінок</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модалка с формой -->
+    <div class="modal" id="writeUs">
+        <div class="modal__content">
+            <div class="modal__content-header">
+                <h2 class="modal__title">Напишіть нам</h2>
+                <button class="modal__close" id="closeModal2">
+                    <img src="icons/close-black.svg" width="13" height="13" alt="">
+                </button>
+            </div>
+            <form class="modal__form" id="callForm2">
+                <div class="modal__form-col">
+                    <label for="name" class="label-required">Ім’я</label>
+                    <input type="text" name="name" id="name-write" placeholder="Ваше ім’я" required>
+                </div>
+                <div class="modal__form-col">
+                    <label for="Email" class="label-required">Номер телефону</label>
+                    <input type="email" name="Email" id="Email" placeholder="Ваш email" required>
+                    <span class="novalid-style">Невірний формат номеру телефона</span>
+                </div>
+                <div class="modal__form-col">
+                    <label for="thema" class="label-required">Тема</label>
+                    <input type="text" name="thema" id="thema" placeholder="Опишіть коротко тему повідомлення" required>
+                </div>
+                <div class="modal__form-col">
+                    <label for="message" class="label-required">Ваше повідомлення</label>
+                    <textarea name="message" id="message" placeholder="Опишіть детальніше ваш запит"></textarea>
+                </div>
+
+                <button type="submit" class="modal__form-btn">Надіслати</button>
+                <span class="modal__form-info">Натискаючи кнопку «Відправитит», ви надаєте свою згоду на обробку
+                    персональних
+                    даних. Правила обробки ваших даних можна ознайомитися в <a href="/"
+                        class="modal__form-politic">Політиці
+                        конфіденційності</a>.</span>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модалка с благодарностью -->
+    <div class="modal" id="successModal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+            <img src="icons/success.svg" width="40" height="40" alt="">
+            <p class="modal__text">Ваше повідомлення було успішно відправлено! Ми якнайшвидше зв’яжемося з вами.</p>
+        </div>
+    </div>
+
+    <!-- Меню на мобильном устройстве -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav__item mobile-nav__item--active">
+            <button type="button">
+                <img src="icons/home.svg" width="24" height="24" alt="">
+                Головна
+            </button>
+        </div>
+        <div class="mobile-nav__item">
+            <button type="button">
+                <img src="icons/catalog-icons.svg" width="24" height="24" alt="">
+                Каталог
+            </button>
+        </div>
+        <div class="mobile-nav__item">
+            <button type="button">
+                <img src="icons/icon2.svg" width="24" height="24" alt="">
+                Кошик
+            </button>
+        </div>
+        <div class="mobile-nav__item">
+            <button type="button">
+                <img src="icons/icon1.svg" width="24" height="24" alt="">
+                Обране
+            </button>
+        </div>
+        <div class="mobile-nav__item">
+            <button type="button">
+                <img src="icons/icon3.svg" width="24" height="24" alt="">
+                Аккаунт
+            </button>
+        </div>
+    </nav>
+
+    <div class="overflow-hidden"></div>
+
+    <div class="header__overlay" data-js-header-overlay>
+        <div class="header-burger__menu">
+            <div class="header-burger__menu-top">
+                <a class="header__logo logo" href="/" aria-label="Home" title="Home">
+                    <img class="logo__image" src="./images/logo.png" alt="" width="175" height="42" />
+                </a>
+                <button class="header-burger__menu-close">
+                    <img src="icons/close-black.svg" width="13" height="13" alt="">
+                </button>
+            </div>
+            <ul class="header-burger__menu-main">
+                <li class="header-burger__menu-main-list">
+                    <a href="/" class="header-burger__menu-main-link">Відгуки</a>
+                </li>
+                <li class="header-burger__menu-main-list">
+                    <a href="/" class="header-burger__menu-main-link">Доставка</a>
+                </li>
+                <li class="header-burger__menu-main-list">
+                    <a href="/" class="header-burger__menu-main-link">Оплата</a>
+                </li>
+                <li class="header-burger__menu-main-list">
+                    <a href="/" class="header-burger__menu-main-link">Контакти</a>
+                </li>
+                <li class="header-burger__menu-main-list">
+                    <a href="/" class="header-burger__menu-main-link">Блог</a>
+                </li>
+                <li class="header-burger__menu-main-list">
+                    <a href="/" class="header-burger__menu-main-link">Співпраця</a>
+                </li>
+            </ul>
+            <div class="header-burger__menu-contact">
+                <h3>Зв’язатися з нами</h3>
+                <div class="header-burger__menu-contact-box">
+                    <div class="header-burger__menu-contact-col">
+                        <a href="tel:+380730415111">+38 (073) 041-5111</a>
+                        <span>Пн-Пт: 09:00 - 17:00</span>
+                    </div>
+                    <ul class="header-burger__menu-contact-social">
+                        <li class="header-burger__menu-contacts">
+                            <a href="/"
+                                class="header-burger__menu-contact-item header-burger__menu-contact-item--viber">
+                                <img src="icons/viber.svg" alt="">
+                            </a>
+                        </li>
+                        <li class="header-burger__menu-contacts">
+                            <a href="/"
+                                class="header-burger__menu-contact-item header-burger__menu-contact-item--phone">
+                                <img src="icons/phone-white.svg" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <button class="header-burger__menu-btn">Підтримка</button>
+            <div class="header-burger__menu-top-hidden">
+                <button class="header-burger__menu-top-back" id="back1">Задати питання</button>
+                <ul class="header-burger__menu-top-hidden-list">
+                    <li class="header-burger__menu-top-hidden-item">
+                        <button class="header-burger__menu-top-hidden-link">
+                            <img src="icons/link-hidden1.svg" width="22" height="21" alt="">
+                            Написати в чат</button>
+                    </li>
+                    <li class="header-burger__menu-top-hidden-item">
+                        <button class="header-burger__menu-top-hidden-link" id="burgerform">
+                            <img src="icons/link-hidden2.svg" width="22" height="21" alt="">
+                            Написати на пошту</button>
+                    </li>
+                </ul>
+
+                <div class="header-burger__menu-top-hidden-email">
+                    <button class="header-burger__menu-top-back" id="back2">Напишіть нам</button>
+                    <div class="modal__content">
+                        <form class="modal__form" id="callForm2">
+                            <div class="modal__form-col">
+                                <label for="name" class="label-required">Ім’я</label>
+                                <input type="text" name="name" id="name-write" placeholder="Ваше ім’я" required>
+                            </div>
+                            <div class="modal__form-col">
+                                <label for="Email" class="label-required">Номер телефону</label>
+                                <input type="email" name="Email" id="Email" placeholder="Ваш email" required>
+                                <span class="novalid-style">Невірний формат номеру телефона</span>
+                            </div>
+                            <div class="modal__form-col">
+                                <label for="thema" class="label-required">Тема</label>
+                                <input type="text" name="thema" id="thema"
+                                    placeholder="Опишіть коротко тему повідомлення" required>
+                            </div>
+                            <div class="modal__form-col">
+                                <label for="message" class="label-required">Ваше повідомлення</label>
+                                <textarea name="message" id="message"
+                                    placeholder="Опишіть детальніше ваш запит"></textarea>
+                            </div>
+                            <span class="modal__form-info">Натискаючи кнопку «Надіслати», ви надаєте свою згоду на
+                                обробку
+                                персональних
+                                даних. Правила обробки ваших даних можна ознайомитися в <a href="/"
+                                    class="modal__form-politic">Політиці
+                                    конфіденційності</a>.</span>
+                            <button type="submit" class="modal__form-btn">Надіслати</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+<script src="scripts/jquery-3.7.0.min.js"></script>
+<script src="scripts/swiper-bundle.min.js"></script>
+<script src="scripts/jquery.maskedinput.js"></script>
+<script src="scripts/script.js"></script>
+
+<script>
+(function() {
+  'use strict';
+
+  // Конфігурація
+  const config = {
+    selectors: {
+      filters: '[data-js-filters]',
+      filterGroup: '[data-js-filter-group]',
+      filterHeader: '[data-js-filter-header]',
+      filterCheckbox: '[data-js-filter-checkbox]',
+      rangeFrom: '[data-js-range-from]',
+      rangeTo: '[data-js-range-to]',
+      slider: '[data-js-slider]',
+      sliderTrack: '[data-js-slider-track]',
+      sliderThumb: '[data-js-slider-thumb]',
+    },
+    classes: {
+      collapsed: 'filters__group--collapsed',
+    },
+    storage: {
+      filtersKey: 'shopFilters',
+      priceKey: 'shopPriceRange',
+    },
+  };
+
+  // Стан фільтрів
+  const state = {
+    selectedFilters: {},
+    priceRange: {
+      min: 100,
+      max: 10000,
+      from: 100,
+      to: 10000,
+    },
+    collapsedGroups: new Set(),
+  };
+
+  // Ініціалізація
+  function init() {
+    const filtersContainer = document.querySelector(config.selectors.filters);
+    if (!filtersContainer) {
+      console.warn('Filters container not found');
+      return;
+    }
+
+    loadStateFromStorage();
+    initGroupToggles();
+    initCheckboxes();
+    initPriceRange();
+    applyFilters();
+  }
+
+  // Завантаження стану з localStorage
+  function loadStateFromStorage() {
+    try {
+      const savedFilters = localStorage.getItem(config.storage.filtersKey);
+      if (savedFilters) {
+        state.selectedFilters = JSON.parse(savedFilters);
+      }
+
+      const savedPrice = localStorage.getItem(config.storage.priceKey);
+      if (savedPrice) {
+        const priceData = JSON.parse(savedPrice);
+        state.priceRange.from = priceData.from;
+        state.priceRange.to = priceData.to;
+      }
+    } catch (e) {
+      console.error('Error loading filters from storage:', e);
+    }
+  }
+
+  // Збереження стану в localStorage
+  function saveStateToStorage() {
+    try {
+      localStorage.setItem(config.storage.filtersKey, JSON.stringify(state.selectedFilters));
+      localStorage.setItem(config.storage.priceKey, JSON.stringify({
+        from: state.priceRange.from,
+        to: state.priceRange.to,
+      }));
+    } catch (e) {
+      console.error('Error saving filters to storage:', e);
+    }
+  }
+
+  // Ініціалізація згортання/розгортання груп
+  function initGroupToggles() {
+    const headers = document.querySelectorAll(config.selectors.filterHeader);
+    
+    headers.forEach((header) => {
+      header.addEventListener('click', function() {
+        const group = this.closest(config.selectors.filterGroup);
+        if (!group) return;
+
+        const isCollapsed = group.classList.contains(config.classes.collapsed);
+        
+        if (isCollapsed) {
+          group.classList.remove(config.classes.collapsed);
+          this.querySelector('.filters__group-toggle').textContent = '−';
+        } else {
+          group.classList.add(config.classes.collapsed);
+          this.querySelector('.filters__group-toggle').textContent = '+';
+        }
+      });
+    });
+  }
+
+  // Ініціалізація чекбоксів
+  function initCheckboxes() {
+    const checkboxes = document.querySelectorAll(config.selectors.filterCheckbox);
+    
+    checkboxes.forEach((checkbox) => {
+      // Відновлення стану з localStorage
+      const filterName = checkbox.name;
+      const filterValue = checkbox.value;
+      
+      if (state.selectedFilters[filterName] && 
+          state.selectedFilters[filterName].includes(filterValue)) {
+        checkbox.checked = true;
+      }
+
+      // Обробка зміни стану
+      checkbox.addEventListener('change', function() {
+        handleCheckboxChange(this);
+      });
+    });
+  }
+
+  // Обробка зміни чекбокса
+  function handleCheckboxChange(checkbox) {
+    const filterName = checkbox.name;
+    const filterValue = checkbox.value;
+
+    if (!state.selectedFilters[filterName]) {
+      state.selectedFilters[filterName] = [];
+    }
+
+    if (checkbox.checked) {
+      if (!state.selectedFilters[filterName].includes(filterValue)) {
+        state.selectedFilters[filterName].push(filterValue);
+      }
+    } else {
+      state.selectedFilters[filterName] = state.selectedFilters[filterName].filter(
+        val => val !== filterValue
+      );
+      
+      if (state.selectedFilters[filterName].length === 0) {
+        delete state.selectedFilters[filterName];
+      }
+    }
+
+    saveStateToStorage();
+    applyFilters();
+  }
+
+  // Ініціалізація ціноього діапазону
+  function initPriceRange() {
+    const fromInput = document.querySelector(config.selectors.rangeFrom);
+    const toInput = document.querySelector(config.selectors.rangeTo);
+    const slider = document.querySelector(config.selectors.slider);
+    const sliderTrack = document.querySelector(config.selectors.sliderTrack);
+    const thumbFrom = document.querySelector('[data-js-slider-thumb="from"]');
+    const thumbTo = document.querySelector('[data-js-slider-thumb="to"]');
+
+    if (!fromInput || !toInput || !slider || !thumbFrom || !thumbTo) {
+      console.warn('Price range elements not found');
+      return;
+    }
+
+    // Відновлення значень
+    fromInput.value = state.priceRange.from;
+    toInput.value = state.priceRange.to;
+    updateSliderUI();
+
+    // Обробка введення в поля
+    fromInput.addEventListener('input', function() {
+      let value = parseInt(this.value) || state.priceRange.min;
+      value = Math.max(state.priceRange.min, Math.min(value, state.priceRange.to));
+      this.value = value;
+      state.priceRange.from = value;
+      updateSliderUI();
+      debouncedSaveAndFilter();
+    });
+
+    toInput.addEventListener('input', function() {
+      let value = parseInt(this.value) || state.priceRange.max;
+      value = Math.min(state.priceRange.max, Math.max(value, state.priceRange.from));
+      this.value = value;
+      state.priceRange.to = value;
+      updateSliderUI();
+      debouncedSaveAndFilter();
+    });
+
+    // Drag для повзунків
+    let activeThumb = null;
+
+    function startDrag(thumb) {
+      activeThumb = thumb;
+      document.addEventListener('mousemove', onDrag);
+      document.addEventListener('mouseup', stopDrag);
+      document.body.style.userSelect = 'none';
+    }
+
+    function onDrag(e) {
+      if (!activeThumb) return;
+
+      const sliderRect = slider.getBoundingClientRect();
+      const sliderWidth = sliderRect.width;
+      let position = e.clientX - sliderRect.left;
+      position = Math.max(0, Math.min(position, sliderWidth));
+
+      const percent = position / sliderWidth;
+      const range = state.priceRange.max - state.priceRange.min;
+      let value = Math.round(state.priceRange.min + percent * range);
+
+      const thumbType = activeThumb.getAttribute('data-js-slider-thumb');
+
+      if (thumbType === 'from') {
+        value = Math.min(value, state.priceRange.to);
+        state.priceRange.from = value;
+        fromInput.value = value;
+      } else {
+        value = Math.max(value, state.priceRange.from);
+        state.priceRange.to = value;
+        toInput.value = value;
+      }
+
+      updateSliderUI();
+      debouncedSaveAndFilter();
+    }
+
+    function stopDrag() {
+      activeThumb = null;
+      document.removeEventListener('mousemove', onDrag);
+      document.removeEventListener('mouseup', stopDrag);
+      document.body.style.userSelect = '';
+    }
+
+    thumbFrom.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      startDrag(thumbFrom);
+    });
+
+    thumbTo.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      startDrag(thumbTo);
+    });
+
+    // Оновлення UI слайдера
+    function updateSliderUI() {
+      const range = state.priceRange.max - state.priceRange.min;
+      const fromPercent = ((state.priceRange.from - state.priceRange.min) / range) * 100;
+      const toPercent = ((state.priceRange.to - state.priceRange.min) / range) * 100;
+
+      thumbFrom.style.left = fromPercent + '%';
+      thumbTo.style.left = toPercent + '%';
+      sliderTrack.style.left = fromPercent + '%';
+      sliderTrack.style.width = (toPercent - fromPercent) + '%';
+    }
+  }
+
+  // Debounce для оптимізації
+  let debounceTimer;
+  function debouncedSaveAndFilter() {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      saveStateToStorage();
+      applyFilters();
+    }, 300);
+  }
+
+  // Застосування фільтрів (тут логіка фільтрації товарів)
+  function applyFilters() {
+    console.log('Applying filters:', {
+      filters: state.selectedFilters,
+      priceRange: {
+        from: state.priceRange.from,
+        to: state.priceRange.to,
+      },
+    });
+
+    // Тут ви можете додати свою логіку:
+    // - Відправка AJAX запиту на сервер
+    // - Фільтрація товарів на клієнті
+    // - Оновлення URL з параметрами
+    
+    // ПрикладDispatchEvent для інтеграції:
+    const event = new CustomEvent('filtersChanged', {
+      detail: {
+        filters: state.selectedFilters,
+        priceRange: {
+          from: state.priceRange.from,
+          to: state.priceRange.to,
+        },
+      },
+    });
+    document.dispatchEvent(event);
+  }
+
+  // Публічний API для скидання фільтрів
+  window.shopFilters = {
+    reset: function() {
+      // Скидаємо чекбокси
+      const checkboxes = document.querySelectorAll(config.selectors.filterCheckbox);
+      checkboxes.forEach(cb => cb.checked = false);
+
+      // Скидаємо ціни
+      const fromInput = document.querySelector(config.selectors.rangeFrom);
+      const toInput = document.querySelector(config.selectors.rangeTo);
+      if (fromInput) fromInput.value = state.priceRange.min;
+      if (toInput) toInput.value = state.priceRange.max;
+
+      // Скидаємо стан
+      state.selectedFilters = {};
+      state.priceRange.from = state.priceRange.min;
+      state.priceRange.to = state.priceRange.max;
+
+      saveStateToStorage();
+      applyFilters();
+    },
+    getState: function() {
+      return {
+        filters: state.selectedFilters,
+        priceRange: {
+          from: state.priceRange.from,
+          to: state.priceRange.to,
+        },
+      };
+    },
+  };
+
+  // Запуск при завантаженні сторінки
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+</html>
+
+
+<!-- npm run sass-watch -->
