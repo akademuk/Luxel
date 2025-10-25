@@ -41,18 +41,6 @@ body {
   &.modal-open {
     overflow-y:hidden;
     position: relative;
-
-    .overflow-hidden {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.10);
-      backdrop-filter: blur(12.5px);
-      z-index: 100;
-
-    }
   }
 }
 
