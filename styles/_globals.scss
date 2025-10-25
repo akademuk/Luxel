@@ -1,11 +1,27 @@
 @use 'helpers' as *;
 
-html {
+html, body {
   &.is-lock {
     overflow: hidden;
     position: relative;
 
     .header {
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.10);
+        backdrop-filter: blur(12.5px);
+        z-index: 100;
+      }
+    }
+  }
+
+  &.modal-open {
+     .header {
       &::after {
         content: "";
         position: absolute;
@@ -67,6 +83,10 @@ h3,
 
 p {
   --paragraphMarginBottom: #{rem(24)};
+}
+
+a {
+  color: inherit;
 }
 
 a,
