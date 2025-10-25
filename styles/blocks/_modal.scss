@@ -19,9 +19,10 @@
         top: 50%;
         transform: translate(-50%, -50%);
         max-width: 351px;
-        height: auto;
+        height: 100%;
         border-radius: 16px;
         padding: 24px;
+        max-height: 405px;
     }
 
     &.active {
