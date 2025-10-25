@@ -1542,6 +1542,10 @@ a[class] {
 }
 .header-burger__menu-top-hidden-email .modal__content {
   padding: 0;
+  width: 100%;
+  max-width: 100%;
+  background: transparent;
+  box-shadow: none;
 }
 .header-burger__menu-top-hidden-email .modal__form-info a {
   color: var(--color-red);
