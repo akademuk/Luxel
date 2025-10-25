@@ -1879,7 +1879,7 @@ a[class] {
     top: 50%;
     transform: translate(-50%, -50%);
     max-width: 351px;
-    height: max-content;
+    height: auto;
     border-radius: 16px;
     padding: 24px;
   }
@@ -1891,7 +1891,6 @@ a[class] {
   display: flex;
   flex-direction: column;
   padding: 24px;
-  height: 100%;
   position: relative;
   background: var(--color-light);
 }
