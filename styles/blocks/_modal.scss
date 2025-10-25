@@ -13,7 +13,6 @@
     border-radius: 20px;
     background: var(--color-light);
     box-shadow: 0 6px 28.1px 8px rgba(0, 0, 0, 0.25);
-    border: 2px solid red;
 
     @include tablet {
         left: 50%;
@@ -34,7 +33,7 @@
         flex-direction: column;
         padding: 24px;
         position: relative;
-        background: var(--color-light);
+        height: 100%;
 
         @include tablet {
             padding: 0;
