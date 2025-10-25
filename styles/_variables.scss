@@ -96,9 +96,13 @@
   top: 0;
   height: 100%;
   width: 0%;
-  background: #000000; /* Колір заповнення */
+  background: var(--color-dark); /* Колір заповнення */
   border-radius: 2px;
   transition: width 0.1s linear;
+
+  @include mobile {
+    background: var(--color-light); /* Колір заповнення */
+  }
 
 
 }
