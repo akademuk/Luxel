@@ -296,11 +296,11 @@ svg * {
   }
 }
 
-html.is-lock, body.is-lock {
+html.is-lock {
   overflow: hidden;
   position: relative;
 }
-html.is-lock .header::after, body.is-lock .header::after {
+html.is-lock .header::after {
   content: "";
   position: absolute;
   top: 0;
@@ -311,8 +311,22 @@ html.is-lock .header::after, body.is-lock .header::after {
   backdrop-filter: blur(12.5px);
   z-index: 100;
 }
-html.modal-open .header::after, body.modal-open .header::after {
-  content: "";
+
+body.is-lock {
+  overflow: hidden;
+  position: relative;
+}
+body.is-lock .overflow-hidden {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12.5px);
+  z-index: 100;
+}
+body.modal-open .overflow-hidden {
   position: absolute;
   top: 0;
   left: 0;
@@ -373,7 +387,7 @@ p {
 }
 
 a {
-  color: inherit;
+  color: var(--color-dark);
 }
 
 a,

@@ -13,8 +13,8 @@
   <script src="./scripts/main.js" type="module"></script>
 </head>
 
-<body>
-  <header class="header" data-js-header>
+<body data-js-header>
+  <header class="header">
     <div class="header__promo">
       <div class="header__promo-inner container">
         <nav class="header__promo-navigation">
@@ -196,104 +196,6 @@
           </span>
         </div>
       </div>
-    </div>
-    <div class="header__overlay" data-js-header-overlay>
-        <div class="header-burger__menu">
-            <div class="header-burger__menu-top">
-                 <a class="header__logo logo" href="/" aria-label="Home" title="Home">
-                  <img class="logo__image" src="./images/logo.png" alt="" width="175" height="42" />
-                </a>
-                <button class="header-burger__menu-close">
-                  <img src="icons/close-black.svg" width="13" height="13" alt="">
-                </button>
-            </div>
-            <ul class="header-burger__menu-main">
-              <li class="header-burger__menu-main-list">
-                <a href="/" class="header-burger__menu-main-link">Відгуки</a>
-              </li>
-              <li class="header-burger__menu-main-list">
-                <a href="/" class="header-burger__menu-main-link">Доставка</a>
-              </li>
-              <li class="header-burger__menu-main-list">
-                <a href="/" class="header-burger__menu-main-link">Оплата</a>
-              </li>
-              <li class="header-burger__menu-main-list">
-                 <a href="/" class="header-burger__menu-main-link">Контакти</a>
-              </li>
-              <li class="header-burger__menu-main-list">
-                <a href="/" class="header-burger__menu-main-link">Блог</a>
-              </li>
-              <li class="header-burger__menu-main-list">
-                <a href="/" class="header-burger__menu-main-link">Співпраця</a>
-              </li>
-            </ul>
-            <div class="header-burger__menu-contact">
-              <h3>Зв’язатися з нами</h3>
-              <div class="header-burger__menu-contact-box">
-                <div class="header-burger__menu-contact-col">
-                  <a href="tel:+380730415111">+38 (073) 041-5111</a>
-                  <span>Пн-Пт: 09:00 - 17:00</span>
-                </div>
-                <ul class="header-burger__menu-contact-social">
-                  <li class="header-burger__menu-contacts">
-                    <a href="/" class="header-burger__menu-contact-item header-burger__menu-contact-item--viber">
-                      <img src="icons/viber.svg" alt="">
-                    </a>
-                  </li>
-                  <li class="header-burger__menu-contacts">
-                    <a href="/" class="header-burger__menu-contact-item header-burger__menu-contact-item--phone">
-                      <img src="icons/phone-white.svg" alt="">
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <button class="header-burger__menu-btn">Підтримка</button>
-            <div class="header-burger__menu-top-hidden">
-              <button class="header-burger__menu-top-back" id="back1">Задати питання</button>
-              <ul class="header-burger__menu-top-hidden-list">
-                <li class="header-burger__menu-top-hidden-item">
-                  <button class="header-burger__menu-top-hidden-link">
-                    <img src="icons/link-hidden1.svg" width="22" height="21" alt="">
-                    Написати в чат</button>
-                </li>
-                 <li class="header-burger__menu-top-hidden-item">
-                  <button class="header-burger__menu-top-hidden-link" id="burgerform">
-                    <img src="icons/link-hidden2.svg" width="22" height="21" alt="">
-                    Написати на пошту</button>
-                </li>
-              </ul>
-
-              <div class="header-burger__menu-top-hidden-email">
-                <button class="header-burger__menu-top-back" id="back2">Напишіть нам</button>
-                <div class="modal__content">
-                  <form class="modal__form" id="callForm2">
-                    <div class="modal__form-col">
-                      <label for="name" class="label-required">Ім’я</label>
-                      <input type="text" name="name" id="name-write" placeholder="Ваше ім’я" required>
-                    </div>
-                    <div class="modal__form-col">
-                      <label for="Email" class="label-required">Номер телефону</label>
-                      <input type="email" name="Email" id="Email" placeholder="Ваш email" required>
-                      <span class="novalid-style">Невірний формат номеру телефона</span>
-                    </div>
-                    <div class="modal__form-col">
-                      <label for="thema" class="label-required">Тема</label>
-                      <input type="text" name="thema" id="thema" placeholder="Опишіть коротко тему повідомлення" required>
-                    </div>
-                    <div class="modal__form-col">
-                      <label for="message" class="label-required">Ваше повідомлення</label>
-                      <textarea name="message" id="message" placeholder="Опишіть детальніше ваш запит"></textarea>
-                    </div>
-                     <span class="modal__form-info">Натискаючи кнопку «Надіслати», ви надаєте свою згоду на обробку персональних
-                      даних. Правила обробки ваших даних можна ознайомитися в <a href="/" class="modal__form-politic">Політиці
-                        конфіденційності</a>.</span>
-                    <button type="submit" class="modal__form-btn">Надіслати</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-        </div>
     </div>
   </header>
 
@@ -2226,6 +2128,107 @@
       </button>
     </div>
   </nav>
+
+  <div class="overflow-hidden"></div>
+
+   <div class="header__overlay" data-js-header-overlay>
+        <div class="header-burger__menu">
+            <div class="header-burger__menu-top">
+                 <a class="header__logo logo" href="/" aria-label="Home" title="Home">
+                  <img class="logo__image" src="./images/logo.png" alt="" width="175" height="42" />
+                </a>
+                <button class="header-burger__menu-close">
+                  <img src="icons/close-black.svg" width="13" height="13" alt="">
+                </button>
+            </div>
+            <ul class="header-burger__menu-main">
+              <li class="header-burger__menu-main-list">
+                <a href="/" class="header-burger__menu-main-link">Відгуки</a>
+              </li>
+              <li class="header-burger__menu-main-list">
+                <a href="/" class="header-burger__menu-main-link">Доставка</a>
+              </li>
+              <li class="header-burger__menu-main-list">
+                <a href="/" class="header-burger__menu-main-link">Оплата</a>
+              </li>
+              <li class="header-burger__menu-main-list">
+                 <a href="/" class="header-burger__menu-main-link">Контакти</a>
+              </li>
+              <li class="header-burger__menu-main-list">
+                <a href="/" class="header-burger__menu-main-link">Блог</a>
+              </li>
+              <li class="header-burger__menu-main-list">
+                <a href="/" class="header-burger__menu-main-link">Співпраця</a>
+              </li>
+            </ul>
+            <div class="header-burger__menu-contact">
+              <h3>Зв’язатися з нами</h3>
+              <div class="header-burger__menu-contact-box">
+                <div class="header-burger__menu-contact-col">
+                  <a href="tel:+380730415111">+38 (073) 041-5111</a>
+                  <span>Пн-Пт: 09:00 - 17:00</span>
+                </div>
+                <ul class="header-burger__menu-contact-social">
+                  <li class="header-burger__menu-contacts">
+                    <a href="/" class="header-burger__menu-contact-item header-burger__menu-contact-item--viber">
+                      <img src="icons/viber.svg" alt="">
+                    </a>
+                  </li>
+                  <li class="header-burger__menu-contacts">
+                    <a href="/" class="header-burger__menu-contact-item header-burger__menu-contact-item--phone">
+                      <img src="icons/phone-white.svg" alt="">
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <button class="header-burger__menu-btn">Підтримка</button>
+            <div class="header-burger__menu-top-hidden">
+              <button class="header-burger__menu-top-back" id="back1">Задати питання</button>
+              <ul class="header-burger__menu-top-hidden-list">
+                <li class="header-burger__menu-top-hidden-item">
+                  <button class="header-burger__menu-top-hidden-link">
+                    <img src="icons/link-hidden1.svg" width="22" height="21" alt="">
+                    Написати в чат</button>
+                </li>
+                 <li class="header-burger__menu-top-hidden-item">
+                  <button class="header-burger__menu-top-hidden-link" id="burgerform">
+                    <img src="icons/link-hidden2.svg" width="22" height="21" alt="">
+                    Написати на пошту</button>
+                </li>
+              </ul>
+
+              <div class="header-burger__menu-top-hidden-email">
+                <button class="header-burger__menu-top-back" id="back2">Напишіть нам</button>
+                <div class="modal__content">
+                  <form class="modal__form" id="callForm2">
+                    <div class="modal__form-col">
+                      <label for="name" class="label-required">Ім’я</label>
+                      <input type="text" name="name" id="name-write" placeholder="Ваше ім’я" required>
+                    </div>
+                    <div class="modal__form-col">
+                      <label for="Email" class="label-required">Номер телефону</label>
+                      <input type="email" name="Email" id="Email" placeholder="Ваш email" required>
+                      <span class="novalid-style">Невірний формат номеру телефона</span>
+                    </div>
+                    <div class="modal__form-col">
+                      <label for="thema" class="label-required">Тема</label>
+                      <input type="text" name="thema" id="thema" placeholder="Опишіть коротко тему повідомлення" required>
+                    </div>
+                    <div class="modal__form-col">
+                      <label for="message" class="label-required">Ваше повідомлення</label>
+                      <textarea name="message" id="message" placeholder="Опишіть детальніше ваш запит"></textarea>
+                    </div>
+                     <span class="modal__form-info">Натискаючи кнопку «Надіслати», ви надаєте свою згоду на обробку персональних
+                      даних. Правила обробки ваших даних можна ознайомитися в <a href="/" class="modal__form-politic">Політиці
+                        конфіденційності</a>.</span>
+                    <button type="submit" class="modal__form-btn">Надіслати</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 
