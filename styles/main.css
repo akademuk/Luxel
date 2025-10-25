@@ -1871,6 +1871,7 @@ a[class] {
   border-radius: 20px;
   background: var(--color-light);
   box-shadow: 0 6px 28.1px 8px rgba(0, 0, 0, 0.25);
+  border: 2px solid red;
 }
 @media (width <= 63.99875rem) {
   .modal {
