@@ -1179,6 +1179,8 @@ function initSlideMenu() {
     const submenuLinks = document.querySelectorAll('[data-submenu]');
     const backButtons = document.querySelectorAll('[data-back]');
 
+    if (!overlay) return;
+
     menuButtons.forEach(button => {
         button.addEventListener('click', () => {
             const menuId = button.getAttribute('data-menu') + '-menu';
@@ -1245,17 +1247,31 @@ function initSlideMenu() {
 }
 
 function initRangeSlider() {
+    const priceFrom = document.getElementById('price-from');
+    const priceTo = document.getElementById('price-to');
+    const sliderRange = document.querySelector('.filters__slider-range');
+    const thumbFrom = document.querySelector('.filters__slider-thumb--from');
+    const thumbTo = document.querySelector('.filters__slider-thumb--to');
+    const slider = document.querySelector('.filters__slider');
+
+    if (!priceFrom || !priceTo || !sliderRange || !thumbFrom || !thumbTo || !slider) return;
+
+    const min = parseInt(priceFrom.min);
+    const max = parseInt(priceFrom.max);
+
+    if (isNaN(min) || isNaN(max)) return;
+
     class RangeSlider {
         constructor() {
-            this.priceFrom = document.getElementById('price-from');
-            this.priceTo = document.getElementById('price-to');
-            this.sliderRange = document.querySelector('.filters__slider-range');
-            this.thumbFrom = document.querySelector('.filters__slider-thumb--from');
-            this.thumbTo = document.querySelector('.filters__slider-thumb--to');
-            this.slider = document.querySelector('.filters__slider');
+            this.priceFrom = priceFrom;
+            this.priceTo = priceTo;
+            this.sliderRange = sliderRange;
+            this.thumbFrom = thumbFrom;
+            this.thumbTo = thumbTo;
+            this.slider = slider;
 
-            this.min = parseInt(this.priceFrom.min);
-            this.max = parseInt(this.priceFrom.max);
+            this.min = min;
+            this.max = max;
             this.isDragging = false;
             this.currentThumb = null;
 
