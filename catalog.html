@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="styles/swiper-bundle.min.css">
     <link rel="stylesheet" href="./styles/main.css" />
-    <script src="./scripts/main.js" type="module"></script> 
+    <script src="./scripts/main.js" type="module"></script>
 </head>
 
 <body data-js-header>
@@ -210,291 +210,1365 @@
         </div>
     </header>
 
-    <main>
-        <aside class="filters" data-js-filters>
-        <h2 class="filters__title">Фільтри</h2>
-
-        <!-- Колірова температура -->
-        <section class="filters__group" data-js-filter-group>
-            <header class="filters__group-header" data-js-filter-header>
-            <h3 class="filters__group-title">Колірова температура</h3>
-            <span class="filters__group-toggle" aria-hidden="true">−</span>
-            </header>
-            <div class="filters__group-content">
-            <label class="filters__option">
-                <input 
-                type="checkbox" 
-                class="filters__checkbox" 
-                name="temperature" 
-                value="4000"
-                data-js-filter-checkbox
-                >
-                <span class="filters__label">
-                <span>4000</span>
-                <span class="filters__count">(19)</span>
-                </span>
-            </label>
-            <label class="filters__option">
-                <input 
-                type="checkbox" 
-                class="filters__checkbox" 
-                name="temperature" 
-                value="5000"
-                data-js-filter-checkbox
-                >
-                <span class="filters__label">
-                <span>5000</span>
-                <span class="filters__count">(4)</span>
-                </span>
-            </label>
-            <label class="filters__option">
-                <input 
-                type="checkbox" 
-                class="filters__checkbox" 
-                name="temperature" 
-                value="6000"
-                data-js-filter-checkbox
-                >
-                <span class="filters__label">
-                <span>6000</span>
-                <span class="filters__count">(12)</span>
-                </span>
-            </label>
-            <label class="filters__option">
-                <input 
-                type="checkbox" 
-                class="filters__checkbox" 
-                name="temperature" 
-                value="6500"
-                data-js-filter-checkbox
-                >
-                <span class="filters__label">
-                <span>6500</span>
-                <span class="filters__count">(15)</span>
-                </span>
-            </label>
+    <main class="main-shop">
+        <div class="breadcrumbs">
+            <div class="breadcrumbs__inner container">
+                <ul class="breadcrumbs__list">
+                    <li class="breadcrumbs__item">
+                        <a href="/" class="breadcrumbs__link">Головна</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <a href="/" class="breadcrumbs__link">Світлодіодні (LED) Лампи</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <span class="breadcrumbs__link breadcrumbs__link--span">LED Лампи побутові</span>
+                    </li>
+                </ul>
             </div>
-        </section>
-
-        <!-- Потужність (ВТ) -->
-        <section class="filters__group" data-js-filter-group>
-            <header class="filters__group-header" data-js-filter-header>
-            <h3 class="filters__group-title">Потужність (ВТ)</h3>
-            <span class="filters__group-toggle" aria-hidden="true">+</span>
-            </header>
-            <div class="filters__group-content">
-            <label class="filters__option">
-                <input 
-                type="checkbox" 
-                class="filters__checkbox" 
-                name="power" 
-                value="12"
-                data-js-filter-checkbox
-                >
-                <span class="filters__label">
-                <span>12 Вт</span>
-                <span class="filters__count">(8)</span>
-                </span>
-            </label>
-            <label class="filters__option">
-                <input 
-                type="checkbox" 
-                class="filters__checkbox" 
-                name="power" 
-                value="18"
-                data-js-filter-checkbox
-                >
-                <span class="filters__label">
-                <span>18 Вт</span>
-                <span class="filters__count">(25)</span>
-                </span>
-            </label>
-            <label class="filters__option">
-                <input 
-                type="checkbox" 
-                class="filters__checkbox" 
-                name="power" 
-                value="24"
-                data-js-filter-checkbox
-                >
-                <span class="filters__label">
-                <span>24 Вт</span>
-                <span class="filters__count">(12)</span>
-                </span>
-            </label>
+        </div>
+        <div class="page-title">
+            <div class="page-title__inner container">
+                <h1 class="page-title__title">LED Лампи побутові</h1>
+                <span class="page-title__value">93 позиції</span>
             </div>
-        </section>
-
-        <!-- Кут розсіювання -->
-        <section class="filters__group" data-js-filter-group>
-            <header class="filters__group-header" data-js-filter-header>
-            <h3 class="filters__group-title">Кут розсіювання</h3>
-            <span class="filters__group-toggle" aria-hidden="true">+</span>
-            </header>
-            <div class="filters__group-content">
-            <label class="filters__option">
-                <input 
-                type="checkbox" 
-                class="filters__checkbox" 
-                name="angle" 
-                value="120"
-                data-js-filter-checkbox
-                >
-                <span class="filters__label">
-                <span>120°</span>
-                <span class="filters__count">(15)</span>
-                </span>
-            </label>
-            <label class="filters__option">
-                <input 
-                type="checkbox" 
-                class="filters__checkbox" 
-                name="angle" 
-                value="240"
-                data-js-filter-checkbox
-                >
-                <span class="filters__label">
-                <span>240°</span>
-                <span class="filters__count">(10)</span>
-                </span>
-            </label>
+            <div class="toolbar__view-buttons">
+                <button class="toolbar__view-btn active" data-view="grid" aria-label="Сітка">
+                    <img src="icons/grid.svg" width="22" height="22" alt="">
+                </button>
+                <button class="toolbar__view-btn" data-view="list" aria-label="Список">
+                    <img src="icons/list.svg" width="22" height="22" alt="">
+                </button>
             </div>
-        </section>
-
-        <!-- Ступінь захисту -->
-        <section class="filters__group" data-js-filter-group>
-            <header class="filters__group-header" data-js-filter-header>
-            <h3 class="filters__group-title">Ступінь захисту</h3>
-            <span class="filters__group-toggle" aria-hidden="true">+</span>
-            </header>
-            <div class="filters__group-content">
-            <label class="filters__option">
-                <input 
-                type="checkbox" 
-                class="filters__checkbox" 
-                name="protection" 
-                value="IP20"
-                data-js-filter-checkbox
-                >
-                <span class="filters__label">
-                <span>IP20</span>
-                <span class="filters__count">(7)</span>
-                </span>
-            </label>
-            <label class="filters__option">
-                <input 
-                type="checkbox" 
-                class="filters__checkbox" 
-                name="protection" 
-                value="IP40"
-                data-js-filter-checkbox
-                >
-                <span class="filters__label">
-                <span>IP40</span>
-                <span class="filters__count">(18)</span>
-                </span>
-            </label>
-            <label class="filters__option">
-                <input 
-                type="checkbox" 
-                class="filters__checkbox" 
-                name="protection" 
-                value="IP65"
-                data-js-filter-checkbox
-                >
-                <span class="filters__label">
-                <span>IP65</span>
-                <span class="filters__count">(9)</span>
-                </span>
-            </label>
-            </div>
-        </section>
-
-        <!-- Тип установки -->
-        <section class="filters__group" data-js-filter-group>
-            <header class="filters__group-header" data-js-filter-header>
-            <h3 class="filters__group-title">Тип установки</h3>
-            <span class="filters__group-toggle" aria-hidden="true">+</span>
-            </header>
-            <div class="filters__group-content">
-            <label class="filters__option">
-                <input 
-                type="checkbox" 
-                class="filters__checkbox" 
-                name="installation" 
-                value="outdoor"
-                data-js-filter-checkbox
-                >
-                <span class="filters__label">
-                <span>Вулична</span>
-                <span class="filters__count">(12)</span>
-                </span>
-            </label>
-            <label class="filters__option">
-                <input 
-                type="checkbox" 
-                class="filters__checkbox" 
-                name="installation" 
-                value="indoor"
-                data-js-filter-checkbox
-                >
-                <span class="filters__label">
-                <span>Внутрішня</span>
-                <span class="filters__count">(23)</span>
-                </span>
-            </label>
-            </div>
-        </section>
-
-        <!-- Ціна -->
-        <section class="filters__group" data-js-filter-group>
-            <header class="filters__group-header" data-js-filter-header>
-            <h3 class="filters__group-title">Ціна</h3>
-            <span class="filters__group-toggle" aria-hidden="true">−</span>
-            </header>
-            <div class="filters__group-content">
-            <div class="filters__range">
-                <div class="filters__range-inputs">
-                <div class="filters__range-input-wrapper">
-                    <label class="filters__range-label" for="price-from">Від</label>
-                    <input 
-                    type="number" 
-                    id="price-from" 
-                    class="filters__range-input" 
-                    data-js-range-from
-                    value="100"
-                    min="100"
-                    max="10000"
-                    step="10"
-                    aria-label="Ціна від"
-                    >
-                    <span aria-hidden="true">₴</span>
-                </div>
-                <div class="filters__range-input-wrapper">
-                    <label class="filters__range-label" for="price-to">До</label>
-                    <input 
-                    type="number" 
-                    id="price-to" 
-                    class="filters__range-input" 
-                    data-js-range-to
-                    value="10000"
-                    min="100"
-                    max="10000"
-                    step="10"
-                    aria-label="Ціна до"
-                    >
-                    <span aria-hidden="true">₴</span>
-                </div>
-                </div>
-                <div class="filters__slider" data-js-slider>
-                <div class="filters__slider-track" data-js-slider-track></div>
-                <div class="filters__slider-thumb" data-js-slider-thumb="from" role="slider" aria-label="Мінімальна ціна"></div>
-                <div class="filters__slider-thumb" data-js-slider-thumb="to" role="slider" aria-label="Максимальна ціна"></div>
+        </div>
+        <div class="shop-slider">
+            <div class="shop-slider__inner container">
+                <div class="shop-slider__swiper swiper">
+                    <div class="swiper-wrapper">
+                        <div class="shop-slider__swiper-slide swiper-slide">
+                            <a href="/" class="shop-slider__link">
+                                <span class="shop-slider__image">
+                                    <img src="images/shop-slider-image.png" width="96" height="96" loading="lazy"
+                                        alt="">
+                                </span>
+                                <h3 class="shop-slider__title">Середньої потужності</h3>
+                            </a>
+                        </div>
+                        <div class="shop-slider__swiper-slide swiper-slide">
+                            <a href="/" class="shop-slider__link">
+                                <span class="shop-slider__image">
+                                    <img src="images/shop-slider-image.png" width="96" height="96" loading="lazy"
+                                        alt="">
+                                </span>
+                                <h3 class="shop-slider__title">Високої потужності</h3>
+                            </a>
+                        </div>
+                        <div class="shop-slider__swiper-slide swiper-slide">
+                            <a href="/" class="shop-slider__link">
+                                <span class="shop-slider__image">
+                                    <img src="images/shop-slider-image.png" width="96" height="96" loading="lazy"
+                                        alt="">
+                                </span>
+                                <h3 class="shop-slider__title">Філаментні лампи</h3>
+                            </a>
+                        </div>
+                        <div class="shop-slider__swiper-slide swiper-slide">
+                            <a href="/" class="shop-slider__link">
+                                <span class="shop-slider__image">
+                                    <img src="images/shop-slider-image.png" width="96" height="96" loading="lazy"
+                                        alt="">
+                                </span>
+                                <h3 class="shop-slider__title">Низьковольтні лампи</h3>
+                            </a>
+                        </div>
+                        <div class="shop-slider__swiper-slide swiper-slide">
+                            <a href="/" class="shop-slider__link">
+                                <span class="shop-slider__image">
+                                    <img src="images/shop-slider-image.png" width="96" height="96" loading="lazy"
+                                        alt="">
+                                </span>
+                                <h3 class="shop-slider__title">Лампи T8</h3>
+                            </a>
+                        </div>
+                        <div class="shop-slider__swiper-slide swiper-slide">
+                            <a href="/" class="shop-slider__link">
+                                <span class="shop-slider__image">
+                                    <img src="images/shop-slider-image.png" width="96" height="96" loading="lazy"
+                                        alt="">
+                                </span>
+                                <h3 class="shop-slider__title">Середньої потужності</h3>
+                            </a>
+                        </div>
+                        <div class="shop-slider__swiper-slide swiper-slide">
+                            <a href="/" class="shop-slider__link">
+                                <span class="shop-slider__image">
+                                    <img src="images/shop-slider-image.png" width="96" height="96" loading="lazy"
+                                        alt="">
+                                </span>
+                                <h3 class="shop-slider__title">Середньої потужності</h3>
+                            </a>
+                        </div>
+                        <div class="shop-slider__swiper-slide swiper-slide">
+                            <a href="/" class="shop-slider__link">
+                                <span class="shop-slider__image">
+                                    <img src="images/shop-slider-image.png" width="96" height="96" loading="lazy"
+                                        alt="">
+                                </span>
+                                <h3 class="shop-slider__title">Високої потужності</h3>
+                            </a>
+                        </div>
+                        <div class="shop-slider__swiper-slide swiper-slide">
+                            <a href="/" class="shop-slider__link">
+                                <span class="shop-slider__image">
+                                    <img src="images/shop-slider-image.png" width="96" height="96" loading="lazy"
+                                        alt="">
+                                </span>
+                                <h3 class="shop-slider__title">Філаментні лампи</h3>
+                            </a>
+                        </div>
+                        <div class="shop-slider__swiper-slide swiper-slide">
+                            <a href="/" class="shop-slider__link">
+                                <span class="shop-slider__image">
+                                    <img src="images/shop-slider-image.png" width="96" height="96" loading="lazy"
+                                        alt="">
+                                </span>
+                                <h3 class="shop-slider__title">Низьковольтні лампи</h3>
+                            </a>
+                        </div>
+                        <div class="shop-slider__swiper-slide swiper-slide">
+                            <a href="/" class="shop-slider__link">
+                                <span class="shop-slider__image">
+                                    <img src="images/shop-slider-image.png" width="96" height="96" loading="lazy"
+                                        alt="">
+                                </span>
+                                <h3 class="shop-slider__title">Лампи T8</h3>
+                            </a>
+                        </div>
+                        <div class="shop-slider__swiper-slide swiper-slide">
+                            <a href="/" class="shop-slider__link">
+                                <span class="shop-slider__image">
+                                    <img src="images/shop-slider-image.png" width="96" height="96" loading="lazy"
+                                        alt="">
+                                </span>
+                                <h3 class="shop-slider__title">Середньої потужності</h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="shop-slider-swiper-prev swiper-button-prev slider-prev">
+                        <img src="icons/prev.svg" width="24" height="24" alt="">
+                    </div>
+                    <div class="shop-slider-swiper-next swiper-button-next slider-next">
+                        <img src="icons/next.svg" width="24" height="24" alt="">
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="mobile-filter">
+            <div class="mobile-filter__inner container">
+                <button class="mobile-filter__btn mobile-filter__btn--sort" id="sort">
+                    <img src="icons/sort.svg" width="24" height="24" alt="">
+                     <div class="mobile-filter__content">
+                        <span class="mobile-filter__content-name">Сортувати</span>
+                        <strong class="mobile-filter__content-option">За популярністю</strong>
+                    </div>
+                </button>
+                 <button class="mobile-filter__btn mobile-filter__btn--filter" id="filter">
+                    <img src="icons/filter.svg" width="24" height="24" alt="">
+                    <div class="mobile-filter__content">
+                        <span class="mobile-filter__content-name">Фільтри</span>
+                        <strong class="mobile-filter__content-option">Немає фільтрів</strong>
+                    </div>
+                </button>
+            </div>
+        </div>
+        <div class="shop">
+            <div class="shop-toolbar__inner container">
+                <!-- Toolbar -->
+                <div class="toolbar">
+                    <div class="toolbar__group">
+                        <label class="toolbar__label">Сортувати</label>
+                        <div class="toolbar__buttons">
+                            <button class="toolbar__button toolbar__button--active" data-sort-by="default">
+                                За популярністю
+                            </button>
+                            <button class="toolbar__button" data-sort-by="price-asc">
+                                Від дешевших
+                            </button>
+                            <button class="toolbar__button" data-sort-by="price-desc">
+                                Від дорожчих
+                            </button>
+                            <button class="toolbar__button" data-sort-by="name-asc">
+                                Спочатку зі знижками
+                            </button>
+                        </div>
+                    </div>
+                    <div class="toolbar__group">
+                        <label class="toolbar__label">Показувати:</label>
+                        <div class="toolbar__buttons">
+                            <button class="toolbar__button toolbar__button--value toolbar__button--active"
+                                data-show-count="12">
+                                12
+                            </button>
+                            <button class="toolbar__button toolbar__button--value" data-show-count="24">
+                                24
+                            </button>
+                            <button class="toolbar__button toolbar__button--value" data-show-count="32">
+                                32
+                            </button>
+                            <button class="toolbar__button toolbar__button--value" data-show-count="40">
+                                40
+                            </button>
+                        </div>
+                    </div>
+                    <div class="toolbar__group">
+                        <span class="toolbar__label">Вигляд:</span>
+                        <div class="toolbar__view-buttons">
+                            <button class="toolbar__view-btn active" data-view="grid" aria-label="Сітка">
+                                <img src="icons/grid.svg" width="22" height="22" alt="">
+                            </button>
+                            <button class="toolbar__view-btn" data-view="list" aria-label="Список">
+                                <img src="icons/list.svg" width="22" height="22" alt="">
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="shop__inner container">
+                <aside class="filters">
+                    <h2 class="filters__title">Фільтри</h2>
+                    <button id="filterBtn" class="filter-close">
+                        <img src="icons/close-black.svg" width="13" height="13"   alt="">
+                    </button>
+                    <div class="filter-scroll">
+                        <div class="filters__active">
+                            <div class="filters__active-group">
+                                <span class="filters__active-label">Кольорова температура:</span>
+                                <div class="filters__active-items">
+                                    <button class="filters__active-item-btn">
+                                        5000
+                                    </button>
+                                    <button class="filters__active-item-btn">
+                                        6500
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="filters__active-group">
+                                <span class="filters__active-label">Ціна:</span>
+                                <div class="filters__active-items">
+                                    <button class="filters__active-item-btn">
+                                        від 250
+                                    </button>
+                                    <button class="filters__active-item-btn">
+                                        до 7250
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Кольорова температура -->
+                        <section class="filters__group active">
+                            <div class="filters__group-header">
+                                <h3 class="filters__group-title">Кольорова температура</h3>
+                                <span class="filters__group-toggle" aria-hidden="true">
+                                    <img src="icons/add.svg" width="14" height="14" alt="">
+                                </span>
+                            </div>
+                            <div class="filters__group-content">
+                                <label class="filters__option">
+                                    <span class="filters__label">
+                                        <span>4000</span>
+                                        <span class="filters__count">(19)</span>
+                                    </span>
+                                    <input type="checkbox" class="filters__checkbox" name="temperature" value="4000">
+                                    <span class="custom-checkbox"></span>
+                                </label>
+                                <label class="filters__option">
+                                    <span class="filters__label">
+                                        <span>5000</span>
+                                        <span class="filters__count">(4)</span>
+                                    </span>
+                                    <input type="checkbox" class="filters__checkbox" name="temperature" value="5000">
+                                    <span class="custom-checkbox"></span>
+                                </label>
+                                <label class="filters__option">
+                                    <span class="filters__label">
+                                        <span>6000</span>
+                                        <span class="filters__count">(12)</span>
+                                    </span>
+                                    <input type="checkbox" class="filters__checkbox" name="temperature" value="6000">
+                                    <span class="custom-checkbox"></span>
+                                </label>
+                                <label class="filters__option">
+                                    <span class="filters__label">
+                                        <span>6500</span>
+                                        <span class="filters__count">(15)</span>
+                                    </span>
+                                    <input type="checkbox" class="filters__checkbox" name="temperature" value="6500">
+                                    <span class="custom-checkbox"></span>
+                                </label>
+                            </div>
+                        </section>
+
+                        <!-- Потужність (ВТ) -->
+                        <section class="filters__group">
+                            <div class="filters__group-header">
+                                <h3 class="filters__group-title">Потужність (ВТ)</h3>
+                                <span class="filters__group-toggle" aria-hidden="true">
+                                    <img src="icons/add.svg" width="14" height="14" alt="">
+                                </span>
+                            </div>
+                            <div class="filters__group-content">
+                                <label class="filters__option">
+                                    <span class="filters__label">
+                                        <span>12 Вт</span>
+                                        <span class="filters__count">(8)</span>
+                                    </span>
+                                    <input type="checkbox" class="filters__checkbox" name="power" value="12">
+                                    <span class="custom-checkbox"></span>
+                                </label>
+                                <label class="filters__option">
+                                    <span class="filters__label">
+                                        <span>18 Вт</span>
+                                        <span class="filters__count">(25)</span>
+                                    </span>
+                                    <input type="checkbox" class="filters__checkbox" name="power" value="18">
+                                    <span class="custom-checkbox"></span>
+                                </label>
+                                <label class="filters__option">
+                                    <span class="filters__label">
+                                        <span>24 Вт</span>
+                                        <span class="filters__count">(12)</span>
+                                    </span>
+                                    <input type="checkbox" class="filters__checkbox" name="power" value="24">
+                                    <span class="custom-checkbox"></span>
+                                </label>
+                            </div>
+                        </section>
+
+                        <!-- Кут розсіювання -->
+                        <section class="filters__group">
+                            <div class="filters__group-header">
+                                <h3 class="filters__group-title">Кут розсіювання</h3>
+                                <span class="filters__group-toggle" aria-hidden="true">
+                                    <img src="icons/add.svg" width="14" height="14" alt="">
+                                </span>
+                            </div>
+                            <div class="filters__group-content">
+                                <label class="filters__option">
+                                    <span class="filters__label">
+                                        <span>120°</span>
+                                        <span class="filters__count">(15)</span>
+                                    </span>
+                                    <input type="checkbox" class="filters__checkbox" name="angle" value="120">
+                                    <span class="custom-checkbox"></span>
+                                </label>
+                                <label class="filters__option">
+                                    <span class="filters__label">
+                                        <span>240°</span>
+                                        <span class="filters__count">(10)</span>
+                                    </span>
+                                    <input type="checkbox" class="filters__checkbox" name="angle" value="240">
+                                    <span class="custom-checkbox"></span>
+                                </label>
+                            </div>
+                        </section>
+
+                        <!-- Ступінь захисту -->
+                        <section class="filters__group">
+                            <div class="filters__group-header">
+                                <h3 class="filters__group-title">Ступінь захисту</h3>
+                                <span class="filters__group-toggle" aria-hidden="true">
+                                    <img src="icons/add.svg" width="14" height="14" alt="">
+                                </span>
+                            </div>
+                            <div class="filters__group-content">
+                                <label class="filters__option">
+                                    <span class="filters__label">
+                                        <span>IP20</span>
+                                        <span class="filters__count">(7)</span>
+                                    </span>
+                                    <input type="checkbox" class="filters__checkbox" name="protection" value="IP20">
+                                    <span class="custom-checkbox"></span>
+                                </label>
+                                <label class="filters__option">
+                                    <span class="filters__label">
+                                        <span>IP40</span>
+                                        <span class="filters__count">(18)</span>
+                                    </span>
+                                    <input type="checkbox" class="filters__checkbox" name="protection" value="IP40">
+                                    <span class="custom-checkbox"></span>
+                                </label>
+                                <label class="filters__option">
+                                    <span class="filters__label">
+                                        <span>IP65</span>
+                                        <span class="filters__count">(9)</span>
+                                    </span>
+                                    <input type="checkbox" class="filters__checkbox" name="protection" value="IP65">
+                                    <span class="custom-checkbox"></span>
+                                </label>
+                            </div>
+                        </section>
+
+                        <!-- Тип установки -->
+                        <section class="filters__group">
+                            <div class="filters__group-header">
+                                <h3 class="filters__group-title">Тип установки</h3>
+                                <span class="filters__group-toggle" aria-hidden="true">
+                                    <img src="icons/add.svg" width="14" height="14" alt="">
+                                </span>
+                            </div>
+                            <div class="filters__group-content">
+                                <label class="filters__option">
+                                    <span class="filters__label">
+                                        <span>Вулична</span>
+                                        <span class="filters__count">(12)</span>
+                                    </span>
+                                    <input type="checkbox" class="filters__checkbox" name="installation" value="outdoor">
+                                    <span class="custom-checkbox"></span>
+                                </label>
+                                <label class="filters__option">
+                                    <span class="filters__label">
+                                        <span>Внутрішня</span>
+                                        <span class="filters__count">(23)</span>
+                                    </span>
+                                    <input type="checkbox" class="filters__checkbox" name="installation" value="indoor">
+                                    <span class="custom-checkbox"></span>
+                                </label>
+                            </div>
+                        </section>
+
+                        <!-- Ціна -->
+                        <section class="filters__group">
+                            <div class="filters__group-header">
+                                <h3 class="filters__group-title">Ціна</h3>
+                                <span class="filters__group-toggle" aria-hidden="true">
+                                    <img src="icons/add.svg" width="14" height="14" alt="">
+                                </span>
+                            </div>
+                            <div class="filters__group-content">
+                                <div class="filters__range">
+                                    <div class="filters__range-inputs">
+                                        <div class="filters__range-input-wrapper">
+                                            <label class="filters__range-label" for="price-from">Від</label>
+                                            <div class="filters__range-box">
+                                                <input type="number" id="price-from" class="filters__range-input"
+                                                    value="100" min="100" max="10000" step="10" aria-label="Ціна від">
+                                                <span class="filters__range-currency" aria-hidden="true">₴</span>
+                                            </div>
+                                        </div>
+                                        <div class="filters__range-input-wrapper">
+                                            <label class="filters__range-label" for="price-to">До</label>
+                                            <div class="filters__range-box">
+                                                <input type="number" id="price-to" class="filters__range-input"
+                                                    value="10000" min="100" max="10000" step="10" aria-label="Ціна до">
+                                                <span class="filters__range-currency" aria-hidden="true">₴</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="filters__slider">
+                                        <div class="filters__slider-track"></div>
+                                        <div class="filters__slider-range"></div>
+                                        <div class="filters__slider-thumb filters__slider-thumb--from" data-thumb="from"
+                                            role="slider" aria-label="Мінімальна ціна" tabindex="0"></div>
+                                        <div class="filters__slider-thumb filters__slider-thumb--to" data-thumb="to"
+                                            role="slider" aria-label="Максимальна ціна" tabindex="0"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <button class="filters__reset border-btn">Скинути всі</button>
+                    </div>
+                </aside>
+                <div class="shop-layout">
+                    <div class="shop-layout__products grid">
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <span class="product-card-badge">Топ продажів</span>
+                                <button class="product-card-popular">
+                                    <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                </button>
+                                <img src="images/offer-image1.png" width="250" height="250" alt="">
+                                <button class="product-card-rating">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                            </div>
+                            <div class="product-card-content">
+                                <h3 class="product-card-title">Світлодіодний настільний світильник Luxel 220-240V 6W
+                                    <button class="product-card-popular product-card-popular--list">
+                                        <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                    </button>
+                                </h3>
+                                <button class="product-card-rating product-card-rating--list">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                                <ul class="product-card-list">
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item1.svg" width="22" height="22" alt="">
+                                        4400 Lm
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item2.svg" width="22" height="22" alt="">
+                                        6500 k
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item3.svg" width="22" height="22" alt="">
+                                        180°
+                                    </li>
+                                </ul>
+                                <div class="product-card-description">
+                                    <p>Автономна світлодіодна лампа Luxel 063-NEL має вбудований акумулятор ємністю 1800
+                                        мА/годин, що дозволяє працювати лампі автономно до 14 годин. Лампу можна
+                                        використовувати у патроні під цоколь E27. У звичайному режимі лампа працює від
+                                        220В мережі. У разі відсутності напруги в мережі – лампа автоматично переходить
+                                        в автономний режим роботи від акумулятора. Заряджання акумулятора відбувається
+                                        автоматично – під час роботи лампочки від мережі 220В.</p>
+                                </div>
+                                <div class="product-card-info">
+                                    <div class="product-card-price">
+                                        <p class="product-card-value">149.00 ₴</p>
+                                        <span class="product-card-subvalue">178.00 ₴</span>
+                                    </div>
+                                    <span class="product-card-sale">-16%</span>
+                                    <button class="product-card-btn-basket">
+                                        <img src="icons/bascet-white.svg" width="22" height="22" alt="">
+                                        <span class="product-card-btn-basket-text">Купити</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <span class="product-card-badge">Топ продажів</span>
+                                <button class="product-card-popular">
+                                    <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                </button>
+                                <img src="images/offer-image1.png" width="250" height="250" alt="">
+                                <button class="product-card-rating">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                            </div>
+                            <div class="product-card-content">
+                                <h3 class="product-card-title">Світлодіодний настільний світильник Luxel 220-240V 6W
+                                    <button class="product-card-popular product-card-popular--list">
+                                        <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                    </button>
+                                </h3>
+                                <button class="product-card-rating product-card-rating--list">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                                <ul class="product-card-list">
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item1.svg" width="22" height="22" alt="">
+                                        4400 Lm
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item2.svg" width="22" height="22" alt="">
+                                        6500 k
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item3.svg" width="22" height="22" alt="">
+                                        180°
+                                    </li>
+                                </ul>
+                                <div class="product-card-description">
+                                    <p>Автономна світлодіодна лампа Luxel 063-NEL має вбудований акумулятор ємністю 1800
+                                        мА/годин, що дозволяє працювати лампі автономно до 14 годин. Лампу можна
+                                        використовувати у патроні під цоколь E27. У звичайному режимі лампа працює від
+                                        220В мережі. У разі відсутності напруги в мережі – лампа автоматично переходить
+                                        в автономний режим роботи від акумулятора. Заряджання акумулятора відбувається
+                                        автоматично – під час роботи лампочки від мережі 220В.</p>
+                                </div>
+                                <div class="product-card-info">
+                                    <div class="product-card-price">
+                                        <p class="product-card-value">149.00 ₴</p>
+                                        <span class="product-card-subvalue">178.00 ₴</span>
+                                    </div>
+                                    <span class="product-card-sale">-16%</span>
+                                    <button class="product-card-btn-basket">
+                                        <img src="icons/bascet-white.svg" width="22" height="22" alt="">
+                                        <span class="product-card-btn-basket-text">Купити</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <span class="product-card-badge">Топ продажів</span>
+                                <button class="product-card-popular">
+                                    <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                </button>
+                                <img src="images/offer-image1.png" width="250" height="250" alt="">
+                                <button class="product-card-rating">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                            </div>
+                            <div class="product-card-content">
+                                <h3 class="product-card-title">Світлодіодний настільний світильник Luxel 220-240V 6W
+                                    <button class="product-card-popular product-card-popular--list">
+                                        <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                    </button>
+                                </h3>
+                                <button class="product-card-rating product-card-rating--list">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                                <ul class="product-card-list">
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item1.svg" width="22" height="22" alt="">
+                                        4400 Lm
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item2.svg" width="22" height="22" alt="">
+                                        6500 k
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item3.svg" width="22" height="22" alt="">
+                                        180°
+                                    </li>
+                                </ul>
+                                <div class="product-card-description">
+                                    <p>Автономна світлодіодна лампа Luxel 063-NEL має вбудований акумулятор ємністю 1800
+                                        мА/годин, що дозволяє працювати лампі автономно до 14 годин. Лампу можна
+                                        використовувати у патроні під цоколь E27. У звичайному режимі лампа працює від
+                                        220В мережі. У разі відсутності напруги в мережі – лампа автоматично переходить
+                                        в автономний режим роботи від акумулятора. Заряджання акумулятора відбувається
+                                        автоматично – під час роботи лампочки від мережі 220В.</p>
+                                </div>
+                                <div class="product-card-info">
+                                    <div class="product-card-price">
+                                        <p class="product-card-value">149.00 ₴</p>
+                                        <span class="product-card-subvalue">178.00 ₴</span>
+                                    </div>
+                                    <span class="product-card-sale">-16%</span>
+                                    <button class="product-card-btn-basket">
+                                        <img src="icons/bascet-white.svg" width="22" height="22" alt="">
+                                        <span class="product-card-btn-basket-text">Купити</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <span class="product-card-badge">Топ продажів</span>
+                                <button class="product-card-popular">
+                                    <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                </button>
+                                <img src="images/offer-image1.png" width="250" height="250" alt="">
+                                <button class="product-card-rating">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                            </div>
+                            <div class="product-card-content">
+                                <h3 class="product-card-title">Світлодіодний настільний світильник Luxel 220-240V 6W
+                                    <button class="product-card-popular product-card-popular--list">
+                                        <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                    </button>
+                                </h3>
+                                <button class="product-card-rating product-card-rating--list">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                                <ul class="product-card-list">
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item1.svg" width="22" height="22" alt="">
+                                        4400 Lm
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item2.svg" width="22" height="22" alt="">
+                                        6500 k
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item3.svg" width="22" height="22" alt="">
+                                        180°
+                                    </li>
+                                </ul>
+                                <div class="product-card-description">
+                                    <p>Автономна світлодіодна лампа Luxel 063-NEL має вбудований акумулятор ємністю 1800
+                                        мА/годин, що дозволяє працювати лампі автономно до 14 годин. Лампу можна
+                                        використовувати у патроні під цоколь E27. У звичайному режимі лампа працює від
+                                        220В мережі. У разі відсутності напруги в мережі – лампа автоматично переходить
+                                        в автономний режим роботи від акумулятора. Заряджання акумулятора відбувається
+                                        автоматично – під час роботи лампочки від мережі 220В.</p>
+                                </div>
+                                <div class="product-card-info">
+                                    <div class="product-card-price">
+                                        <p class="product-card-value">149.00 ₴</p>
+                                        <span class="product-card-subvalue">178.00 ₴</span>
+                                    </div>
+                                    <span class="product-card-sale">-16%</span>
+                                    <button class="product-card-btn-basket">
+                                        <img src="icons/bascet-white.svg" width="22" height="22" alt="">
+                                        <span class="product-card-btn-basket-text">Купити</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <span class="product-card-badge">Топ продажів</span>
+                                <button class="product-card-popular">
+                                    <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                </button>
+                                <img src="images/offer-image1.png" width="250" height="250" alt="">
+                                <button class="product-card-rating">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                            </div>
+                            <div class="product-card-content">
+                                <h3 class="product-card-title">Світлодіодний настільний світильник Luxel 220-240V 6W
+                                    <button class="product-card-popular product-card-popular--list">
+                                        <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                    </button>
+                                </h3>
+                                <button class="product-card-rating product-card-rating--list">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                                <ul class="product-card-list">
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item1.svg" width="22" height="22" alt="">
+                                        4400 Lm
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item2.svg" width="22" height="22" alt="">
+                                        6500 k
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item3.svg" width="22" height="22" alt="">
+                                        180°
+                                    </li>
+                                </ul>
+                                <div class="product-card-description">
+                                    <p>Автономна світлодіодна лампа Luxel 063-NEL має вбудований акумулятор ємністю 1800
+                                        мА/годин, що дозволяє працювати лампі автономно до 14 годин. Лампу можна
+                                        використовувати у патроні під цоколь E27. У звичайному режимі лампа працює від
+                                        220В мережі. У разі відсутності напруги в мережі – лампа автоматично переходить
+                                        в автономний режим роботи від акумулятора. Заряджання акумулятора відбувається
+                                        автоматично – під час роботи лампочки від мережі 220В.</p>
+                                </div>
+                                <div class="product-card-info">
+                                    <div class="product-card-price">
+                                        <p class="product-card-value">149.00 ₴</p>
+                                        <span class="product-card-subvalue">178.00 ₴</span>
+                                    </div>
+                                    <span class="product-card-sale">-16%</span>
+                                    <button class="product-card-btn-basket">
+                                        <img src="icons/bascet-white.svg" width="22" height="22" alt="">
+                                        <span class="product-card-btn-basket-text">Купити</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <span class="product-card-badge">Топ продажів</span>
+                                <button class="product-card-popular">
+                                    <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                </button>
+                                <img src="images/offer-image1.png" width="250" height="250" alt="">
+                                <button class="product-card-rating">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                            </div>
+                            <div class="product-card-content">
+                                <h3 class="product-card-title">Світлодіодний настільний світильник Luxel 220-240V 6W
+                                    <button class="product-card-popular product-card-popular--list">
+                                        <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                    </button>
+                                </h3>
+                                <button class="product-card-rating product-card-rating--list">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                                <ul class="product-card-list">
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item1.svg" width="22" height="22" alt="">
+                                        4400 Lm
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item2.svg" width="22" height="22" alt="">
+                                        6500 k
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item3.svg" width="22" height="22" alt="">
+                                        180°
+                                    </li>
+                                </ul>
+                                <div class="product-card-description">
+                                    <p>Автономна світлодіодна лампа Luxel 063-NEL має вбудований акумулятор ємністю 1800
+                                        мА/годин, що дозволяє працювати лампі автономно до 14 годин. Лампу можна
+                                        використовувати у патроні під цоколь E27. У звичайному режимі лампа працює від
+                                        220В мережі. У разі відсутності напруги в мережі – лампа автоматично переходить
+                                        в автономний режим роботи від акумулятора. Заряджання акумулятора відбувається
+                                        автоматично – під час роботи лампочки від мережі 220В.</p>
+                                </div>
+                                <div class="product-card-info">
+                                    <div class="product-card-price">
+                                        <p class="product-card-value">149.00 ₴</p>
+                                        <span class="product-card-subvalue">178.00 ₴</span>
+                                    </div>
+                                    <span class="product-card-sale">-16%</span>
+                                    <button class="product-card-btn-basket">
+                                        <img src="icons/bascet-white.svg" width="22" height="22" alt="">
+                                        <span class="product-card-btn-basket-text">Купити</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <span class="product-card-badge">Топ продажів</span>
+                                <button class="product-card-popular">
+                                    <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                </button>
+                                <img src="images/offer-image1.png" width="250" height="250" alt="">
+                                <button class="product-card-rating">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                            </div>
+                            <div class="product-card-content">
+                                <h3 class="product-card-title">Світлодіодний настільний світильник Luxel 220-240V 6W
+                                    <button class="product-card-popular product-card-popular--list">
+                                        <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                    </button>
+                                </h3>
+                                <button class="product-card-rating product-card-rating--list">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                                <ul class="product-card-list">
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item1.svg" width="22" height="22" alt="">
+                                        4400 Lm
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item2.svg" width="22" height="22" alt="">
+                                        6500 k
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item3.svg" width="22" height="22" alt="">
+                                        180°
+                                    </li>
+                                </ul>
+                                <div class="product-card-description">
+                                    <p>Автономна світлодіодна лампа Luxel 063-NEL має вбудований акумулятор ємністю 1800
+                                        мА/годин, що дозволяє працювати лампі автономно до 14 годин. Лампу можна
+                                        використовувати у патроні під цоколь E27. У звичайному режимі лампа працює від
+                                        220В мережі. У разі відсутності напруги в мережі – лампа автоматично переходить
+                                        в автономний режим роботи від акумулятора. Заряджання акумулятора відбувається
+                                        автоматично – під час роботи лампочки від мережі 220В.</p>
+                                </div>
+                                <div class="product-card-info">
+                                    <div class="product-card-price">
+                                        <p class="product-card-value">149.00 ₴</p>
+                                        <span class="product-card-subvalue">178.00 ₴</span>
+                                    </div>
+                                    <span class="product-card-sale">-16%</span>
+                                    <button class="product-card-btn-basket">
+                                        <img src="icons/bascet-white.svg" width="22" height="22" alt="">
+                                        <span class="product-card-btn-basket-text">Купити</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <span class="product-card-badge">Топ продажів</span>
+                                <button class="product-card-popular">
+                                    <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                </button>
+                                <img src="images/offer-image1.png" width="250" height="250" alt="">
+                                <button class="product-card-rating">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                            </div>
+                            <div class="product-card-content">
+                                <h3 class="product-card-title">Світлодіодний настільний світильник Luxel 220-240V 6W
+                                    <button class="product-card-popular product-card-popular--list">
+                                        <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                    </button>
+                                </h3>
+                                <button class="product-card-rating product-card-rating--list">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                                <ul class="product-card-list">
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item1.svg" width="22" height="22" alt="">
+                                        4400 Lm
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item2.svg" width="22" height="22" alt="">
+                                        6500 k
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item3.svg" width="22" height="22" alt="">
+                                        180°
+                                    </li>
+                                </ul>
+                                <div class="product-card-description">
+                                    <p>Автономна світлодіодна лампа Luxel 063-NEL має вбудований акумулятор ємністю 1800
+                                        мА/годин, що дозволяє працювати лампі автономно до 14 годин. Лампу можна
+                                        використовувати у патроні під цоколь E27. У звичайному режимі лампа працює від
+                                        220В мережі. У разі відсутності напруги в мережі – лампа автоматично переходить
+                                        в автономний режим роботи від акумулятора. Заряджання акумулятора відбувається
+                                        автоматично – під час роботи лампочки від мережі 220В.</p>
+                                </div>
+                                <div class="product-card-info">
+                                    <div class="product-card-price">
+                                        <p class="product-card-value">149.00 ₴</p>
+                                        <span class="product-card-subvalue">178.00 ₴</span>
+                                    </div>
+                                    <span class="product-card-sale">-16%</span>
+                                    <button class="product-card-btn-basket">
+                                        <img src="icons/bascet-white.svg" width="22" height="22" alt="">
+                                        <span class="product-card-btn-basket-text">Купити</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <span class="product-card-badge">Топ продажів</span>
+                                <button class="product-card-popular">
+                                    <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                </button>
+                                <img src="images/offer-image1.png" width="250" height="250" alt="">
+                                <button class="product-card-rating">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                            </div>
+                            <div class="product-card-content">
+                                <h3 class="product-card-title">Світлодіодний настільний світильник Luxel 220-240V 6W
+                                    <button class="product-card-popular product-card-popular--list">
+                                        <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                    </button>
+                                </h3>
+                                <button class="product-card-rating product-card-rating--list">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                                <ul class="product-card-list">
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item1.svg" width="22" height="22" alt="">
+                                        4400 Lm
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item2.svg" width="22" height="22" alt="">
+                                        6500 k
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item3.svg" width="22" height="22" alt="">
+                                        180°
+                                    </li>
+                                </ul>
+                                <div class="product-card-description">
+                                    <p>Автономна світлодіодна лампа Luxel 063-NEL має вбудований акумулятор ємністю 1800
+                                        мА/годин, що дозволяє працювати лампі автономно до 14 годин. Лампу можна
+                                        використовувати у патроні під цоколь E27. У звичайному режимі лампа працює від
+                                        220В мережі. У разі відсутності напруги в мережі – лампа автоматично переходить
+                                        в автономний режим роботи від акумулятора. Заряджання акумулятора відбувається
+                                        автоматично – під час роботи лампочки від мережі 220В.</p>
+                                </div>
+                                <div class="product-card-info">
+                                    <div class="product-card-price">
+                                        <p class="product-card-value">149.00 ₴</p>
+                                        <span class="product-card-subvalue">178.00 ₴</span>
+                                    </div>
+                                    <span class="product-card-sale">-16%</span>
+                                    <button class="product-card-btn-basket">
+                                        <img src="icons/bascet-white.svg" width="22" height="22" alt="">
+                                        <span class="product-card-btn-basket-text">Купити</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <span class="product-card-badge">Топ продажів</span>
+                                <button class="product-card-popular">
+                                    <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                </button>
+                                <img src="images/offer-image1.png" width="250" height="250" alt="">
+                                <button class="product-card-rating">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                            </div>
+                            <div class="product-card-content">
+                                <h3 class="product-card-title">Світлодіодний настільний світильник Luxel 220-240V 6W
+                                    <button class="product-card-popular product-card-popular--list">
+                                        <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                    </button>
+                                </h3>
+                                <button class="product-card-rating product-card-rating--list">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                                <ul class="product-card-list">
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item1.svg" width="22" height="22" alt="">
+                                        4400 Lm
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item2.svg" width="22" height="22" alt="">
+                                        6500 k
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item3.svg" width="22" height="22" alt="">
+                                        180°
+                                    </li>
+                                </ul>
+                                <div class="product-card-description">
+                                    <p>Автономна світлодіодна лампа Luxel 063-NEL має вбудований акумулятор ємністю 1800
+                                        мА/годин, що дозволяє працювати лампі автономно до 14 годин. Лампу можна
+                                        використовувати у патроні під цоколь E27. У звичайному режимі лампа працює від
+                                        220В мережі. У разі відсутності напруги в мережі – лампа автоматично переходить
+                                        в автономний режим роботи від акумулятора. Заряджання акумулятора відбувається
+                                        автоматично – під час роботи лампочки від мережі 220В.</p>
+                                </div>
+                                <div class="product-card-info">
+                                    <div class="product-card-price">
+                                        <p class="product-card-value">149.00 ₴</p>
+                                        <span class="product-card-subvalue">178.00 ₴</span>
+                                    </div>
+                                    <span class="product-card-sale">-16%</span>
+                                    <button class="product-card-btn-basket">
+                                        <img src="icons/bascet-white.svg" width="22" height="22" alt="">
+                                        <span class="product-card-btn-basket-text">Купити</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <span class="product-card-badge">Топ продажів</span>
+                                <button class="product-card-popular">
+                                    <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                </button>
+                                <img src="images/offer-image1.png" width="250" height="250" alt="">
+                                <button class="product-card-rating">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                            </div>
+                            <div class="product-card-content">
+                                <h3 class="product-card-title">Світлодіодний настільний світильник Luxel 220-240V 6W
+                                    <button class="product-card-popular product-card-popular--list">
+                                        <img src="icons/icon1.svg" width="24" height="24" alt="">
+                                    </button>
+                                </h3>
+                                <button class="product-card-rating product-card-rating--list">
+                                    <img src="icons/rating-star.svg" width="24" height="24" alt="">
+                                    5.0
+                                </button>
+                                <ul class="product-card-list">
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item1.svg" width="22" height="22" alt="">
+                                        4400 Lm
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item2.svg" width="22" height="22" alt="">
+                                        6500 k
+                                    </li>
+                                    <li class="product-card-list-item">
+                                        <img src="icons/product-card-list-item3.svg" width="22" height="22" alt="">
+                                        180°
+                                    </li>
+                                </ul>
+                                <div class="product-card-description">
+                                    <p>Автономна світлодіодна лампа Luxel 063-NEL має вбудований акумулятор ємністю 1800
+                                        мА/годин, що дозволяє працювати лампі автономно до 14 годин. Лампу можна
+                                        використовувати у патроні під цоколь E27. У звичайному режимі лампа працює від
+                                        220В мережі. У разі відсутності напруги в мережі – лампа автоматично переходить
+                                        в автономний режим роботи від акумулятора. Заряджання акумулятора відбувається
+                                        автоматично – під час роботи лампочки від мережі 220В.</p>
+                                </div>
+                                <div class="product-card-info">
+                                    <div class="product-card-price">
+                                        <p class="product-card-value">149.00 ₴</p>
+                                        <span class="product-card-subvalue">178.00 ₴</span>
+                                    </div>
+                                    <span class="product-card-sale">-16%</span>
+                                    <button class="product-card-btn-basket">
+                                        <img src="icons/bascet-white.svg" width="22" height="22" alt="">
+                                        <span class="product-card-btn-basket-text">Купити</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shop-layout__pagination">
+                        <button class="shop-layout__all border-btn">
+                            <img src="icons/all.svg" width="22" height="22" alt="">
+                            Показати ще
+                        </button>
+
+                        <div class="pagination-box">
+                            <span class="pagination-result">Позиції 1-24 з 93</span>
+                            <ul class="pagination">
+                                <li class="pagination__item"><a href="/" class="pagination__link"><img
+                                            src="icons/pagin-prev.svg" width="24" height="24" alt=""></a></li>
+                                <li class="pagination__item"><a href="/"
+                                        class="pagination__link pagination__link--active">1</a></li>
+                                <li class="pagination__item"><a href="/" class="pagination__link">2</a></li>
+                                <li class="pagination__item"><a href="/" class="pagination__link">...</a></li>
+                                <li class="pagination__item"><a href="/" class="pagination__link"><img
+                                            src="icons/pagin-next.svg" width="24" height="24" alt=""></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="cta-info cta-info-not-border">
+            <div class="cta-info__inner container">
+                <div class="cta-info__header">
+                    <h2>LED Світильники</h2>
+                    <p>Світлодіодні світильники користуються високою популярністю завдяки набору відмінних
+                        експлуатаційних якостей, здатності прикрасити інтер'єр і створити в ньому потрібну атмосферу.
+                        Інтернет-магазин Luxel пропонує купити світлодіодний світильник з поліпшеними робочими
+                        параметрами, унікальним дизайном, за прийнятною ціною.</p>
+                </div>
+                <div class="cta-info__body">
+                    <div class="cta-info__body-item">
+                        <button class="cta-info__accordion active">Які є види вилок в розетку?</button>
+                        <div class="cta-info__panel active">
+                            <p>Зараз світлодіодна продукція дуже популярна серед користувачів, оскільки більш практична
+                                та економічна.
+                                Якщо ще кілька років тому мало хто міг похвалитися освітлювальними приладами з
+                                LED-елементами, тепер
+                                вони практично повністю замінили застарілі лампи. Довгий термін служби та відмінні
+                                енергоощадні
+                                властивості – ключові особливості світлодіодів. Також у їх конструкції немає шкідливих
+                                хімічних речовин,
+                                для перероблення яких потрібні спеціальні умови та додаткові пристрої.</p>
+                        </div>
+                    </div>
+                    <div class="cta-info__body-item">
+                        <button class="cta-info__accordion">Де придбати електро вилку?</button>
+                        <div class="cta-info__panel">
+                            <p>Замовити електричну вилку можна в інтернет-магазині електроприладів Luxel. Ви можете
+                                самостійно вибрати потрібну модель на сайті або звернутися за допомогою до менеджера
+                                телефоном. При необхідності ми підкажемо оптимальний варіант з урахуванням ваших вимог
+                                та відповімо на всі запитання, якщо вони виникнуть.
+                                Ціни на прилади різні та залежать від параметрів та характеристик кожної моделі. Однак,
+                                в асортименті представлені доступні варіанти для кожного. Придбати вилки 220 вольт або
+                                інші типи приладу можна з доставкою в Київ і по всій Україні.</p>
+                            <p>Ви можете ознайомитися з найкращими пропозиціями, які ми можемо вам запропонувати:</p>
+                            <ul class="cta-info__panel-list">
+                                <li class="cta-info__panel-item">
+                                    <a href="/" class="cta-info__panel-link">Вилка без заземлення (1001)</a>
+                                </li>
+                                <li class="cta-info__panel-item">
+                                    <a href="/" class="cta-info__panel-link">Вилка з заземленням пряма (1002)</a>
+                                </li>
+                                <li class="cta-info__panel-item">
+                                    <a href="/" class="cta-info__panel-link">Вилка Luxel без заземлення (1101)</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-        </aside>
+        <section class="table-price">
+            <div class="table-price__inner container">
+                <h2>Ціни на Світлодіодні лампи 2025 рік</h2>
+                <div class="table-price__body">
+                    <div class="table-price__row">
+                        <p class="table-price__row-name">Назва</p>
+                        <p class="table-price__row-name">Ціна</p>
+                    </div>
+                    <div class="table-price__row">
+                        <p class="table-price__row-text">Світлодіодна лампа Luxel C35 10W 220V E27 (ECO 042-NE 10W)</p>
+                        <p class="table-price__row-price">41.00 ₴</p>
+                    </div>
+                    <div class="table-price__row">
+                        <p class="table-price__row-text">Світлодіодна лампа низьковольтна Luxel A60 10W 12-24V E27 4000К
+                            (060-N24)</p>
+                        <p class="table-price__row-price">92.00 ₴</p>
+                    </div>
+                    <div class="table-price__row">
+                        <p class="table-price__row-text">Світлодіодна лампа низьковольтна Luxel A60 10W 24-48V E27 4000К
+                            (060-N48)</p>
+                        <p class="table-price__row-price">98.00 ₴</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="section-top">
+            <div class="section-top__inner container">
+                <div class="section-top__tabs">
+                    <button class="section-top__tab-button active" data-tab="topCategory">ТОП категорії</button>
+                    <button class="section-top__tab-button" data-tab="topProduct">ТОП товари</button>
+                </div>
+
+                <div class="section-top__body">
+                    <div class="section-top-content active" id="topCategory">
+                        <ul class="section-top-content-list">
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    led лампи
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    світлодіодні лампи т8
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    led панель
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    led лампи е27
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    люстри стельові
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    дитяча настільна лампа
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    світлодіодні лампи е 14
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    накладний led світильник
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    лінійний світильник
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    світлодіодна лампа g4
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    led стрічка
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    блок живлення для led стрічки
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="section-top-content" id="topProduct">
+                        <ul class="section-top-content-list">
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    led лампи
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    світлодіодні лампи т8
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    led панель
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    led лампи е27
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    люстри стельові
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    дитяча настільна лампа
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    світлодіодні лампи е 14
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    накладний led світильник
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    лінійний світильник
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    світлодіодна лампа g4
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    led стрічка
+                                </a>
+                            </li>
+                            <li class="section-top-content-item">
+                                <a href="/" class="section-top-content-link">
+                                    блок живлення для led стрічки
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="mailing-banner">
+            <div class="mailing-banner__inner container">
+                <div class="mailing-banner__title">
+                    <h2>Підпишіться, щоб отримувати найкращі знижки та пропозиції</h2>
+                    <p>Підписуйтеся на розсилку, щоб слідкувати за останніми новинами та акційними пропозиціями та
+                        <b>отримайте
+                            знижку</b> на перше замовлення в нашому магазині!
+                    </p>
+                </div>
+                <div class="mailing-banner__body">
+                    <form action="" class="mailing-banner__form">
+                        <input type="email" name="eamil" id="bannerEmail" placeholder="Ваш Email">
+                        <button type="button" class="mailing-banner__btn">Підписатися</button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -657,16 +1731,12 @@
         </div>
     </footer>
 
-
-
-
     <div class="request-call">
         <button class="request-call-btn" id="requestCallBtn">
             <img src="icons/phone-white.svg" width="22" height="22" alt="">
             Замовити дзвінок
         </button>
     </div>
-
 
     <!-- Модалка с формой -->
     <div class="modal" id="callModal">
@@ -742,31 +1812,31 @@
     <!-- Меню на мобильном устройстве -->
     <nav class="mobile-nav">
         <div class="mobile-nav__item mobile-nav__item--active">
-            <button type="button">
+            <button type="button" data-nav="home">
                 <img src="icons/home.svg" width="24" height="24" alt="">
                 Головна
             </button>
         </div>
         <div class="mobile-nav__item">
-            <button type="button">
+            <button type="button" data-menu="catalog">
                 <img src="icons/catalog-icons.svg" width="24" height="24" alt="">
                 Каталог
             </button>
         </div>
         <div class="mobile-nav__item">
-            <button type="button">
+            <button type="button" data-menu="cart">
                 <img src="icons/icon2.svg" width="24" height="24" alt="">
                 Кошик
             </button>
         </div>
         <div class="mobile-nav__item">
-            <button type="button">
+            <button type="button" data-menu="favorites">
                 <img src="icons/icon1.svg" width="24" height="24" alt="">
                 Обране
             </button>
         </div>
         <div class="mobile-nav__item">
-            <button type="button">
+            <button type="button" data-menu="account">
                 <img src="icons/icon3.svg" width="24" height="24" alt="">
                 Аккаунт
             </button>
@@ -881,6 +1951,216 @@
         </div>
     </div>
 
+
+
+
+
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Меню Каталог -->
+    <div class="slide-menu" id="catalog-menu">
+        <div class="header-burger__menu">
+            <div class="header-burger__menu-top">
+                <a class="header__logo logo" href="/" aria-label="Home" title="Home">
+                    <img class="logo__image" src="./images/logo.png" alt="" width="175" height="42" />
+                </a>
+                <button class="slide-menu__close header-burger__menu-close" data-close="catalog-menu"><img
+                        src="icons/close-black.svg" width="13" height="13" alt=""></button>
+            </div>
+            <div class="header-burger__menu-main">
+                <ul class="menu-list">
+                    <li class="header-burger__menu-main-item">
+                        <a href="/" class="header-burger__menu-main-link" data-submenu="lamps">
+                            <div class="header-burger__menu-main-icon">
+                                <img src="images/menu-image1.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+                            </div>
+                            <div class="header-burger__menu-main-content">
+                                <strong class="header-burger__menu-main-title">Світлові (LED) Лампи</strong>
+                                <span class="header-burger__menu-main-count">128 товарів</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="header-burger__menu-main-list">
+                        <a href="/" class="header-burger__menu-main-link" data-submenu="ledLighting">
+                            <div class="header-burger__menu-main-icon">
+                                <img src="images/menu-image2.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+                            </div>
+                            <div class="header-burger__menu-main-content">
+                                <strong class="header-burger__menu-main-title">Світодіодне (LED) Освітлення</strong>
+                                <span class="header-burger__menu-main-count">211 товарів</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="header-burger__menu-main-list">
+                        <a href="/" class="header-burger__menu-main-link">
+                            <div class="header-burger__menu-main-icon">
+                                <img src="images/menu-image3.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+                            </div>
+                            <div class="header-burger__menu-main-content">
+                                <strong class="header-burger__menu-main-title">Світодіодне Фітоосвітлення</strong>
+                                <span class="header-burger__menu-main-count">90 товарів</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="header-burger__menu-main-list">
+                        <a href="/" class="header-burger__menu-main-link">
+                            <div class="header-burger__menu-main-icon">
+                                <img src="images/menu-image4.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+                            </div>
+                            <div class="header-burger__menu-main-content">
+                                <strong class="header-burger__menu-main-title">Електро-фурнітура</strong>
+                                <span class="header-burger__menu-main-count">97 товарів</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="header-burger__menu-main-list">
+                        <a href="/" class="header-burger__menu-main-link">
+                            <div class="header-burger__menu-main-icon">
+                                <img src="images/menu-image5.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+                            </div>
+                            <div class="header-burger__menu-main-content">
+                                <strong class="header-burger__menu-main-title">WiFi смарт товари</strong>
+                                <span class="header-burger__menu-main-count">75 товарів</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="header-burger__menu-main-list">
+                        <a href="/" class="header-burger__menu-main-link">
+                            <div class="header-burger__menu-main-icon">
+                                <img src="images/menu-image6.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+                            </div>
+                            <div class="header-burger__menu-main-content">
+                                <strong class="header-burger__menu-main-title">Подовжувачі</strong>
+                                <span class="header-burger__menu-main-count">34 товарів</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="header-burger__menu-main-list">
+                        <a href="/" class="header-burger__menu-main-link">
+                            <div class="header-burger__menu-main-icon">
+                                <img src="images/menu-image7.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+                            </div>
+                            <div class="header-burger__menu-main-content">
+                                <strong class="header-burger__menu-main-title">Аксесуари</strong>
+                                <span class="header-burger__menu-main-count">213 товарів</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Підменю -->
+    <div class="submenu" id="submenu-lamps">
+        <div class="submenu__header">
+            <button class="submenu__back header-burger__menu-top-back" data-back="lamps">Світлові (LED) Лампи</button>
+        </div>
+        <ul class="header-burger__menu-top-hidden-list">
+            <li class="header-burger__menu-top-hidden-item">
+                <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи побутові</a>
+            </li>
+            <li class="header-burger__menu-top-hidden-item">
+                <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи середньої потужності</a>
+            </li>
+            <li class="header-burger__menu-top-hidden-item">
+                <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи високої потужності</a>
+            </li>
+            <li class="header-burger__menu-top-hidden-item">
+                <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Філаментні лампи</a>
+            </li>
+            <li class="header-burger__menu-top-hidden-item">
+                <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Низьковольтні лампи</a>
+            </li>
+            <li class="header-burger__menu-top-hidden-item">
+                <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи T8</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Підменю -->
+    <div class="submenu" id="submenu-ledLighting">
+        <div class="submenu__header">
+            <button class="submenu__back" data-back="ledLighting">‹</button>
+            <div class="submenu__title">Одяг та взуття</div>
+        </div>
+        <ul class="header-burger__menu-main">
+            <li class="header-burger__menu-main-list">
+                <a href="catalog.html" class="header-burger__menu-main-link">Відгуки</a>
+            </li>
+            <li class="header-burger__menu-main-list">
+                <a href="catalog.html" class="header-burger__menu-main-link">Доставка</a>
+            </li>
+            <li class="header-burger__menu-main-list">
+                <a href="catalog.html" class="header-burger__menu-main-link">Оплата</a>
+            </li>
+            <li class="header-burger__menu-main-list">
+                <a href="catalog.html" class="header-burger__menu-main-link">Контакти</a>
+            </li>
+            <li class="header-burger__menu-main-list">
+                <a href="catalog.html" class="header-burger__menu-main-link">Блог</a>
+            </li>
+            <li class="header-burger__menu-main-list">
+                <a href="catalog.html" class="header-burger__menu-main-link">Співпраця</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Меню Кошик -->
+    <div class="slide-menu" id="cart-menu">
+        <div class="slide-menu__header">
+            <div class="slide-menu__title">Кошик</div>
+            <button class="slide-menu__close" data-close="cart-menu">&times;</button>
+        </div>
+        <div class="slide-menu__content">
+            <div style="padding: 20px; text-align: center; color: #999;">
+                <p>Ваш кошик порожній</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Меню Обране -->
+    <div class="slide-menu" id="favorites-menu">
+        <div class="slide-menu__header">
+            <div class="slide-menu__title">Обране</div>
+            <button class="slide-menu__close" data-close="favorites-menu">&times;</button>
+        </div>
+        <div class="slide-menu__content">
+            <div style="padding: 20px; text-align: center; color: #999;">
+                <p>Немає обраних товарів</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Меню Аккаунт -->
+    <div class="slide-menu" id="account-menu">
+        <div class="slide-menu__header">
+            <div class="slide-menu__title">Аккаунт</div>
+            <button class="slide-menu__close" data-close="account-menu">&times;</button>
+        </div>
+        <div class="slide-menu__content">
+            <ul class="menu-list">
+                <li class="menu-list__item">
+                    <a href="#" class="menu-list__link">Профіль</a>
+                </li>
+                <li class="menu-list__item">
+                    <a href="#" class="menu-list__link">Мої замовлення</a>
+                </li>
+                <li class="menu-list__item">
+                    <a href="#" class="menu-list__link">Адреси доставки</a>
+                </li>
+                <li class="menu-list__item">
+                    <a href="#" class="menu-list__link">Налаштування</a>
+                </li>
+                <li class="menu-list__item">
+                    <a href="#" class="menu-list__link">Вийти</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
 </body>
 
 
@@ -889,345 +2169,7 @@
 <script src="scripts/jquery.maskedinput.js"></script>
 <script src="scripts/script.js"></script>
 
-<script>
-(function() {
-  'use strict';
 
-  // Конфігурація
-  const config = {
-    selectors: {
-      filters: '[data-js-filters]',
-      filterGroup: '[data-js-filter-group]',
-      filterHeader: '[data-js-filter-header]',
-      filterCheckbox: '[data-js-filter-checkbox]',
-      rangeFrom: '[data-js-range-from]',
-      rangeTo: '[data-js-range-to]',
-      slider: '[data-js-slider]',
-      sliderTrack: '[data-js-slider-track]',
-      sliderThumb: '[data-js-slider-thumb]',
-    },
-    classes: {
-      collapsed: 'filters__group--collapsed',
-    },
-    storage: {
-      filtersKey: 'shopFilters',
-      priceKey: 'shopPriceRange',
-    },
-  };
-
-  // Стан фільтрів
-  const state = {
-    selectedFilters: {},
-    priceRange: {
-      min: 100,
-      max: 10000,
-      from: 100,
-      to: 10000,
-    },
-    collapsedGroups: new Set(),
-  };
-
-  // Ініціалізація
-  function init() {
-    const filtersContainer = document.querySelector(config.selectors.filters);
-    if (!filtersContainer) {
-      console.warn('Filters container not found');
-      return;
-    }
-
-    loadStateFromStorage();
-    initGroupToggles();
-    initCheckboxes();
-    initPriceRange();
-    applyFilters();
-  }
-
-  // Завантаження стану з localStorage
-  function loadStateFromStorage() {
-    try {
-      const savedFilters = localStorage.getItem(config.storage.filtersKey);
-      if (savedFilters) {
-        state.selectedFilters = JSON.parse(savedFilters);
-      }
-
-      const savedPrice = localStorage.getItem(config.storage.priceKey);
-      if (savedPrice) {
-        const priceData = JSON.parse(savedPrice);
-        state.priceRange.from = priceData.from;
-        state.priceRange.to = priceData.to;
-      }
-    } catch (e) {
-      console.error('Error loading filters from storage:', e);
-    }
-  }
-
-  // Збереження стану в localStorage
-  function saveStateToStorage() {
-    try {
-      localStorage.setItem(config.storage.filtersKey, JSON.stringify(state.selectedFilters));
-      localStorage.setItem(config.storage.priceKey, JSON.stringify({
-        from: state.priceRange.from,
-        to: state.priceRange.to,
-      }));
-    } catch (e) {
-      console.error('Error saving filters to storage:', e);
-    }
-  }
-
-  // Ініціалізація згортання/розгортання груп
-  function initGroupToggles() {
-    const headers = document.querySelectorAll(config.selectors.filterHeader);
-    
-    headers.forEach((header) => {
-      header.addEventListener('click', function() {
-        const group = this.closest(config.selectors.filterGroup);
-        if (!group) return;
-
-        const isCollapsed = group.classList.contains(config.classes.collapsed);
-        
-        if (isCollapsed) {
-          group.classList.remove(config.classes.collapsed);
-          this.querySelector('.filters__group-toggle').textContent = '−';
-        } else {
-          group.classList.add(config.classes.collapsed);
-          this.querySelector('.filters__group-toggle').textContent = '+';
-        }
-      });
-    });
-  }
-
-  // Ініціалізація чекбоксів
-  function initCheckboxes() {
-    const checkboxes = document.querySelectorAll(config.selectors.filterCheckbox);
-    
-    checkboxes.forEach((checkbox) => {
-      // Відновлення стану з localStorage
-      const filterName = checkbox.name;
-      const filterValue = checkbox.value;
-      
-      if (state.selectedFilters[filterName] && 
-          state.selectedFilters[filterName].includes(filterValue)) {
-        checkbox.checked = true;
-      }
-
-      // Обробка зміни стану
-      checkbox.addEventListener('change', function() {
-        handleCheckboxChange(this);
-      });
-    });
-  }
-
-  // Обробка зміни чекбокса
-  function handleCheckboxChange(checkbox) {
-    const filterName = checkbox.name;
-    const filterValue = checkbox.value;
-
-    if (!state.selectedFilters[filterName]) {
-      state.selectedFilters[filterName] = [];
-    }
-
-    if (checkbox.checked) {
-      if (!state.selectedFilters[filterName].includes(filterValue)) {
-        state.selectedFilters[filterName].push(filterValue);
-      }
-    } else {
-      state.selectedFilters[filterName] = state.selectedFilters[filterName].filter(
-        val => val !== filterValue
-      );
-      
-      if (state.selectedFilters[filterName].length === 0) {
-        delete state.selectedFilters[filterName];
-      }
-    }
-
-    saveStateToStorage();
-    applyFilters();
-  }
-
-  // Ініціалізація ціноього діапазону
-  function initPriceRange() {
-    const fromInput = document.querySelector(config.selectors.rangeFrom);
-    const toInput = document.querySelector(config.selectors.rangeTo);
-    const slider = document.querySelector(config.selectors.slider);
-    const sliderTrack = document.querySelector(config.selectors.sliderTrack);
-    const thumbFrom = document.querySelector('[data-js-slider-thumb="from"]');
-    const thumbTo = document.querySelector('[data-js-slider-thumb="to"]');
-
-    if (!fromInput || !toInput || !slider || !thumbFrom || !thumbTo) {
-      console.warn('Price range elements not found');
-      return;
-    }
-
-    // Відновлення значень
-    fromInput.value = state.priceRange.from;
-    toInput.value = state.priceRange.to;
-    updateSliderUI();
-
-    // Обробка введення в поля
-    fromInput.addEventListener('input', function() {
-      let value = parseInt(this.value) || state.priceRange.min;
-      value = Math.max(state.priceRange.min, Math.min(value, state.priceRange.to));
-      this.value = value;
-      state.priceRange.from = value;
-      updateSliderUI();
-      debouncedSaveAndFilter();
-    });
-
-    toInput.addEventListener('input', function() {
-      let value = parseInt(this.value) || state.priceRange.max;
-      value = Math.min(state.priceRange.max, Math.max(value, state.priceRange.from));
-      this.value = value;
-      state.priceRange.to = value;
-      updateSliderUI();
-      debouncedSaveAndFilter();
-    });
-
-    // Drag для повзунків
-    let activeThumb = null;
-
-    function startDrag(thumb) {
-      activeThumb = thumb;
-      document.addEventListener('mousemove', onDrag);
-      document.addEventListener('mouseup', stopDrag);
-      document.body.style.userSelect = 'none';
-    }
-
-    function onDrag(e) {
-      if (!activeThumb) return;
-
-      const sliderRect = slider.getBoundingClientRect();
-      const sliderWidth = sliderRect.width;
-      let position = e.clientX - sliderRect.left;
-      position = Math.max(0, Math.min(position, sliderWidth));
-
-      const percent = position / sliderWidth;
-      const range = state.priceRange.max - state.priceRange.min;
-      let value = Math.round(state.priceRange.min + percent * range);
-
-      const thumbType = activeThumb.getAttribute('data-js-slider-thumb');
-
-      if (thumbType === 'from') {
-        value = Math.min(value, state.priceRange.to);
-        state.priceRange.from = value;
-        fromInput.value = value;
-      } else {
-        value = Math.max(value, state.priceRange.from);
-        state.priceRange.to = value;
-        toInput.value = value;
-      }
-
-      updateSliderUI();
-      debouncedSaveAndFilter();
-    }
-
-    function stopDrag() {
-      activeThumb = null;
-      document.removeEventListener('mousemove', onDrag);
-      document.removeEventListener('mouseup', stopDrag);
-      document.body.style.userSelect = '';
-    }
-
-    thumbFrom.addEventListener('mousedown', (e) => {
-      e.preventDefault();
-      startDrag(thumbFrom);
-    });
-
-    thumbTo.addEventListener('mousedown', (e) => {
-      e.preventDefault();
-      startDrag(thumbTo);
-    });
-
-    // Оновлення UI слайдера
-    function updateSliderUI() {
-      const range = state.priceRange.max - state.priceRange.min;
-      const fromPercent = ((state.priceRange.from - state.priceRange.min) / range) * 100;
-      const toPercent = ((state.priceRange.to - state.priceRange.min) / range) * 100;
-
-      thumbFrom.style.left = fromPercent + '%';
-      thumbTo.style.left = toPercent + '%';
-      sliderTrack.style.left = fromPercent + '%';
-      sliderTrack.style.width = (toPercent - fromPercent) + '%';
-    }
-  }
-
-  // Debounce для оптимізації
-  let debounceTimer;
-  function debouncedSaveAndFilter() {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(() => {
-      saveStateToStorage();
-      applyFilters();
-    }, 300);
-  }
-
-  // Застосування фільтрів (тут логіка фільтрації товарів)
-  function applyFilters() {
-    console.log('Applying filters:', {
-      filters: state.selectedFilters,
-      priceRange: {
-        from: state.priceRange.from,
-        to: state.priceRange.to,
-      },
-    });
-
-    // Тут ви можете додати свою логіку:
-    // - Відправка AJAX запиту на сервер
-    // - Фільтрація товарів на клієнті
-    // - Оновлення URL з параметрами
-    
-    // ПрикладDispatchEvent для інтеграції:
-    const event = new CustomEvent('filtersChanged', {
-      detail: {
-        filters: state.selectedFilters,
-        priceRange: {
-          from: state.priceRange.from,
-          to: state.priceRange.to,
-        },
-      },
-    });
-    document.dispatchEvent(event);
-  }
-
-  // Публічний API для скидання фільтрів
-  window.shopFilters = {
-    reset: function() {
-      // Скидаємо чекбокси
-      const checkboxes = document.querySelectorAll(config.selectors.filterCheckbox);
-      checkboxes.forEach(cb => cb.checked = false);
-
-      // Скидаємо ціни
-      const fromInput = document.querySelector(config.selectors.rangeFrom);
-      const toInput = document.querySelector(config.selectors.rangeTo);
-      if (fromInput) fromInput.value = state.priceRange.min;
-      if (toInput) toInput.value = state.priceRange.max;
-
-      // Скидаємо стан
-      state.selectedFilters = {};
-      state.priceRange.from = state.priceRange.min;
-      state.priceRange.to = state.priceRange.max;
-
-      saveStateToStorage();
-      applyFilters();
-    },
-    getState: function() {
-      return {
-        filters: state.selectedFilters,
-        priceRange: {
-          from: state.priceRange.from,
-          to: state.priceRange.to,
-        },
-      };
-    },
-  };
-
-  // Запуск при завантаженні сторінки
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-})();
-</script>
 
 </html>
 

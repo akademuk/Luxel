@@ -1,0 +1,44 @@
+@use '../helpers' as *;
+
+.breadcrumbs {
+    padding: 16px 0;
+
+    &__list {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        overflow-x: auto;
+    }
+
+    &__link {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+        white-space: nowrap;
+        padding-bottom: 10px;
+
+        &::after {
+            content: "";
+            display: block;
+            width: 24px;
+            height: 24px;
+            background-image: url('../icons/accardion-arrow.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            transform: rotate(-90deg);
+            filter: brightness(0) saturate(100%) invert(74%) sepia(0%) saturate(1156%) hue-rotate(136deg) brightness(94%) contrast(86%);
+        }
+
+        &--span {
+            cursor: default;
+            pointer-events: none;
+            color: #aaaaaa;
+            white-space: nowrap;
+
+            &::after {
+                content: none;
+            }
+        }
+    }
+
+}

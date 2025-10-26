@@ -602,6 +602,30 @@ function initSwiperPopular() {
 }
 
 // Функция для инициализации Swiper слайдера
+function initSwiperShop() {
+    if (typeof Swiper !== 'undefined') {
+        // Уничтожаем предыдущий инстанс, если существует
+        if (swiperInstances.shop) {
+            swiperInstances.shop.destroy(true, true);
+        }
+
+        swiperInstances.shop = new Swiper(".shop-slider__swiper", {
+            slidesPerView: 'auto',
+            spaceBetween: 8,
+            navigation: {
+                nextEl: ".shop-slider-swiper-next",
+                prevEl: ".shop-slider-swiper-prev",
+            },
+             breakpoints: {
+                1024: {
+                    spaceBetween: 16,
+                },
+            },
+        });
+    }
+}
+
+// Функция для инициализации Swiper слайдера
 function initSwiperNew() {
     if (typeof Swiper !== 'undefined') {
         // Уничтожаем предыдущий инстанс, если существует
@@ -1070,7 +1094,368 @@ function initAccordionFooter(accordionSelector = '.footer__accordion') {
   });
 }
 
+function initFilters() {
+    // --- Акордеон для груп фільтрів ---
+    const groups = document.querySelectorAll('.filters__group');
 
+    groups.forEach(group => {
+        const header = group.querySelector('.filters__group-header');
+        if (!header) return;
+
+        header.addEventListener('click', () => {
+            // Закриваємо всі інші групи
+            groups.forEach(g => {
+                if (g !== group) {
+                    g.classList.remove('active');
+                }
+            });
+
+            // Перемикаємо поточну
+            group.classList.toggle('active');
+        });
+    });
+
+    // --- Базова функціональність для слайдера ціни ---
+    const priceFrom = document.getElementById('price-from');
+    const priceTo = document.getElementById('price-to');
+    const sliderRange = document.querySelector('.filters__slider-range');
+    const thumbFrom = document.querySelector('.filters__slider-thumb--from');
+    const thumbTo = document.querySelector('.filters__slider-thumb--to');
+
+    if (!priceFrom || !priceTo || !sliderRange || !thumbFrom || !thumbTo) return;
+
+    function updateSlider() {
+        const min = parseInt(priceFrom.min);
+        const max = parseInt(priceFrom.max);
+        const valFrom = parseInt(priceFrom.value);
+        const valTo = parseInt(priceTo.value);
+
+        const percentFrom = ((valFrom - min) / (max - min)) * 100;
+        const percentTo = ((valTo - min) / (max - min)) * 100;
+
+        sliderRange.style.left = percentFrom + '%';
+        sliderRange.style.right = (100 - percentTo) + '%';
+
+        thumbFrom.style.left = percentFrom + '%';
+        thumbTo.style.left = percentTo + '%';
+    }
+
+    priceFrom.addEventListener('input', updateSlider);
+    priceTo.addEventListener('input', updateSlider);
+
+    updateSlider();
+}
+
+function initViewSwitcher() {
+    const viewButtons = document.querySelectorAll('.toolbar__view-btn');
+    const productsContainer = document.querySelector('.shop-layout__products');
+
+    if (!viewButtons.length || !productsContainer) return;
+
+    viewButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Снимаем активность со всех кнопок
+            viewButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Активируем нажатую
+            this.classList.add('active');
+            
+            // Получаем значение из data-view (например: "grid" или "list")
+            const view = this.getAttribute('data-view');
+            
+            // Сбрасываем классы вида
+            productsContainer.classList.remove('grid', 'list');
+            
+            // Применяем новый класс
+            productsContainer.classList.add(view);
+        });
+    });
+}
+
+function initSlideMenu() {
+    const overlay = document.querySelector('.overlay');
+    const menuButtons = document.querySelectorAll('[data-menu]');
+    const closeButtons = document.querySelectorAll('[data-close]');
+    const submenuLinks = document.querySelectorAll('[data-submenu]');
+    const backButtons = document.querySelectorAll('[data-back]');
+
+    menuButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const menuId = button.getAttribute('data-menu') + '-menu';
+            const menu = document.getElementById(menuId);
+
+            if (menu) {
+                menu.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const menuId = button.getAttribute('data-close');
+            const menu = document.getElementById(menuId);
+
+            if (menu) {
+                menu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+
+                document.querySelectorAll('.submenu.active').forEach(submenu => {
+                    submenu.classList.remove('active');
+                });
+            }
+        });
+    });
+
+    overlay.addEventListener('click', () => {
+        document.querySelectorAll('.slide-menu.active').forEach(menu => {
+            menu.classList.remove('active');
+        });
+        document.querySelectorAll('.submenu.active').forEach(submenu => {
+            submenu.classList.remove('active');
+        });
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    submenuLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const submenuId = 'submenu-' + link.getAttribute('data-submenu');
+            const submenu = document.getElementById(submenuId);
+
+            if (submenu) {
+                submenu.classList.add('active');
+            }
+        });
+    });
+
+    backButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const submenuId = 'submenu-' + button.getAttribute('data-back');
+            const submenu = document.getElementById(submenuId);
+
+            if (submenu) {
+                submenu.classList.remove('active');
+            }
+        });
+    });
+}
+
+function initRangeSlider() {
+    class RangeSlider {
+        constructor() {
+            this.priceFrom = document.getElementById('price-from');
+            this.priceTo = document.getElementById('price-to');
+            this.sliderRange = document.querySelector('.filters__slider-range');
+            this.thumbFrom = document.querySelector('.filters__slider-thumb--from');
+            this.thumbTo = document.querySelector('.filters__slider-thumb--to');
+            this.slider = document.querySelector('.filters__slider');
+
+            this.min = parseInt(this.priceFrom.min);
+            this.max = parseInt(this.priceFrom.max);
+            this.isDragging = false;
+            this.currentThumb = null;
+
+            this.init();
+        }
+
+        init() {
+            this.updateSlider();
+            this.attachEventListeners();
+        }
+
+        attachEventListeners() {
+            this.priceFrom.addEventListener('input', () => this.handleInputChange('from'));
+            this.priceTo.addEventListener('input', () => this.handleInputChange('to'));
+
+            this.thumbFrom.addEventListener('mousedown', (e) => this.startDrag(e, 'from'));
+            this.thumbTo.addEventListener('mousedown', (e) => this.startDrag(e, 'to'));
+
+            this.thumbFrom.addEventListener('touchstart', (e) => this.startDrag(e, 'from'), { passive: false });
+            this.thumbTo.addEventListener('touchstart', (e) => this.startDrag(e, 'to'), { passive: false });
+
+            document.addEventListener('mousemove', (e) => this.onDrag(e));
+            document.addEventListener('mouseup', () => this.stopDrag());
+            document.addEventListener('touchmove', (e) => this.onDrag(e), { passive: false });
+            document.addEventListener('touchend', () => this.stopDrag());
+
+            this.slider.addEventListener('click', (e) => this.handleTrackClick(e));
+
+            this.thumbFrom.addEventListener('keydown', (e) => this.handleKeyboard(e, 'from'));
+            this.thumbTo.addEventListener('keydown', (e) => this.handleKeyboard(e, 'to'));
+        }
+
+        handleInputChange(type) {
+            let valFrom = parseInt(this.priceFrom.value);
+            let valTo = parseInt(this.priceTo.value);
+
+            if (valFrom < this.min) valFrom = this.min;
+            if (valTo > this.max) valTo = this.max;
+
+            if (type === 'from' && valFrom >= valTo) {
+                valFrom = valTo - 10;
+                this.priceFrom.value = valFrom;
+            }
+
+            if (type === 'to' && valTo <= valFrom) {
+                valTo = valFrom + 10;
+                this.priceTo.value = valTo;
+            }
+
+            this.updateSlider();
+        }
+
+        startDrag(e, type) {
+            e.preventDefault();
+            this.isDragging = true;
+            this.currentThumb = type;
+
+            if (type === 'from') {
+                this.thumbFrom.classList.add('dragging');
+            } else {
+                this.thumbTo.classList.add('dragging');
+            }
+        }
+
+        onDrag(e) {
+            if (!this.isDragging) return;
+
+            e.preventDefault();
+
+            const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+            const rect = this.slider.getBoundingClientRect();
+            const percent = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
+            const value = Math.round((percent / 100) * (this.max - this.min) + this.min);
+
+            if (this.currentThumb === 'from') {
+                const maxValue = parseInt(this.priceTo.value) - 10;
+                this.priceFrom.value = Math.min(value, maxValue);
+            } else {
+                const minValue = parseInt(this.priceFrom.value) + 10;
+                this.priceTo.value = Math.max(value, minValue);
+            }
+
+            this.updateSlider();
+        }
+
+        stopDrag() {
+            if (!this.isDragging) return;
+
+            this.isDragging = false;
+            this.thumbFrom.classList.remove('dragging');
+            this.thumbTo.classList.remove('dragging');
+            this.currentThumb = null;
+        }
+
+        handleTrackClick(e) {
+            if (this.isDragging) return;
+            if (e.target.classList.contains('filters__slider-thumb')) return;
+
+            const rect = this.slider.getBoundingClientRect();
+            const percent = ((e.clientX - rect.left) / rect.width) * 100;
+            const value = Math.round((percent / 100) * (this.max - this.min) + this.min);
+
+            const currentFrom = parseInt(this.priceFrom.value);
+            const currentTo = parseInt(this.priceTo.value);
+
+            if (Math.abs(value - currentFrom) < Math.abs(value - currentTo)) {
+                this.priceFrom.value = Math.min(value, currentTo - 10);
+            } else {
+                this.priceTo.value = Math.max(value, currentFrom + 10);
+            }
+
+            this.updateSlider();
+        }
+
+        handleKeyboard(e, type) {
+            const step = 100;
+            let value = parseInt(type === 'from' ? this.priceFrom.value : this.priceTo.value);
+
+            switch (e.key) {
+                case 'ArrowLeft':
+                case 'ArrowDown':
+                    e.preventDefault();
+                    value -= step;
+                    break;
+                case 'ArrowRight':
+                case 'ArrowUp':
+                    e.preventDefault();
+                    value += step;
+                    break;
+                default:
+                    return;
+            }
+
+            if (type === 'from') {
+                this.priceFrom.value = Math.max(this.min, Math.min(value, parseInt(this.priceTo.value) - 10));
+            } else {
+                this.priceTo.value = Math.min(this.max, Math.max(value, parseInt(this.priceFrom.value) + 10));
+            }
+
+            this.updateSlider();
+        }
+
+        updateSlider() {
+            const valFrom = parseInt(this.priceFrom.value);
+            const valTo = parseInt(this.priceTo.value);
+
+            const percentFrom = ((valFrom - this.min) / (this.max - this.min)) * 100;
+            const percentTo = ((valTo - this.min) / (this.max - this.min)) * 100;
+
+            this.sliderRange.style.left = percentFrom + '%';
+            this.sliderRange.style.right = (100 - percentTo) + '%';
+
+            this.thumbFrom.style.left = percentFrom + '%';
+            this.thumbTo.style.left = percentTo + '%';
+        }
+    }
+
+    new RangeSlider();
+}
+
+function initMobileFilter() {
+    const filterBtn = document.getElementById('filter');
+    const filterCloseBtn = document.getElementById('filterBtn');
+    const filters = document.querySelector('.filters');
+    const body = document.body;
+
+    if (!filterBtn || !filters) return;
+
+    filterBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isActive = filters.classList.contains('active');
+        
+        if (isActive) {
+            filters.classList.remove('active');
+            body.classList.remove('modal-open');
+        } else {
+            filters.classList.add('active');
+            body.classList.add('modal-open');
+        }
+    });
+
+    if (filterCloseBtn) {
+        filterCloseBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            filters.classList.remove('active');
+            body.classList.remove('modal-open');
+        });
+    }
+
+    document.addEventListener('click', (e) => {
+        if (filters.classList.contains('active') && !filters.contains(e.target) && e.target.id !== 'filter') {
+            filters.classList.remove('active');
+            body.classList.remove('modal-open');
+        }
+    });
+
+    filters.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+}
 
 // Главная функция инициализации
 function initApp() {
@@ -1091,6 +1476,12 @@ function initApp() {
     initSwiperProduct();
     initAccordionFooter();
     initHeader();
+    initSwiperShop();
+    initFilters();
+    initViewSwitcher();
+    initSlideMenu();
+    initRangeSlider();
+    initMobileFilter();
 }
 
 // Запуск приложения после загрузки DOM

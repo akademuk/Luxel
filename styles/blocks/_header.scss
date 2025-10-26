@@ -568,7 +568,7 @@
     aspect-ratio: 187/56;
     flex-shrink: 0;
 
-    @include mobile {
+    @include tablet {
       padding: 0;
       width: 100px;
       height: 24px;
@@ -943,7 +943,7 @@
 
   &-top-back {
     display: flex;
-    padding: 12px 0;
+    padding: 18px 0;
     align-items: center;
     gap: 12px;
     align-self: stretch;
@@ -1042,4 +1042,82 @@
 
 .header-burger__menu-top-hidden-email.is-open {
   transform: translateX(0);
+}
+
+.slide-menu {
+  .header-burger__menu-main-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: flex-start;
+    padding: 12px;
+    border-bottom: var(--border);
+  }
+
+  .header-burger__menu-main-icon {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: var(--color-gray-primary);
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .header-burger__menu-main {
+    padding: 0;
+    margin: 0;
+    border-bottom: 0;
+  }
+
+  .header-burger__menu-main-link::after {
+    content: none;
+  }
+
+  .header-burger__menu-main-link[data-submenu]::after {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../icons/accardion-arrow.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotate(-90deg);
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  .header-burger__menu-main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 4px;
+  }
+
+  .header-burger__menu-main-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    align-self: stretch;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px; 
+    letter-spacing: 0.08px;
+  }
+
+  .header-burger__menu-main-count {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    color:#AAA;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px; 
+  }
 }
