@@ -366,12 +366,12 @@
             <div class="mobile-filter__inner container">
                 <button class="mobile-filter__btn mobile-filter__btn--sort" id="sort">
                     <img src="icons/sort.svg" width="24" height="24" alt="">
-                     <div class="mobile-filter__content">
+                    <div class="mobile-filter__content">
                         <span class="mobile-filter__content-name">Сортувати</span>
                         <strong class="mobile-filter__content-option">За популярністю</strong>
                     </div>
                 </button>
-                 <button class="mobile-filter__btn mobile-filter__btn--filter" id="filter">
+                <button class="mobile-filter__btn mobile-filter__btn--filter" id="filter">
                     <img src="icons/filter.svg" width="24" height="24" alt="">
                     <div class="mobile-filter__content">
                         <span class="mobile-filter__content-name">Фільтри</span>
@@ -438,7 +438,7 @@
                 <aside class="filters">
                     <h2 class="filters__title">Фільтри</h2>
                     <button id="filterBtn" class="filter-close">
-                        <img src="icons/close-black.svg" width="13" height="13"   alt="">
+                        <img src="icons/close-black.svg" width="13" height="13" alt="">
                     </button>
                     <div class="filter-scroll">
                         <div class="filters__active">
@@ -624,7 +624,8 @@
                                         <span>Вулична</span>
                                         <span class="filters__count">(12)</span>
                                     </span>
-                                    <input type="checkbox" class="filters__checkbox" name="installation" value="outdoor">
+                                    <input type="checkbox" class="filters__checkbox" name="installation"
+                                        value="outdoor">
                                     <span class="custom-checkbox"></span>
                                 </label>
                                 <label class="filters__option">
@@ -2159,6 +2160,34 @@
                 </li>
             </ul>
         </div>
+    </div>
+
+
+    <div class="sort-popup__overlay"></div>
+    <div class="sort-popup__content">
+        <div class="sort-popup__header">
+            <h3 class="sort-popup__title">Сортувати</h3>
+            <button class="sort-popup__close">
+                <img src="icons/close-black.svg" width="13" height="13" alt="">
+            </button>
+        </div>
+        <ul class="sort-popup__list">
+            <li class="sort-popup__item">
+                <button class="sort-popup__btn active" data-sort="popularity">За популярністю</button>
+            </li>
+            <li class="sort-popup__item">
+                <button class="sort-popup__btn" data-sort="price-asc">Ціна: від низької до високої</button>
+            </li>
+            <li class="sort-popup__item">
+                <button class="sort-popup__btn" data-sort="price-desc">Ціна: від високої до низької</button>
+            </li>
+            <li class="sort-popup__item">
+                <button class="sort-popup__btn" data-sort="name">За назвою</button>
+            </li>
+            <li class="sort-popup__item">
+                <button class="sort-popup__btn" data-sort="new">Новинки</button>
+            </li>
+        </ul>
     </div>
 
 </body>

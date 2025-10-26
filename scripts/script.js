@@ -1457,6 +1457,7 @@ function initMobileFilter() {
     });
 }
 
+
 // Главная функция инициализации
 function initApp() {
     initDropdowns();

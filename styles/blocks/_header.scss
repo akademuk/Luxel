@@ -1027,11 +1027,13 @@
   }
 
   .modal__content {
-    padding: 0;
+    padding: 24px 12px;
     width: 100%;
     max-width: 100%;
     background: transparent;
     box-shadow: none;
+    position: static;
+    transform: none;
   }
 
   .modal__form-info a {

@@ -1734,11 +1734,13 @@ a[class] {
   color: var(--color-gray-label);
 }
 .header-burger__menu-top-hidden-email .modal__content {
-  padding: 0;
+  padding: 24px 12px;
   width: 100%;
   max-width: 100%;
   background: transparent;
   box-shadow: none;
+  position: static;
+  transform: none;
 }
 .header-burger__menu-top-hidden-email .modal__form-info a {
   color: var(--color-red);
