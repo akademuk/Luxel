@@ -4253,6 +4253,11 @@ a[class] {
     text-decoration: underline;
   }
 }
+.product-card-link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
 .product-card-image {
   height: 323px;
   display: flex;
@@ -4739,13 +4744,14 @@ a[class] {
   display: flex;
   flex-direction: column;
 }
-.shop-layout__products.list .product-card {
+.shop-layout__products.list .product-card-link {
   padding: 24px 0;
   display: flex;
+  flex-direction: row;
   gap: 24px;
 }
 @media (width <= 47.99875rem) {
-  .shop-layout__products.list .product-card {
+  .shop-layout__products.list .product-card-link {
     gap: 12px;
     padding: 12px;
   }

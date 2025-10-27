@@ -10,6 +10,12 @@
         }
     }
 
+    &-link {
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+    }
+
     &-image {
         height: 323px;
         display: flex;
