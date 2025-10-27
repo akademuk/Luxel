@@ -2716,6 +2716,7 @@ input:focus {
 .premium-products__body {
   width: 100%;
   position: relative;
+  overflow: visible;
 }
 .premium-products__body .swiper-wrapper {
   display: grid;
@@ -2732,6 +2733,7 @@ input:focus {
 @media (width <= 47.99875rem) {
   .premium-products__body .swiper-wrapper {
     gap: 0;
+    overflow: hidden;
     display: flex;
   }
 }
