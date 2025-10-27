@@ -287,16 +287,9 @@
     }
 
     &-btn {
-        display: flex;
         width: 250px;
         height: 56px;
         padding: 0 16px;
-        justify-content: center;
-        align-items: center;
-        border-radius: 16px;
-        background: var(--color-red);
-        border: none;
-        color: var(--color-light);
     }
 
     &-bottom-copiright {

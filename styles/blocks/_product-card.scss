@@ -213,16 +213,9 @@
     }
 
     &-btn-basket {
-        display: flex;
         width: 56px;
         height: 56px;
         flex-shrink: 0;
-        padding: 0 16px;
-        justify-content: center;
-        align-items: center;
-        border-radius: 16px;
-        background: var(--color-red);
-        border: none;
 
         @include mobile {
             width: 40px;

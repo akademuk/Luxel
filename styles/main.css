@@ -420,6 +420,21 @@ a[class] {
   text-decoration: none;
 }
 
+input {
+  outline: none;
+  border: none;
+}
+
+.search-input {
+  outline: none;
+  border: none;
+}
+
+input:focus {
+  outline: none;
+  border: none;
+}
+
 .slider-prev,
 .slider-next {
   transition-duration: var(--transition-duration);
@@ -568,6 +583,7 @@ a[class] {
   line-height: 18px;
   background: var(--color-red);
   border-radius: 16px;
+  border: none;
 }
 @media (any-hover: hover) {
   .red-btn:hover {
@@ -4029,16 +4045,9 @@ a[class] {
   letter-spacing: 0.08px;
 }
 .footer-btn {
-  display: flex;
   width: 250px;
   height: 56px;
   padding: 0 16px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 16px;
-  background: var(--color-red);
-  border: none;
-  color: var(--color-light);
 }
 .footer-bottom-copiright {
   color: #8E8E8E;
@@ -4453,16 +4462,9 @@ a[class] {
   }
 }
 .product-card-btn-basket {
-  display: flex;
   width: 56px;
   height: 56px;
   flex-shrink: 0;
-  padding: 0 16px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 16px;
-  background: var(--color-red);
-  border: none;
 }
 @media (width <= 47.99875rem) {
   .product-card-btn-basket {

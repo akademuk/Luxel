@@ -134,6 +134,23 @@ a {
   }
 }
 
+input{
+    outline: none;
+    border: none;
+}
+
+
+.search-input {
+    outline: none;
+    border: none;
+}
+
+
+input:focus {
+    outline: none;
+    border: none;
+}
+
 .slider-prev,
 .slider-next {
   transition-duration: var(--transition-duration);
@@ -270,6 +287,7 @@ a {
   line-height: 18px;
   background: var(--color-red);
   border-radius: 16px;
+  border: none;
 
   @include hover {
     background: var(--color-hover);

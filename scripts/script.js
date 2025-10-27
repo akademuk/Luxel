@@ -469,6 +469,20 @@ function initSearch() {
             searchBtn.classList.remove('active');
         }
     });
+
+    document.addEventListener('click', function (e) {
+        if (searchBtn.classList.contains('active') && !searchBtn.contains(e.target)) {
+            htmlSearch.classList.remove('is-lock');
+            searchBtn.classList.remove('active');
+        }
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && searchBtn.classList.contains('active')) {
+            htmlSearch.classList.remove('is-lock');
+            searchBtn.classList.remove('active');
+        }
+    });
 }
 
 // Функция для инициализации Swiper слайдера
