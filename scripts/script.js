@@ -1473,6 +1473,69 @@ function initMobileFilter() {
     });
 }
 
+function initSortPopup() {
+    const sortBtn = document.getElementById('sort');
+    const sortCloseBtn = document.querySelector('.sort-popup__close');
+    const sortPopup = document.querySelector('.sort-popup');
+    const sortButtons = document.querySelectorAll('.sort-popup__btn');
+    const body = document.body;
+
+    if (!sortBtn || !sortPopup) return;
+
+    sortBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isActive = sortPopup.classList.contains('active');
+        
+        if (isActive) {
+            sortPopup.classList.remove('active');
+            body.classList.remove('modal-open');
+        } else {
+            sortPopup.classList.add('active');
+            body.classList.add('modal-open');
+        }
+    });
+
+    if (sortCloseBtn) {
+        sortCloseBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            sortPopup.classList.remove('active');
+            body.classList.remove('modal-open');
+        });
+    }
+
+    document.addEventListener('click', (e) => {
+        if (sortPopup.classList.contains('active') && !sortPopup.contains(e.target) && e.target.id !== 'sort') {
+            sortPopup.classList.remove('active');
+            body.classList.remove('modal-open');
+        }
+    });
+
+    sortPopup.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sortPopup.classList.contains('active')) {
+            sortPopup.classList.remove('active');
+            body.classList.remove('modal-open');
+        }
+    });
+
+    sortButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            sortButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const sortType = btn.dataset.sort;
+            
+            setTimeout(() => {
+                sortPopup.classList.remove('active');
+                body.classList.remove('modal-open');
+            }, 300);
+        });
+    });
+}
+
+
 
 // Главная функция инициализации
 function initApp() {
@@ -1499,6 +1562,7 @@ function initApp() {
     initSlideMenu();
     initRangeSlider();
     initMobileFilter();
+    initSortPopup();
 }
 
 // Запуск приложения после загрузки DOM

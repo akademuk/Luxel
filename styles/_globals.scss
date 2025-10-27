@@ -6,7 +6,7 @@ html {
     position: relative;
     touch-action: none;
     -webkit-overflow-scrolling: auto;
-    
+
 
     .header {
       &::after {
@@ -25,10 +25,12 @@ html {
 }
 
 body {
-  &.is-lock, &.modal-open {
-      overflow: hidden;
-      touch-action: none;
-  
+
+  &.is-lock,
+  &.modal-open {
+    overflow: hidden;
+    touch-action: none;
+
     .overflow-hidden {
       position: fixed;
       top: 0;
@@ -338,7 +340,7 @@ a {
     transform: translateY(-50%);
     left: 0;
 
-     @include tablet {
+    @include tablet {
       position: static;
       transform: none;
     }
@@ -483,7 +485,7 @@ a {
   .header-burger__menu-top-hidden-link {
     padding: 12px;
 
-border-bottom: var(--border);
+    border-bottom: var(--border);
   }
 
   &:not(.active) {

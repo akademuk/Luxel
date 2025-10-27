@@ -2163,8 +2163,7 @@
     </div>
 
 
-    <div class="sort-popup__overlay"></div>
-    <div class="sort-popup__content">
+    <div class="sort-popup" id="sortPopup">
         <div class="sort-popup__header">
             <h3 class="sort-popup__title">Сортувати</h3>
             <button class="sort-popup__close">
@@ -2173,19 +2172,28 @@
         </div>
         <ul class="sort-popup__list">
             <li class="sort-popup__item">
-                <button class="sort-popup__btn active" data-sort="popularity">За популярністю</button>
+                <label class="sort-popup__label">
+                    <span class="sort-popup__text">За популярністю</span>
+                    <input type="radio" name="sort" value="popularity" class="sort-popup__radio" checked>
+                </label>
             </li>
             <li class="sort-popup__item">
-                <button class="sort-popup__btn" data-sort="price-asc">Ціна: від низької до високої</button>
+                <label class="sort-popup__label">
+                    <span class="sort-popup__text">Від дешевших</span>
+                    <input type="radio" name="sort" value="price-asc" class="sort-popup__radio">
+                </label>
             </li>
             <li class="sort-popup__item">
-                <button class="sort-popup__btn" data-sort="price-desc">Ціна: від високої до низької</button>
+                <label class="sort-popup__label">
+                    <span class="sort-popup__text">Від дорожчих</span>
+                    <input type="radio" name="sort" value="price-desc" class="sort-popup__radio">
+                </label>
             </li>
             <li class="sort-popup__item">
-                <button class="sort-popup__btn" data-sort="name">За назвою</button>
-            </li>
-            <li class="sort-popup__item">
-                <button class="sort-popup__btn" data-sort="new">Новинки</button>
+                <label class="sort-popup__label">
+                    <span class="sort-popup__text">Спочатку зі знижками</span>
+                    <input type="radio" name="sort" value="discount" class="sort-popup__radio">
+                </label>
             </li>
         </ul>
     </div>
