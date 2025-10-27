@@ -8,9 +8,6 @@
     display: none;
     align-items: flex-end;
     justify-content: flex-end;
-    background: rgba(0, 0, 0, 0.10);
-    backdrop-filter: blur(12.5px);
-    
 
     @include tablet {
         align-items: center;
