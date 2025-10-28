@@ -1224,12 +1224,12 @@ input:focus {
     padding: 12px 48px 12px 40px;
     background: var(--color-gray-primary);
     border: none;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 18px;
     border-radius: 12px;
   }
   .header__body-btn-search input::placeholder {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 18px;
   }
 }
@@ -2304,7 +2304,7 @@ input:focus {
   .modal__form-col textarea {
     height: 44px;
     padding: 13px 12px;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 18px;
     border-radius: 12px;
   }
@@ -3836,7 +3836,7 @@ input:focus {
 }
 .mailing-banner__form input::placeholder {
   color: var(--color-gray-label);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 18px;
 }
@@ -5280,6 +5280,7 @@ input:focus {
 .filters__range-input::placeholder {
   color: var(--color-gray-label);
   font-weight: 400;
+  font-size: 16px;
 }
 .filters__range-box {
   position: relative;
