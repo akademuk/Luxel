@@ -2400,11 +2400,14 @@ input:focus {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex !important;
 }
 @media (width <= 63.99875rem) {
   #successModal {
     max-width: 351px;
     width: 100%;
+    height: auto;
+    min-height: 56px;
     padding: 16px 12px;
     border-radius: 16px;
   }
