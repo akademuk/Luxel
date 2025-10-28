@@ -138,15 +138,31 @@
     }
 
     &-item {
-      display: flex;
-      padding: 16px 24px;
-      justify-content: center;
-      align-items: center;
-      border-radius: 16px;
-      background: var(--color-gray-primary);
-      color: var(--color-dark);
-      letter-spacing: 0.08px;
-      flex: 1;
+       flex: 1;
+
+      a {
+         display: flex;
+          padding: 16px 24px;
+          justify-content: center;
+          align-items: center;
+          border-radius: 16px;
+          background: var(--color-gray-primary);
+          color: var(--color-dark);
+          letter-spacing: 0.08px;
+          width: 100%;
+          text-decoration: none;
+          transition-duration: var(--transition-duration);
+          @include hover {
+            color: var(--color-red);
+          }
+      
+
+        @include mobile {
+        padding: 7px 12px;
+        font-size: 14px;
+        border-radius: 8px;
+      }
+      }
 
       @include mobile {
         padding: 7px 12px;

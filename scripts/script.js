@@ -293,21 +293,6 @@ function initHeader() {
     }
   }
 
-  // Обработка отправки формы
-  function handleFormSubmit(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(callForm2);
-    
-    console.log('Форма отправлена');
-    
-    // Сбрасываем форму
-    callForm2.reset();
-    
-    // Закрываем всё меню полностью
-    closeMenu();
-  }
-
   // События
   // Клик по бургеру
   burgerButtonElement.addEventListener('click', toggleMenu);
@@ -350,10 +335,8 @@ function initHeader() {
     });
   }
 
-  // Обработка отправки формы
-  if (callForm2) {
-    callForm2.addEventListener('submit', handleFormSubmit);
-  }
+  // ВИДАЛЕНО обробник submit для callForm2
+  // Тепер форма обробляється тільки в initWriteUsModal()
 
   // Закрытие меню при клике ВНЕ области .header-burger__menu
   document.addEventListener('click', function(e) {
@@ -400,13 +383,20 @@ function initCatalogMenu() {
         return;
     }
 
+    // Function to close menu and reset all states
+    function closeMenu() {
+        menuContainer.classList.remove('open');
+        html.classList.remove('is-lock');
+        catalogBtn.classList.remove('active');
+        menuItems.forEach(mi => mi.classList.remove('active'));
+        submenuContents.forEach(content => content.classList.remove('active'));
+    }
+
     catalogBtn.addEventListener('click', function (e) {
         e.stopPropagation();
 
         if (menuContainer.classList.contains('open')) {
-            menuContainer.classList.remove('open');
-            html.classList.remove('is-lock');
-            catalogBtn.classList.remove('active');
+            closeMenu();
         } else {
             menuContainer.classList.add('open');
             html.classList.add('is-lock');
@@ -439,15 +429,10 @@ function initCatalogMenu() {
 
     document.addEventListener('click', function (e) {
         if (!menuContainer.contains(e.target) && !catalogBtn.contains(e.target)) {
-            menuContainer.classList.remove('open');
-            html.classList.remove('is-lock');
-            catalogBtn.classList.remove('active');
-
-            menuItems.forEach(mi => mi.classList.remove('active'));
+            closeMenu();
         }
     });
 }
-
 // Функция для управления поиском
 function initSearch() {
     const searchBtn = document.querySelector('.header__body-btn-search');
@@ -847,23 +832,27 @@ function initModals() {
     });
 
     // Обработка отправки формы
-    callForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        
-        closeModalFunc(callModal);
-        
-        setTimeout(() => {
-            openModal(successModal);
+   callForm.addEventListener('submit', function (e) {
+    e.preventDefault();
 
-            setTimeout(() => {
-                if (successModal.classList.contains('active')) {
-                    closeModalFunc(successModal);
-                }
-            }, 5000);
-        }, 300);
+    closeModalFunc(callModal);
+
+    setTimeout(() => {
+        openModal(successModal);
         
-        callForm.reset();
-    });
+        // Убираем класс с body после открытия successModal
+        body.classList.remove('modal-open');
+
+        setTimeout(() => {
+            if (successModal.classList.contains('active')) {
+                closeModalFunc(successModal);
+            }
+        }, 5000);
+    }, 300);
+
+    callForm.reset();
+});
+
 
     // Закрытие по клавише Escape
     document.addEventListener('keydown', function (e) {
@@ -898,7 +887,6 @@ function initWriteUsModal() {
     const closeModal2 = document.getElementById('closeModal2');
     const body = document.body;
 
-    // Check if all required elements exist
     if (!openwriteUsModalBtn || !writeUsModal || !successModal || !callForm2 || !closeModal2) {
         console.warn('Some modal elements are missing from the DOM');
         return;
@@ -906,17 +894,17 @@ function initWriteUsModal() {
 
     function openModal(modal) {
         modal.classList.add('active');
-        body.classList.add('modal-open');
+        body.classList.add('modal-style');
     }
 
     function closeModalFunc(modal) {
         modal.classList.remove('active');
-        body.classList.remove('modal-open');
+        body.classList.remove('modal-style');
     }
 
-    // Открытие модалки при клике на кнопку в дропдауне
+    // Открытие модального окна
     openwriteUsModalBtn.addEventListener('click', function (e) {
-        e.stopPropagation();
+        e.preventDefault();
         openModal(writeUsModal);
 
         // Закрываем дропдаун, если он открыт
@@ -926,38 +914,41 @@ function initWriteUsModal() {
         }
     });
 
-    // Закрытие модалки по кнопке
-    closeModal2.addEventListener('click', function () {
+    // Закрытие по кнопке крестика
+    closeModal2.addEventListener('click', function (e) {
+        e.preventDefault();
         closeModalFunc(writeUsModal);
     });
 
-    // Закрытие модалки по клику на оверлей
-    writeUsModal.addEventListener('click', function (e) {
-        if (e.target === writeUsModal || e.target.classList.contains('modal__overlay')) {
-            closeModalFunc(writeUsModal);
+    // Закрытие при клике ВНЕ modal__content
+    document.addEventListener('click', function(e) {
+        if (writeUsModal.classList.contains('active')) {
+            const modalContent = writeUsModal.querySelector('.modal__content');
+            const isClickInsideContent = modalContent && modalContent.contains(e.target);
+            const isClickOnOpenButton = openwriteUsModalBtn.contains(e.target);
+            
+            if (!isClickInsideContent && !isClickOnOpenButton) {
+                closeModalFunc(writeUsModal);
+            }
+        }
+        
+        if (successModal.classList.contains('active')) {
+            const modalContent = successModal.querySelector('.modal__content');
+            const isClickInsideContent = modalContent && modalContent.contains(e.target);
+            
+            if (!isClickInsideContent) {
+                closeModalFunc(successModal);
+            }
         }
     });
 
-    // Закрытие модалки успеха по клику на оверлей
-    successModal.addEventListener('click', function (e) {
-        if (e.target === successModal || e.target.classList.contains('modal__overlay')) {
-            closeModalFunc(successModal);
-        }
-    });
+// Обработка отправки формы
+callForm2.addEventListener('submit', function (e) {
+    e.preventDefault();
 
-    // Предотвращение закрытия при клике на контент модалки
-    document.querySelectorAll('.modal__content').forEach(content => {
-        content.addEventListener('click', function (e) {
-            e.stopPropagation();
-        });
-    });
-
-    // Обработка отправки формы
-    callForm2.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        // Валидация email
-        const emailInput = document.getElementById('Email');
+    // Валидация email
+    const emailInput = callForm2.querySelector('#Email');
+    if (emailInput) {
         const emailValue = emailInput.value.trim();
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -967,32 +958,40 @@ function initWriteUsModal() {
         } else {
             emailInput.classList.remove('invalid');
         }
+    }
+    
+    closeModalFunc(writeUsModal);
 
-        closeModalFunc(writeUsModal);
+    setTimeout(() => {
+        openModal(successModal);
+
+        // Убираем класс modal-style с body после открытия successModal
+        body.classList.remove('modal-style');
+
         setTimeout(() => {
-            openModal(successModal);
+            if (successModal.classList.contains('active')) {
+                closeModalFunc(successModal);
+            }
+        }, 5000);
+    }, 300);
+    
+    callForm2.reset();
+});
 
-            // Автоматическое закрытие модалки успеха через 5 секунд
-            setTimeout(() => {
-                if (successModal.classList.contains('active')) {
-                    closeModalFunc(successModal);
-                }
-            }, 5000);
-        }, 300);
-
-        callForm2.reset();
-    });
-
-    // Закрытие модалок по Escape
+    // Закрытие по клавише Escape
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
-            closeModalFunc(writeUsModal);
-            closeModalFunc(successModal);
+            if (writeUsModal.classList.contains('active')) {
+                closeModalFunc(writeUsModal);
+            }
+            if (successModal.classList.contains('active')) {
+                closeModalFunc(successModal);
+            }
         }
     });
 
     // Удаление класса invalid при вводе в email
-    const emailInput = document.getElementById('Email');
+    const emailInput = callForm2.querySelector('#Email');
     if (emailInput) {
         emailInput.addEventListener('input', function () {
             this.classList.remove('invalid');

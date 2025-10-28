@@ -2,10 +2,6 @@
 
 .promotions {
 
-    @include mobile {
-        padding: 0 0 40px 0;
-    }
-
     &__inner {
         display: flex;
         flex-direction: column;
@@ -31,6 +27,7 @@
             gap: 16px;
             border-radius: 16px;
             border: var(--border);
+            border-color: var(--color-dark);
             background: var(--color-light);
             letter-spacing: 0.08px;
 

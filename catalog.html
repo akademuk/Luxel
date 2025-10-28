@@ -1691,7 +1691,7 @@
                 <div class="mailing-banner__body">
                     <form action="" class="mailing-banner__form">
                         <input type="email" name="eamil" id="bannerEmail" placeholder="Ваш Email">
-                        <button type="button" class="mailing-banner__btn">Підписатися</button>
+                        <button type="submit" class="mailing-banner__btn">Підписатися</button>
                     </form>
                 </div>
             </div>
@@ -1836,8 +1836,8 @@
                         отримайте
                         знижку на перше замовлення в нашому магазині! </p>
                     <form action="" class="footer-form">
-                        <input type="email" name="eamil" id="footerEmail" placeholder="Ваш Email">
-                        <button type="button" class="footer-btn red-btn">Підписатися</button>
+                        <input type="email" name="eamil" id="footerEmail" placeholder="Ваш Email" required>
+                        <button type="submit" class="footer-btn red-btn">Підписатися</button>
                     </form>
                 </div>
             </div>
@@ -1872,7 +1872,7 @@
                 <img src="icons/close-black.svg" width="13" height="13" alt="">
             </button>
             <h2 class="modal__title">Замовити дзвінок</h2>
-            <p class="modal__text">Залиште свій номер, ми перетелефонуємовам якнайшвидше.</p>
+            <p class="modal__text">Залиште свій номер, ми перетелефонуємо вам якнайшвидше.</p>
             <form class="modal__form" id="callForm">
                 <div class="modal__form-col">
                     <label for="name" class="label-required">Ім’я</label>
@@ -1904,9 +1904,9 @@
                     <input type="text" name="name" id="name-write" placeholder="Ваше ім’я" required>
                 </div>
                 <div class="modal__form-col">
-                    <label for="Email" class="label-required">Номер телефону</label>
+                    <label for="Email" class="label-required">Email</label>
                     <input type="email" name="Email" id="Email" placeholder="Ваш email" required>
-                    <span class="novalid-style">Невірний формат номеру телефона</span>
+                    <span class="novalid-style">Невірний формат Email</span>
                 </div>
                 <div class="modal__form-col">
                     <label for="thema" class="label-required">Тема</label>
@@ -1929,7 +1929,6 @@
 
     <!-- Модалка с благодарностью -->
     <div class="modal" id="successModal">
-        <div class="modal__overlay"></div>
         <div class="modal__content">
             <img src="icons/success.svg" width="40" height="40" alt="">
             <p class="modal__text">Ваше повідомлення було успішно відправлено! Ми якнайшвидше зв’яжемося з вами.</p>
@@ -1999,7 +1998,7 @@
                     <a href="/" class="header-burger__menu-main-link">Блог</a>
                 </li>
                 <li class="header-burger__menu-main-list">
-                    <a href="/" class="header-burger__menu-main-link">Співпраця</a>
+                    <a href="/" class="header-burger__menu-main-link header-burger__menu-main-link--active">Співпраця</a>
                 </li>
             </ul>
             <div class="header-burger__menu-contact">
@@ -2323,6 +2322,180 @@
             </li>
         </ul>
     </div>
+
+     <div class="menu__container">
+              <ul class="menu__container-list">
+                <li class="menu__container-list-item" data-category="led-lights">
+                  Світлодіодні (LED) Лампи
+                </li>
+
+                <li class="menu__container-list-item" data-category="led-lighting">
+                  Світлодіодне (LED) Освітлення
+                </li>
+
+                <li class="menu__container-list-item" data-category="led-phyto">
+                  Світлодіодне (LED) Фітоосвітлення
+                </li>
+
+                <li class="menu__container-list-item" data-category="electro">
+                  Електрофурнітура
+                </li>
+
+                <li class="menu__container-list-item" data-category="wifi">
+                  WiFi смарт товари
+                </li>
+
+                <li class="menu__container-list-item" data-category="extension">
+                  Подовжувачі
+                </li>
+
+                <li class="menu__container-list-item" data-category="accessories">
+                  Аксесуари
+                </li>
+
+                <li class="menu__container-list-item" data-category="generators">
+                  Генератори та акумулятори
+                </li>
+              </ul>
+
+              <div class="menu__container-submenus">
+                <div class="menu__container-submenus-content" data-submenu="led-lights">
+                  <ul class="menu__container-submenus-list">
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи побутові</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи середньої потужності</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи високої потужності</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        філаментні лампи</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Низьковольтні лампи</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи Т8</a></li>
+                  </ul>
+                </div>
+
+                <div class="menu__container-submenus-content" data-submenu="led-lighting">
+                  <ul class="menu__container-submenus-list">
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Світлодіодне (LED) Освітлення</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Світлодіодне (LED) Освітлення</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Світлодіодне (LED) Освітлення</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Світлодіодне (LED) Освітлення</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Низьковольтні лампи</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Світлодіодне (LED) Освітлення</a></li>
+                  </ul>
+                </div>
+
+                <div class="menu__container-submenus-content" data-submenu="led-phyto">
+                  <ul class="menu__container-submenus-list">
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи побутові</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи середньої потужності</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи високої потужності</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        філаментні лампи</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Низьковольтні лампи</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи Т8</a></li>
+                  </ul>
+                </div>
+
+                <div class="menu__container-submenus-content" data-submenu="electro">
+                  <ul class="menu__container-submenus-list">
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи побутові</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи середньої потужності</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи високої потужності</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        філаментні лампи</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Низьковольтні лампи</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи Т8</a></li>
+                  </ul>
+                </div>
+
+                <div class="menu__container-submenus-content" data-submenu="wifi">
+                  <ul class="menu__container-submenus-list">
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи побутові</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи середньої потужності</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи високої потужності</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        філаментні лампи</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Низьковольтні лампи</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи Т8</a></li>
+                  </ul>
+                </div>
+
+                <div class="menu__container-submenus-content" data-submenu="extension">
+                  <ul class="menu__container-submenus-list">
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи побутові</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи середньої потужності</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи високої потужності</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        філаментні лампи</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Низьковольтні лампи</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи Т8</a></li>
+                  </ul>
+                </div>
+
+                <div class="menu__container-submenus-content" data-submenu="accessories">
+                  <ul class="menu__container-submenus-list">
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи побутові</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи середньої потужності</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи високої потужності</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        філаментні лампи</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Низьковольтні лампи</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи Т8</a></li>
+                  </ul>
+                </div>
+
+                <div class="menu__container-submenus-content" data-submenu="generators">
+                  <ul class="menu__container-submenus-list">
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи побутові</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи середньої потужності</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи високої потужності</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        філаментні лампи</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Низьковольтні лампи</a></li>
+                    <li class="menu__container-submenus-item"><a href="/" class="menu__container-submenus-link">LED
+                        Лампи Т8</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
 </body>
 

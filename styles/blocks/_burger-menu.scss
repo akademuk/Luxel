@@ -10,8 +10,8 @@
         max-width: 1340px;
         width: 100%;
         padding: 24px;
-
-        position: absolute;
+        top: 125px;
+        position: fixed;
         left: 50%;
         transform: translateX(-50%);
         z-index: 101;
