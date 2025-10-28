@@ -229,7 +229,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: flex !important;
 
     @include tablet {
         max-width: 351px;

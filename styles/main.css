@@ -2400,7 +2400,6 @@ input:focus {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: flex !important;
 }
 @media (width <= 63.99875rem) {
   #successModal {
