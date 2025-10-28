@@ -345,6 +345,35 @@ input:focus {
     gap: 7px;
   }
 
+  .pagination__item {
+    @media(max-width: 1280px) {
+      &:nth-of-type(4),
+      &:nth-of-type(5),
+      &:nth-of-type(6),
+      &:nth-of-type(7) {
+        display: none;
+      }
+    }
+
+    @media(max-width: 1024px) {
+      &:nth-of-type(4),
+      &:nth-of-type(5),
+      &:nth-of-type(6),
+      &:nth-of-type(7) {
+        display: flex;
+      }
+    }
+
+     @media(max-width: 578px) {
+      &:nth-of-type(4),
+      &:nth-of-type(5),
+      &:nth-of-type(6),
+      &:nth-of-type(7) {
+        display: none;
+      }
+    }
+  }
+
   &-result {
     display: flex;
     color: var(--color-gray-label);
@@ -415,7 +444,15 @@ input:focus {
 
 
 
+.main-shop {
+  .menu__container {
+    display: none;
 
+    &.open {
+      display: flex;
+    }
+  }
+}
 
 
 
@@ -509,4 +546,15 @@ input:focus {
     inset: 0;
     transform: translateX(-100%);
   }
+}
+
+/* Отключение стрелок для input[type="number"] */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Для Firefox */
 }

@@ -10,6 +10,7 @@
     @include tablet {
         margin-top: 16px;
         gap: 0;
+        padding-bottom: 56px;
     }
 
     &__inner {
@@ -93,6 +94,8 @@
                         @include mobile {
                             gap: 12px;
                             padding: 12px;
+                            align-items: flex-end;
+                            position: relative;
                         }
                     }
                 }
@@ -111,6 +114,7 @@
                         width: 96px;
                         height: 96px;
                         padding: 12px;
+                        position: static;
 
                         img {
                             object-fit: contain;
@@ -138,9 +142,9 @@
 
                 .product-card-badge {
                     @include mobile {
-                        left: 50%;
-                        transform: translateX(-50%);
-                        top: -10px;
+                        transform:none;
+                        top: 12px;
+                        left: 12px;
                         font-size: 10px;
                         white-space: nowrap;
                     }

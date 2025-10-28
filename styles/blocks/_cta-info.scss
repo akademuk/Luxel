@@ -153,6 +153,12 @@
         border: none;
     }
 
+    .cta-info__body {
+        @include tablet {
+            background: transparent;
+        }
+    }
+
     .cta-info__accordion {
         padding: 24px 0;
         font-size: 24px;

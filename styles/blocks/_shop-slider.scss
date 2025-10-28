@@ -83,6 +83,7 @@
     }
 
     .shop-slider-swiper-prev, .shop-slider-swiper-next {
+        top: 43%;
         @include tablet {
             display: none;
         }

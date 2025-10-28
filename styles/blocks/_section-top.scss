@@ -90,3 +90,9 @@
         }
     }
 }
+
+.section-top-catalog {
+    @include tablet {
+        padding-bottom: 40px;
+    }
+}
