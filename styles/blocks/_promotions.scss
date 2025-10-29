@@ -26,8 +26,7 @@
             align-items: center;
             gap: 16px;
             border-radius: 16px;
-            border: var(--border);
-            border-color: var(--color-dark);
+            box-shadow: 0 0 0 1.5px var(--color-dark);
             background: var(--color-light);
             letter-spacing: 0.08px;
 

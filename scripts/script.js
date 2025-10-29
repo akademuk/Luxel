@@ -190,12 +190,15 @@ function initHeader() {
     closeModal2: '#closeModal2',
     callForm2: '#callForm2',
     burgerMenu: '.header-burger__menu',
+    callFormBurger: '#callFormBurger',
+    successModal: '#successModal',
   };
 
   const stateClasses = {
     isActive: 'is-active',
     isLock: 'is-lock',
     isOpen: 'is-open',
+    active: 'active',
   };
 
   // Ищем элементы
@@ -212,6 +215,8 @@ function initHeader() {
   const closeModal2 = document.querySelector(selectors.closeModal2);
   const callForm2 = document.querySelector(selectors.callForm2);
   const burgerMenu = document.querySelector(selectors.burgerMenu);
+  const callFormBurger = document.querySelector(selectors.callFormBurger);
+  const successModal = document.querySelector(selectors.successModal);
 
   if (!burgerButtonElement || !overlayElement) {
     console.warn('Burger button or overlay not found');
@@ -228,6 +233,22 @@ function initHeader() {
   function unlockScroll() {
     document.documentElement.classList.remove(stateClasses.isLock);
     document.body.classList.remove(stateClasses.isLock);
+  }
+
+  // Функция открытия модалки успеха
+  function openSuccessModal() {
+    if (successModal) {
+      successModal.classList.add(stateClasses.active);
+      document.body.classList.add('modal-open');
+    }
+  }
+
+  // Функция закрытия модалки успеха
+  function closeSuccessModal() {
+    if (successModal) {
+      successModal.classList.remove(stateClasses.active);
+      document.body.classList.remove('modal-open');
+    }
   }
 
   // Функция открытия главного меню
@@ -335,8 +356,47 @@ function initHeader() {
     });
   }
 
-  // ВИДАЛЕНО обробник submit для callForm2
-  // Тепер форма обробляється тільки в initWriteUsModal()
+  // Обработка отправки формы callFormBurger
+  if (callFormBurger) {
+    callFormBurger.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Закрываем бургер-меню
+      closeMenu();
+      
+      // Через небольшую задержку показываем модалку успеха
+      setTimeout(() => {
+        openSuccessModal();
+        
+        // Убираем класс modal-open с body (если он был добавлен)
+        document.body.classList.remove('modal-open');
+        
+        // Автоматически закрываем через 5 секунд
+        setTimeout(() => {
+          if (successModal && successModal.classList.contains(stateClasses.active)) {
+            closeSuccessModal();
+          }
+        }, 5000);
+      }, 300);
+      
+      // Сбрасываем форму
+      callFormBurger.reset();
+    });
+  }
+
+  // Закрытие successModal при клике вне контента
+  if (successModal) {
+    document.addEventListener('click', function(e) {
+      if (successModal.classList.contains(stateClasses.active)) {
+        const modalContent = successModal.querySelector('.modal__content');
+        const isClickInsideContent = modalContent && modalContent.contains(e.target);
+        
+        if (!isClickInsideContent) {
+          closeSuccessModal();
+        }
+      }
+    });
+  }
 
   // Закрытие меню при клике ВНЕ области .header-burger__menu
   document.addEventListener('click', function(e) {
@@ -355,7 +415,9 @@ function initHeader() {
   // Закрытие меню при нажатии Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      if (emailMenu && emailMenu.classList.contains(stateClasses.isOpen)) {
+      if (successModal && successModal.classList.contains(stateClasses.active)) {
+        closeSuccessModal();
+      } else if (emailMenu && emailMenu.classList.contains(stateClasses.isOpen)) {
         closeEmailMenu(e);
       } else if (hiddenMenu && hiddenMenu.classList.contains(stateClasses.isOpen)) {
         closeHiddenMenu(e);
@@ -365,7 +427,6 @@ function initHeader() {
     }
   });
 }
-
 // Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', initHeader);
 
