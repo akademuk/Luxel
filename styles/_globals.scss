@@ -225,7 +225,7 @@ input:focus {
 .request-call {
   position: fixed;
   right: 0;
-  bottom: 0;
+  bottom: 56px;
   transform: rotate(-90deg) translateX(100%);
   transform-origin: bottom right;
   border-radius: 16px 16px 0 0;
@@ -234,7 +234,7 @@ input:focus {
   z-index: 99;
 
   @include tablet {
-    bottom: 65px;
+    bottom: 77px;
   }
 
   &-btn {
