@@ -4924,6 +4924,7 @@ input[type=number] {
     height: 96px;
     padding: 12px;
     position: static;
+    margin-bottom: 25px;
   }
   .shop-layout__products.list .product-card-image img {
     object-fit: contain;
