@@ -1556,7 +1556,7 @@ function initMobileFilter() {
                 filterContent.textContent = selectedFilters.join(', ');
             } else {
                 filterBtn.classList.remove('has-filters');
-                filterContent.textContent = 'Фільтри'; // Дефолтный текст
+                filterContent.textContent = 'Немає фільтрів'; // Дефолтный текст
             }
         }
     }
@@ -1650,13 +1650,15 @@ function initMobileFilter() {
 
 function initSortPopup() {
     const sortBtn = document.getElementById('sort');
-    const sortCloseBtn = document.querySelector('.sort-popup__close');
-    const sortPopup = document.querySelector('.sort-popup');
-    const sortButtons = document.querySelectorAll('.sort-popup__btn');
+    const sortPopup = document.getElementById('sortPopup');
+    const sortClose = document.querySelector('.sort-popup__close');
+    const sortRadios = document.querySelectorAll('.sort-popup__radio');
+    const sortOption = document.querySelector('.mobile-filter__content-option');
     const body = document.body;
 
     if (!sortBtn || !sortPopup) return;
 
+    // Открытие/закрытие попапа
     sortBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         const isActive = sortPopup.classList.contains('active');
@@ -1670,43 +1672,57 @@ function initSortPopup() {
         }
     });
 
-    if (sortCloseBtn) {
-        sortCloseBtn.addEventListener('click', (e) => {
+    // Закрытие по кнопке
+    if (sortClose) {
+        sortClose.addEventListener('click', (e) => {
             e.stopPropagation();
             sortPopup.classList.remove('active');
             body.classList.remove('modal-open');
         });
     }
 
+    // Обработка выбора сортировки
+    sortRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            if (radio.checked && sortOption) {
+                // Находим текст выбранной опции
+                const selectedLabel = radio.closest('.sort-popup__label');
+                const selectedText = selectedLabel.querySelector('.sort-popup__text').textContent;
+                
+                // Обновляем текст в кнопке
+                sortOption.textContent = selectedText;
+                
+                // Закрываем попап после выбора
+                setTimeout(() => {
+                    sortPopup.classList.remove('active');
+                    body.classList.remove('modal-open');
+                }, 200);
+            }
+        });
+    });
+
+    // Закрытие при клике вне попапа
     document.addEventListener('click', (e) => {
-        if (sortPopup.classList.contains('active') && !sortPopup.contains(e.target) && e.target.id !== 'sort') {
+        if (sortPopup.classList.contains('active') && 
+            !sortPopup.contains(e.target) && 
+            e.target.id !== 'sort' &&
+            !sortBtn.contains(e.target)) {
             sortPopup.classList.remove('active');
             body.classList.remove('modal-open');
         }
     });
 
+    // Предотвращение закрытия при клике внутри попапа
     sortPopup.addEventListener('click', (e) => {
         e.stopPropagation();
     });
 
+    // Закрытие по Escape
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && sortPopup.classList.contains('active')) {
             sortPopup.classList.remove('active');
             body.classList.remove('modal-open');
         }
-    });
-
-    sortButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            sortButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            const sortType = btn.dataset.sort;
-            
-            setTimeout(() => {
-                sortPopup.classList.remove('active');
-                body.classList.remove('modal-open');
-            }, 300);
-        });
     });
 }
 
