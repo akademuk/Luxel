@@ -555,12 +555,13 @@
             border: none;
             color: var(--color-gray-label);
             font-weight: 400;
+            font-size: 16px !important;
             width: 100%;
 
             &::placeholder {
                 color: var(--color-gray-label);
                 font-weight: 400;
-                font-size: 16px;
+                font-size: 16px !important;
             }
         }
 
