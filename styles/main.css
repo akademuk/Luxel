@@ -816,6 +816,11 @@ input:focus {
   inset: 0;
   transform: translateX(-100%);
 }
+@media (max-width: 768px) {
+  .submenu {
+    min-width: 100%;
+  }
+}
 
 /* Отключение стрелок для input[type="number"] */
 input[type=number]::-webkit-outer-spin-button,
