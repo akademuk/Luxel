@@ -1511,9 +1511,57 @@ function initMobileFilter() {
     const filterCloseBtn = document.getElementById('filterBtn');
     const filters = document.querySelector('.filters');
     const body = document.body;
+    const checkboxes = document.querySelectorAll('.filters__checkbox');
+    const resetBtn = document.querySelector('.filters__reset');
 
     if (!filterBtn || !filters) return;
 
+    // Функция для обновления кнопки фильтра
+    function updateFilterButton() {
+        const selectedFilters = [];
+        const filterGroups = {};
+
+        // Собираем все отмеченные чекбоксы по группам
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                const groupName = checkbox.name;
+                if (!filterGroups[groupName]) {
+                    filterGroups[groupName] = [];
+                }
+                filterGroups[groupName].push(checkbox.value);
+            }
+        });
+
+        // Формируем названия групп для отображения
+        const groupTitles = {
+            'temperature': 'Кольорова температура',
+            'power': 'Потужність (ВТ)',
+            'angle': 'Кут розсіювання',
+            'protection': 'Ступінь захисту',
+            'installation': 'Тип установки'
+        };
+
+        // Добавляем названия групп, где есть выбранные фильтры
+        Object.keys(filterGroups).forEach(groupName => {
+            if (groupTitles[groupName]) {
+                selectedFilters.push(groupTitles[groupName]);
+            }
+        });
+
+        // Обновляем текст кнопки
+        const filterContent = filterBtn.querySelector('.mobile-filter__content-option');
+        if (filterContent) {
+            if (selectedFilters.length > 0) {
+                filterBtn.classList.add('has-filters');
+                filterContent.textContent = selectedFilters.join(', ');
+            } else {
+                filterBtn.classList.remove('has-filters');
+                filterContent.textContent = 'Фільтри'; // Дефолтный текст
+            }
+        }
+    }
+
+    // Открытие/закрытие фильтров
     filterBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         const isActive = filters.classList.contains('active');
@@ -1527,6 +1575,7 @@ function initMobileFilter() {
         }
     });
 
+    // Закрытие по кнопке
     if (filterCloseBtn) {
         filterCloseBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -1535,6 +1584,7 @@ function initMobileFilter() {
         });
     }
 
+    // Закрытие при клике вне фильтров
     document.addEventListener('click', (e) => {
         if (filters.classList.contains('active') && !filters.contains(e.target) && e.target.id !== 'filter') {
             filters.classList.remove('active');
@@ -1542,9 +1592,60 @@ function initMobileFilter() {
         }
     });
 
+    // Предотвращение закрытия при клике внутри фильтров
     filters.addEventListener('click', (e) => {
         e.stopPropagation();
     });
+
+    // Отслеживание изменений чекбоксов
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            updateFilterButton();
+        });
+    });
+
+    // Обработка кнопки "Скинути всі"
+    if (resetBtn) {
+        resetBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Снимаем все чекбоксы
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            
+            // Сброс price range инпутов
+            const priceFrom = document.getElementById('price-from');
+            const priceTo = document.getElementById('price-to');
+            if (priceFrom) priceFrom.value = priceFrom.getAttribute('min') || '100';
+            if (priceTo) priceTo.value = priceTo.getAttribute('max') || '10000';
+            
+            // Сброс слайдера (если есть)
+            const sliderRange = document.querySelector('.filters__slider-range');
+            const thumbFrom = document.querySelector('.filters__slider-thumb--from');
+            const thumbTo = document.querySelector('.filters__slider-thumb--to');
+            
+            if (sliderRange) {
+                sliderRange.style.left = '0%';
+                sliderRange.style.right = '0%';
+            }
+            if (thumbFrom) thumbFrom.style.left = '0%';
+            if (thumbTo) thumbTo.style.left = '100%';
+            
+            // Очистка активных фильтров (если есть блок filters__active)
+            const activeFiltersBlock = document.querySelector('.filters__active');
+            if (activeFiltersBlock) {
+                activeFiltersBlock.innerHTML = '';
+                // Или скрываем блок
+                // activeFiltersBlock.style.display = 'none';
+            }
+            
+            updateFilterButton();
+        });
+    }
+
+    // Инициализация при загрузке (если есть предвыбранные фильтры)
+    updateFilterButton();
 }
 
 function initSortPopup() {
