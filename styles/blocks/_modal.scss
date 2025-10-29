@@ -144,7 +144,6 @@
 
                     @include tablet {
                         height: 44px;
-                        padding: 13px 12px;
                         font-size: 14px;
                         line-height: 18px;
                     }
@@ -154,7 +153,7 @@
             textarea {
                 height: 120px;
                 @include tablet {
-                    padding: 0 12px;
+                    padding: 13px 12px;
                 }
             }
         }

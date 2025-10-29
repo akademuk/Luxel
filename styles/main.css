@@ -2355,7 +2355,6 @@ input[type=number] {
   .modal__form-col input::placeholder,
   .modal__form-col textarea::placeholder {
     height: 44px;
-    padding: 13px 12px;
     font-size: 14px;
     line-height: 18px;
   }
@@ -2365,7 +2364,7 @@ input[type=number] {
 }
 @media (width <= 63.99875rem) {
   .modal__form-col textarea {
-    padding: 0 12px;
+    padding: 13px 12px;
   }
 }
 .modal__form-btn {
