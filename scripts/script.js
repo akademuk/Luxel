@@ -239,7 +239,7 @@ function initHeader() {
     function openSuccessModal() {
         if (successModal) {
             successModal.classList.add(stateClasses.active);
-            document.body.classList.add('modal-open');
+            lockScroll();
         }
     }
 
@@ -247,7 +247,7 @@ function initHeader() {
     function closeSuccessModal() {
         if (successModal) {
             successModal.classList.remove(stateClasses.active);
-            document.body.classList.remove('modal-open');
+            unlockScroll();
         }
     }
 
@@ -255,6 +255,9 @@ function initHeader() {
     function openMenu() {
         burgerButtonElement.classList.add(stateClasses.isActive);
         overlayElement.classList.add(stateClasses.isActive);
+        if (burgerMenu) {
+            burgerMenu.classList.add(stateClasses.isActive);
+        }
         lockScroll();
     }
 
@@ -262,6 +265,9 @@ function initHeader() {
     function closeMenu() {
         burgerButtonElement.classList.remove(stateClasses.isActive);
         overlayElement.classList.remove(stateClasses.isActive);
+        if (burgerMenu) {
+            burgerMenu.classList.remove(stateClasses.isActive);
+        }
         unlockScroll();
 
         // Закрываем все вложенные меню
@@ -274,7 +280,12 @@ function initHeader() {
     }
 
     // Переключение главного меню
-    function toggleMenu() {
+    function toggleMenu(e) {
+        // ВАЖНО: останавливаем всплытие события
+        if (e) {
+            e.stopPropagation();
+        }
+        
         if (overlayElement.classList.contains(stateClasses.isActive)) {
             closeMenu();
         } else {
@@ -315,8 +326,11 @@ function initHeader() {
     }
 
     // События
-    // Клик по бургеру
-    burgerButtonElement.addEventListener('click', toggleMenu);
+    // Клик по бургеру - ВАЖНО: stopPropagation чтобы не сработал глобальный обработчик
+    burgerButtonElement.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMenu(e);
+    });
 
     // Клик по кнопке закрытия главного меню
     if (closeButtonElement) {
@@ -368,9 +382,6 @@ function initHeader() {
             setTimeout(() => {
                 openSuccessModal();
 
-                // Убираем класс modal-open с body (если он был добавлен)
-                document.body.classList.remove('modal-open');
-
                 // Автоматически закрываем через 5 секунд
                 setTimeout(() => {
                     if (successModal && successModal.classList.contains(stateClasses.active)) {
@@ -399,17 +410,21 @@ function initHeader() {
     }
 
     // Закрытие меню при клике ВНЕ области .header-burger__menu
+    // ВАЖНО: используем setTimeout чтобы это сработало ПОСЛЕ toggleMenu
     document.addEventListener('click', function (e) {
-        // Проверяем, открыто ли меню
-        if (overlayElement.classList.contains(stateClasses.isActive)) {
-            // Проверяем, что клик НЕ внутри меню и НЕ по кнопке бургера
-            const isClickInsideMenu = burgerMenu && burgerMenu.contains(e.target);
-            const isClickOnBurger = burgerButtonElement.contains(e.target);
+        // Небольшая задержка, чтобы сначала сработал toggleMenu
+        setTimeout(() => {
+            // Проверяем, открыто ли меню
+            if (overlayElement.classList.contains(stateClasses.isActive)) {
+                // Проверяем, что клик НЕ внутри меню и НЕ по кнопке бургера
+                const isClickInsideMenu = burgerMenu && burgerMenu.contains(e.target);
+                const isClickOnBurger = burgerButtonElement.contains(e.target);
 
-            if (!isClickInsideMenu && !isClickOnBurger) {
-                closeMenu();
+                if (!isClickInsideMenu && !isClickOnBurger) {
+                    closeMenu();
+                }
             }
-        }
+        }, 0);
     });
 
     // Закрытие меню при нажатии Escape
@@ -427,9 +442,6 @@ function initHeader() {
         }
     });
 }
-// Инициализация при загрузке страницы
-document.addEventListener('DOMContentLoaded', initHeader);
-
 
 // Функция для управления каталогом меню
 function initCatalogMenu() {
@@ -1967,33 +1979,31 @@ function initQuantityControl() {
   updateDecreaseButton();
 }
 
-
 // Функція для модалки додавання в кошик
 function initCartModal() {
   const buyBtn = document.getElementById('buyBtn');
   const cartModal = document.getElementById('cartModal');
-  
+
   if (!buyBtn || !cartModal) return;
 
-  // Перевірка чи вже ініціалізовано
   if (buyBtn.dataset.cartInitialized === 'true') return;
   buyBtn.dataset.cartInitialized = 'true';
 
-  // Відкриття модалки
+  const body = document.body;
+
   buyBtn.addEventListener('click', (e) => {
     e.preventDefault();
     cartModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    body.classList.add('is-lock'); 
   });
 
-  // Закриття модалки
-  const closeCartModal = document.getElementById('closeCartModal');
-  const continueShoppingBtn = document.getElementById('continueShoppingBtn');
-  
   function closeModal() {
     cartModal.classList.remove('active');
-    document.body.style.overflow = '';
+    body.classList.remove('is-lock');
   }
+
+  const closeCartModal = document.getElementById('closeCartModal');
+  const continueShoppingBtn = document.getElementById('continueShoppingBtn');
 
   if (closeCartModal) {
     closeCartModal.addEventListener('click', closeModal);
@@ -2003,28 +2013,26 @@ function initCartModal() {
     continueShoppingBtn.addEventListener('click', closeModal);
   }
 
-  // Закриття по кліку поза модалкою
   cartModal.addEventListener('click', (e) => {
     if (e.target === cartModal) {
       closeModal();
     }
   });
 
-  // Закриття по клавіші Escape
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && cartModal.classList.contains('modal--active')) {
+    if (e.key === 'Escape' && cartModal.classList.contains('active')) {
       closeModal();
     }
   });
 
-  // Перехід на сторінку оформлення замовлення
   const checkoutBtn = document.getElementById('checkoutBtn');
   if (checkoutBtn) {
     checkoutBtn.addEventListener('click', () => {
-      window.location.href = '/checkout'; // Змініть на потрібний URL
+      window.location.href = '/checkout'; 
     });
   }
 }
+
 
 // Функція для повідомлення про наявність
 function initNotifyAvailability() {
@@ -2038,13 +2046,13 @@ function initNotifyAvailability() {
   notifyBtn.addEventListener('click', (e) => {
     e.preventDefault();
     notifyModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('is-lock');
   });
 
   // Закриття модалки
   const closeModal = () => {
     notifyModal.classList.remove('active');
-    document.body.style.overflow = '';
+    document.body.classList.remove('is-lock');
     notifyForm.reset();
   };
 
@@ -2073,13 +2081,13 @@ function initNotifyAvailability() {
     const successModal2 = document.getElementById('successModal2');
     if (successModal2) {
       successModal2.classList.add('active');
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add('is-lock');
 
-      // Закрытие модалки через 5 секунд
+      // Закрытие модалки через 3 секунд
       setTimeout(() => {
         successModal2.classList.remove('active');
-        document.body.style.overflow = '';
-      }, 3000); // 5000 мс = 5 секунд
+        document.body.classList.remove('is-lock');
+      }, 3000);
     }
   });
 }
@@ -2088,61 +2096,66 @@ function initNotifyAvailability() {
 function initSpecificationsModal() {
   const toggleBtn = document.querySelector('[data-spec="toggle"]');
   const specsModal = document.getElementById('specsModal');
-  
+
   if (!toggleBtn || !specsModal) return;
 
-  // Отримання артикулу з DOM
-  const productCode = document.querySelector('.product-detail__code')?.textContent || '063-NEL 18W';
+  const body = document.body;
+
+  const productCode = document.querySelector('.product-detail__code')?.textContent?.trim() || '063-NEL 18W';
   const articleCodeElement = document.getElementById('articleCode');
-  
-  // Вставка артикулу в модалку
+
   if (articleCodeElement) {
     articleCodeElement.textContent = productCode;
   }
 
-  // Відкриття модалки
+  // Открытие модалки
   toggleBtn.addEventListener('click', (e) => {
     e.preventDefault();
     specsModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    body.classList.add('is-lock'); 
   });
 
-  // Закриття модалки
+  // Закрытие модалки
   const closeModal = () => {
     specsModal.classList.remove('active');
-    document.body.style.overflow = '';
+    body.classList.remove('is-lock');
   };
 
-  document.getElementById('closeSpecsModal')?.addEventListener('click', closeModal);
+  const closeSpecsModal = document.getElementById('closeSpecsModal');
+  if (closeSpecsModal) {
+    closeSpecsModal.addEventListener('click', closeModal);
+  }
 
+  // Закрытие по клику на overlay
   specsModal.addEventListener('click', (e) => {
     if (e.target === specsModal) closeModal();
   });
 
-  // Копіювання артикулу
+  // Закрытие по Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && specsModal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  // Копирование артикула
   const copyArticleBtn = document.getElementById('copyArticleBtn');
   const articleCode = document.getElementById('articleCode');
 
   if (copyArticleBtn && articleCode) {
-    const copyIcon = copyArticleBtn.innerHTML;
-
     copyArticleBtn.addEventListener('click', async () => {
       try {
-        await navigator.clipboard.writeText(articleCode.textContent);
-        
-        // Зміна іконки на галочку
-        copyArticleBtn.innerHTML = `
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13.3333 4L6 11.3333L2.66667 8" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        `;
-        
-        // Повернення іконки через 2 секунди
+        await navigator.clipboard.writeText(articleCode.textContent.trim());
+
+        // Добавляем класс "copied"
+        copyArticleBtn.classList.add('copied');
+
+        // Убираем класс через 2 секунды
         setTimeout(() => {
-          copyArticleBtn.innerHTML = copyIcon;
+          copyArticleBtn.classList.remove('copied');
         }, 2000);
       } catch (err) {
-        console.error('Помилка копіювання:', err);
+        console.error('Ошибка копирования:', err);
       }
     });
   }
@@ -2188,51 +2201,62 @@ function initReviewsModal() {
   });
 }
 
-// Ініціалізація Fancybox для галереї товару
+
 function initProductGallery() {
   if (typeof Fancybox === 'undefined') return;
+
+  // КРИТИЧНО: Закрити всі відкриті Fancybox при завантаженні
+  Fancybox.close(true);
+  
+  // Очистити hash з URL, якщо він є
+  if (window.location.hash) {
+    history.replaceState(null, null, ' ');
+  }
 
   // Отримуємо назву товару та артикул
   const productTitle = document.querySelector('.product-detail__title')?.textContent || '';
   const productCode = document.querySelector('.product-detail__code')?.textContent || '';
 
   Fancybox.bind('[data-fancybox="gallery"]', {
+    // ВИМКНУТИ Hash в URL
+    Hash: false,
+    
     // Увімкнення мініатюр
     Thumbs: {
       type: "classic",
       autoStart: true,
     },
 
-    // Налаштування тулбару
+    // Налаштування тулбару - ПОКАЗАТИ кнопку закриття
     Toolbar: {
       display: {
         left: [],
         middle: [],
         right: ["close"],
       },
+      autoEnable: true,
     },
 
     // Показувати підписи
     caption: function (fancybox, slide) {
       return `
-        <div style="font-size: 16px; font-weight: 600; color: #000;">
+        <h2 class="fancybox-title">
           ${productTitle}
-        </div>
-        <div style="font-size: 13px; color: #6b7280; margin-top: 4px;">
+        </h2>
+        <p class="fancybox-subtitle">
           Арт.: ${productCode}
-        </div>
+        </p>
       `;
     },
 
-    // Анімація
-    showClass: "fancybox-fadeIn",
-    hideClass: "fancybox-fadeOut",
+    // ВИМКНУТИ анімацію появи/зникнення
+    animated: false,
+    showClass: false,
+    hideClass: false,
 
-    // Закриття по кліку на backdrop
-    closeButton: "outside",
-    dragToClose: true,
+    // Вимкнути dragToClose
+    dragToClose: false,
 
-    // Навігація клавішами
     keyboard: {
       Escape: "close",
       Delete: "close",
@@ -2245,21 +2269,235 @@ function initProductGallery() {
       ArrowLeft: "prev",
     },
 
-    // Масштабування
+    // Повністю вимкнути zoom та рух картинки
     Image: {
-      zoom: true,
-      click: "toggleZoom",
-      wheel: "zoom",
+      zoom: false,
+      click: false,
+      wheel: false,
+      fit: "contain",
     },
 
-    // Колбеки
     on: {
       ready: (fancybox) => {
         console.log('Fancybox готовий');
+        
+        // Додати обробник кліку на backdrop для закриття
+        const backdrop = document.querySelector('.fancybox__backdrop');
+        const slide = document.querySelector('.fancybox__slide');
+        
+        if (backdrop) {
+          backdrop.addEventListener('click', (e) => {
+            if (e.target === backdrop) {
+              fancybox.close();
+            }
+          });
+        }
+        
+        // Закривати при кліку на slide (область overflow)
+        if (slide) {
+          slide.addEventListener('click', (e) => {
+            // Якщо клік НЕ на картинці, мініатюрах, кнопках та caption
+            const isImage = e.target.closest('.fancybox__content');
+            const isThumbs = e.target.closest('.fancybox__thumbs');
+            const isButton = e.target.closest('.f-button');
+            const isCaption = e.target.closest('.fancybox__caption');
+            const isNav = e.target.closest('.fancybox__nav');
+            
+            if (!isImage && !isThumbs && !isButton && !isCaption && !isNav) {
+              fancybox.close();
+            }
+          });
+        }
       },
+      
+      // Очищати hash при закритті
+      destroy: () => {
+        if (window.location.hash) {
+          history.replaceState(null, null, ' ');
+        }
+      }
     },
   });
 }
+
+function initProductGallery() {
+  if (typeof Fancybox === 'undefined') return;
+
+  // КРИТИЧНО: Закрити всі відкриті Fancybox при завантаженні
+  Fancybox.close(true);
+  
+  // Очистити hash з URL, якщо він є
+  if (window.location.hash) {
+    history.replaceState(null, null, ' ');
+  }
+
+  // Отримуємо назву товару та артикул
+  const productTitle = document.querySelector('.product-detail__title')?.textContent || '';
+  const productCode = document.querySelector('.product-detail__code')?.textContent || '';
+
+  Fancybox.bind('[data-fancybox="gallery"]', {
+    // ВИМКНУТИ Hash в URL
+    Hash: false,
+    
+    // Увімкнення мініатюр
+    Thumbs: {
+      type: "classic",
+      autoStart: true,
+    },
+
+    // Налаштування тулбару - ПОКАЗАТИ кнопку закриття
+    Toolbar: {
+      display: {
+        left: [],
+        middle: [],
+        right: ["close"],
+      },
+      autoEnable: true,
+    },
+
+    // Показувати підписи
+    caption: function (fancybox, slide) {
+      return `
+        <h2 class="fancybox-title">
+          ${productTitle}
+        </h2>
+        <p class="fancybox-subtitle">
+          Арт.: ${productCode}
+        </p>
+      `;
+    },
+
+    // ВИМКНУТИ анімацію появи/зникнення
+    animated: false,
+    showClass: false,
+    hideClass: false,
+
+    // Вимкнути dragToClose
+    dragToClose: false,
+
+    keyboard: {
+      Escape: "close",
+      Delete: "close",
+      Backspace: "close",
+      PageUp: "prev",
+      PageDown: "next",
+      ArrowUp: "prev",
+      ArrowDown: "next",
+      ArrowRight: "next",
+      ArrowLeft: "prev",
+    },
+
+    // Повністю вимкнути zoom та рух картинки
+    Image: {
+      zoom: false,
+      click: false,
+      wheel: false,
+      fit: "contain",
+    },
+
+    on: {
+      ready: (fancybox) => {
+        console.log('Fancybox готовий');
+        
+        // ПЕРЕМІСТИТИ toolbar та footer всередину carousel
+        const container = document.querySelector('.fancybox__container');
+        const carousel = document.querySelector('.fancybox__carousel');
+        const toolbar = document.querySelector('.fancybox__toolbar');
+        const footer = document.querySelector('.fancybox__footer');
+        
+        if (carousel && toolbar && footer) {
+          // Перемістити toolbar на початок carousel
+          carousel.insertBefore(toolbar, carousel.firstChild);
+          // Перемістити footer в кінець carousel
+          carousel.appendChild(footer);
+        }
+        
+        // Додати обробник кліку на backdrop для закриття
+        const backdrop = document.querySelector('.fancybox__backdrop');
+        
+        if (backdrop) {
+          backdrop.addEventListener('click', (e) => {
+            if (e.target === backdrop) {
+              fancybox.close();
+            }
+          });
+        }
+        
+        // Закривати при кліку на carousel (поза контентом)
+        if (carousel) {
+          carousel.addEventListener('click', (e) => {
+            // Якщо клік НЕ на картинці, мініатюрах, кнопках, caption та nav
+            const isImage = e.target.closest('.fancybox__content');
+            const isThumbs = e.target.closest('.fancybox__thumbs');
+            const isButton = e.target.closest('.f-button');
+            const isCaption = e.target.closest('.fancybox__caption');
+            const isNav = e.target.closest('.fancybox__nav');
+            const isToolbar = e.target.closest('.fancybox__toolbar');
+            
+            if (!isImage && !isThumbs && !isButton && !isCaption && !isNav && !isToolbar) {
+              fancybox.close();
+            }
+          });
+        }
+      },
+      
+      // Очищати hash при закритті
+      destroy: () => {
+        if (window.location.hash) {
+          history.replaceState(null, null, ' ');
+        }
+      }
+    },
+  });
+}
+
+// ВАЖЛИВО: Закрити Fancybox перед перезавантаженням
+window.addEventListener('beforeunload', () => {
+  if (typeof Fancybox !== 'undefined') {
+    Fancybox.close(true);
+  }
+});
+
+// Закрити при завантаженні сторінки
+window.addEventListener('load', () => {
+  if (typeof Fancybox !== 'undefined') {
+    Fancybox.close(true);
+  }
+});
+
+// Викликати після завантаження DOM
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initProductGallery);
+} else {
+  initProductGallery();
+}
+
+
+function initWishlist() {
+  const likedBtn = document.querySelector('.product-detail__liked');
+  const successModal3 = document.getElementById('successModal3');
+  
+  if (!likedBtn || !successModal3) return;
+
+  likedBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    
+    likedBtn.classList.toggle('active');
+    
+    if (likedBtn.classList.contains('active')) {
+      successModal3.classList.add('active');
+
+     
+      setTimeout(() => {
+        successModal3.classList.remove('active');
+      }, 3000);
+    }
+  });
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', initWishlist);
 
 
 // Главная функция инициализации

@@ -25,6 +25,13 @@ html {
 }
 
 body {
+  &.hide-scrollbar {
+    overflow: hidden;
+    touch-action: none;
+  }
+}
+
+body {
 
   &.is-lock,
   &.modal-open {
@@ -130,21 +137,23 @@ a {
   }
 }
 
-input, textarea, select {
-    outline: none;
-    border: none;
+input,
+textarea,
+select {
+  outline: none;
+  border: none;
 }
 
 
 .search-input {
-    outline: none;
-    border: none;
+  outline: none;
+  border: none;
 }
 
 
 input:focus {
-    outline: none;
-    border: none;
+  outline: none;
+  border: none;
 }
 
 .slider-prev,
@@ -284,13 +293,19 @@ input:focus {
   background: var(--color-red);
   border-radius: 16px;
   border: none;
+  transition-duration: var(--transition-duration);
 
-  @include hover {
-    background: var(--color-hover);
+  &:hover {
+    background: var(--color-hover) !important;
   }
 
   &:active {
-    background: var(--color-active);
+    background: var(--color-active) !important;
+  }
+
+  &:disabled {
+    background: var(--color-gray-light) !important;
+    cursor: not-allowed;
   }
 
   @include mobile {
@@ -347,6 +362,7 @@ input:focus {
 
   .pagination__item {
     @media(max-width: 1280px) {
+
       &:nth-of-type(4),
       &:nth-of-type(5),
       &:nth-of-type(6),
@@ -356,6 +372,7 @@ input:focus {
     }
 
     @media(max-width: 1024px) {
+
       &:nth-of-type(4),
       &:nth-of-type(5),
       &:nth-of-type(6),
@@ -364,7 +381,8 @@ input:focus {
       }
     }
 
-     @media(max-width: 578px) {
+    @media(max-width: 578px) {
+
       &:nth-of-type(4),
       &:nth-of-type(5),
       &:nth-of-type(6),
@@ -551,7 +569,7 @@ input:focus {
     transform: translateX(-100%);
   }
 
-   @media (max-width: 768px) {
+  @media (max-width: 768px) {
     min-width: 100%;
   }
 }
@@ -564,9 +582,9 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 input[type="number"] {
-  -moz-appearance: textfield; /* Для Firefox */
+  -moz-appearance: textfield;
+  /* Для Firefox */
 }
-
 
 
 
@@ -578,52 +596,115 @@ input[type="number"] {
 
 /* Фон модалки */
 .fancybox__backdrop {
-  background: rgba(0, 0, 0, 0.85) !important;
+  background: rgba(0, 0, 0, 0.10) !important;
+  backdrop-filter: blur(12.5px) !important;
+  cursor: pointer !important;
+  width: 100vw;
+  height: 100vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
-/* Контейнер модалки */
 .fancybox__container {
-  --fancybox-bg: #ffffff;
+  max-width: 888px !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 696px !important;
+  border-radius: 20px !important;
+  background: transparent !important;
+  /* ЗМІНЕНО */
+  left: 50% !important;
+  top: 50% !important;
+  overflow: visible !important;
+  transform: translate(-50%, -50%) !important;
+  pointer-events: auto !important;
 }
 
-/* Контент модалки */
-.fancybox__content {
-  background: #ffffff !important;
-  border-radius: 12px !important;
-  padding: 0 !important;
-  max-width: 600px !important;
+/* Carousel тепер має фон та overflow */
+.fancybox__carousel {
+  background: var(--color-gray-primary) !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  /* ДОДАНО */
+  position: relative !important;
+  height: 100% !important;
+}
+
+/* КРИТИЧНО: Вимкнути всі трансформації та анімації */
+.fancybox__content,
+.fancybox__slide,
+.fancybox__image {
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Вимкнути всі анімації Fancybox */
+.fancybox-fadeIn,
+.fancybox-fadeOut,
+.fancybox__container.is-animated {
+  animation: none !important;
+  transition: opacity 0.2s ease !important;
 }
 
 /* Верхня панель з назвою та кнопкою закриття */
 .fancybox__toolbar {
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  background: #ffffff !important;
-  padding: 16px 20px !important;
-  border-bottom: 1px solid #e5e7eb !important;
-  border-radius: 12px 12px 0 0 !important;
-  z-index: 10 !important;
+  top: 30px !important;
+  left: auto !important;
+  right: 24px !important;
+  width: 24px;
+  height: 24px;
+  padding: 0 !important;
+  z-index: 100 !important;
+  opacity: 1 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+}
+
+.f-button {
+  width: 24px !important;
+  height: 24px !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.f-button svg {
+  color: #000000 !important;
+}
+
+.fancybox__toolbar__column.is-right {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background: transparent;
+  flex-grow: 0;
 }
 
 /* Кнопка закриття */
-.fancybox__button--close {
-  position: absolute !important;
-  top: 16px !important;
-  right: 20px !important;
+.fancybox__button--close,
+.f-button.is-close-btn {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
   width: 32px !important;
   height: 32px !important;
   background: transparent !important;
   border-radius: 6px !important;
   padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  border: none !important;
+  z-index: 1000 !important;
 }
 
-.fancybox__button--close:hover {
-  background: #f3f4f6 !important;
-}
 
-.fancybox__button--close svg {
+.fancybox__button--close svg,
+.f-button.is-close-btn svg {
   width: 16px !important;
   height: 16px !important;
   color: #000000 !important;
@@ -633,37 +714,106 @@ input[type="number"] {
 /* Заголовок товару */
 .fancybox__caption {
   position: absolute !important;
-  top: 16px !important;
-  left: 20px !important;
-  right: 60px !important;
-  background: transparent !important;
-  color: #000000 !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  padding: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 50px !important;
+  background: var(--color-light) !important;
   margin: 0 !important;
+  padding: 16px 24px !important;
+  z-index: 9 !important;
+  width: 100% !important;
+}
+
+.fancybox-title {
+  color: var(--color-dark);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.1px;
+  margin-bottom: 8px;
+}
+
+.fancybox-subtitle {
+  color: var(--color-gray-label);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.07px;
 }
 
 /* Зображення */
 .fancybox__slide {
   padding: 80px 20px 100px !important;
+  background: var(--color-gray-primary) !important;
 }
 
-.fancybox__content > .fancybox__image {
+.fancybox__footer {
+  position: absolute !important;
+  /* ЗМІНЕНО */
+  bottom: 0 !important;
+  z-index: 100 !important;
+  left: 0 !important;
+  width: 100% !important;
+  background: var(--color-gray-primary) !important;
+}
+
+.fancybox__content {
+  width: 450px !important;
+  height: 450px !important;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+  cursor: default !important;
+}
+
+.fancybox__content>.fancybox__image {
   object-fit: contain !important;
   max-height: calc(100vh - 200px) !important;
+  position: static !important;
 }
 
-/* Нижня панель з мініатюрами */
+
 .fancybox__thumbs {
-  position: absolute !important;
-  bottom: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  background: #ffffff !important;
-  padding: 16px 20px !important;
-  border-top: 1px solid #e5e7eb !important;
-  border-radius: 0 0 12px 12px !important;
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+}
+
+.f-thumbs__slide {
+  display: flex;
+  width: 56px;
+  height: 56px;
+  padding: 8px;
+  border: 2px solid transparent;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1/1;
+  border-radius: 12px;
+  background: var(--color-light);
+}
+
+.f-thumbs.is-horizontal .f-thumbs__track {
+  justify-content: center;
+  transform: none !important;
+}
+
+.f-thumbs__slide.for-image.is-nav-selected {
+  border: 2px solid var(--color-red);
+}
+
+.f-thumbs__slide__button {
+  margin: 0 !important;
+  opacity: 1 !important;
+}
+
+.f-thumbs__slide__button img {
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.is-classic .is-nav-selected .f-thumbs__slide__button::after {
+  content: none !important;
 }
 
 .fancybox__thumb {
@@ -676,9 +826,6 @@ input[type="number"] {
   margin: 0 4px !important;
 }
 
-.fancybox__thumb:hover {
-  border-color: #d1d5db !important;
-}
 
 .fancybox__thumb.is-nav-selected {
   border-color: #ef4444 !important;
@@ -690,68 +837,35 @@ input[type="number"] {
   height: 100% !important;
 }
 
-/* Кнопки навігації (стрілки) */
 .fancybox__nav {
   position: absolute !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
-  width: 40px !important;
-  height: 40px !important;
-  background: #ffffff !important;
-  border-radius: 50% !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
   z-index: 10 !important;
+  opacity: 1 !important;
+  width: 100%;
 }
 
-.fancybox__nav--prev {
+.fancybox__nav .f-button:before {
+  inset: 0 !important;
+}
+
+.f-button.is-prev {
   left: 20px !important;
+  width: 56px !important;
+  height: 56px !important;
+  background: var(--color-light) !important;
 }
 
-.fancybox__nav--next {
+.f-button.is-next {
   right: 20px !important;
-}
-
-.fancybox__nav:hover {
-  background: #f3f4f6 !important;
+  width: 56px !important;
+  height: 56px !important;
+  background: var(--color-light) !important;
 }
 
 .fancybox__nav svg {
   width: 20px !important;
   height: 20px !important;
   color: #000000 !important;
-}
-
-/* Адаптив для мобільних */
-@media (max-width: 768px) {
-  .fancybox__content {
-    max-width: 100% !important;
-    border-radius: 0 !important;
-  }
-
-  .fancybox__toolbar,
-  .fancybox__thumbs {
-    border-radius: 0 !important;
-  }
-
-  .fancybox__slide {
-    padding: 70px 10px 90px !important;
-  }
-
-  .fancybox__nav {
-    width: 36px !important;
-    height: 36px !important;
-  }
-
-  .fancybox__nav--prev {
-    left: 10px !important;
-  }
-
-  .fancybox__nav--next {
-    right: 10px !important;
-  }
-
-  .fancybox__thumb {
-    width: 50px !important;
-    height: 50px !important;
-  }
 }
