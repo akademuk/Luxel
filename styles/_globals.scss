@@ -722,6 +722,10 @@ input[type="number"] {
   padding: 16px 24px !important;
   z-index: 9 !important;
   width: 100% !important;
+
+  // @media (max-width: 768px) {
+  //   top: -65vh !important;
+  // }
 }
 
 .fancybox-title {
@@ -731,6 +735,10 @@ input[type="number"] {
   line-height: 120%;
   letter-spacing: 0.1px;
   margin-bottom: 8px;
+
+  @media (max-width: 768px) {
+    padding-right: 48px;
+  }
 }
 
 .fancybox-subtitle {
@@ -868,4 +876,24 @@ input[type="number"] {
   width: 20px !important;
   height: 20px !important;
   color: #000000 !important;
+}
+
+
+.fancybox__container,
+.fancybox__backdrop,
+.fancybox__carousel,
+.fancybox__slide {
+  transition: none !important;
+  animation: none !important;
+}
+
+
+.fancybox__container.is-closing {
+  transition: none !important;
+  animation: none !important;
+}
+
+
+.fancybox__backdrop {
+  transition: none !important;
 }

@@ -2033,13 +2033,12 @@ function initCartModal() {
   }
 }
 
-
 // Функція для повідомлення про наявність
 function initNotifyAvailability() {
   const notifyBtn = document.getElementById('notifyBtn');
   const notifyModal = document.getElementById('notifyModal');
   const notifyForm = document.getElementById('notifyForm');
-  
+
   if (!notifyBtn || !notifyModal || !notifyForm) return;
 
   // Відкриття модалки
@@ -2057,7 +2056,7 @@ function initNotifyAvailability() {
   };
 
   document.getElementById('closeNotifyModal')?.addEventListener('click', closeModal);
-  
+
   notifyModal.addEventListener('click', (e) => {
     if (e.target === notifyModal) closeModal();
   });
@@ -2065,7 +2064,7 @@ function initNotifyAvailability() {
   // Валідація та активація кнопки
   const notifyPhone = document.getElementById('notifyPhone');
   const submitBtn = notifyForm.querySelector('button[type="submit"]');
-  
+
   if (notifyPhone && submitBtn) {
     notifyPhone.addEventListener('input', () => {
       const cleanPhone = notifyPhone.value.replace(/\D/g, '');
@@ -2077,16 +2076,17 @@ function initNotifyAvailability() {
   notifyForm.addEventListener('submit', (e) => {
     e.preventDefault();
     closeModal();
-    
+
     const successModal2 = document.getElementById('successModal2');
     if (successModal2) {
-      successModal2.classList.add('active');
-      document.body.classList.add('is-lock');
+      // Убираем блокировку фона ДО отображения successModal2
+      document.body.classList.remove('is-lock');
 
-      // Закрытие модалки через 3 секунд
+      successModal2.classList.add('active');
+      
+      // Закрытие модалки через 3 секунды
       setTimeout(() => {
         successModal2.classList.remove('active');
-        document.body.classList.remove('is-lock');
       }, 3000);
     }
   });
@@ -2201,33 +2201,24 @@ function initReviewsModal() {
   });
 }
 
-
 function initProductGallery() {
   if (typeof Fancybox === 'undefined') return;
-
-  // КРИТИЧНО: Закрити всі відкриті Fancybox при завантаженні
+  
   Fancybox.close(true);
   
-  // Очистити hash з URL, якщо він є
   if (window.location.hash) {
     history.replaceState(null, null, ' ');
   }
 
-  // Отримуємо назву товару та артикул
   const productTitle = document.querySelector('.product-detail__title')?.textContent || '';
   const productCode = document.querySelector('.product-detail__code')?.textContent || '';
 
   Fancybox.bind('[data-fancybox="gallery"]', {
-    // ВИМКНУТИ Hash в URL
     Hash: false,
-    
-    // Увімкнення мініатюр
     Thumbs: {
       type: "classic",
       autoStart: true,
     },
-
-    // Налаштування тулбару - ПОКАЗАТИ кнопку закриття
     Toolbar: {
       display: {
         left: [],
@@ -2236,8 +2227,6 @@ function initProductGallery() {
       },
       autoEnable: true,
     },
-
-    // Показувати підписи
     caption: function (fancybox, slide) {
       return `
         <h2 class="fancybox-title">
@@ -2248,15 +2237,21 @@ function initProductGallery() {
         </p>
       `;
     },
-
-    // ВИМКНУТИ анімацію появи/зникнення
+    // Отключаем анимации
     animated: false,
     showClass: false,
     hideClass: false,
-
-    // Вимкнути dragToClose
     dragToClose: false,
-
+    
+    // Принудительно отключаем компактный режим
+    compact: false,
+    
+    // Дополнительные настройки для отключения анимаций
+    animationEffect: false,
+    animationDuration: 0,
+    transitionEffect: false,
+    transitionDuration: 0,
+    
     keyboard: {
       Escape: "close",
       Delete: "close",
@@ -2268,153 +2263,30 @@ function initProductGallery() {
       ArrowRight: "next",
       ArrowLeft: "prev",
     },
-
-    // Повністю вимкнути zoom та рух картинки
     Image: {
       zoom: false,
       click: false,
       wheel: false,
       fit: "contain",
     },
-
     on: {
       ready: (fancybox) => {
-        console.log('Fancybox готовий');
-        
-        // Додати обробник кліку на backdrop для закриття
-        const backdrop = document.querySelector('.fancybox__backdrop');
-        const slide = document.querySelector('.fancybox__slide');
-        
-        if (backdrop) {
-          backdrop.addEventListener('click', (e) => {
-            if (e.target === backdrop) {
-              fancybox.close();
-            }
-          });
-        }
-        
-        // Закривати при кліку на slide (область overflow)
-        if (slide) {
-          slide.addEventListener('click', (e) => {
-            // Якщо клік НЕ на картинці, мініатюрах, кнопках та caption
-            const isImage = e.target.closest('.fancybox__content');
-            const isThumbs = e.target.closest('.fancybox__thumbs');
-            const isButton = e.target.closest('.f-button');
-            const isCaption = e.target.closest('.fancybox__caption');
-            const isNav = e.target.closest('.fancybox__nav');
-            
-            if (!isImage && !isThumbs && !isButton && !isCaption && !isNav) {
-              fancybox.close();
-            }
-          });
-        }
-      },
-      
-      // Очищати hash при закритті
-      destroy: () => {
-        if (window.location.hash) {
-          history.replaceState(null, null, ' ');
-        }
-      }
-    },
-  });
-}
-
-function initProductGallery() {
-  if (typeof Fancybox === 'undefined') return;
-
-  // КРИТИЧНО: Закрити всі відкриті Fancybox при завантаженні
-  Fancybox.close(true);
-  
-  // Очистити hash з URL, якщо він є
-  if (window.location.hash) {
-    history.replaceState(null, null, ' ');
-  }
-
-  // Отримуємо назву товару та артикул
-  const productTitle = document.querySelector('.product-detail__title')?.textContent || '';
-  const productCode = document.querySelector('.product-detail__code')?.textContent || '';
-
-  Fancybox.bind('[data-fancybox="gallery"]', {
-    // ВИМКНУТИ Hash в URL
-    Hash: false,
-    
-    // Увімкнення мініатюр
-    Thumbs: {
-      type: "classic",
-      autoStart: true,
-    },
-
-    // Налаштування тулбару - ПОКАЗАТИ кнопку закриття
-    Toolbar: {
-      display: {
-        left: [],
-        middle: [],
-        right: ["close"],
-      },
-      autoEnable: true,
-    },
-
-    // Показувати підписи
-    caption: function (fancybox, slide) {
-      return `
-        <h2 class="fancybox-title">
-          ${productTitle}
-        </h2>
-        <p class="fancybox-subtitle">
-          Арт.: ${productCode}
-        </p>
-      `;
-    },
-
-    // ВИМКНУТИ анімацію появи/зникнення
-    animated: false,
-    showClass: false,
-    hideClass: false,
-
-    // Вимкнути dragToClose
-    dragToClose: false,
-
-    keyboard: {
-      Escape: "close",
-      Delete: "close",
-      Backspace: "close",
-      PageUp: "prev",
-      PageDown: "next",
-      ArrowUp: "prev",
-      ArrowDown: "next",
-      ArrowRight: "next",
-      ArrowLeft: "prev",
-    },
-
-    // Повністю вимкнути zoom та рух картинки
-    Image: {
-      zoom: false,
-      click: false,
-      wheel: false,
-      fit: "contain",
-    },
-
-    on: {
-      ready: (fancybox) => {
-        console.log('Fancybox готовий');
-        
-        // ПЕРЕМІСТИТИ toolbar та footer всередину carousel
         const container = document.querySelector('.fancybox__container');
         const carousel = document.querySelector('.fancybox__carousel');
         const toolbar = document.querySelector('.fancybox__toolbar');
         const footer = document.querySelector('.fancybox__footer');
-        
+
+        // Принудительно убираем класс is-compact
+        if (container) {
+          container.classList.remove('is-compact');
+        }
+
         if (carousel && toolbar && footer) {
-          // Перемістити toolbar на початок carousel
           carousel.insertBefore(toolbar, carousel.firstChild);
-          // Перемістити footer в кінець carousel
           carousel.appendChild(footer);
         }
-        
-        // Додати обробник кліку на backdrop для закриття
+
         const backdrop = document.querySelector('.fancybox__backdrop');
-        
         if (backdrop) {
           backdrop.addEventListener('click', (e) => {
             if (e.target === backdrop) {
@@ -2422,26 +2294,26 @@ function initProductGallery() {
             }
           });
         }
-        
-        // Закривати при кліку на carousel (поза контентом)
+
         if (carousel) {
           carousel.addEventListener('click', (e) => {
-            // Якщо клік НЕ на картинці, мініатюрах, кнопках, caption та nav
             const isImage = e.target.closest('.fancybox__content');
-            const isThumbs = e.target.closest('.fancybox__thumbs');
+            const isThumbs = e.target.closest('.f-thumbs') || 
+                            e.target.closest('.fancybox__thumbs');
             const isButton = e.target.closest('.f-button');
-            const isCaption = e.target.closest('.fancybox__caption');
             const isNav = e.target.closest('.fancybox__nav');
             const isToolbar = e.target.closest('.fancybox__toolbar');
             
-            if (!isImage && !isThumbs && !isButton && !isCaption && !isNav && !isToolbar) {
+            const isCaptionText = e.target.closest('.fancybox__caption') ||
+                                 e.target.classList.contains('fancybox-title') ||
+                                 e.target.classList.contains('fancybox-subtitle');
+
+            if (!isImage && !isThumbs && !isButton && !isNav && !isToolbar && !isCaptionText) {
               fancybox.close();
             }
           });
         }
       },
-      
-      // Очищати hash при закритті
       destroy: () => {
         if (window.location.hash) {
           history.replaceState(null, null, ' ');
@@ -2451,21 +2323,19 @@ function initProductGallery() {
   });
 }
 
-// ВАЖЛИВО: Закрити Fancybox перед перезавантаженням
+
 window.addEventListener('beforeunload', () => {
   if (typeof Fancybox !== 'undefined') {
     Fancybox.close(true);
   }
 });
 
-// Закрити при завантаженні сторінки
 window.addEventListener('load', () => {
   if (typeof Fancybox !== 'undefined') {
     Fancybox.close(true);
   }
 });
 
-// Викликати після завантаження DOM
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initProductGallery);
 } else {
@@ -2474,29 +2344,29 @@ if (document.readyState === 'loading') {
 
 
 function initWishlist() {
-  const likedBtn = document.querySelector('.product-detail__liked');
+  const likedButtons = document.querySelectorAll('.product-detail__liked');
   const successModal3 = document.getElementById('successModal3');
-  
-  if (!likedBtn || !successModal3) return;
 
-  likedBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    
-    
-    likedBtn.classList.toggle('active');
-    
-    if (likedBtn.classList.contains('active')) {
-      successModal3.classList.add('active');
+  if (!likedButtons.length || !successModal3) return;
 
-     
-      setTimeout(() => {
-        successModal3.classList.remove('active');
-      }, 3000);
-    }
+  likedButtons.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      btn.classList.toggle('active');
+
+      if (btn.classList.contains('active')) {
+        successModal3.classList.add('active');
+
+        setTimeout(() => {
+          successModal3.classList.remove('active');
+        }, 3000);
+      }
+    });
   });
 }
 
-// Инициализация при загрузке страницы
+
 document.addEventListener('DOMContentLoaded', initWishlist);
 
 
