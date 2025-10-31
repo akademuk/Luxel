@@ -1,0 +1,53 @@
+@use '../helpers' as *;
+
+.see-also {
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+
+        @media (max-width: 768px) {
+            gap: 16px;
+        }
+    }
+
+    &-list {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        gap: 16px;
+        align-self: stretch;
+        flex-wrap: wrap;
+
+        @media (max-width: 768px) {
+            gap: 8px;
+        }
+
+        &-item {
+        a {
+            display: flex;
+            padding: 16px 24px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 16px;
+            background: var(--color-gray-primary);
+            font-size: 16px;
+            line-height: 24px; 
+            letter-spacing: 0.08px;
+            color: var(--color-dark);
+            text-decoration: none;
+            transition-duration: var(--transition-duration);
+
+            @media (max-width: 768px) {
+                padding: 8px 12px;
+                font-size: 14px;
+                line-height: 18px;
+            }
+
+            &:hover {
+                color: var(--color-red);
+            }
+        }
+    }
+    }
+}

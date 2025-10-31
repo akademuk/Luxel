@@ -798,6 +798,12 @@ input[type="number"] {
   aspect-ratio: 1/1;
   border-radius: 12px;
   background: var(--color-light);
+
+  @media (max-width: 768px) {
+    width: 44px !important;
+    height: 44px !important;
+    padding: 6px !important;
+  }
 }
 
 .f-thumbs.is-horizontal .f-thumbs__track {

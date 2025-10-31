@@ -2203,9 +2203,9 @@ function initReviewsModal() {
 
 function initProductGallery() {
   if (typeof Fancybox === 'undefined') return;
-  
+
   Fancybox.close(true);
-  
+
   if (window.location.hash) {
     history.replaceState(null, null, ' ');
   }
@@ -2229,29 +2229,34 @@ function initProductGallery() {
     },
     caption: function (fancybox, slide) {
       return `
-        <h2 class="fancybox-title">
-          ${productTitle}
-        </h2>
-        <p class="fancybox-subtitle">
-          Арт.: ${productCode}
-        </p>
+        <h2 class="fancybox-title">${productTitle}</h2>
+        <p class="fancybox-subtitle">Арт.: ${productCode}</p>
       `;
     },
-    // Отключаем анимации
+    
+    // 🔒 Полностью отключаем анимации
     animated: false,
     showClass: false,
     hideClass: false,
     dragToClose: false,
-    
-    // Принудительно отключаем компактный режим
     compact: false,
-    
-    // Дополнительные настройки для отключения анимаций
     animationEffect: false,
     animationDuration: 0,
     transitionEffect: false,
     transitionDuration: 0,
-    
+
+    // 🧭 Отключаем свайпы и перетаскивание
+    Carousel: {
+      friction: 0,        // Без инерции
+      Panzoom: {
+        touch: false,     // Отключить тач-жесты
+      },
+      dragFree: false,    // Без свободного перетаскивания
+      slides: {
+        drag: false,      // Запрещаем drag свайпы
+      }
+    },
+
     keyboard: {
       Escape: "close",
       Delete: "close",
@@ -2269,6 +2274,7 @@ function initProductGallery() {
       wheel: false,
       fit: "contain",
     },
+
     on: {
       ready: (fancybox) => {
         const container = document.querySelector('.fancybox__container');
@@ -2276,10 +2282,7 @@ function initProductGallery() {
         const toolbar = document.querySelector('.fancybox__toolbar');
         const footer = document.querySelector('.fancybox__footer');
 
-        // Принудительно убираем класс is-compact
-        if (container) {
-          container.classList.remove('is-compact');
-        }
+        if (container) container.classList.remove('is-compact');
 
         if (carousel && toolbar && footer) {
           carousel.insertBefore(toolbar, carousel.firstChild);
@@ -2289,24 +2292,20 @@ function initProductGallery() {
         const backdrop = document.querySelector('.fancybox__backdrop');
         if (backdrop) {
           backdrop.addEventListener('click', (e) => {
-            if (e.target === backdrop) {
-              fancybox.close();
-            }
+            if (e.target === backdrop) fancybox.close();
           });
         }
 
         if (carousel) {
           carousel.addEventListener('click', (e) => {
             const isImage = e.target.closest('.fancybox__content');
-            const isThumbs = e.target.closest('.f-thumbs') || 
-                            e.target.closest('.fancybox__thumbs');
+            const isThumbs = e.target.closest('.f-thumbs, .fancybox__thumbs');
             const isButton = e.target.closest('.f-button');
             const isNav = e.target.closest('.fancybox__nav');
             const isToolbar = e.target.closest('.fancybox__toolbar');
-            
             const isCaptionText = e.target.closest('.fancybox__caption') ||
-                                 e.target.classList.contains('fancybox-title') ||
-                                 e.target.classList.contains('fancybox-subtitle');
+                                  e.target.classList.contains('fancybox-title') ||
+                                  e.target.classList.contains('fancybox-subtitle');
 
             if (!isImage && !isThumbs && !isButton && !isNav && !isToolbar && !isCaptionText) {
               fancybox.close();
@@ -2322,6 +2321,7 @@ function initProductGallery() {
     },
   });
 }
+
 
 
 window.addEventListener('beforeunload', () => {

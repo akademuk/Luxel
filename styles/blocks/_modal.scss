@@ -553,7 +553,7 @@
     .modal__form-add-btn {
         min-height: 56px;
     }
-}
+}   
 
 #specsModal {
     display: flex;
@@ -640,9 +640,11 @@
 
         .modal__content {
             bottom: 0;
+            top: auto;
             transform: translate(-50%, 0);
             padding: 24px 24px 50px 24px;
             border-radius: 16px 16px 0 0;
+            box-shadow: none;
         }
 
         .modal__content-body-content {
@@ -760,7 +762,7 @@
             padding: 10px;
            
             img {
-                content: url(../../icons/accardion-arrow.svg);
+                content: url(../icons/accardion-arrow.svg);
                 width: 24px;
                 height: 24px;
                 flex-shrink: 0;

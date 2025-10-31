@@ -1040,6 +1040,13 @@ input[type=number] {
   border-radius: 12px;
   background: var(--color-light);
 }
+@media (max-width: 768px) {
+  .f-thumbs__slide {
+    width: 44px !important;
+    height: 44px !important;
+    padding: 6px !important;
+  }
+}
 
 .f-thumbs.is-horizontal .f-thumbs__track {
   justify-content: center;
@@ -3121,9 +3128,11 @@ input[type=number] {
   }
   #cartModal .modal__content {
     bottom: 0;
+    top: auto;
     transform: translate(-50%, 0);
     padding: 24px 24px 50px 24px;
     border-radius: 16px 16px 0 0;
+    box-shadow: none;
   }
   #cartModal .modal__content-body-content {
     gap: 12px;
@@ -3222,7 +3231,7 @@ input[type=number] {
     padding: 10px;
   }
   #specsModal .modal__close img {
-    content: url(../../icons/accardion-arrow.svg);
+    content: url(../icons/accardion-arrow.svg);
     width: 24px;
     height: 24px;
     flex-shrink: 0;
@@ -6927,6 +6936,54 @@ input[type=number] {
 }
 .product-detail__quantity-btn:disabled img {
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(244deg) brightness(104%) contrast(101%);
+}
+
+.see-also__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+@media (max-width: 768px) {
+  .see-also__inner {
+    gap: 16px;
+  }
+}
+.see-also-list {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  gap: 16px;
+  align-self: stretch;
+  flex-wrap: wrap;
+}
+@media (max-width: 768px) {
+  .see-also-list {
+    gap: 8px;
+  }
+}
+.see-also-list-item a {
+  display: flex;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  background: var(--color-gray-primary);
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+  color: var(--color-dark);
+  text-decoration: none;
+  transition-duration: var(--transition-duration);
+}
+@media (max-width: 768px) {
+  .see-also-list-item a {
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+.see-also-list-item a:hover {
+  color: var(--color-red);
 }
 
 /*# sourceMappingURL=main.css.map */
