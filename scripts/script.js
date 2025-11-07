@@ -2174,13 +2174,13 @@ function initReviewsModal() {
   const openModal = (e) => {
     e?.preventDefault();
     reviewsModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('is-lock'); // Добавляем класс is-lock
   };
 
   // Закриття модалки
   const closeModal = () => {
     reviewsModal.classList.remove('active');
-    document.body.style.overflow = '';
+    document.body.classList.remove('is-lock'); // Удаляем класс is-lock
   };
 
   // Підключення подій до кнопок
@@ -2366,6 +2366,175 @@ function initWishlist() {
   });
 }
 
+function initializeReviewsSwiper() {
+    // Проверяем, существует ли элемент с слайдером, чтобы избежать ошибок в случае его отсутствия
+    const swiperElement = document.querySelector('.reviews-list__main');
+    if (!swiperElement) return;
+
+    const reviewsSwiper = new Swiper('.reviews-list__main', {
+        loop: false,
+        slidesPerView: 6,
+        spaceBetween: 8,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+            disabledClass: 'swiper-button-disabled', // Класс для отключенных кнопок
+        }
+    });
+
+    Fancybox.bind('[data-fancybox="galleryReviews"]', {
+        loop: true,
+        arrows: true,
+        infobar: true,
+    });
+
+    // Добавляем слушателей событий для скрытия/отображения кнопок навигации в зависимости от состояния слайдера
+    reviewsSwiper.on('slideChange', function () {
+        toggleNavigationButtons(reviewsSwiper);
+    });
+
+    // Скрытие или отображение кнопок навигации в зависимости от возможности свайпать
+    function toggleNavigationButtons(swiper) {
+        const prevButton = document.querySelector('.swiper-button-prev');
+        const nextButton = document.querySelector('.swiper-button-next');
+
+        if (swiper.isBeginning) {
+            prevButton.classList.add('swiper-button-disabled');
+        } else {
+            prevButton.classList.remove('swiper-button-disabled');
+        }
+
+        if (swiper.isEnd) {
+            nextButton.classList.add('swiper-button-disabled');
+        } else {
+            nextButton.classList.remove('swiper-button-disabled');
+        }
+    }
+
+    // Инициализируем начальное состояние кнопок
+    toggleNavigationButtons(reviewsSwiper);
+}
+
+function toggleAnswerVisibility() {
+    const toggleButtons = document.querySelectorAll('.reviews-list__item-description-answer-btn');
+
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const answerBox = button.closest('.reviews-list__item-description-answer');
+            const contentBox = answerBox.querySelector('.reviews-list__item-description-answer--box');
+
+            contentBox.classList.toggle('hidden');
+
+            const isHidden = contentBox.classList.contains('hidden');
+            const buttonText = isHidden ? 'Показати відповідь' : 'Приховати відповідь';
+            button.querySelector('span').textContent = buttonText;  
+        });
+    });
+}
+
+// Фільтрація відгуків
+document.addEventListener('DOMContentLoaded', function() {
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const reviewsItems = document.querySelectorAll('.reviews-list__item, .reviews-list__image');
+    
+    // Функція для сортування за датою (найновіші спочатку)
+    function sortByDate() {
+        const reviewsList = document.querySelector('.reviews-list');
+        const items = Array.from(reviewsItems);
+        
+        items.sort((a, b) => {
+            const dateA = new Date(a.dataset.date);
+            const dateB = new Date(b.dataset.date);
+            return dateB - dateA; // Новіші спочатку
+        });
+        
+        items.forEach(item => reviewsList.appendChild(item));
+    }
+    
+    // Функція для сортування за рейтингом (найвищий спочатку)
+    function sortByRating() {
+        const reviewsList = document.querySelector('.reviews-list');
+        const items = Array.from(reviewsItems);
+        
+        items.sort((a, b) => {
+            const ratingA = parseFloat(a.dataset.rating);
+            const ratingB = parseFloat(b.dataset.rating);
+            return ratingB - ratingA; // Вищий рейтинг спочатку
+        });
+        
+        items.forEach(item => reviewsList.appendChild(item));
+    }
+    
+    // Функція для фільтрації за наявністю фото
+    function filterByPhotos() {
+        reviewsItems.forEach(item => {
+            if (item.dataset.hasPhotos === 'true') {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+    
+    // Функція для скидання фільтра (показати всі)
+    function showAll() {
+        reviewsItems.forEach(item => {
+            item.style.display = '';
+        });
+    }
+    
+    // Обробка кліків на вкладки фільтрів
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            // Видалити активний клас з усіх вкладок
+            filterTabs.forEach(t => t.classList.remove('active'));
+            
+            // Додати активний клас до поточної вкладки
+            this.classList.add('active');
+            
+            // Показати всі елементи перед застосуванням нового фільтра
+            showAll();
+            
+            // Застосувати відповідний фільтр
+            const filter = this.dataset.filter;
+            
+            switch(filter) {
+                case 'date':
+                    sortByDate();
+                    break;
+                case 'rating':
+                    sortByRating();
+                    break;
+                case 'photos':
+                    filterByPhotos();
+                    break;
+            }
+        });
+    });
+    
+    // Ініціалізація: сортування за датою за замовчуванням
+    sortByDate();
+    
+    // Обробка кнопок "Приховати відповідь"
+    const answerButtons = document.querySelectorAll('.reviews-list__item-description-answer-btn');
+    
+    answerButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const answerBox = this.previousElementSibling;
+            const span = this.querySelector('span');
+            
+            if (answerBox.style.display === 'none') {
+                answerBox.style.display = '';
+                span.textContent = 'Приховати відповідь';
+            } else {
+                answerBox.style.display = 'none';
+                span.textContent = 'Показати відповідь';
+            }
+        });
+    });
+});
+
+
 
 document.addEventListener('DOMContentLoaded', initWishlist);
 
@@ -2405,6 +2574,9 @@ function initApp() {
     initSpecificationsModal();
     initReviewsModal();
     initProductGallery();
+    initializeReviewsSwiper();
+    toggleAnswerVisibility();
+  
 }
 
 // Запуск приложения после загрузки DOM
