@@ -2471,6 +2471,8 @@
                 </div>
             </div>
 
+            <button class="reviews-modal-btn reviews-modal-btn-mob border-btn">Додати відгук</button>
+
             <div class="filter-tabs">
                 <button class="filter-tab active" data-filter="date">За датою</button>
                 <button class="filter-tab" data-filter="rating">За рейтингом</button>
@@ -2756,7 +2758,7 @@
                 </div>
             </div>
 
-            <button class="reviews-modal-btn border-btn" id="addReviewsModal">Додати відгук</button>
+            <button class="reviews-modal-btn reviews-modal-desk border-btn">Додати відгук</button>
         </div>
     </div>
 
@@ -2905,7 +2907,6 @@
     // Элементы
     const modalAddReview = document.getElementById('addReviews');
     const modalReviews = document.getElementById('reviewsModal');
-    const openBtn = document.getElementById('addReviewsModal');
     const closeModalBtn = document.getElementById('closeModal');
     const form = document.getElementById('reviewForm');
     const submitBtn = document.getElementById('submitBtn');
@@ -2955,8 +2956,12 @@
         });
     }
 
-    // Открыть форму отзывов
-    openBtn?.addEventListener('click', () => openModal(modalAddReview));
+    // Открыть форму отзывов по клику на кнопки с классом reviews-modal-btn
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('.reviews-modal-btn')) {
+            openModal(modalAddReview);
+        }
+    });
 
     // Закрытие модалки по кнопке
     closeModalBtn?.addEventListener('click', () => {

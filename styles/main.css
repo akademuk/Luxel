@@ -3317,7 +3317,7 @@ input[type=number] {
   font-size: 24px;
 }
 #reviewsModal .reviews-summary__content > span {
-  display: flex;
+  display: inline;
   color: #AAA;
   gap: 5px;
 }
@@ -3330,6 +3330,14 @@ input[type=number] {
   align-items: center;
   gap: 8px;
   margin-bottom: 16px;
+}
+@media (max-width: 768px) {
+  #reviewsModal .filter-tabs {
+    padding: 16px 12px 0 12px;
+    border-top: 8px solid var(--color-gray-primary);
+    width: calc(100% + 24px);
+    margin-left: -12px;
+  }
 }
 #reviewsModal .filter-tabs .filter-tab {
   padding: 8px 16px;
@@ -3351,6 +3359,11 @@ input[type=number] {
   height: 104px;
   border-radius: 8px;
   overflow: hidden;
+}
+@media (max-width: 768px) {
+  #reviewsModal .reviews-list__slide {
+    width: 72px !important;
+  }
 }
 #reviewsModal .reviews-list__slide img {
   width: 100%;
@@ -3414,6 +3427,12 @@ input[type=number] {
   border-bottom: var(--border);
   margin-bottom: 16px;
 }
+@media (max-width: 768px) {
+  #reviewsModal .reviews-list__item-description {
+    border: none;
+    padding: 0;
+  }
+}
 #reviewsModal .reviews-list__item-description p {
   margin: 0;
   font-weight: var(--font-weight-regular);
@@ -3425,6 +3444,12 @@ input[type=number] {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+@media (max-width: 768px) {
+  #reviewsModal .reviews-list__item-description-advantages {
+    border: none;
+    padding: 0;
+  }
 }
 #reviewsModal .reviews-list__item-description-advantages p {
   margin: 0;
@@ -3440,6 +3465,12 @@ input[type=number] {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+@media (max-width: 768px) {
+  #reviewsModal .reviews-list__item-description-disadvantages {
+    border: none;
+    padding: 0;
+  }
 }
 #reviewsModal .reviews-list__item-description-disadvantages p {
   margin: 0;
@@ -3467,6 +3498,7 @@ input[type=number] {
 #reviewsModal .reviews-list__item-description-answer--logo {
   display: flex;
   width: 56px;
+  flex-shrink: 0;
   height: 56px;
   justify-content: center;
   align-items: center;
@@ -3520,9 +3552,19 @@ input[type=number] {
   transform: rotate(90deg);
 }
 
+#reviewsModal .reviews-modal-btn-mob {
+  display: none;
+}
 @media (max-width: 768px) {
   #reviewsModal .modal__content {
     padding: 12px;
+  }
+  #reviewsModal .reviews-modal-desk {
+    display: none;
+  }
+  #reviewsModal .reviews-modal-btn-mob {
+    display: block;
+    margin-bottom: 16px;
   }
   #reviewsModal .modal__content-header {
     padding-left: 52px;
@@ -3543,6 +3585,12 @@ input[type=number] {
     font-size: 14px;
     line-height: 18px;
     margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    min-height: 18px;
+    color: var(--color-gray-label);
   }
   #reviewsModal .modal__close {
     position: absolute;
@@ -3603,6 +3651,11 @@ input[type=number] {
   gap: 16px;
   padding: 13.5px 0;
   margin-bottom: 30px;
+}
+@media (max-width: 768px) {
+  #addReviews .modal__header {
+    padding: 0;
+  }
 }
 #addReviews .modal__back {
   background: transparent;
