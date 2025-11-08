@@ -285,7 +285,7 @@ function initHeader() {
         if (e) {
             e.stopPropagation();
         }
-        
+
         if (overlayElement.classList.contains(stateClasses.isActive)) {
             closeMenu();
         } else {
@@ -327,7 +327,7 @@ function initHeader() {
 
     // События
     // Клик по бургеру - ВАЖНО: stopPropagation чтобы не сработал глобальный обработчик
-    burgerButtonElement.addEventListener('click', function(e) {
+    burgerButtonElement.addEventListener('click', function (e) {
         e.stopPropagation();
         toggleMenu(e);
     });
@@ -649,6 +649,7 @@ function initSwiperPopular() {
 
         swiperInstances.popular = new Swiper(".offers__slider--popular", {
             slidesPerView: 2,
+            loop: false,
             spaceBetween: 8,
             navigation: {
                 nextEl: ".offers-popular-swiper-next",
@@ -663,7 +664,7 @@ function initSwiperPopular() {
                     slidesPerView: 3,
                 },
                 1280: {
-                    slidesPerView: 4,
+                    slidesPerView: 'auto',
                     spaceBetween: 16,
                 },
             },
@@ -1842,13 +1843,13 @@ function initProductAccordion() {
 
 function initAccordionProduct() {
     const accordionContainer = document.querySelector('.product-detail__description');
-    
+
     if (!accordionContainer) {
         return;
     }
 
     const accordionItems = accordionContainer.querySelectorAll('.product-detail__accordion-item');
-    
+
     if (accordionItems.length === 0) {
         return;
     }
@@ -1857,7 +1858,7 @@ function initAccordionProduct() {
         accordionItems.forEach(item => {
             const header = item.querySelector('.product-detail__accordion-header');
             const panel = item.querySelector('.product-detail__accordion-panel');
-            
+
             header.setAttribute('aria-expanded', 'false');
             item.classList.remove('is-open');
             panel.classList.remove('is-open');
@@ -1883,10 +1884,10 @@ function initAccordionProduct() {
 
     accordionItems.forEach(item => {
         const header = item.querySelector('.product-detail__accordion-header');
-        
+
         header.setAttribute('aria-expanded', 'false');
-        
-        header.addEventListener('click', function() {
+
+        header.addEventListener('click', function () {
             togglePanel(this);
         });
     });
@@ -1898,472 +1899,468 @@ if (typeof module !== 'undefined' && module.exports) {
 
 // Функція для управління кількістю товару
 function initQuantityControl() {
-  const decreaseBtn = document.getElementById('decreaseBtn');
-  const increaseBtn = document.getElementById('increaseBtn');
-  const quantityInput = document.getElementById('quantityInput');
+    const decreaseBtn = document.getElementById('decreaseBtn');
+    const increaseBtn = document.getElementById('increaseBtn');
+    const quantityInput = document.getElementById('quantityInput');
 
-  if (!decreaseBtn || !increaseBtn || !quantityInput) return;
+    if (!decreaseBtn || !increaseBtn || !quantityInput) return;
 
-  // Перевірка чи вже ініціалізовано
-  if (decreaseBtn.dataset.initialized === 'true') return;
-  
-  // Позначаємо як ініціалізоване
-  decreaseBtn.dataset.initialized = 'true';
-  increaseBtn.dataset.initialized = 'true';
+    // Перевірка чи вже ініціалізовано
+    if (decreaseBtn.dataset.initialized === 'true') return;
 
-  // Функція оновлення стану кнопки зменшення
-  function updateDecreaseButton() {
-    const value = parseInt(quantityInput.value) || 1;
-    if (value <= 1) {
-      decreaseBtn.disabled = true;
-      decreaseBtn.style.opacity = '0.5';
-      decreaseBtn.style.cursor = 'not-allowed';
-    } else {
-      decreaseBtn.disabled = false;
-      decreaseBtn.style.opacity = '1';
-      decreaseBtn.style.cursor = 'pointer';
-    }
-  }
+    // Позначаємо як ініціалізоване
+    decreaseBtn.dataset.initialized = 'true';
+    increaseBtn.dataset.initialized = 'true';
 
-  // Зменшення кількості
-  decreaseBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    let value = parseInt(quantityInput.value) || 1;
-    if (value > 1) {
-      quantityInput.value = value - 1;
-      updateDecreaseButton();
-    }
-  });
-
-  // Збільшення кількості
-  increaseBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    let value = parseInt(quantityInput.value) || 0;
-    const max = parseInt(quantityInput.max) || 999;
-    if (value < max) {
-      quantityInput.value = value + 1;
-      updateDecreaseButton();
-    }
-  });
-
-  // Обробка ручного введення
-  quantityInput.addEventListener('input', () => {
-    let value = parseInt(quantityInput.value);
-    const min = parseInt(quantityInput.min) || 1;
-    const max = parseInt(quantityInput.max) || 999;
-
-    // Якщо порожнє поле або NaN
-    if (isNaN(value) || quantityInput.value === '') {
-      return; // Дозволяємо порожнє поле під час введення
+    // Функція оновлення стану кнопки зменшення
+    function updateDecreaseButton() {
+        const value = parseInt(quantityInput.value) || 1;
+        if (value <= 1) {
+            decreaseBtn.disabled = true;
+        } else {
+            decreaseBtn.disabled = false;
+        }
     }
 
-    if (value < min) quantityInput.value = min;
-    if (value > max) quantityInput.value = max;
+    // Зменшення кількості
+    decreaseBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
 
+        let value = parseInt(quantityInput.value) || 1;
+        if (value > 1) {
+            quantityInput.value = value - 1;
+            updateDecreaseButton();
+        }
+    });
+
+    // Збільшення кількості
+    increaseBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        let value = parseInt(quantityInput.value) || 0;
+        const max = parseInt(quantityInput.max) || 999;
+        if (value < max) {
+            quantityInput.value = value + 1;
+            updateDecreaseButton();
+        }
+    });
+
+    // Обробка ручного введення
+    quantityInput.addEventListener('input', () => {
+        let value = parseInt(quantityInput.value);
+        const min = parseInt(quantityInput.min) || 1;
+        const max = parseInt(quantityInput.max) || 999;
+
+        // Якщо порожнє поле або NaN
+        if (isNaN(value) || quantityInput.value === '') {
+            return; // Дозволяємо порожнє поле під час введення
+        }
+
+        if (value < min) quantityInput.value = min;
+        if (value > max) quantityInput.value = max;
+
+        updateDecreaseButton();
+    });
+
+    // Обробка виходу з поля (blur) - встановлюємо мінімум якщо порожнє
+    quantityInput.addEventListener('blur', () => {
+        if (quantityInput.value === '' || isNaN(parseInt(quantityInput.value))) {
+            quantityInput.value = 1;
+            updateDecreaseButton();
+        }
+    });
+
+    // Ініціалізація стану кнопки
     updateDecreaseButton();
-  });
-
-  // Обробка виходу з поля (blur) - встановлюємо мінімум якщо порожнє
-  quantityInput.addEventListener('blur', () => {
-    if (quantityInput.value === '' || isNaN(parseInt(quantityInput.value))) {
-      quantityInput.value = 1;
-      updateDecreaseButton();
-    }
-  });
-
-  // Ініціалізація стану кнопки
-  updateDecreaseButton();
 }
 
 // Функція для модалки додавання в кошик
 function initCartModal() {
-  const buyBtn = document.getElementById('buyBtn');
-  const cartModal = document.getElementById('cartModal');
+    const buyBtn = document.getElementById('buyBtn');
+    const cartModal = document.getElementById('cartModal');
 
-  if (!buyBtn || !cartModal) return;
+    if (!buyBtn || !cartModal) return;
 
-  if (buyBtn.dataset.cartInitialized === 'true') return;
-  buyBtn.dataset.cartInitialized = 'true';
+    if (buyBtn.dataset.cartInitialized === 'true') return;
+    buyBtn.dataset.cartInitialized = 'true';
 
-  const body = document.body;
+    const body = document.body;
 
-  buyBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    cartModal.classList.add('active');
-    body.classList.add('is-lock'); 
-  });
-
-  function closeModal() {
-    cartModal.classList.remove('active');
-    body.classList.remove('is-lock');
-  }
-
-  const closeCartModal = document.getElementById('closeCartModal');
-  const continueShoppingBtn = document.getElementById('continueShoppingBtn');
-
-  if (closeCartModal) {
-    closeCartModal.addEventListener('click', closeModal);
-  }
-
-  if (continueShoppingBtn) {
-    continueShoppingBtn.addEventListener('click', closeModal);
-  }
-
-  cartModal.addEventListener('click', (e) => {
-    if (e.target === cartModal) {
-      closeModal();
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && cartModal.classList.contains('active')) {
-      closeModal();
-    }
-  });
-
-  const checkoutBtn = document.getElementById('checkoutBtn');
-  if (checkoutBtn) {
-    checkoutBtn.addEventListener('click', () => {
-      window.location.href = '/checkout'; 
+    buyBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        cartModal.classList.add('active');
+        body.classList.add('is-lock');
     });
-  }
+
+    function closeModal() {
+        cartModal.classList.remove('active');
+        body.classList.remove('is-lock');
+    }
+
+    const closeCartModal = document.getElementById('closeCartModal');
+    const continueShoppingBtn = document.getElementById('continueShoppingBtn');
+
+    if (closeCartModal) {
+        closeCartModal.addEventListener('click', closeModal);
+    }
+
+    if (continueShoppingBtn) {
+        continueShoppingBtn.addEventListener('click', closeModal);
+    }
+
+    cartModal.addEventListener('click', (e) => {
+        if (e.target === cartModal) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && cartModal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', () => {
+            window.location.href = '/checkout';
+        });
+    }
 }
 
 // Функція для повідомлення про наявність
 function initNotifyAvailability() {
-  const notifyBtn = document.getElementById('notifyBtn');
-  const notifyModal = document.getElementById('notifyModal');
-  const notifyForm = document.getElementById('notifyForm');
+    const notifyBtn = document.getElementById('notifyBtn');
+    const notifyModal = document.getElementById('notifyModal');
+    const notifyForm = document.getElementById('notifyForm');
 
-  if (!notifyBtn || !notifyModal || !notifyForm) return;
+    if (!notifyBtn || !notifyModal || !notifyForm) return;
 
-  // Відкриття модалки
-  notifyBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    notifyModal.classList.add('active');
-    document.body.classList.add('is-lock');
-  });
-
-  // Закриття модалки
-  const closeModal = () => {
-    notifyModal.classList.remove('active');
-    document.body.classList.remove('is-lock');
-    notifyForm.reset();
-  };
-
-  document.getElementById('closeNotifyModal')?.addEventListener('click', closeModal);
-
-  notifyModal.addEventListener('click', (e) => {
-    if (e.target === notifyModal) closeModal();
-  });
-
-  // Валідація та активація кнопки
-  const notifyPhone = document.getElementById('notifyPhone');
-  const submitBtn = notifyForm.querySelector('button[type="submit"]');
-
-  if (notifyPhone && submitBtn) {
-    notifyPhone.addEventListener('input', () => {
-      const cleanPhone = notifyPhone.value.replace(/\D/g, '');
-      submitBtn.disabled = cleanPhone.length !== 12;
+    // Відкриття модалки
+    notifyBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        notifyModal.classList.add('active');
+        document.body.classList.add('is-lock');
     });
-  }
 
-  // Відправка форми
-  notifyForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    closeModal();
+    // Закриття модалки
+    const closeModal = () => {
+        notifyModal.classList.remove('active');
+        document.body.classList.remove('is-lock');
+        notifyForm.reset();
+    };
 
-    const successModal2 = document.getElementById('successModal2');
-    if (successModal2) {
-      // Убираем блокировку фона ДО отображения successModal2
-      document.body.classList.remove('is-lock');
+    document.getElementById('closeNotifyModal')?.addEventListener('click', closeModal);
 
-      successModal2.classList.add('active');
-      
-      // Закрытие модалки через 3 секунды
-      setTimeout(() => {
-        successModal2.classList.remove('active');
-      }, 3000);
+    notifyModal.addEventListener('click', (e) => {
+        if (e.target === notifyModal) closeModal();
+    });
+
+    // Валідація та активація кнопки
+    const notifyPhone = document.getElementById('notifyPhone');
+    const submitBtn = notifyForm.querySelector('button[type="submit"]');
+
+    if (notifyPhone && submitBtn) {
+        notifyPhone.addEventListener('input', () => {
+            const cleanPhone = notifyPhone.value.replace(/\D/g, '');
+            submitBtn.disabled = cleanPhone.length !== 12;
+        });
     }
-  });
+
+    // Відправка форми
+    notifyForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        closeModal();
+
+        const successModal2 = document.getElementById('successModal2');
+        if (successModal2) {
+            // Убираем блокировку фона ДО отображения successModal2
+            document.body.classList.remove('is-lock');
+
+            successModal2.classList.add('active');
+
+            // Закрытие модалки через 3 секунды
+            setTimeout(() => {
+                successModal2.classList.remove('active');
+            }, 3000);
+        }
+    });
 }
 
 // Функція для модалки характеристик
 function initSpecificationsModal() {
-  const toggleBtn = document.querySelector('[data-spec="toggle"]');
-  const specsModal = document.getElementById('specsModal');
+    const toggleBtn = document.querySelector('[data-spec="toggle"]');
+    const specsModal = document.getElementById('specsModal');
 
-  if (!toggleBtn || !specsModal) return;
+    if (!toggleBtn || !specsModal) return;
 
-  const body = document.body;
+    const body = document.body;
 
-  const productCode = document.querySelector('.product-detail__code')?.textContent?.trim() || '063-NEL 18W';
-  const articleCodeElement = document.getElementById('articleCode');
+    const productCode = document.querySelector('.product-detail__code')?.textContent?.trim() || '063-NEL 18W';
+    const articleCodeElement = document.getElementById('articleCode');
 
-  if (articleCodeElement) {
-    articleCodeElement.textContent = productCode;
-  }
-
-  // Открытие модалки
-  toggleBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    specsModal.classList.add('active');
-    body.classList.add('is-lock'); 
-  });
-
-  // Закрытие модалки
-  const closeModal = () => {
-    specsModal.classList.remove('active');
-    body.classList.remove('is-lock');
-  };
-
-  const closeSpecsModal = document.getElementById('closeSpecsModal');
-  if (closeSpecsModal) {
-    closeSpecsModal.addEventListener('click', closeModal);
-  }
-
-  // Закрытие по клику на overlay
-  specsModal.addEventListener('click', (e) => {
-    if (e.target === specsModal) closeModal();
-  });
-
-  // Закрытие по Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && specsModal.classList.contains('active')) {
-      closeModal();
+    if (articleCodeElement) {
+        articleCodeElement.textContent = productCode;
     }
-  });
 
-  // Копирование артикула
-  const copyArticleBtn = document.getElementById('copyArticleBtn');
-  const articleCode = document.getElementById('articleCode');
-
-  if (copyArticleBtn && articleCode) {
-    copyArticleBtn.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(articleCode.textContent.trim());
-
-        // Добавляем класс "copied"
-        copyArticleBtn.classList.add('copied');
-
-        // Убираем класс через 2 секунды
-        setTimeout(() => {
-          copyArticleBtn.classList.remove('copied');
-        }, 2000);
-      } catch (err) {
-        console.error('Ошибка копирования:', err);
-      }
+    // Открытие модалки
+    toggleBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        specsModal.classList.add('active');
+        body.classList.add('is-lock');
     });
-  }
+
+    // Закрытие модалки
+    const closeModal = () => {
+        specsModal.classList.remove('active');
+        body.classList.remove('is-lock');
+    };
+
+    const closeSpecsModal = document.getElementById('closeSpecsModal');
+    if (closeSpecsModal) {
+        closeSpecsModal.addEventListener('click', closeModal);
+    }
+
+    // Закрытие по клику на overlay
+    specsModal.addEventListener('click', (e) => {
+        if (e.target === specsModal) closeModal();
+    });
+
+    // Закрытие по Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && specsModal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    // Копирование артикула
+    const copyArticleBtn = document.getElementById('copyArticleBtn');
+    const articleCode = document.getElementById('articleCode');
+
+    if (copyArticleBtn && articleCode) {
+        copyArticleBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(articleCode.textContent.trim());
+
+                // Добавляем класс "copied"
+                copyArticleBtn.classList.add('copied');
+
+                // Убираем класс через 2 секунды
+                setTimeout(() => {
+                    copyArticleBtn.classList.remove('copied');
+                }, 2000);
+            } catch (err) {
+                console.error('Ошибка копирования:', err);
+            }
+        });
+    }
 }
 
 // Функція для модалки відгуків
 function initReviewsModal() {
-  const reviewsBtn = document.querySelector('.product-detail__reviews-rating-btn');
-  const reviewsBtnMain = document.querySelector('.product-detail__reviews-btn');
-  const reviewsModal = document.getElementById('reviewsModal');
-  
-  if (!reviewsModal) return;
-  if (!reviewsBtn && !reviewsBtnMain) return;
+    const reviewsBtn = document.querySelector('.product-detail__reviews-rating-btn');
+    const reviewsBtnMain = document.querySelector('.product-detail__reviews-btn');
+    const reviewsModal = document.getElementById('reviewsModal');
 
-  // Відкриття модалки
-  const openModal = (e) => {
-    e?.preventDefault();
-    reviewsModal.classList.add('active');
-    document.body.classList.add('is-lock'); // Добавляем класс is-lock
-  };
+    if (!reviewsModal) return;
+    if (!reviewsBtn && !reviewsBtnMain) return;
 
-  // Закриття модалки
-  const closeModal = () => {
-    reviewsModal.classList.remove('active');
-    document.body.classList.remove('is-lock'); // Удаляем класс is-lock
-  };
+    // Відкриття модалки
+    const openModal = (e) => {
+        e?.preventDefault();
+        reviewsModal.classList.add('active');
+        document.body.classList.add('is-lock'); // Добавляем класс is-lock
+    };
 
-  // Підключення подій до кнопок
-  reviewsBtn?.addEventListener('click', openModal);
-  reviewsBtnMain?.addEventListener('click', openModal);
+    // Закриття модалки
+    const closeModal = () => {
+        reviewsModal.classList.remove('active');
+        document.body.classList.remove('is-lock'); // Удаляем класс is-lock
+    };
 
-  // Закриття модалки
-  document.getElementById('closeReviewsModal')?.addEventListener('click', closeModal);
+    // Підключення подій до кнопок
+    reviewsBtn?.addEventListener('click', openModal);
+    reviewsBtnMain?.addEventListener('click', openModal);
 
-  reviewsModal.addEventListener('click', (e) => {
-    if (e.target === reviewsModal) closeModal();
-  });
+    // Закриття модалки
+    document.getElementById('closeReviewsModal')?.addEventListener('click', closeModal);
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && reviewsModal.classList.contains('active')) {
-      closeModal();
-    }
-  });
+    reviewsModal.addEventListener('click', (e) => {
+        if (e.target === reviewsModal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && reviewsModal.classList.contains('active')) {
+            closeModal();
+        }
+    });
 }
 
 function initProductGallery() {
-  if (typeof Fancybox === 'undefined') return;
+    if (typeof Fancybox === 'undefined') return;
 
-  Fancybox.close(true);
+    Fancybox.close(true);
 
-  if (window.location.hash) {
-    history.replaceState(null, null, ' ');
-  }
+    if (window.location.hash) {
+        history.replaceState(null, null, ' ');
+    }
 
-  const productTitle = document.querySelector('.product-detail__title')?.textContent || '';
-  const productCode = document.querySelector('.product-detail__code')?.textContent || '';
+    const productTitle = document.querySelector('.product-detail__title')?.textContent || '';
+    const productCode = document.querySelector('.product-detail__code')?.textContent || '';
 
-  Fancybox.bind('[data-fancybox="gallery"]', {
-    Hash: false,
-    Thumbs: {
-      type: "classic",
-      autoStart: true,
-    },
-    Toolbar: {
-      display: {
-        left: [],
-        middle: [],
-        right: ["close"],
-      },
-      autoEnable: true,
-    },
-    caption: function (fancybox, slide) {
-      return `
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        Hash: false,
+        Thumbs: {
+            type: "classic",
+            autoStart: true,
+        },
+        Toolbar: {
+            display: {
+                left: [],
+                middle: [],
+                right: ["close"],
+            },
+            autoEnable: true,
+        },
+        caption: function (fancybox, slide) {
+            return `
         <h2 class="fancybox-title">${productTitle}</h2>
         <p class="fancybox-subtitle">Арт.: ${productCode}</p>
       `;
-    },
-    
-    // 🔒 Полностью отключаем анимации
-    animated: false,
-    showClass: false,
-    hideClass: false,
-    dragToClose: false,
-    compact: false,
-    animationEffect: false,
-    animationDuration: 0,
-    transitionEffect: false,
-    transitionDuration: 0,
+        },
 
-    // 🧭 Отключаем свайпы и перетаскивание
-    Carousel: {
-      friction: 0,        // Без инерции
-      Panzoom: {
-        touch: false,     // Отключить тач-жесты
-      },
-      dragFree: false,    // Без свободного перетаскивания
-      slides: {
-        drag: false,      // Запрещаем drag свайпы
-      }
-    },
+        // 🔒 Полностью отключаем анимации
+        animated: false,
+        showClass: false,
+        hideClass: false,
+        dragToClose: false,
+        compact: false,
+        animationEffect: false,
+        animationDuration: 0,
+        transitionEffect: false,
+        transitionDuration: 0,
 
-    keyboard: {
-      Escape: "close",
-      Delete: "close",
-      Backspace: "close",
-      PageUp: "prev",
-      PageDown: "next",
-      ArrowUp: "prev",
-      ArrowDown: "next",
-      ArrowRight: "next",
-      ArrowLeft: "prev",
-    },
-    Image: {
-      zoom: false,
-      click: false,
-      wheel: false,
-      fit: "contain",
-    },
-
-    on: {
-      ready: (fancybox) => {
-        const container = document.querySelector('.fancybox__container');
-        const carousel = document.querySelector('.fancybox__carousel');
-        const toolbar = document.querySelector('.fancybox__toolbar');
-        const footer = document.querySelector('.fancybox__footer');
-
-        if (container) container.classList.remove('is-compact');
-
-        if (carousel && toolbar && footer) {
-          carousel.insertBefore(toolbar, carousel.firstChild);
-          carousel.appendChild(footer);
-        }
-
-        const backdrop = document.querySelector('.fancybox__backdrop');
-        if (backdrop) {
-          backdrop.addEventListener('click', (e) => {
-            if (e.target === backdrop) fancybox.close();
-          });
-        }
-
-        if (carousel) {
-          carousel.addEventListener('click', (e) => {
-            const isImage = e.target.closest('.fancybox__content');
-            const isThumbs = e.target.closest('.f-thumbs, .fancybox__thumbs');
-            const isButton = e.target.closest('.f-button');
-            const isNav = e.target.closest('.fancybox__nav');
-            const isToolbar = e.target.closest('.fancybox__toolbar');
-            const isCaptionText = e.target.closest('.fancybox__caption') ||
-                                  e.target.classList.contains('fancybox-title') ||
-                                  e.target.classList.contains('fancybox-subtitle');
-
-            if (!isImage && !isThumbs && !isButton && !isNav && !isToolbar && !isCaptionText) {
-              fancybox.close();
+        // 🧭 Отключаем свайпы и перетаскивание
+        Carousel: {
+            friction: 0,        // Без инерции
+            Panzoom: {
+                touch: false,     // Отключить тач-жесты
+            },
+            dragFree: false,    // Без свободного перетаскивания
+            slides: {
+                drag: false,      // Запрещаем drag свайпы
             }
-          });
-        }
-      },
-      destroy: () => {
-        if (window.location.hash) {
-          history.replaceState(null, null, ' ');
-        }
-      }
-    },
-  });
+        },
+
+        keyboard: {
+            Escape: "close",
+            Delete: "close",
+            Backspace: "close",
+            PageUp: "prev",
+            PageDown: "next",
+            ArrowUp: "prev",
+            ArrowDown: "next",
+            ArrowRight: "next",
+            ArrowLeft: "prev",
+        },
+        Image: {
+            zoom: false,
+            click: false,
+            wheel: false,
+            fit: "contain",
+        },
+
+        on: {
+            ready: (fancybox) => {
+                const container = document.querySelector('.fancybox__container');
+                const carousel = document.querySelector('.fancybox__carousel');
+                const toolbar = document.querySelector('.fancybox__toolbar');
+                const footer = document.querySelector('.fancybox__footer');
+
+                if (container) container.classList.remove('is-compact');
+
+                if (carousel && toolbar && footer) {
+                    carousel.insertBefore(toolbar, carousel.firstChild);
+                    carousel.appendChild(footer);
+                }
+
+                const backdrop = document.querySelector('.fancybox__backdrop');
+                if (backdrop) {
+                    backdrop.addEventListener('click', (e) => {
+                        if (e.target === backdrop) fancybox.close();
+                    });
+                }
+
+                if (carousel) {
+                    carousel.addEventListener('click', (e) => {
+                        const isImage = e.target.closest('.fancybox__content');
+                        const isThumbs = e.target.closest('.f-thumbs, .fancybox__thumbs');
+                        const isButton = e.target.closest('.f-button');
+                        const isNav = e.target.closest('.fancybox__nav');
+                        const isToolbar = e.target.closest('.fancybox__toolbar');
+                        const isCaptionText = e.target.closest('.fancybox__caption') ||
+                            e.target.classList.contains('fancybox-title') ||
+                            e.target.classList.contains('fancybox-subtitle');
+
+                        if (!isImage && !isThumbs && !isButton && !isNav && !isToolbar && !isCaptionText) {
+                            fancybox.close();
+                        }
+                    });
+                }
+            },
+            destroy: () => {
+                if (window.location.hash) {
+                    history.replaceState(null, null, ' ');
+                }
+            }
+        },
+    });
 }
 
 
 
 window.addEventListener('beforeunload', () => {
-  if (typeof Fancybox !== 'undefined') {
-    Fancybox.close(true);
-  }
+    if (typeof Fancybox !== 'undefined') {
+        Fancybox.close(true);
+    }
 });
 
 window.addEventListener('load', () => {
-  if (typeof Fancybox !== 'undefined') {
-    Fancybox.close(true);
-  }
+    if (typeof Fancybox !== 'undefined') {
+        Fancybox.close(true);
+    }
 });
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initProductGallery);
+    document.addEventListener('DOMContentLoaded', initProductGallery);
 } else {
-  initProductGallery();
+    initProductGallery();
 }
 
 
 function initWishlist() {
-  const likedButtons = document.querySelectorAll('.product-detail__liked');
-  const successModal3 = document.getElementById('successModal3');
+    const likedButtons = document.querySelectorAll('.product-detail__liked');
+    const successModal3 = document.getElementById('successModal3');
 
-  if (!likedButtons.length || !successModal3) return;
+    if (!likedButtons.length || !successModal3) return;
 
-  likedButtons.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
+    likedButtons.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
 
-      btn.classList.toggle('active');
+            btn.classList.toggle('active');
 
-      if (btn.classList.contains('active')) {
-        successModal3.classList.add('active');
+            if (btn.classList.contains('active')) {
+                successModal3.classList.add('active');
 
-        setTimeout(() => {
-          successModal3.classList.remove('active');
-        }, 3000);
-      }
+                setTimeout(() => {
+                    successModal3.classList.remove('active');
+                }, 3000);
+            }
+        });
     });
-  });
 }
 
 function initializeReviewsSwiper() {
@@ -2419,7 +2416,7 @@ function toggleAnswerVisibility() {
     const toggleButtons = document.querySelectorAll('.reviews-list__item-description-answer-btn');
 
     toggleButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const answerBox = button.closest('.reviews-list__item-description-answer');
             const contentBox = answerBox.querySelector('.reviews-list__item-description-answer--box');
 
@@ -2427,44 +2424,44 @@ function toggleAnswerVisibility() {
 
             const isHidden = contentBox.classList.contains('hidden');
             const buttonText = isHidden ? 'Показати відповідь' : 'Приховати відповідь';
-            button.querySelector('span').textContent = buttonText;  
+            button.querySelector('span').textContent = buttonText;
         });
     });
 }
 
 // Фільтрація відгуків
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const filterTabs = document.querySelectorAll('.filter-tab');
     const reviewsItems = document.querySelectorAll('.reviews-list__item, .reviews-list__image');
-    
+
     // Функція для сортування за датою (найновіші спочатку)
     function sortByDate() {
         const reviewsList = document.querySelector('.reviews-list');
         const items = Array.from(reviewsItems);
-        
+
         items.sort((a, b) => {
             const dateA = new Date(a.dataset.date);
             const dateB = new Date(b.dataset.date);
             return dateB - dateA; // Новіші спочатку
         });
-        
+
         items.forEach(item => reviewsList.appendChild(item));
     }
-    
+
     // Функція для сортування за рейтингом (найвищий спочатку)
     function sortByRating() {
         const reviewsList = document.querySelector('.reviews-list');
         const items = Array.from(reviewsItems);
-        
+
         items.sort((a, b) => {
             const ratingA = parseFloat(a.dataset.rating);
             const ratingB = parseFloat(b.dataset.rating);
             return ratingB - ratingA; // Вищий рейтинг спочатку
         });
-        
+
         items.forEach(item => reviewsList.appendChild(item));
     }
-    
+
     // Функція для фільтрації за наявністю фото
     function filterByPhotos() {
         reviewsItems.forEach(item => {
@@ -2475,30 +2472,30 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     // Функція для скидання фільтра (показати всі)
     function showAll() {
         reviewsItems.forEach(item => {
             item.style.display = '';
         });
     }
-    
+
     // Обробка кліків на вкладки фільтрів
     filterTabs.forEach(tab => {
-        tab.addEventListener('click', function() {
+        tab.addEventListener('click', function () {
             // Видалити активний клас з усіх вкладок
             filterTabs.forEach(t => t.classList.remove('active'));
-            
+
             // Додати активний клас до поточної вкладки
             this.classList.add('active');
-            
+
             // Показати всі елементи перед застосуванням нового фільтра
             showAll();
-            
+
             // Застосувати відповідний фільтр
             const filter = this.dataset.filter;
-            
-            switch(filter) {
+
+            switch (filter) {
                 case 'date':
                     sortByDate();
                     break;
@@ -2511,18 +2508,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     // Ініціалізація: сортування за датою за замовчуванням
     sortByDate();
-    
+
     // Обробка кнопок "Приховати відповідь"
     const answerButtons = document.querySelectorAll('.reviews-list__item-description-answer-btn');
-    
+
     answerButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const answerBox = this.previousElementSibling;
             const span = this.querySelector('span');
-            
+
             if (answerBox.style.display === 'none') {
                 answerBox.style.display = '';
                 span.textContent = 'Приховати відповідь';
@@ -2537,6 +2534,735 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 document.addEventListener('DOMContentLoaded', initWishlist);
+
+
+
+function initShoppingCart() {
+    const FREE_DELIVERY_THRESHOLD = 2000; // 2000 грн для безкоштовної доставки
+    const productList = document.querySelector('.shopping-cart-product-list');
+    const emptyCart = document.querySelector('.shopping-cart-empty');
+    const filledCart = document.querySelector('.shopping-cart-product');
+    const togetherSection = document.querySelector('.shopping-cart-together');
+    const promoToggle = document.querySelector('.promo-code__toggle');
+    const promoContent = document.querySelector('.promo-code__content');
+    const promoInput = document.querySelector('.promo-code__input');
+    const promoApply = document.querySelector('.promo-code__apply');
+    const promoErrors = document.querySelectorAll('.promo-code__error'); // Изменено на querySelectorAll
+    const appliedPromo = document.getElementById('applied-promo');
+    const promoName = document.getElementById('promo-name');
+    const removePromo = document.getElementById('remove-promo');
+    const shoppingCart = document.getElementById('cart-menu');
+    const shoppingCartClose = document.querySelector('.shopping-cart__close');
+    const emptyCartBtn = document.querySelector('.shopping-cart-empty-btn');
+    const basketValues = document.querySelectorAll('.bascet-value'); // Получаем все элементы
+    const cartButtons = document.querySelectorAll('[data-menu="cart"]'); // Кнопки открытия корзины
+    const promoInputClose = document.querySelector('.promo-code__input-close');
+    const promoInputWrapper = document.querySelector('.promo-code__input-wrapper');
+
+    // Модалки
+    const successModal5 = document.getElementById('successModal5');
+    const successModal6 = document.getElementById('successModal6');
+    const successModal7 = document.getElementById('successModal7');
+    const deleteProductModal = document.getElementById('delateProductModal');
+    const deleteProductText = document.querySelector('.delate-product-text');
+
+    // Функция для обновления всех блоков ошибок промокода
+    function updatePromoErrors(text, color = '') {
+        promoErrors.forEach(errorEl => {
+            errorEl.textContent = text;
+            if (color) {
+                errorEl.style.color = color;
+            }
+        });
+    }
+
+    // Функції для модалок
+    function showModal(modal) {
+        modal.classList.add('active');
+        document.body.classList.add('is-lock');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            document.body.classList.remove('is-lock');
+        }, 3000);
+    }
+
+    // Открытие корзины
+    function openCart() {
+        shoppingCart.classList.add('active');
+        document.body.classList.add('is-lock');
+        const overlay = document.querySelector('.overlay');
+        if (overlay) {
+            overlay.classList.add('active');
+        }
+        
+        // Добавляем класс active к родительским элементам кнопок корзины
+        cartButtons.forEach(button => {
+            const parentItem = button.closest('.mobile-nav__item');
+            if (parentItem) {
+                parentItem.classList.add('active');
+            }
+        });
+    }
+
+    // Закрытие корзины
+    function closeCart() {
+        shoppingCart.classList.remove('active');
+        // Принудительно убираем все возможные классы блокировки
+        document.body.classList.remove('is-lock');
+        document.body.classList.remove('modal-open');
+        document.body.classList.remove('modal-style');
+        document.documentElement.classList.remove('is-lock');
+        
+        // Принудительно убираем inline стили
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+        
+        const overlay = document.querySelector('.overlay');
+        if (overlay) {
+            overlay.classList.remove('active');
+        }
+        
+        // Убираем класс active с родительских элементов кнопок корзины
+        cartButtons.forEach(button => {
+            const parentItem = button.closest('.mobile-nav__item');
+            if (parentItem) {
+                parentItem.classList.remove('active');
+            }
+        });
+    }
+
+    // Открытие корзины по кнопкам
+    cartButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            openCart();
+        });
+    });
+
+    // Закрытие по кнопке close
+    if (shoppingCartClose) {
+        shoppingCartClose.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeCart();
+        });
+    }
+
+    // Закрытие по кнопке shopping-cart-empty-btn
+    if (emptyCartBtn) {
+        emptyCartBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeCart();
+        });
+    }
+
+    // Закрытие при клике вне shopping-cart__content
+    if (shoppingCart) {
+        shoppingCart.addEventListener('click', function (e) {
+            if (!e.target.closest('.shopping-cart__content')) {
+                closeCart();
+            }
+        });
+    }
+
+    // Оновлення кількості товарів у всіх .bascet-value
+    function updateBasketValue() {
+        if (basketValues.length === 0) return;
+        
+        const items = productList.querySelectorAll('.shopping-cart-product-item');
+        const itemCount = items.length;
+        
+        // Обновляем все элементы с классом .bascet-value
+        basketValues.forEach(basketValue => {
+            if (itemCount > 0) {
+                basketValue.textContent = itemCount;
+                basketValue.style.display = 'flex';
+            } else {
+                basketValue.style.display = 'none';
+            }
+        });
+    }
+
+    // Оновлення стану кнопки зменшення кількості
+    function updateDecrementButton(productItem) {
+        const quantityEl = productItem.querySelector('.shopping-cart-product-item-quantity-number');
+        const decrementBtn = productItem.querySelector('.decrement');
+        const quantity = parseInt(quantityEl.textContent);
+        
+        if (quantity <= 1) {
+            decrementBtn.disabled = true;
+            
+        } else {
+            decrementBtn.disabled = false;
+          
+        }
+    }
+
+    // Оновлення стану корзини
+    function updateCartState() {
+        const items = productList.querySelectorAll('.shopping-cart-product-item');
+        const itemCount = items.length;
+
+        // 1. Показати порожню корзину або заповнену
+        if (itemCount === 0) {
+            emptyCart.classList.add('active');
+            filledCart.classList.remove('active');
+        } else {
+            emptyCart.classList.remove('active');
+            filledCart.classList.add('active');
+        }
+
+        // 2. Показати "Разом з цим беруть" тільки якщо 1 товар
+        if (itemCount === 1) {
+            togetherSection.classList.add('active');
+        } else {
+            togetherSection.classList.remove('active');
+        }
+
+        // Оновити лічильник
+        document.getElementById('cart-count').textContent = `(${itemCount})`;
+
+        // Оновити всі .bascet-value
+        updateBasketValue();
+
+        // 3. Оновити загальні суми та прогрес-бар
+        updateTotals();
+
+        // 4. Оновити стан кнопок зменшення для всіх товарів
+        items.forEach(item => updateDecrementButton(item));
+    }
+
+    // Оновлення загальних сум та прогрес-бару
+    function updateTotals() {
+        const items = productList.querySelectorAll('.shopping-cart-product-item');
+        let totalCurrent = 0;
+        let totalOld = 0;
+
+        items.forEach(item => {
+            const quantity = parseInt(item.querySelector('.shopping-cart-product-item-quantity-number').textContent);
+            const price = parseFloat(item.dataset.price);
+            const oldPrice = parseFloat(item.dataset.oldPrice);
+
+            totalCurrent += price * quantity;
+            totalOld += oldPrice * quantity;
+        });
+
+        const discount = totalOld - totalCurrent;
+
+        // Оновити відображення сум
+        document.getElementById('total-current').textContent = totalCurrent.toFixed(2) + ' ₴';
+        document.getElementById('total-old').textContent = totalOld.toFixed(2) + ' ₴';
+        document.getElementById('total-discount').textContent = '-' + discount.toFixed(2) + ' ₴';
+
+        // Оновити прогрес-бар з градієнтом від червоного до зеленого
+        const remaining = Math.max(0, FREE_DELIVERY_THRESHOLD - totalCurrent);
+        const progress = Math.min(100, (totalCurrent / FREE_DELIVERY_THRESHOLD) * 100);
+
+        const progressFill = document.getElementById('progress-fill');
+        const messageBlock = document.querySelector('.delivery-progress__message');
+        const successBlock = document.querySelector('.delivery-progress__success');
+
+        progressFill.style.width = progress + '%';
+
+        // Видаляємо всі попередні класи
+        progressFill.classList.remove('progress-low', 'progress-medium', 'progress-high', 'progress-complete');
+
+        // Додаємо потрібний клас в залежності від прогресу
+        if (progress >= 100) {
+            progressFill.classList.add('progress-complete');
+            // Ховаємо повідомлення про додавання товарів, показуємо вітання
+            messageBlock.style.display = 'none';
+            successBlock.style.display = 'block';
+        } else {
+            // Показуємо повідомлення про додавання товарів, ховаємо вітання
+            messageBlock.style.display = 'block';
+            successBlock.style.display = 'none';
+            document.getElementById('remaining-amount').textContent = remaining.toFixed(0);
+
+            if (progress >= 66) {
+                progressFill.classList.add('progress-high');
+            } else if (progress >= 33) {
+                progressFill.classList.add('progress-medium');
+            } else {
+                progressFill.classList.add('progress-low');
+            }
+        }
+    }
+
+    // Оновлення ціни товару - тепер НЕ змінюємо ціну в карточці
+    function updateItemPrice(productItem) {
+        // Просто оновлюємо загальні суми
+        updateTotals();
+    }
+
+    // Модалка підтвердження видалення
+    function showDeleteConfirmation(productItem) {
+        const productName = productItem.querySelector('.shopping-cart-product-item-header h2')?.textContent.trim() || 'товар';
+        
+        if (deleteProductText) {
+            deleteProductText.textContent = productName;
+        }
+        
+        deleteProductModal.classList.add('active');
+        document.body.classList.add('is-lock');
+
+        const cancelBtn = deleteProductModal.querySelector('.cancel-delete');
+        const confirmBtn = deleteProductModal.querySelector('.confirm-delete');
+
+        function closeModal() {
+            deleteProductModal.classList.remove('active');
+            // Принудительно убираем блокировку при закрытии модалки
+            document.body.classList.remove('is-lock');
+            document.body.classList.remove('modal-open');
+            document.body.classList.remove('modal-style');
+            document.documentElement.classList.remove('is-lock');
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+            
+            cancelBtn.removeEventListener('click', handleCancel);
+            confirmBtn.removeEventListener('click', handleConfirm);
+        }
+
+        function handleCancel() {
+            closeModal();
+        }
+
+        function handleConfirm() {
+            closeModal();
+
+            productItem.style.transition = 'opacity 0.3s, transform 0.3s';
+            productItem.style.opacity = '0';
+            productItem.style.transform = 'translateX(20px)';
+
+            setTimeout(() => {
+                productItem.remove();
+                updateCartState();
+                showModal(successModal7);
+            }, 300);
+
+            closeAllPopups();
+        }
+
+        cancelBtn.addEventListener('click', handleCancel);
+        confirmBtn.addEventListener('click', handleConfirm);
+    }
+
+    // Делегування подій
+    if (productList) {
+        productList.addEventListener('click', function (e) {
+            const target = e.target.closest('button');
+            if (!target) return;
+
+            const productItem = target.closest('.shopping-cart-product-item');
+            if (!productItem) return;
+
+            // Збільшення кількості
+            if (target.classList.contains('increment')) {
+                const quantityEl = productItem.querySelector('.shopping-cart-product-item-quantity-number');
+                let quantity = parseInt(quantityEl.textContent);
+                quantityEl.textContent = quantity + 1;
+                updateItemPrice(productItem);
+                updateDecrementButton(productItem);
+            }
+
+            // Зменшення кількості
+            if (target.classList.contains('decrement')) {
+                const quantityEl = productItem.querySelector('.shopping-cart-product-item-quantity-number');
+                let quantity = parseInt(quantityEl.textContent);
+                if (quantity > 1) {
+                    quantityEl.textContent = quantity - 1;
+                    updateItemPrice(productItem);
+                    updateDecrementButton(productItem);
+                }
+            }
+
+            // Відкриття меню
+            if (target.classList.contains('shopping-cart-product-item-menu')) {
+                e.stopPropagation();
+                const popup = productItem.querySelector('.product-menu-popup');
+                const isActive = popup.classList.contains('active');
+
+                closeAllPopups();
+
+                if (!isActive) {
+                    popup.classList.add('active');
+                }
+            }
+
+            // Додати в обране
+            if (target.classList.contains('favorite-product-btn')) {
+                const isActive = target.classList.toggle('active');
+                if (isActive) {
+                    showModal(successModal5);
+                }
+                closeAllPopups();
+            }
+
+            // Видалення товару
+            if (target.classList.contains('delete-product-btn')) {
+                showDeleteConfirmation(productItem);
+            }
+        });
+    }
+
+    // Закриття всіх попапів
+    function closeAllPopups() {
+        document.querySelectorAll('.product-menu-popup').forEach(popup => {
+            popup.classList.remove('active');
+        });
+    }
+
+    // Закриття попапів при кліку поза ними
+    document.addEventListener('click', closeAllPopups);
+
+    // Промокод
+    if (promoToggle) {
+        promoToggle.addEventListener('click', function () {
+            promoToggle.classList.toggle('active');
+            promoContent.classList.toggle('active');
+            updatePromoErrors(''); // Очищаем все блоки ошибок
+            promoInput.style.borderColor = '';
+        });
+    }
+
+    // Закрытие промокода по кнопке close (только на мобильных)
+    if (promoInputClose) {
+        promoInputClose.addEventListener('click', function (e) {
+            e.stopPropagation();
+            if (window.innerWidth < 768) {
+                promoContent.classList.remove('active');
+            }
+        });
+    }
+
+    // Закрытие промокода при клике вне input-wrapper (только на мобильных)
+    if (promoContent) {
+        promoContent.addEventListener('click', function (e) {
+            if (window.innerWidth < 768) {
+                if (!e.target.closest('.promo-code__input-wrapper')) {
+                    promoContent.classList.remove('active');
+                }
+            }
+        });
+    }
+
+    // Видалення помилки при введенні
+    if (promoInput) {
+        promoInput.addEventListener('input', function () {
+            updatePromoErrors(''); // Очищаем все блоки ошибок
+            promoInput.style.borderColor = '';
+        });
+    }
+
+    if (promoApply) {
+        promoApply.addEventListener('click', function () {
+            const code = promoInput.value.trim();
+            if (code === '') {
+                updatePromoErrors('Введіть промокод', '#EF0022');
+                promoInput.style.borderColor = '#EF0022';
+            } else if (code.toLowerCase() === 'test123') {
+                updatePromoErrors('✓ Промокод активовано!', '#4CAF50');
+                promoInput.style.borderColor = '';
+
+                // Показуємо застосований промокод
+                appliedPromo.style.display = 'flex';
+                promoName.textContent = code;
+                document.querySelector('.promocode-text').textContent = code;
+
+                // ХоваємоToggle та Content
+                promoToggle.style.display = 'none';
+                promoContent.classList.remove('active');
+
+                promoInput.value = '';
+
+                showModal(successModal6);
+            } else {
+                updatePromoErrors('Не дійсний промокод', '#EF0022');
+                promoInput.style.borderColor = '#EF0022';
+            }
+        });
+    }
+
+    // Видалення промокоду
+    if (removePromo) {
+        removePromo.addEventListener('click', function () {
+            appliedPromo.style.display = 'none';
+            promoName.textContent = '';
+            updatePromoErrors(''); // Очищаем все блоки ошибок
+            promoInput.style.borderColor = '';
+
+            // Показуємо знову Toggle
+            promoToggle.style.display = 'flex';
+        });
+    }
+
+    // Ініціалізація
+    if (appliedPromo) {
+        appliedPromo.style.display = 'none';
+    }
+    updateCartState();
+}
+
+function initReviewModal() {
+    // Элементы
+    const modalAddReview = document.getElementById('addReviews');
+    const modalReviews = document.getElementById('reviewsModal');
+    const closeModalBtn = document.getElementById('closeModal');
+    const form = document.getElementById('reviewForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const body = document.body;
+
+    // Success-модалка
+    const successModal = document.getElementById('successModal4');
+
+    // Рейтинг
+    const ratingStars = document.querySelectorAll('.star-btn');
+    let selectedRating = 0;
+
+    // Поля
+    const comment = document.getElementById('comment');
+    const charCount = document.getElementById('charCount');
+    const advantages = document.getElementById('advantages');
+    const advCount = document.getElementById('advCount');
+    const disadvantages = document.getElementById('disadvantages');
+    const disCount = document.getElementById('disCount');
+
+    // Зображення
+    const fileInput = document.getElementById('fileInput');
+    const imagePreview = document.getElementById('imagePreview');
+    const uploadLabel = document.querySelector('.upload-label');
+    const fileSizeNoteBox = document.querySelector('.file-size-note-box');
+    const fileSizeNoteError = document.querySelector('.file-size-note-error');
+    const fileSizeNote = document.querySelector('.file-size-note');
+    let uploadedFiles = [];
+
+    // Универсальные функции модалок
+    function openModal(modalEl) {
+        if (!modalEl) return;
+        modalEl.classList.add('active');
+        body.classList.add('is-lock');
+    }
+
+    function closeModal(modalEl) {
+        if (!modalEl) return;
+        modalEl.classList.remove('active');
+        const anyOpen = document.querySelector('.modal.active');
+        if (!anyOpen) body.classList.remove('is-lock');
+    }
+
+    function closeAllModals() {
+        document.querySelectorAll('.modal.active').forEach(modal => {
+            modal.classList.remove('active');
+        });
+    }
+
+    // Открыть форму отзывов по клику на кнопки с классом reviews-modal-btn
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('.reviews-modal-btn')) {
+            openModal(modalAddReview);
+        }
+    });
+
+    // Закрытие модалки по кнопке
+    closeModalBtn?.addEventListener('click', () => {
+        closeModal(modalAddReview);
+    });
+
+    // Закрытие по клику на backdrop (для всех модалок с классом .modal)
+    document.addEventListener('click', (e) => {
+        const modalEl = e.target.closest('.modal');
+        if (modalEl && e.target === modalEl) closeModal(modalEl);
+    });
+
+    // Делегирование кликов по кнопкам закрытия
+    document.addEventListener('click', (e) => {
+        const closeBtn = e.target.closest('[data-modal-close], .modal__back, .js-modal-close');
+        if (closeBtn) {
+            const modalEl = closeBtn.closest('.modal');
+            if (modalEl) closeModal(modalEl);
+        }
+    });
+
+    // Рейтинг зірок
+    ratingStars.forEach(star => {
+        star.addEventListener('click', function () {
+            selectedRating = parseInt(this.dataset.rating);
+
+            ratingStars.forEach((s, index) => {
+                if (index < selectedRating) {
+                    s.classList.add('active');
+                    s.classList.remove('inactive');
+                } else {
+                    s.classList.remove('active');
+                    s.classList.add('inactive');
+                }
+            });
+
+            validateForm();
+        });
+    });
+
+    // Лічильники
+    comment.addEventListener('input', function () {
+        charCount.textContent = this.value.length;
+        validateForm();
+    });
+
+    advantages.addEventListener('input', function () {
+        advCount.textContent = this.value.length;
+    });
+
+    disadvantages.addEventListener('input', function () {
+        disCount.textContent = this.value.length;
+    });
+
+    // Завантаження файлів
+    fileInput.addEventListener('change', function (e) {
+        const files = Array.from(e.target.files);
+        const maxSize = 10 * 1024 * 1024; // 10 MB в байтах
+        let hasOversizedFile = false;
+
+        files.forEach(file => {
+            if (file.type.startsWith('image/')) {
+                if (file.size > maxSize) {
+                    hasOversizedFile = true;
+                } else {
+                    uploadedFiles.push(file);
+
+                    const reader = new FileReader();
+                    reader.onload = function (ev) {
+                        const previewItem = document.createElement('div');
+                        previewItem.className = 'preview-item';
+                        previewItem.innerHTML = `
+                            <img src="${ev.target.result}" alt="Preview">
+                            <button type="button" class="remove-image" aria-label="Remove image">×</button>
+                        `;
+                        imagePreview.appendChild(previewItem);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+
+        // Показ/приховування повідомлення про помилку
+        if (hasOversizedFile) {
+            fileSizeNoteError.style.display = 'block';
+            fileSizeNoteError.style.color = '#EF0022';
+            fileSizeNote.style.color = '#EF0022';
+        } else {
+            fileSizeNoteError.style.display = 'none';
+            fileSizeNote.style.color = '';
+        }
+
+        fileInput.value = '';
+    });
+
+    // Видалення одного зображення
+    imagePreview.addEventListener('click', function (e) {
+        if (e.target.classList.contains('remove-image')) {
+            const idx = Array.from(imagePreview.children).indexOf(e.target.closest('.preview-item'));
+            if (idx > -1) uploadedFiles.splice(idx, 1);
+            e.target.closest('.preview-item').remove();
+        }
+    });
+
+    // Видалити всі зображення (по кліку на label)
+    uploadLabel?.addEventListener('click', function (e) {
+        if (uploadedFiles.length > 0) {
+            e.preventDefault();
+            uploadedFiles = [];
+            imagePreview.innerHTML = '';
+            fileSizeNoteError.style.display = 'none';
+            fileSizeNote.style.color = '';
+        }
+    });
+
+    // Валідація
+    function validateForm() {
+        const isValid = selectedRating > 0 && comment.value.trim().length > 0;
+        submitBtn.disabled = !isValid;
+    }
+
+    // Сброс формы
+    function resetReviewForm() {
+        form.reset();
+        selectedRating = 0;
+        uploadedFiles = [];
+        imagePreview.innerHTML = '';
+        charCount.textContent = '0';
+        advCount.textContent = '0';
+        disCount.textContent = '0';
+        fileSizeNoteError.style.display = 'none';
+        fileSizeNote.style.color = '';
+        ratingStars.forEach(s => {
+            s.classList.remove('active');
+            s.classList.add('inactive');
+        });
+        submitBtn.disabled = true;
+    }
+
+    // Відправка форми
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const formData = {
+            rating: selectedRating,
+            comment: comment.value,
+            advantages: advantages.value,
+            disadvantages: disadvantages.value,
+            images: uploadedFiles.length
+        };
+
+        console.log('Дані відгуку:', formData);
+
+        // 1) Закриваем все модалки
+        closeAllModals();
+
+        // 2) Сразу удаляем класс is-lock с body
+        body.classList.remove('is-lock');
+
+        // 3) Открываем success-модалку (без is-lock)
+        successModal.classList.add('active');
+
+        // 4) Закрываем successModal4 через 3 секунды
+        setTimeout(() => {
+            successModal.classList.remove('active');
+        }, 3000);
+
+        // 5) Очищаем форму
+        resetReviewForm();
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Главная функция инициализации
@@ -2576,7 +3302,9 @@ function initApp() {
     initProductGallery();
     initializeReviewsSwiper();
     toggleAnswerVisibility();
-  
+    initShoppingCart();
+    initReviewModal();
+
 }
 
 // Запуск приложения после загрузки DOM

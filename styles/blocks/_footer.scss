@@ -8,6 +8,10 @@
         padding: 24px 0 90px 0;
     }
 
+     @media (max-width: 1024px) {
+        padding-bottom: 90px;
+     }
+
     &__inner {
         display: flex;
         flex-direction: column;

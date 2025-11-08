@@ -158,6 +158,7 @@
                     <button class="header__body-btn-nav-box" data-menu="cart">
                         <img src="icons/icon2.svg" width="24" height="24" alt="">
                         <span class="header__body-btn-nav-text visible-desktop">Кошик</span>
+                        <span class="bascet-value"></span>
                     </button>
                     <button class="header__body-btn-nav-box" data-menu="account">
                         <img src="icons/icon3.svg" width="24" height="24" alt="">
@@ -1926,6 +1927,7 @@
         </div>
         <div class="mobile-nav__item">
             <button type="button" data-menu="cart">
+                <span class="bascet-value"></span>
                 <img src="icons/icon2.svg" width="24" height="24" alt="">
                 Кошик
             </button>
@@ -2209,19 +2211,6 @@
         </ul>
     </div>
 
-    <!-- Меню Кошик -->
-    <div class="slide-menu" id="cart-menu">
-        <div class="slide-menu__header">
-            <div class="slide-menu__title">Кошик</div>
-            <button class="slide-menu__close" data-close="cart-menu">&times;</button>
-        </div>
-        <div class="slide-menu__content">
-            <div style="padding: 20px; text-align: center; color: #999;">
-                <p>Ваш кошик порожній</p>
-            </div>
-        </div>
-    </div>
-
     <!-- Меню Обране -->
     <div class="slide-menu" id="favorites-menu">
         <div class="slide-menu__header">
@@ -2298,8 +2287,539 @@
         </ul>
     </div>
 
+    <!-- Меню Кошик -->
+    <div class="shopping-cart" id="cart-menu">
+        <div class="shopping-cart__content">
+            <div class="shopping-cart__header">
+                <h2 class="shopping-cart__title">Кошик <span id="cart-count">(2)</span></h2>
+                <button class="shopping-cart__close">
+                    <img src="icons/close-black.svg" width="13" height="13" alt="">
+                </button>
+            </div>
+            <div class="shopping-cart__body">
+                <!-- Empty cart state -->
+                <div class="shopping-cart-empty">
+                    <h3>Ваш кошик порожній</h3>
+                    <p>Оберіть потрібні товари, щоб оформити замовлення.</p>
+                    <button class="shopping-cart-empty-btn red-btn">До каталогу</button>
+                </div>
+
+                <!-- Cart with products -->
+                <div class="shopping-cart-product">
+                    <div class="shopping-cart-product-body">
+                        <div class="shopping-cart-product-list">
+                            <!-- Product 1 -->
+                            <div class="shopping-cart-product-item" data-price="82" data-old-price="98">
+                                <div class="shopping-cart-product-item-image">
+                                    <img src="images/promo-slide1.png" alt="">
+                                </div>
+                                <div class="shopping-cart-product-item-content">
+                                    <div class="shopping-cart-product-item-header">
+                                        <h2>Світлодіодний настільний світильник Luxel 220-240V 6W</h2>
+                                        <button class="shopping-cart-product-item-menu">
+                                            <img src="icons/dots-menu.svg" width="24" height="24" alt="">
+                                        </button>
+                                    </div>
+                                    <div class="shopping-cart-product-item-info">
+                                        <div class="shopping-cart-product-item-quantity">
+                                            <button
+                                                class="shopping-cart-product-item-quantity-btn decrement border-btn">−</button>
+                                            <span class="shopping-cart-product-item-quantity-number">1</span>
+                                            <button
+                                                class="shopping-cart-product-item-quantity-btn increment border-btn">+</button>
+                                        </div>
+                                        <div class="shopping-cart-product-item-price">
+                                            <span class="shopping-cart-product-item-price-current">82.00 ₴</span>
+                                            <span class="shopping-cart-product-item-price-old">98.00 ₴</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-menu-popup">
+                                    <button class="favorite-product-btn">
+                                        <img src="icons/icon1.svg" width="24" height="24" alt=""> 
+                                        Додати в обране
+                                    </button>
+                                    <button class="delete-product-btn">
+                                        <img src="icons/bascet.svg" width="24" height="24" alt="">
+                                        Видалити з кошика
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Product 2 -->
+                            <div class="shopping-cart-product-item" data-price="82" data-old-price="98">
+                                <div class="shopping-cart-product-item-image">
+                                    <img src="images/promo-slide1.png" alt="">
+                                </div>
+                                <div class="shopping-cart-product-item-content">
+                                    <div class="shopping-cart-product-item-header">
+                                        <h2>Світлодіодний настільний світильник Luxel 220-240V 6W</h2>
+                                        <button class="shopping-cart-product-item-menu">
+                                            <img src="icons/dots-menu.svg" width="24" height="24" alt="">
+                                        </button>
+                                    </div>
+                                    <div class="shopping-cart-product-item-info">
+                                        <div class="shopping-cart-product-item-quantity">
+                                            <button
+                                                class="shopping-cart-product-item-quantity-btn decrement border-btn">−</button>
+                                            <span class="shopping-cart-product-item-quantity-number">1</span>
+                                            <button
+                                                class="shopping-cart-product-item-quantity-btn increment border-btn">+</button>
+                                        </div>
+                                        <div class="shopping-cart-product-item-price">
+                                            <span class="shopping-cart-product-item-price-current">82.00 ₴</span>
+                                            <span class="shopping-cart-product-item-price-old">98.00 ₴</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-menu-popup">
+                                    <button class="favorite-product-btn">
+                                        <img src="icons/icon1.svg" width="24" height="24" alt=""> 
+                                        Додати в обране
+                                    </button>
+                                    <button class="delete-product-btn">
+                                        <img src="icons/bascet.svg" width="24" height="24" alt="">
+                                        Видалити з кошика
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="shopping-cart-together">
+                                <h2>Разом з цим беруть</h2>
+
+                                <div class="shopping-cart-together__body">
+                                    <div class="offers__slider offers__slider--popular swiper">
+                                        <div class="swiper-wrapper">
+                                            <div class="offers__slider-slide swiper-slide">
+                                                <div class="product-card">
+                                                    <a href="/" class="product-card-link">
+                                                        <div class="product-card-image">
+                                                            <span class="product-card-badge">Топ продажів</span>
+                                                            <button class="product-card-popular"
+                                                                aria-label="Додати до обраного">
+                                                                <img src="icons/icon1.svg" width="24" height="24"
+                                                                    alt="">
+                                                            </button>
+                                                            <img src="images/offer-image1.png" width="250" height="250"
+                                                                alt="">
+                                                            <button class="product-card-rating">
+                                                                <img src="icons/rating-star.svg" width="24" height="24"
+                                                                    alt="">
+                                                                5.0
+                                                            </button>
+                                                        </div>
+                                                        <div class="product-card-content">
+                                                            <h3 class="product-card-title">Світлодіодний
+                                                                настільний світильник Luxel 220-240V 6W</h3>
+                                                            <div class="product-card-info">
+                                                                <div class="product-card-price">
+                                                                    <p class="product-card-value">149.00 ₴</p>
+                                                                    <span class="product-card-subvalue">178.00 ₴</span>
+                                                                </div>
+                                                                <span class="product-card-sale">-16%</span>
+                                                                <button class="product-card-btn-basket red-btn"
+                                                                    aria-label="Додати в кошик">
+                                                                    <img src="icons/bascet-white.svg" width="22"
+                                                                        height="22" alt="">
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="offers__slider-slide swiper-slide">
+                                                <div class="product-card">
+                                                    <a href="/" class="product-card-link">
+                                                        <div class="product-card-image">
+                                                            <span class="product-card-badge">Топ продажів</span>
+                                                            <button class="product-card-popular"
+                                                                aria-label="Додати до обраного">
+                                                                <img src="icons/icon1.svg" width="24" height="24"
+                                                                    alt="">
+                                                            </button>
+                                                            <img src="images/offer-image1.png" width="250" height="250"
+                                                                alt="">
+                                                            <button class="product-card-rating">
+                                                                <img src="icons/rating-star.svg" width="24" height="24"
+                                                                    alt="">
+                                                                5.0
+                                                            </button>
+                                                        </div>
+                                                        <div class="product-card-content">
+                                                            <h3 class="product-card-title">Світлодіодний
+                                                                настільний світильник Luxel 220-240V 6W</h3>
+                                                            <div class="product-card-info">
+                                                                <div class="product-card-price">
+                                                                    <p class="product-card-value">149.00 ₴</p>
+                                                                    <span class="product-card-subvalue">178.00 ₴</span>
+                                                                </div>
+                                                                <span class="product-card-sale">-16%</span>
+                                                                <button class="product-card-btn-basket red-btn"
+                                                                    aria-label="Додати в кошик">
+                                                                    <img src="icons/bascet-white.svg" width="22"
+                                                                        height="22" alt="">
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="offers__slider-slide swiper-slide">
+                                                <div class="product-card">
+                                                    <a href="/" class="product-card-link">
+                                                        <div class="product-card-image">
+                                                            <span class="product-card-badge">Топ продажів</span>
+                                                            <button class="product-card-popular"
+                                                                aria-label="Додати до обраного">
+                                                                <img src="icons/icon1.svg" width="24" height="24"
+                                                                    alt="">
+                                                            </button>
+                                                            <img src="images/offer-image1.png" width="250" height="250"
+                                                                alt="">
+                                                            <button class="product-card-rating">
+                                                                <img src="icons/rating-star.svg" width="24" height="24"
+                                                                    alt="">
+                                                                5.0
+                                                            </button>
+                                                        </div>
+                                                        <div class="product-card-content">
+                                                            <h3 class="product-card-title">Світлодіодний
+                                                                настільний світильник Luxel 220-240V 6W</h3>
+                                                            <div class="product-card-info">
+                                                                <div class="product-card-price">
+                                                                    <p class="product-card-value">149.00 ₴</p>
+                                                                    <span class="product-card-subvalue">178.00 ₴</span>
+                                                                </div>
+                                                                <span class="product-card-sale">-16%</span>
+                                                                <button class="product-card-btn-basket red-btn"
+                                                                    aria-label="Додати в кошик">
+                                                                    <img src="icons/bascet-white.svg" width="22"
+                                                                        height="22" alt="">
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="offers__slider-slide swiper-slide">
+                                                <div class="product-card">
+                                                    <a href="/" class="product-card-link">
+                                                        <div class="product-card-image">
+                                                            <span class="product-card-badge">Топ продажів</span>
+                                                            <button class="product-card-popular"
+                                                                aria-label="Додати до обраного">
+                                                                <img src="icons/icon1.svg" width="24" height="24"
+                                                                    alt="">
+                                                            </button>
+                                                            <img src="images/offer-image1.png" width="250" height="250"
+                                                                alt="">
+                                                            <button class="product-card-rating">
+                                                                <img src="icons/rating-star.svg" width="24" height="24"
+                                                                    alt="">
+                                                                5.0
+                                                            </button>
+                                                        </div>
+                                                        <div class="product-card-content">
+                                                            <h3 class="product-card-title">Світлодіодний
+                                                                настільний світильник Luxel 220-240V 6W</h3>
+                                                            <div class="product-card-info">
+                                                                <div class="product-card-price">
+                                                                    <p class="product-card-value">149.00 ₴</p>
+                                                                    <span class="product-card-subvalue">178.00 ₴</span>
+                                                                </div>
+                                                                <span class="product-card-sale">-16%</span>
+                                                                <button class="product-card-btn-basket red-btn"
+                                                                    aria-label="Додати в кошик">
+                                                                    <img src="icons/bascet-white.svg" width="22"
+                                                                        height="22" alt="">
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="offers__slider-slide swiper-slide">
+                                                <div class="product-card">
+                                                    <a href="/" class="product-card-link">
+                                                        <div class="product-card-image">
+                                                            <span class="product-card-badge">Топ продажів</span>
+                                                            <button class="product-card-popular"
+                                                                aria-label="Додати до обраного">
+                                                                <img src="icons/icon1.svg" width="24" height="24"
+                                                                    alt="">
+                                                            </button>
+                                                            <img src="images/offer-image1.png" width="250" height="250"
+                                                                alt="">
+                                                            <button class="product-card-rating">
+                                                                <img src="icons/rating-star.svg" width="24" height="24"
+                                                                    alt="">
+                                                                5.0
+                                                            </button>
+                                                        </div>
+                                                        <div class="product-card-content">
+                                                            <h3 class="product-card-title">Світлодіодний
+                                                                настільний світильник Luxel 220-240V 6W</h3>
+                                                            <div class="product-card-info">
+                                                                <div class="product-card-price">
+                                                                    <p class="product-card-value">149.00 ₴</p>
+                                                                    <span class="product-card-subvalue">178.00 ₴</span>
+                                                                </div>
+                                                                <span class="product-card-sale">-16%</span>
+                                                                <button class="product-card-btn-basket red-btn"
+                                                                    aria-label="Додати в кошик">
+                                                                    <img src="icons/bascet-white.svg" width="22"
+                                                                        height="22" alt="">
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="offers__slider-slide swiper-slide">
+                                                <div class="product-card">
+                                                    <a href="/" class="product-card-link">
+                                                        <div class="product-card-image">
+                                                            <span class="product-card-badge">Топ продажів</span>
+                                                            <button class="product-card-popular"
+                                                                aria-label="Додати до обраного">
+                                                                <img src="icons/icon1.svg" width="24" height="24"
+                                                                    alt="">
+                                                            </button>
+                                                            <img src="images/offer-image1.png" width="250" height="250"
+                                                                alt="">
+                                                            <button class="product-card-rating">
+                                                                <img src="icons/rating-star.svg" width="24" height="24"
+                                                                    alt="">
+                                                                5.0
+                                                            </button>
+                                                        </div>
+                                                        <div class="product-card-content">
+                                                            <h3 class="product-card-title">Світлодіодний
+                                                                настільний світильник Luxel 220-240V 6W</h3>
+                                                            <div class="product-card-info">
+                                                                <div class="product-card-price">
+                                                                    <p class="product-card-value">149.00 ₴</p>
+                                                                    <span class="product-card-subvalue">178.00 ₴</span>
+                                                                </div>
+                                                                <span class="product-card-sale">-16%</span>
+                                                                <button class="product-card-btn-basket red-btn"
+                                                                    aria-label="Додати в кошик">
+                                                                    <img src="icons/bascet-white.svg" width="22"
+                                                                        height="22" alt="">
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="offers__slider-slide swiper-slide">
+                                                <div class="product-card">
+                                                    <a href="/" class="product-card-link">
+                                                        <div class="product-card-image">
+                                                            <span class="product-card-badge">Топ продажів</span>
+                                                            <button class="product-card-popular"
+                                                                aria-label="Додати до обраного">
+                                                                <img src="icons/icon1.svg" width="24" height="24"
+                                                                    alt="">
+                                                            </button>
+                                                            <img src="images/offer-image1.png" width="250" height="250"
+                                                                alt="">
+                                                            <button class="product-card-rating">
+                                                                <img src="icons/rating-star.svg" width="24" height="24"
+                                                                    alt="">
+                                                                5.0
+                                                            </button>
+                                                        </div>
+                                                        <div class="product-card-content">
+                                                            <h3 class="product-card-title">Світлодіодний
+                                                                настільний світильник Luxel 220-240V 6W</h3>
+                                                            <div class="product-card-info">
+                                                                <div class="product-card-price">
+                                                                    <p class="product-card-value">149.00 ₴</p>
+                                                                    <span class="product-card-subvalue">178.00 ₴</span>
+                                                                </div>
+                                                                <span class="product-card-sale">-16%</span>
+                                                                <button class="product-card-btn-basket red-btn"
+                                                                    aria-label="Додати в кошик">
+                                                                    <img src="icons/bascet-white.svg" width="22"
+                                                                        height="22" alt="">
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="offers__slider-slide swiper-slide">
+                                                <div class="product-card">
+                                                    <a href="/" class="product-card-link">
+                                                        <div class="product-card-image">
+                                                            <span class="product-card-badge">Топ продажів</span>
+                                                            <button class="product-card-popular"
+                                                                aria-label="Додати до обраного">
+                                                                <img src="icons/icon1.svg" width="24" height="24"
+                                                                    alt="">
+                                                            </button>
+                                                            <img src="images/offer-image1.png" width="250" height="250"
+                                                                alt="">
+                                                            <button class="product-card-rating">
+                                                                <img src="icons/rating-star.svg" width="24" height="24"
+                                                                    alt="">
+                                                                5.0
+                                                            </button>
+                                                        </div>
+                                                        <div class="product-card-content">
+                                                            <h3 class="product-card-title">Світлодіодний
+                                                                настільний світильник Luxel 220-240V 6W</h3>
+                                                            <div class="product-card-info">
+                                                                <div class="product-card-price">
+                                                                    <p class="product-card-value">149.00 ₴</p>
+                                                                    <span class="product-card-subvalue">178.00 ₴</span>
+                                                                </div>
+                                                                <span class="product-card-sale">-16%</span>
+                                                                <button class="product-card-btn-basket red-btn"
+                                                                    aria-label="Додати в кошик">
+                                                                    <img src="icons/bascet-white.svg" width="22"
+                                                                        height="22" alt="">
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="offers-popular-swiper-scrollbar swiper-scrollbar slider-scrollbar">
+                                        </div>
+                                    </div>
+                                    <div class="offers-popular-swiper-prev swiper-button-prev slider-prev">
+                                        <img src="icons/prev.svg" width="24" height="24" alt="">
+                                    </div>
+                                    <div class="offers-popular-swiper-next swiper-button-next slider-next">
+                                        <img src="icons/next.svg" width="24" height="24" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shopping-cart-product-info">
+                        <!-- Delivery progress bar -->
+                        <div class="delivery-progress">
+                            <div class="delivery-progress__text">
+                                <div class="delivery-progress__icon">
+                                    <img src="icons/delivery.svg" width="24" height="24" alt="">
+                                </div>
+                                <div>
+                                    <div class="delivery-progress__message">
+                                        <strong>Додайте товари ще на <span id="remaining-amount">1918</span><b>грн.</b>
+                                            </strong>, щоб отримати безкоштовну доставку.
+                                    </div>
+                                    <div class="delivery-progress__success" style="display: none;">
+                                        <strong>Безкоштовна доставка</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="delivery-progress__bar">
+                                <div class="delivery-progress__fill" id="progress-fill"></div>
+                            </div>
+                        </div>
+
+                        <!-- Cart summary -->
+                        <div class="cart-summary">
+                            <div class="cart-summary-row">
+                                <span>Всього до сплати:</span>
+                                <span class="cart-summary-total">
+                                    <span class="old-price" id="total-old">196.00 ₴</span>
+                                    <span id="total-current">164.00 ₴</span>
+                                </span>
+                            </div>
+                            <div class="cart-summary-row">
+                                <span>Знижка</span>
+                                <span class="discount" id="total-discount">-32.00 ₴</span>
+                            </div>
+                        </div>
+
+                        <!-- Promo code -->
+                        <div class="promo-code">
+                            <!-- Застосований промокод -->
+                            <div class="promo-code__applied" id="applied-promo">
+                                <span class="promo-code__applied-text">
+                                    Промокод: <strong id="promo-name"></strong>
+                                </span>
+                                <button class="promo-code__remove" id="remove-promo">
+                                    <img src="icons/provo-del.svg" width="18" height="20" alt="">
+                                </button>
+                            </div>
+
+                            <button class="promo-code__toggle">
+                                <span>Промокод</span>
+                                <span class="promo-code__toggle-icon">
+                                    <img src="icons/add-promo.svg" width="24" height="24" alt="">
+                                </span>
+                            </button>
+                            <div class="promo-code__content">
+                                <div class="promo-code__input-wrapper">
+                                    <p class="promo-code__input-text">Введіть промокод
+                                        <button class="promo-code__input-close">
+                                            <img src="icons/close-black.svg" width="13" height="13" alt="">
+                                        </button>
+                                    </p>
+                                    <div class="promo-code__input-boxs">
+                                        <input type="text" class="promo-code__input" placeholder="Введіть промокод">
+                                        <div class="promo-code__error promo-code__error-mob-des">Не дійсний промокод</div>
+                                    </div>
+                                        <button class="promo-code__apply red-btn">Додати</button>
+                                         <div class="promo-code__error promo-code__error-mob">Не дійсний промокод</div>
+                                    </div>
+                                   
+                            </div>
+                        </div>
+
+                        <button class="shopping-cart-product-btn red-btn">Оформити замовлення</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Попап выидалити товар -->
+    <div class="modal" id="delateProductModal">
+        <div class="modal__content">
+            <div class="modal__content-header">
+                <h2 class="modal__title">Видалити цей товар <br> з кошика?</h2>
+            
+            <p class="modal__text delate-product-text">Світлодіодна лампа автономна Luxel A80 18W 220V E27</p>
+            </div>
+            <div class="modal__buttons">
+                <button class="modal__form-add-btn cancel-delete">Скасувати</button>
+                <button class="modal__form-add-btn confirm-delete">Видалити</button>
+            </div>
+        </div>
+    </div>
 
 
+    <!-- Модалка с благодарностью -->
+    <div class="modal" id="successModal5">
+        <div class="modal__content">
+            <img src="icons/success.svg" width="40" height="40" alt="">
+            <p class="modal__text">Товар додано до списку обранного.</p>
+        </div>
+    </div>
+
+    <!-- Модалка с благодарностью -->
+    <div class="modal" id="successModal6">
+        <div class="modal__content">
+            <img src="icons/success.svg" width="40" height="40" alt="">
+            <p class="modal__text">Промокод <strong class="promocode-text">Extra10</strong> було додано!</p>
+        </div>
+    </div>
+
+    <!-- Модалка с благодарностью -->
+    <div class="modal" id="successModal7">
+        <div class="modal__content">
+            <img src="icons/success.svg" width="40" height="40" alt="">
+            <p class="modal__text">Товар видалено з кошика.</p>
+        </div>
+    </div>
 
 
     <!-- Модалки для сторінки продукти -->
@@ -2324,7 +2844,8 @@
     <div class="modal" id="successModal4">
         <div class="modal__content">
             <img src="icons/success.svg" width="40" height="40" alt="">
-            <p class="modal__text">Дякуємо за ваш відгук. Його буде додано на сайт одразу після схвалення модератором.</p>
+            <p class="modal__text">Дякуємо за ваш відгук. Його буде додано на сайт одразу після схвалення модератором.
+            </p>
         </div>
     </div>
 
@@ -2425,7 +2946,7 @@
                 <div class="product-detail__specifications-item">
                     <span class="product-detail__specifications-name">Час запуску</span>
                     <span class="product-detail__specifications-value">Миттєвий старт<span
-                            class="product-detail__specifications-value-double">(<0,3 сек)</span></span>
+                            class="product-detail__specifications-value-double">3000К</span>
                 </div>
                 <div class="product-detail__specifications-item">
                     <span class="product-detail__specifications-name">Напруга в мережі</span>
@@ -2881,7 +3402,7 @@
                                 <p class="file-size-note-error">Не вдалося завантажити файл:</p>
                                 <p class="file-size-note">Максимальний розмір зображення 10MB</p>
                             </div>
-                            
+
                         </div>
                     </div>
 
@@ -2903,238 +3424,13 @@
 <script src="scripts/jquery.maskedinput.js"></script>
 <script src="scripts/script.js"></script>
 
+
 <script>
-    // Элементы
-    const modalAddReview = document.getElementById('addReviews');
-    const modalReviews = document.getElementById('reviewsModal');
-    const closeModalBtn = document.getElementById('closeModal');
-    const form = document.getElementById('reviewForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const body = document.body;
-
-    // Success-модалка
-    const successModal = document.getElementById('successModal4');
-
-    // Рейтинг
-    const ratingStars = document.querySelectorAll('.star-btn');
-    let selectedRating = 0;
-
-    // Поля
-    const comment = document.getElementById('comment');
-    const charCount = document.getElementById('charCount');
-    const advantages = document.getElementById('advantages');
-    const advCount = document.getElementById('advCount');
-    const disadvantages = document.getElementById('disadvantages');
-    const disCount = document.getElementById('disCount');
-
-    // Зображення
-    const fileInput = document.getElementById('fileInput');
-    const imagePreview = document.getElementById('imagePreview');
-    const uploadLabel = document.querySelector('.upload-label');
-    const fileSizeNoteBox = document.querySelector('.file-size-note-box');
-    const fileSizeNoteError = document.querySelector('.file-size-note-error');
-    const fileSizeNote = document.querySelector('.file-size-note');
-    let uploadedFiles = [];
-
-    // Универсальные функции модалок
-    function openModal(modalEl) {
-        if (!modalEl) return;
-        modalEl.classList.add('active');
-        body.classList.add('is-lock');
-    }
-
-    function closeModal(modalEl) {
-        if (!modalEl) return;
-        modalEl.classList.remove('active');
-        const anyOpen = document.querySelector('.modal.active');
-        if (!anyOpen) body.classList.remove('is-lock');
-    }
-
-    function closeAllModals() {
-        document.querySelectorAll('.modal.active').forEach(modal => {
-            modal.classList.remove('active');
-        });
-    }
-
-    // Открыть форму отзывов по клику на кнопки с классом reviews-modal-btn
-    document.addEventListener('click', (e) => {
-        if (e.target.closest('.reviews-modal-btn')) {
-            openModal(modalAddReview);
+    Fancybox.bind("[data-fancybox='review1']", {
+        // Опциональные настройки
+        caption: function (fancybox, carousel, slide) {
+            return slide.caption; // Описание изображения из атрибута data-caption
         }
-    });
-
-    // Закрытие модалки по кнопке
-    closeModalBtn?.addEventListener('click', () => {
-        closeModal(modalAddReview);
-    });
-
-    // Закрытие по клику на backdrop (для всех модалок с классом .modal)
-    document.addEventListener('click', (e) => {
-        const modalEl = e.target.closest('.modal');
-        if (modalEl && e.target === modalEl) closeModal(modalEl);
-    });
-
-    // Делегирование кликов по кнопкам закрытия
-    document.addEventListener('click', (e) => {
-        const closeBtn = e.target.closest('[data-modal-close], .modal__back, .js-modal-close');
-        if (closeBtn) {
-            const modalEl = closeBtn.closest('.modal');
-            if (modalEl) closeModal(modalEl);
-        }
-    });
-
-    // Рейтинг зірок
-    ratingStars.forEach(star => {
-        star.addEventListener('click', function () {
-            selectedRating = parseInt(this.dataset.rating);
-
-            ratingStars.forEach((s, index) => {
-                if (index < selectedRating) {
-                    s.classList.add('active');
-                    s.classList.remove('inactive');
-                } else {
-                    s.classList.remove('active');
-                    s.classList.add('inactive');
-                }
-            });
-
-            validateForm();
-        });
-    });
-
-    // Лічильники
-    comment.addEventListener('input', function () {
-        charCount.textContent = this.value.length;
-        validateForm();
-    });
-
-    advantages.addEventListener('input', function () {
-        advCount.textContent = this.value.length;
-    });
-
-    disadvantages.addEventListener('input', function () {
-        disCount.textContent = this.value.length;
-    });
-
-    // Завантаження файлів
-    fileInput.addEventListener('change', function (e) {
-        const files = Array.from(e.target.files);
-        const maxSize = 10 * 1024 * 1024; // 10 MB в байтах
-        let hasOversizedFile = false;
-
-        files.forEach(file => {
-            if (file.type.startsWith('image/')) {
-                if (file.size > maxSize) {
-                    hasOversizedFile = true;
-                } else {
-                    uploadedFiles.push(file);
-
-                    const reader = new FileReader();
-                    reader.onload = function (ev) {
-                        const previewItem = document.createElement('div');
-                        previewItem.className = 'preview-item';
-                        previewItem.innerHTML = `
-                            <img src="${ev.target.result}" alt="Preview">
-                            <button type="button" class="remove-image" aria-label="Remove image">×</button>
-                        `;
-                        imagePreview.appendChild(previewItem);
-                    };
-                    reader.readAsDataURL(file);
-                }
-            }
-        });
-
-        // Показ/приховування повідомлення про помилку
-        if (hasOversizedFile) {
-            fileSizeNoteError.style.display = 'block';
-            fileSizeNoteError.style.color = '#EF0022';
-            fileSizeNote.style.color = '#EF0022';
-        } else {
-            fileSizeNoteError.style.display = 'none';
-            fileSizeNote.style.color = '';
-        }
-
-        fileInput.value = '';
-    });
-
-    // Видалення одного зображення
-    imagePreview.addEventListener('click', function (e) {
-        if (e.target.classList.contains('remove-image')) {
-            const idx = Array.from(imagePreview.children).indexOf(e.target.closest('.preview-item'));
-            if (idx > -1) uploadedFiles.splice(idx, 1);
-            e.target.closest('.preview-item').remove();
-        }
-    });
-
-    // Видалити всі зображення (по кліку на label)
-    uploadLabel?.addEventListener('click', function (e) {
-        if (uploadedFiles.length > 0) {
-            e.preventDefault();
-            uploadedFiles = [];
-            imagePreview.innerHTML = '';
-            fileSizeNoteError.style.display = 'none';
-            fileSizeNote.style.color = '';
-        }
-    });
-
-    // Валідація
-    function validateForm() {
-        const isValid = selectedRating > 0 && comment.value.trim().length > 0;
-        submitBtn.disabled = !isValid;
-    }
-
-    // Сброс формы
-    function resetReviewForm() {
-        form.reset();
-        selectedRating = 0;
-        uploadedFiles = [];
-        imagePreview.innerHTML = '';
-        charCount.textContent = '0';
-        advCount.textContent = '0';
-        disCount.textContent = '0';
-        fileSizeNoteError.style.display = 'none';
-        fileSizeNote.style.color = '';
-        ratingStars.forEach(s => {
-            s.classList.remove('active');
-            s.classList.add('inactive');
-        });
-        submitBtn.disabled = true;
-    }
-
-    // Відправка форми
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const formData = {
-            rating: selectedRating,
-            comment: comment.value,
-            advantages: advantages.value,
-            disadvantages: disadvantages.value,
-            images: uploadedFiles.length
-        };
-
-        console.log('Дані відгуку:', formData);
-
-        // 1) Закриваем все модалки
-        closeAllModals();
-        
-        // 2) Сразу удаляем класс is-lock с body
-        body.classList.remove('is-lock');
-
-        // 3) Открываем success-модалку (без is-lock)
-        successModal.classList.add('active');
-
-        // 4) Закрываем successModal4 через 3 секунды
-        setTimeout(() => {
-            successModal.classList.remove('active');
-        }, 3000);
-
-        // 5) Очищаем форму
-        resetReviewForm();
     });
 </script>
-
-
 </html>
-
-

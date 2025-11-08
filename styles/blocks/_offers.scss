@@ -75,6 +75,10 @@
             @include mobile {
               display: none;
             }
+
+             @media (max-width: 1024px) {
+                right: 0;
+            }
         }
 
         .swiper-button-prev {
@@ -83,6 +87,10 @@
 
              @include mobile {
               display: none;
+            }
+
+            @media (max-width: 1024px) {
+                left: 0;
             }
         }
 
@@ -98,8 +106,13 @@
         gap: 50px;
         align-items: center;
 
+        .offers__slider-slide {
+            width: 323px;
+        }
+
         @include mobile {
             gap: 16px;
         }
     }
 }
+
