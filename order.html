@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Luxel перший магазин електротоварів в Україні! | Ваше замовлення успішно оформлено!</title>
+
+    <link rel="stylesheet" href="styles/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./styles/main.css" />
+</head>
+
+<body>
+    <header class="header small-header">
+        <div class="header__promo">
+            <div class="header__promo-inner container">
+                <a class="header__logo logo" href="/" aria-label="Home" title="Home">
+                    <img class="logo__image" src="./images/logo.png" alt="" width="175" height="42" />
+                </a>
+                <div class="header__promo-contacts">
+                    <a href="/" class="header__promo-help">Потрібна допомога?</a>
+                    <a href="tel:+380730415111" class="header__promo-contacts-phone">
+                        <img src="icons/phone.svg" width="24" height="24" alt="">
+                        +38 (073) 041-5111
+                    </a>
+                    <div class="header__promo-language-dropdown">
+                        <div class="header__promo-language-dropdown-header" onclick="toggleDropdownLanguage()">
+                            <span class="header__promo-language-dropdown-text" id="selectedLanguage">UA</span>
+                            <img src="icons/dropdown.svg" class="header__promo-language-arrow"
+                                id="dropdownArrowLanguage" width="14" height="8" alt="">
+                        </div>
+
+                        <div class="header__promo-language-dropdown-menu" id="dropdownMenuLanguage">
+                            <div class="header__promo-language-dropdown-option active"
+                                onclick="selectLanguage('UA', event)">
+                                Українська
+                            </div>
+                            <div class="header__promo-language-dropdown-option" onclick="selectLanguage('RU', event)">
+                                Русский
+                            </div>
+                            <div class="header__promo-language-dropdown-option" onclick="selectLanguage('EN', event)">
+                                English
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="order-main">
+        <section class="order">
+            <div class="order__inner container">
+                <div class="order__title">
+                    <h1>Ваше замовлення успішно оформлено!</h1>
+                    <p>Замовлення обробляється автоматично та ми повідомимо вас, коли воно буде готово до відправки.</p>
+                </div>
+
+                <div class="order__info">
+                    <h2>Інформація про замовлення</h2>
+
+                    <ul class="order__info-list">
+                        <li class="order__info-item">
+                            <span class="order__info-item-text">Номер замовлення</span>
+                            <p class="order__info-item-content">56249346</p>
+                        </li>
+                        <li class="order__info-item">
+                            <span class="order__info-item-text">Сума</span>
+                            <p class="order__info-item-content">2731.80 ₴</p>
+                        </li>
+                        <li class="order__info-item">
+                            <span class="order__info-item-text">Кількість товарів</span>
+                            <p class="order__info-item-content">3 шт.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="order__product">
+                    <h2>Товари</h2>
+                    <div class="checkout__order-summary">
+                        <div class="modal__content-body">
+                            <div class="modal__content-body-image">
+                                <img src="images/catalog-item.png" loading="lazy" width="88" height="88" alt="">
+                            </div>
+                            <div class="modal__content-body-content">
+                                <h3>Світлодіодна лампа автономна Luxel A80 18W 220V E27</h3>
+                                <div class="modal__content-body-content-option">
+                                    <span class="modal__content-body-content-value">2 од.</span>
+                                    <div class="modal__content-body-content-box">
+                                        <span class="modal__content-body-content-subsum">98.00 ₴</span>
+                                        <span class="modal__content-body-content-sum">82.00 ₴</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal__content-body">
+                            <div class="modal__content-body-image">
+                                <img src="images/catalog-item.png" loading="lazy" width="88" height="88" alt="">
+                            </div>
+                            <div class="modal__content-body-content">
+                                <h3>Світлодіодна лампа автономна Luxel A80 18W 220V E27</h3>
+                                <div class="modal__content-body-content-option">
+                                    <span class="modal__content-body-content-value">1 од.</span>
+                                    <div class="modal__content-body-content-box">
+                                        <span class="modal__content-body-content-subsum">98.00 ₴</span>
+                                        <span class="modal__content-body-content-sum">82.00 ₴</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal__content-body">
+                            <div class="modal__content-body-image">
+                                <img src="images/catalog-item.png" loading="lazy" width="88" height="88" alt="">
+                            </div>
+                            <div class="modal__content-body-content">
+                                <h3>Світлодіодна лампа автономна Luxel A80 18W 220V E27</h3>
+                                <div class="modal__content-body-content-option">
+                                    <span class="modal__content-body-content-value">1 од.</span>
+                                    <div class="modal__content-body-content-box">
+                                        <span class="modal__content-body-content-sum">82.00 ₴</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/" class="order__link red-btn">На головну</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__inner container">
+            <div class="footer__logo">
+                <a href="/" class="footer__logo-link">
+                    <img src="images/black-logo.png" width="150" height="34" alt="Luxel footer logo">
+                </a>
+            </div>
+            <div class="footer__content">
+                <div class="footer__content-box">
+                    <div class="footer__content-col">
+                        <h3 class="footer__content-col-title">Контакти</h3>
+                        <div class="footer__content-col-contact">
+                            <h4>Гаряча лінія</h4>
+                            <div class="footer__content-col-contact-row">
+                                <a href="tel:+380730415111">+38 (073) 041-5111</a>
+                                <span class="footer__content-col-contact-grafic">(пн-пт 10:00-18:00)</span>
+                            </div>
+                        </div>
+                        <div class="footer__content-col-contact">
+                            <h4>Офіс</h4>
+                            <a href="tel:+380500415111">+38 (050) 041-51-11</a>
+                            <a href="tel:+380970145111">+38 (097) 014-51-11</a>
+                        </div>
+                        <div class="footer__content-col-contact footer__content-col-contact--email">
+                            <h4>Email</h4>
+                            <a href="mailto:odessa@luxel.ua">odessa@luxel.ua</a>
+                        </div>
+                        <div class="footer__accordion">
+                            <div class="footer__accordion-item">
+                                <h3 class="footer__accordion-header">
+                                    <button class="footer__accordion-button" type="button" aria-expanded="false"
+                                        aria-controls="accordion-panel-1">
+                                        <span class="footer__accordion-title">Про компанію</span>
+                                        <span class="footer__accordion-icon" aria-hidden="true">
+                                            <img src="icons/accardion-arrow.svg" width="24" height="24" alt="">
+                                        </span>
+                                    </button>
+                                </h3>
+                                <div class="footer__accordion-panel" id="accordion-panel-1" role="region"
+                                    aria-labelledby="accordion-panel-1">
+                                    <div class="footer__accordion-content">
+                                        <ul class="footer__accordion-list">
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Доставка</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Оплата</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Умови повернення і
+                                                    гарантії</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Задати питання експертам</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Завантажити каталог</a>
+                                            </li>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Вiдео файли</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Політика конфіденційності</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="footer__accordion-item">
+                                <h3 class="footer__accordion-header">
+                                    <button class="footer__accordion-button" type="button" aria-expanded="false"
+                                        aria-controls="accordion-panel-2">
+                                        <span class="footer__accordion-title">Послуги</span>
+                                        <span class="footer__accordion-icon" aria-hidden="true">
+                                            <img src="icons/accardion-arrow.svg" width="24" height="24" alt="">
+                                        </span>
+                                    </button>
+                                </h3>
+                                <div class="footer__accordion-panel" id="accordion-panel-2" role="region"
+                                    aria-labelledby="accordion-panel-2">
+                                    <div class="footer__accordion-content">
+                                        <ul class="footer__accordion-list">
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Консультації</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Розробка</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Підтримка</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer__content-col-contact footer__content-col-contact--social">
+                            <h4>Соцмережі</h4>
+                            <a href="https://t.me/yourchannel" target="_blank" aria-label="Телеграм">
+                                <img src="icons/tg-red.svg" width="21" height="18" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer__content-col footer__content-col--descktop">
+                        <h3 class="footer__content-col-title">Допомога</h3>
+                        <ul class="footer__content-list">
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Гаряча лінія</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Оплата</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Умови повернення і гарантії</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Задати питання експертам</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Завантажити каталог</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Вiдео файли</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Політика конфіденційності</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__content-help">
+                    <h3>Підпишіться, щоб отримувати найкращі знижки та пропозиції</h3>
+                    <p>Підписуйтеся на розсилку, щоб слідкувати за останніми новинами та акційними пропозиціями та
+                        отримайте
+                        знижку на перше замовлення в нашому магазині! </p>
+                    <form action="" class="footer-form">
+                        <input type="email" name="eamil" id="footerEmail" placeholder="Ваш Email" required>
+                        <button type="submit" class="footer-btn red-btn">Підписатися</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__bottom-copiright">Luxel © 2025. Усі права захищені</p>
+                <ul class="footer__bottom-list">
+                    <li class="footer__bottom-item">
+                        <img src="icons/bank1.svg" width="22" height="22" alt="">
+                    </li>
+                    <li class="footer__bottom-item">
+                        <img src="icons/bank2.svg" width="22" height="22" alt="">
+                    </li>
+                    <li class="footer__bottom-item">
+                        <img src="icons/bank3.svg" width="22" height="22" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+
+<script src="scripts/jquery-3.7.0.min.js"></script>
+<script src="scripts/swiper-bundle.min.js"></script>
+<script src="scripts/jquery.maskedinput.js"></script>
+<script src="scripts/script.js"></script>
+
+</html>

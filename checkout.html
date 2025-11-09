@@ -51,7 +51,7 @@
 
     <main class="checkout-main">
         <div class="breadcrumbs__link--span container">
-            <a href="/"><img src="icons/nav-arrow.svg" alt="">Кошик</a>
+            <a href="#" onclick="openCheckoutModal(event)"><img src="icons/nav-arrow.svg" alt="">Кошик</a>
         </div>
 
         <div class="checkout">
@@ -384,7 +384,7 @@
                                                         </span>
                                                     </div>
                                                     <div class="checkout__payment-desc">Оплата онлайн
-                                                        
+
                                                         <span>Миттєва оплата через онлайн сервіс</span>
                                                     </div>
                                                     <input type="radio" name="paymentMethod" value="online"
@@ -421,14 +421,15 @@
                                                         <span class="checkout__payment-icon">
                                                             <img src="icons/card2.svg" width="32" height="32" alt="">
                                                         </span>
-                                                        
+
                                                     </div>
                                                     <div class="checkout__payment-desc">
-                                                    Оплата при отриманні
-                                                    <span> Оплата готівкою або банківською карткою під час отримання товару</span>
+                                                        Оплата при отриманні
+                                                        <span> Оплата готівкою або банківською карткою під час отримання
+                                                            товару</span>
+                                                    </div>
                                                 </div>
-                                                </div>
-                                                
+
                                             </div>
                                         </div>
 
@@ -441,7 +442,7 @@
                                 <div class="checkout__section-summary">
                                     <div class="checkout__summary-item">
                                         <div class="checkout__summary-label">Спосіб оплати</div>
-                                        
+
                                         <div class="checkout__summary-subvalue" id="summary-payment-option"></div>
                                     </div>
                                 </div>
@@ -476,14 +477,14 @@
                         <h2>Ваше замовлення</h2>
 
                         <div class="checkout__order-summary" id="order-summary">
-                           <div class="modal__content-body">
+                            <div class="modal__content-body">
                                 <div class="modal__content-body-image">
                                     <img src="images/catalog-item.png" loading="lazy" width="88" height="88" alt="">
                                 </div>
                                 <div class="modal__content-body-content">
                                     <h3>Світлодіодна лампа автономна Luxel A80 18W 220V E27</h3>
                                     <div class="modal__content-body-content-option">
-                                        <span class="modal__content-body-content-value">5 шт.</span>
+                                        <span class="modal__content-body-content-value">2 од.</span>
                                         <div class="modal__content-body-content-box">
                                             <span class="modal__content-body-content-subsum">98.00 ₴</span>
                                             <span class="modal__content-body-content-sum">82.00 ₴</span>
@@ -498,7 +499,7 @@
                                 <div class="modal__content-body-content">
                                     <h3>Світлодіодна лампа автономна Luxel A80 18W 220V E27</h3>
                                     <div class="modal__content-body-content-option">
-                                        <span class="modal__content-body-content-value">5 шт.</span>
+                                        <span class="modal__content-body-content-value">1 од.</span>
                                         <div class="modal__content-body-content-box">
                                             <span class="modal__content-body-content-subsum">98.00 ₴</span>
                                             <span class="modal__content-body-content-sum">82.00 ₴</span>
@@ -513,7 +514,7 @@
                                 <div class="modal__content-body-content">
                                     <h3>Світлодіодна лампа автономна Luxel A80 18W 220V E27</h3>
                                     <div class="modal__content-body-content-option">
-                                        <span class="modal__content-body-content-value">5 шт.</span>
+                                        <span class="modal__content-body-content-value">1 од.</span>
                                         <div class="modal__content-body-content-box">
                                             <span class="modal__content-body-content-sum">82.00 ₴</span>
                                         </div>
@@ -714,6 +715,21 @@
             </div>
         </div>
     </footer>
+
+
+    <div class="modal" id="delateCheckoutModal">
+        <div class="modal__content">
+            <div class="modal__content-header">
+                <h2 class="modal__title">Хочете перервати процес оформлення замовлення?</h2>
+            
+            <p class="modal__text delate-product-text">Ця дія може привести до втрати збереженого процесу.</p>
+            </div>
+            <div class="modal__buttons">
+                <button class="modal__form-add-btn cancel-delete">До кошику</button>
+                <button class="modal__form-add-btn confirm-delete">Скасувати</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 
@@ -742,7 +758,7 @@
     function initCommentCounter() {
         var commentTextarea = document.getElementById('comment');
         if (commentTextarea) {
-            commentTextarea.addEventListener('input', function() {
+            commentTextarea.addEventListener('input', function () {
                 var count = this.value.length;
                 var counterElement = document.getElementById('comment-count');
                 if (counterElement) {
@@ -763,7 +779,7 @@
     function toggleCommentSection() {
         var checkbox = document.getElementById('add-comment-checkbox');
         var commentSection = document.getElementById('section-comment');
-        
+
         if (checkbox && commentSection) {
             if (checkbox.checked) {
                 commentSection.classList.remove('hidden');
@@ -1004,10 +1020,10 @@
         }
 
         collapseSection('payment');
-        
+
         // Показываем секцию с чекбоксом для добавления комментария
         document.getElementById('section-add-comment').classList.remove('hidden');
-        
+
         // Проверяем, нужно ли показывать секцию комментариев
         var commentCheckbox = document.getElementById('add-comment-checkbox');
         if (commentCheckbox && commentCheckbox.checked) {
@@ -1168,6 +1184,54 @@
         console.log('Дані замовлення:', formData);
         alert('Замовлення успішно оформлено!');
     }
+
+    // Функции для работы с модальным окном
+    function openCheckoutModal(event) {
+        event.preventDefault();
+        var modal = document.getElementById('delateCheckoutModal');
+        if (modal) {
+            modal.classList.add('active');
+            document.body.classList.add('is-lock');
+        }
+    }
+
+    function closeCheckoutModal() {
+        var modal = document.getElementById('delateCheckoutModal');
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.classList.remove('is-lock');
+        }
+    }
+
+    // Обработчики для кнопок модального окна
+    document.addEventListener('DOMContentLoaded', function() {
+        var cancelBtn = document.querySelector('.cancel-delete');
+        var confirmBtn = document.querySelector('.confirm-delete');
+        var modal = document.getElementById('delateCheckoutModal');
+
+        if (cancelBtn) {
+            cancelBtn.addEventListener('click', function() {
+                closeCheckoutModal();
+                // Перенаправляем в корзину
+                window.location.href = '/';
+            });
+        }
+
+        if (confirmBtn) {
+            confirmBtn.addEventListener('click', function() {
+                closeCheckoutModal();
+            });
+        }
+
+        // Закрытие по клику вне модального окна
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeCheckoutModal();
+                }
+            });
+        }
+    });
 </script>
 
 </html>

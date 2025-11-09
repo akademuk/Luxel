@@ -2176,6 +2176,56 @@
     }
 }
 
+#delateCheckoutModal {
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12.5px);
+
+    .modal__content {
+        margin: 0;
+        padding: 0;
+
+        &-header {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 0;
+
+            h2 {
+                text-align: center;
+            }
+
+            .modal__text {
+                text-align: center;
+                margin-bottom: 0;
+            }
+        }
+
+        .modal__buttons {
+            width: 100%;
+            border-top: var(--border);
+            display: flex;
+
+            button {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: transparent;
+                border: none;
+                padding: 16px 0;
+            }
+
+            .confirm-delete {
+                color: var(--color-red);
+                border-left: var(--border);
+            }
+        }
+    }
+}
+
 
 
 
