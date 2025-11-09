@@ -2219,7 +2219,7 @@ function initProductGallery() {
         Toolbar: {
             display: {
                 left: [],
-                middle: [],
+                middle: ["counter"],
                 right: ["close"],
             },
             autoEnable: true,
@@ -2319,6 +2319,55 @@ function initProductGallery() {
     });
 }
 
+// Инициализация Fancybox для галерей в отзывах
+function initReviewsGallery() {
+    if (typeof Fancybox === 'undefined') return;
+
+    // Инициализируем для галереи в модальном окне отзывов
+    Fancybox.bind('[data-fancybox="galleryReviews"]', {
+        Hash: false,
+        Thumbs: {
+            type: "classic",
+            autoStart: true,
+        },
+        Toolbar: {
+            display: {
+                left: [],
+                middle: [],
+                right: ["close"],
+            },
+        },
+    });
+
+    // Инициализируем для галерей в списке отзывов (review1, review2, review3)
+    Fancybox.bind('[data-fancybox^="review"]', {
+        Hash: false,
+        Thumbs: false,
+        Toolbar: {
+            display: {
+                left: [],
+                middle: ["counter"],
+                right: ["close"],
+            },
+        },
+        caption: function (fancybox, slide) {
+            const trigger = slide.triggerEl;
+            if (!trigger) return '';
+
+            const reviewItem = trigger.closest('.reviews-list__item');
+            if (!reviewItem) return '';
+
+            const authorName = reviewItem.querySelector('.reviews-list__item-autor h3')?.textContent || '';
+            const reviewDate = reviewItem.querySelector('.reviews-list__item-autor time')?.textContent || '';
+
+            return `
+                <h2 class="fancybox-title">${authorName}</h2>
+                <p class="fancybox-subtitle">${reviewDate}</p>
+            `;
+        },
+    });
+}
+
 
 
 window.addEventListener('beforeunload', () => {
@@ -2334,9 +2383,13 @@ window.addEventListener('load', () => {
 });
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initProductGallery);
+    document.addEventListener('DOMContentLoaded', () => {
+        initProductGallery();
+        initReviewsGallery();
+    });
 } else {
     initProductGallery();
+    initReviewsGallery();
 }
 
 
@@ -2377,12 +2430,6 @@ function initializeReviewsSwiper() {
             prevEl: '.swiper-button-prev',
             disabledClass: 'swiper-button-disabled', // Класс для отключенных кнопок
         }
-    });
-
-    Fancybox.bind('[data-fancybox="galleryReviews"]', {
-        loop: true,
-        arrows: true,
-        infobar: true,
     });
 
     // Добавляем слушателей событий для скрытия/отображения кнопок навигации в зависимости от состояния слайдера

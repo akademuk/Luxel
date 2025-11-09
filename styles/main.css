@@ -865,6 +865,7 @@ input[type=number] {
   overflow: visible !important;
   transform: translate(-50%, -50%) !important;
   pointer-events: auto !important;
+  z-index: 99999 !important;
 }
 
 /* Carousel тепер має фон та overflow */
@@ -3370,6 +3371,9 @@ input[type=number] {
   border-radius: 12px;
   background: var(--color-gray-primary);
 }
+#reviewsModal .reviews-summary__image img {
+  mix-blend-mode: multiply;
+}
 #reviewsModal .reviews-summary__content {
   display: flex;
   flex-direction: column;
@@ -4071,6 +4075,9 @@ input[type=number] {
   border-radius: 8px;
   flex-shrink: 0;
   background: var(--color-gray-primary);
+}
+.shopping-cart-product-item-image img {
+  mix-blend-mode: multiply;
 }
 @media (max-width: 768px) {
   .shopping-cart-product-item-image {
@@ -8317,7 +8324,7 @@ button:disabled {
   height: 100%;
 }
 .gallery__thumbnails .gallery__thumbnail img {
-  background-blend-mode: multiply;
+  mix-blend-mode: multiply;
   width: 150px;
   height: 150px;
   aspect-ratio: 1/1;
@@ -8628,6 +8635,9 @@ button:disabled {
   align-items: center;
   border-radius: 8px;
   background: var(--color-gray-primary);
+}
+.checkout__order-summary .modal__content-body .modal__content-body-image img {
+  mix-blend-mode: multiply;
 }
 .checkout__order-summary .modal__content-body .modal__content-body-content {
   display: flex;

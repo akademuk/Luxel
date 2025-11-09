@@ -837,6 +837,10 @@
             aspect-ratio: 1/1;
             border-radius: 12px;
             background: var(--color-gray-primary);
+
+            img {
+                 mix-blend-mode: multiply;
+            }
         }
 
         &__content {
@@ -1661,6 +1665,10 @@
                 border-radius: 8px;
                 flex-shrink: 0;
                 background: var(--color-gray-primary);
+
+                img {
+                     mix-blend-mode: multiply;
+                }
 
                 @media (max-width: 768px)  {
                     width: 72px;

@@ -193,6 +193,10 @@
                 align-items: center;
                 border-radius: 8px;
                 background: var(--color-gray-primary);
+
+                img {
+                     mix-blend-mode: multiply;
+                }
             }
 
             .modal__content-body-content {

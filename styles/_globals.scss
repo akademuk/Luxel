@@ -619,6 +619,7 @@ input[type="number"] {
   overflow: visible !important;
   transform: translate(-50%, -50%) !important;
   pointer-events: auto !important;
+  z-index: 99999 !important;
 }
 
 /* Carousel тепер має фон та overflow */
