@@ -1,0 +1,1173 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Luxel перший магазин електротоварів в Україні! | Оформлення замовлення</title>
+
+    <link rel="stylesheet" href="styles/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./styles/main.css" />
+</head>
+
+<body>
+    <header class="header small-header">
+        <div class="header__promo">
+            <div class="header__promo-inner container">
+                <a class="header__logo logo" href="/" aria-label="Home" title="Home">
+                    <img class="logo__image" src="./images/logo.png" alt="" width="175" height="42" />
+                </a>
+                <div class="header__promo-contacts">
+                    <a href="/" class="header__promo-help">Потрібна допомога?</a>
+                    <a href="tel:+380730415111" class="header__promo-contacts-phone">
+                        <img src="icons/phone.svg" width="24" height="24" alt="">
+                        +38 (073) 041-5111
+                    </a>
+                    <div class="header__promo-language-dropdown">
+                        <div class="header__promo-language-dropdown-header" onclick="toggleDropdownLanguage()">
+                            <span class="header__promo-language-dropdown-text" id="selectedLanguage">UA</span>
+                            <img src="icons/dropdown.svg" class="header__promo-language-arrow"
+                                id="dropdownArrowLanguage" width="14" height="8" alt="">
+                        </div>
+
+                        <div class="header__promo-language-dropdown-menu" id="dropdownMenuLanguage">
+                            <div class="header__promo-language-dropdown-option active"
+                                onclick="selectLanguage('UA', event)">
+                                Українська
+                            </div>
+                            <div class="header__promo-language-dropdown-option" onclick="selectLanguage('RU', event)">
+                                Русский
+                            </div>
+                            <div class="header__promo-language-dropdown-option" onclick="selectLanguage('EN', event)">
+                                English
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="checkout-main">
+        <div class="breadcrumbs__link--span container">
+            <a href="/"><img src="icons/nav-arrow.svg" alt="">Кошик</a>
+        </div>
+
+        <div class="checkout">
+            <div class="checkout__inner container">
+                <h1 class="checkout__title">Оформлення замовлення</h1>
+
+                <div class="checkout__description">
+                    <div class="checkout__left">
+                        <!-- Контактна інформація -->
+                        <section class="checkout__section" id="section-contact">
+                            <div class="checkout__section-inner">
+                                <div class="checkout__section-header">
+                                    <h2 class="checkout__section-title">Контактна інформація</h2>
+                                    <button type="button" class="checkout__edit-btn hidden"
+                                        onclick="editSection('contact')">
+                                        Змінити
+                                        <img src="icons/edit.svg" width="17" height="17" alt="Змінити">
+                                    </button>
+                                </div>
+
+                                <div class="checkout__section-content">
+                                    <form class="checkout__form" id="form-contact"
+                                        onsubmit="handleContactSubmit(event)">
+                                        <div class="checkout__form-row">
+                                            <div class="checkout__form-group">
+                                                <label class="checkout__label" for="surname">
+                                                    ПІБ <span class="required">*</span>
+                                                </label>
+                                                <input type="text" id="surname" name="surname" class="checkout__input"
+                                                    placeholder="ПІБ" required />
+                                            </div>
+                                            <div class="checkout__form-group">
+                                                <label class="checkout__label" for="phone">
+                                                    Телефон <span class="required">*</span>
+                                                </label>
+                                                <input type="tel" id="phone" name="phone" class="checkout__input"
+                                                    placeholder="+380(__)___-__-__" required />
+                                            </div>
+                                        </div>
+                                        <div class="checkout__form-group">
+                                            <label class="checkout__label" for="email">
+                                                Email <span class="required">*</span>
+                                            </label>
+                                            <input type="email" id="email" name="email" class="checkout__input"
+                                                placeholder="Ваш Email" required />
+                                        </div>
+                                        <button type="submit" class="checkout__btn checkout__btn--continue red-btn">
+                                            Продовжити
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <div class="checkout__section-summary">
+                                    <div class="checkout__summary-grid">
+                                        <div class="checkout__summary-item">
+                                            <div class="checkout__summary-label">ПІБ</div>
+                                            <div class="checkout__summary-value" id="summary-surname"></div>
+                                        </div>
+                                        <div class="checkout__summary-item">
+                                            <div class="checkout__summary-label">Телефон</div>
+                                            <div class="checkout__summary-value" id="summary-phone"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Доставка -->
+                        <section class="checkout__section is-disabled" id="section-delivery">
+                            <div class="checkout__section-inner">
+                                <div class="checkout__section-header">
+                                    <h2 class="checkout__section-title">Доставка</h2>
+                                    <button type="button" class="checkout__edit-btn hidden"
+                                        onclick="editSection('delivery')">
+                                        Змінити
+                                        <img src="icons/edit.svg" width="17" height="17" alt="Змінити">
+                                    </button>
+                                </div>
+
+                                <div class="checkout__section-content">
+                                    <form class="checkout__form" id="form-delivery"
+                                        onsubmit="handleDeliverySubmit(event)">
+                                        <div class="checkout__form-row">
+                                            <div class="checkout__form-group">
+                                                <label class="checkout__label" for="country">
+                                                    Країна <span class="required">*</span>
+                                                </label>
+                                                <select id="country" name="country" class="checkout__select" required
+                                                    onchange="handleCountryChange()">
+                                                    <option value="">Оберіть країну</option>
+                                                    <option value="Україна">Україна</option>
+                                                    <option value="Сполучені Штати">Сполучені Штати</option>
+                                                    <option value="Польща">Польща</option>
+                                                    <option value="Чеська республіка">Чеська республіка</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="checkout__form-group" id="city-group">
+                                                <label class="checkout__label" for="city">
+                                                    Місто <span class="required">*</span>
+                                                </label>
+                                                <select id="city" name="city" class="checkout__select"
+                                                    onchange="handleCityChange()">
+                                                    <option value="">Оберіть місто</option>
+                                                    <option value="Київ">Київ</option>
+                                                    <option value="Львів">Львів</option>
+                                                    <option value="Одеса">Одеса</option>
+                                                    <option value="Харків">Харків</option>
+                                                    <option value="Дніпро">Дніпро</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="hidden" id="delivery-methods-group">
+                                            <h3 class="checkout__subtitle">Спосіб доставки</h3>
+                                            <div class="checkout__delivery-methods">
+                                                <label class="checkout__delivery-item"
+                                                    onclick="selectDelivery(this, 'nova-post-branch-free')">
+                                                    <div class="checkout__delivery-item-box">
+                                                        <input type="radio" name="deliveryMethod"
+                                                            value="nova-post-branch-free" class="checkout__radio"
+                                                            required />
+                                                        <span class="checkout__delivery-icon">
+                                                            <img src="icons/np-logo.png" width="32" height="32" alt="">
+                                                        </span>
+                                                        <div class="checkout__delivery-info">
+                                                            <div class="checkout__delivery-name">Нова пошта - відділення
+                                                            </div>
+                                                            <div class="checkout__delivery-price">Завтра:
+                                                                <span>Безкоштовно</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="checkout__form-group hidden"
+                                                        id="delivery-address-group">
+                                                        <label class="checkout__label" for="deliveryAddress">
+                                                            Оберіть відділення <span class="required">*</span>
+                                                        </label>
+                                                        <div class="checkout__form-delivery-select">
+                                                            <select id="deliveryAddress" name="deliveryAddress"
+                                                                class="checkout__select">
+                                                                <option value="">Введіть адресу або номер відділення
+                                                                </option>
+                                                                <option
+                                                                    value="№1, Київ, проїзд Флоренська Чорновола, 54а">
+                                                                    №1, Київ,
+                                                                    проїзд
+                                                                    Флоренська Чорновола, 54а</option>
+                                                                <option value="№5, Київ, вул. Хрещатик, 22">№5, Київ,
+                                                                    вул.
+                                                                    Хрещатик, 22
+                                                                </option>
+                                                                <option value="№10, Київ, просп. Перемоги, 100">№10,
+                                                                    Київ,
+                                                                    просп.
+                                                                    Перемоги, 100
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </label>
+
+                                                <label class="checkout__delivery-item"
+                                                    onclick="selectDelivery(this, 'nova-post-courier')">
+                                                    <div class="checkout__delivery-item-box">
+                                                        <input type="radio" name="deliveryMethod"
+                                                            value="nova-post-courier" class="checkout__radio" />
+                                                        <span class="checkout__delivery-icon">
+                                                            <img src="icons/np-logo.png" width="32" height="32" alt="">
+                                                        </span>
+                                                        <div class="checkout__delivery-info">
+                                                            <div class="checkout__delivery-name">Нова пошта - кур’єр
+                                                            </div>
+                                                            <div class="checkout__delivery-price">Завтра: від 75 грн.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="checkout__form-group hidden" id="courier-address-group">
+                                                        <label class="checkout__label" for="courierAddress">
+                                                            Адреса доставки <span class="required">*</span>
+                                                        </label>
+                                                        <input type="text" id="courierAddress" name="courierAddress"
+                                                            class="checkout__input"
+                                                            placeholder="Введіть адресу для доставки" />
+                                                    </div>
+                                                </label>
+
+                                                <label class="checkout__delivery-item"
+                                                    onclick="selectDelivery(this, 'nova-post-branch')">
+                                                    <div class="checkout__delivery-item-box">
+                                                        <input type="radio" name="deliveryMethod"
+                                                            value="nova-post-branch" class="checkout__radio" />
+                                                        <span class="checkout__delivery-icon">
+                                                            <img src="icons/np-logo.png" width="32" height="32" alt="">
+                                                        </span>
+                                                        <div class="checkout__delivery-info">
+                                                            <div class="checkout__delivery-name">Нова пошта - відділення
+                                                            </div>
+                                                            <div class="checkout__delivery-price">Завтра: від 75 грн.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="checkout__form-group hidden"
+                                                        id="delivery-address-group2">
+                                                        <label class="checkout__label" for="deliveryAddress2">
+                                                            Оберіть відділення <span class="required">*</span>
+                                                        </label>
+                                                        <div class="checkout__form-delivery-select">
+                                                            <select id="deliveryAddress2" name="deliveryAddress2"
+                                                                class="checkout__select">
+                                                                <option value="">Введіть адресу або номер відділення
+                                                                </option>
+                                                                <option
+                                                                    value="№1, Київ, проїзд Флоренська Чорновола, 54а">
+                                                                    №1, Київ,
+                                                                    проїзд
+                                                                    Флоренська Чорновола, 54а</option>
+                                                                <option value="№5, Київ, вул. Хрещатик, 22">№5, Київ,
+                                                                    вул.
+                                                                    Хрещатик, 22
+                                                                </option>
+                                                                <option value="№10, Київ, просп. Перемоги, 100">№10,
+                                                                    Київ,
+                                                                    просп.
+                                                                    Перемоги, 100
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </label>
+
+                                                <label class="checkout__delivery-item"
+                                                    onclick="selectDelivery(this, 'ukrposhta')">
+                                                    <div class="checkout__delivery-item-box">
+                                                        <input type="radio" name="deliveryMethod" value="ukrposhta"
+                                                            class="checkout__radio" />
+                                                        <span class="checkout__delivery-icon">
+                                                            <img src="icons/ukr.png" width="32" height="32" alt="">
+                                                        </span>
+                                                        <div class="checkout__delivery-info">
+                                                            <div class="checkout__delivery-name">Укрпошта - відділення
+                                                            </div>
+                                                            <div class="checkout__delivery-price">Завтра: від 50 грн.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="checkout__form-group hidden"
+                                                        id="delivery-address-group3">
+                                                        <label class="checkout__label" for="deliveryAddress3">
+                                                            Оберіть відділення <span class="required">*</span>
+                                                        </label>
+                                                        <div class="checkout__form-delivery-select">
+                                                            <select id="deliveryAddress3" name="deliveryAddress3"
+                                                                class="checkout__select">
+                                                                <option value="">Введіть адресу або номер відділення
+                                                                </option>
+                                                                <option
+                                                                    value="№1, Київ, проїзд Флоренська Чорновола, 54а">
+                                                                    №1, Київ,
+                                                                    проїзд
+                                                                    Флоренська Чорновола, 54а</option>
+                                                                <option value="№5, Київ, вул. Хрещатик, 22">№5, Київ,
+                                                                    вул.
+                                                                    Хрещатик, 22
+                                                                </option>
+                                                                <option value="№10, Київ, просп. Перемоги, 100">№10,
+                                                                    Київ,
+                                                                    просп.
+                                                                    Перемоги, 100
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="checkout__btn checkout__btn--continue red-btn">
+                                            Продовжити
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <div class="checkout__section-summary">
+                                    <div class="checkout__summary-grid">
+                                        <div class="checkout__summary-item">
+                                            <div class="checkout__summary-label">Країна</div>
+                                            <div class="checkout__summary-value" id="summary-country"></div>
+                                        </div>
+                                        <div class="checkout__summary-item">
+                                            <div class="checkout__summary-label">Місто</div>
+                                            <div class="checkout__summary-value" id="summary-city"></div>
+                                        </div>
+                                    </div>
+                                    <div class="checkout__summary-grid">
+                                        <div class="checkout__summary-item">
+                                            <div class="checkout__summary-label">Спосіб доставки</div>
+                                            <div class="checkout__summary-value" id="summary-delivery"></div>
+                                        </div>
+                                        <div class="checkout__summary-item hidden" id="summary-address-container">
+                                            <div class="checkout__summary-label">Відділення</div>
+                                            <div class="checkout__summary-value" id="summary-address"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Спосіб оплати -->
+                        <section class="checkout__section is-disabled" id="section-payment">
+                            <div class="checkout__section-inner">
+                                <div class="checkout__section-header">
+                                    <h2 class="checkout__section-title">Спосіб оплати</h2>
+                                    <button type="button" class="checkout__edit-btn hidden"
+                                        onclick="editSection('payment')">
+                                        Змінити
+                                        <img src="icons/edit.svg" width="17" height="17" alt="Змінити">
+                                    </button>
+                                </div>
+
+                                <div class="checkout__section-content">
+                                    <form class="checkout__form" id="form-payment"
+                                        onsubmit="handlePaymentSubmit(event)">
+                                        <div class="checkout__payment-methods">
+                                            <div class="checkout__payment-item" onclick="selectPayment(this, 'online')">
+
+                                                <div class="checkout__payment-info" style="position: relative;">
+                                                    <div class="checkout__payment-name">
+                                                        <span class="checkout__payment-icon">
+                                                            <img src="icons/card1.svg" width="32" height="32" alt="">
+                                                        </span>
+                                                    </div>
+                                                    <div class="checkout__payment-desc">Оплата онлайн
+                                                        
+                                                        <span>Миттєва оплата через онлайн сервіс</span>
+                                                    </div>
+                                                    <input type="radio" name="paymentMethod" value="online"
+                                                        class="checkout__radio" required />
+                                                </div>
+                                                <div class="checkout__payment-options">
+                                                    <h3>Обрати сервіс</h3>
+                                                    <label class="checkout__payment-option">
+                                                        <span>Банківська картка</span>
+                                                        <input type="radio" name="paymentOption" value="bank-card"
+                                                            class="checkout__radio" />
+
+                                                    </label>
+                                                    <label class="checkout__payment-option">
+                                                        <span>Apple pay</span>
+                                                        <input type="radio" name="paymentOption" value="apple-pay"
+                                                            class="checkout__radio" />
+
+                                                    </label>
+                                                    <label class="checkout__payment-option">
+                                                        <span>Google pay</span>
+                                                        <input type="radio" name="paymentOption" value="google-pay"
+                                                            class="checkout__radio" />
+
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="checkout__payment-item" onclick="selectPayment(this, 'cod')">
+                                                <div class="checkout__payment-info" style="position: relative;">
+                                                    <input type="radio" name="paymentMethod" value="cod"
+                                                        class="checkout__radio" />
+                                                    <div class="checkout__payment-name">
+                                                        <span class="checkout__payment-icon">
+                                                            <img src="icons/card2.svg" width="32" height="32" alt="">
+                                                        </span>
+                                                        
+                                                    </div>
+                                                    <div class="checkout__payment-desc">
+                                                    Оплата при отриманні
+                                                    <span> Оплата готівкою або банківською карткою під час отримання товару</span>
+                                                </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+
+                                        <button type="submit" class="checkout__btn checkout__btn--continue red-btn">
+                                            Продовжити
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <div class="checkout__section-summary">
+                                    <div class="checkout__summary-item">
+                                        <div class="checkout__summary-label">Спосіб оплати</div>
+                                        
+                                        <div class="checkout__summary-subvalue" id="summary-payment-option"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Додати коментар -->
+                        <section class="checkout__section hidden" id="section-add-comment">
+                            <div class="checkout__section-inner">
+                                <label class="checkout__comment-checkbox">
+                                    <span class="checkout__comment-checkbox-text">Додати коментар</span>
+                                    <input type="checkbox" id="add-comment-checkbox" onchange="toggleCommentSection()">
+                                </label>
+                            </div>
+                        </section>
+
+                        <!-- Секция с текстовым полем комментария -->
+                        <section class="checkout__section hidden" id="section-comment">
+                            <div class="checkout__section-inner">
+                                <div class="checkout__form-group">
+                                    <textarea name="comment" id="comment" class="checkout__textarea"
+                                        placeholder="Додайте свій коментар" rows="4"></textarea>
+                                    <div class="checkout__comment-counter">
+                                        <span id="comment-count">0</span>/500 символів
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="checkout__right">
+                        <h2>Ваше замовлення</h2>
+
+                        <div class="checkout__order-summary" id="order-summary">
+                           <div class="modal__content-body">
+                                <div class="modal__content-body-image">
+                                    <img src="images/catalog-item.png" loading="lazy" width="88" height="88" alt="">
+                                </div>
+                                <div class="modal__content-body-content">
+                                    <h3>Світлодіодна лампа автономна Luxel A80 18W 220V E27</h3>
+                                    <div class="modal__content-body-content-option">
+                                        <span class="modal__content-body-content-value">5 шт.</span>
+                                        <div class="modal__content-body-content-box">
+                                            <span class="modal__content-body-content-subsum">98.00 ₴</span>
+                                            <span class="modal__content-body-content-sum">82.00 ₴</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal__content-body">
+                                <div class="modal__content-body-image">
+                                    <img src="images/catalog-item.png" loading="lazy" width="88" height="88" alt="">
+                                </div>
+                                <div class="modal__content-body-content">
+                                    <h3>Світлодіодна лампа автономна Luxel A80 18W 220V E27</h3>
+                                    <div class="modal__content-body-content-option">
+                                        <span class="modal__content-body-content-value">5 шт.</span>
+                                        <div class="modal__content-body-content-box">
+                                            <span class="modal__content-body-content-subsum">98.00 ₴</span>
+                                            <span class="modal__content-body-content-sum">82.00 ₴</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal__content-body">
+                                <div class="modal__content-body-image">
+                                    <img src="images/catalog-item.png" loading="lazy" width="88" height="88" alt="">
+                                </div>
+                                <div class="modal__content-body-content">
+                                    <h3>Світлодіодна лампа автономна Luxel A80 18W 220V E27</h3>
+                                    <div class="modal__content-body-content-option">
+                                        <span class="modal__content-body-content-value">5 шт.</span>
+                                        <div class="modal__content-body-content-box">
+                                            <span class="modal__content-body-content-sum">82.00 ₴</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="checkout__summary">
+                            <div class="checkout__summary-top">
+                                <p class="checkout__summary-text">Всього до сплати:</p>
+                                <div class="checkout__summary-top-sum">
+                                    <p class="checkout__summary-top-sum-sub">2993.00 ₴</p>
+                                    <p class="checkout__summary-top-sum-text">2731.80 ₴</p>
+                                </div>
+                            </div>
+                            <p class="checkout__summary-value">3 товари</p>
+                        </div>
+
+                        <button type="button" class="checkout__btn checkout__btn--submit red-btn" id="submit-btn"
+                            onclick="handleSubmit()" disabled>
+                            Підтвердити замовлення
+                        </button>
+
+                        <div class="checkout__right-info">
+                            <p>Підтверджуючи замовлення, ви приймаєте наступні умови:</p>
+                            <ul class="checkout__right-list">
+                                <li class="checkout__right-item">
+                                    <a href="/" class="checkout__right-link">Політика конфеденційності</a>
+                                </li>
+                                <li class="checkout__right-item">
+                                    <a href="/" class="checkout__right-link">Угода користувача</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__inner container">
+            <div class="footer__logo">
+                <a href="/" class="footer__logo-link">
+                    <img src="images/black-logo.png" width="150" height="34" alt="Luxel footer logo">
+                </a>
+            </div>
+            <div class="footer__content">
+                <div class="footer__content-box">
+                    <div class="footer__content-col">
+                        <h3 class="footer__content-col-title">Контакти</h3>
+                        <div class="footer__content-col-contact">
+                            <h4>Гаряча лінія</h4>
+                            <div class="footer__content-col-contact-row">
+                                <a href="tel:+380730415111">+38 (073) 041-5111</a>
+                                <span class="footer__content-col-contact-grafic">(пн-пт 10:00-18:00)</span>
+                            </div>
+                        </div>
+                        <div class="footer__content-col-contact">
+                            <h4>Офіс</h4>
+                            <a href="tel:+380500415111">+38 (050) 041-51-11</a>
+                            <a href="tel:+380970145111">+38 (097) 014-51-11</a>
+                        </div>
+                        <div class="footer__content-col-contact footer__content-col-contact--email">
+                            <h4>Email</h4>
+                            <a href="mailto:odessa@luxel.ua">odessa@luxel.ua</a>
+                        </div>
+                        <div class="footer__accordion">
+                            <div class="footer__accordion-item">
+                                <h3 class="footer__accordion-header">
+                                    <button class="footer__accordion-button" type="button" aria-expanded="false"
+                                        aria-controls="accordion-panel-1">
+                                        <span class="footer__accordion-title">Про компанію</span>
+                                        <span class="footer__accordion-icon" aria-hidden="true">
+                                            <img src="icons/accardion-arrow.svg" width="24" height="24" alt="">
+                                        </span>
+                                    </button>
+                                </h3>
+                                <div class="footer__accordion-panel" id="accordion-panel-1" role="region"
+                                    aria-labelledby="accordion-panel-1">
+                                    <div class="footer__accordion-content">
+                                        <ul class="footer__accordion-list">
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Доставка</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Оплата</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Умови повернення і
+                                                    гарантії</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Задати питання експертам</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Завантажити каталог</a>
+                                            </li>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Вiдео файли</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Політика конфіденційності</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="footer__accordion-item">
+                                <h3 class="footer__accordion-header">
+                                    <button class="footer__accordion-button" type="button" aria-expanded="false"
+                                        aria-controls="accordion-panel-2">
+                                        <span class="footer__accordion-title">Послуги</span>
+                                        <span class="footer__accordion-icon" aria-hidden="true">
+                                            <img src="icons/accardion-arrow.svg" width="24" height="24" alt="">
+                                        </span>
+                                    </button>
+                                </h3>
+                                <div class="footer__accordion-panel" id="accordion-panel-2" role="region"
+                                    aria-labelledby="accordion-panel-2">
+                                    <div class="footer__accordion-content">
+                                        <ul class="footer__accordion-list">
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Консультації</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Розробка</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Підтримка</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer__content-col-contact footer__content-col-contact--social">
+                            <h4>Соцмережі</h4>
+                            <a href="https://t.me/yourchannel" target="_blank" aria-label="Телеграм">
+                                <img src="icons/tg-red.svg" width="21" height="18" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer__content-col footer__content-col--descktop">
+                        <h3 class="footer__content-col-title">Допомога</h3>
+                        <ul class="footer__content-list">
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Гаряча лінія</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Оплата</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Умови повернення і гарантії</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Задати питання експертам</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Завантажити каталог</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Вiдео файли</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Політика конфіденційності</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__content-help">
+                    <h3>Підпишіться, щоб отримувати найкращі знижки та пропозиції</h3>
+                    <p>Підписуйтеся на розсилку, щоб слідкувати за останніми новинами та акційними пропозиціями та
+                        отримайте
+                        знижку на перше замовлення в нашому магазині! </p>
+                    <form action="" class="footer-form">
+                        <input type="email" name="eamil" id="footerEmail" placeholder="Ваш Email" required>
+                        <button type="submit" class="footer-btn red-btn">Підписатися</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__bottom-copiright">Luxel © 2025. Усі права захищені</p>
+                <ul class="footer__bottom-list">
+                    <li class="footer__bottom-item">
+                        <img src="icons/bank1.svg" width="22" height="22" alt="">
+                    </li>
+                    <li class="footer__bottom-item">
+                        <img src="icons/bank2.svg" width="22" height="22" alt="">
+                    </li>
+                    <li class="footer__bottom-item">
+                        <img src="icons/bank3.svg" width="22" height="22" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+
+
+<script src="scripts/jquery-3.7.0.min.js"></script>
+<script src="scripts/swiper-bundle.min.js"></script>
+<script src="scripts/jquery.maskedinput.js"></script>
+<script src="scripts/script.js"></script>
+
+<script>
+    // Инициализация при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function () {
+        initCheckoutValidation();
+        updateButtonStates();
+        initPhoneMask();
+        initCommentCounter();
+    });
+
+    // Инициализация маски для телефона
+    function initPhoneMask() {
+        if (typeof jQuery !== 'undefined' && jQuery.fn.mask) {
+            jQuery('#phone').mask('+380(99)999-99-99');
+        }
+    }
+
+    // Инициализация счетчика символов для комментария
+    function initCommentCounter() {
+        var commentTextarea = document.getElementById('comment');
+        if (commentTextarea) {
+            commentTextarea.addEventListener('input', function() {
+                var count = this.value.length;
+                var counterElement = document.getElementById('comment-count');
+                if (counterElement) {
+                    counterElement.textContent = count;
+                }
+                // Ограничение на 500 символов
+                if (count > 500) {
+                    this.value = this.value.substring(0, 500);
+                    if (counterElement) {
+                        counterElement.textContent = '500';
+                    }
+                }
+            });
+        }
+    }
+
+    // Переключение видимости секции комментариев
+    function toggleCommentSection() {
+        var checkbox = document.getElementById('add-comment-checkbox');
+        var commentSection = document.getElementById('section-comment');
+        
+        if (checkbox && commentSection) {
+            if (checkbox.checked) {
+                commentSection.classList.remove('hidden');
+            } else {
+                commentSection.classList.add('hidden');
+                // Очищаем комментарий при скрытии
+                var commentTextarea = document.getElementById('comment');
+                if (commentTextarea) {
+                    commentTextarea.value = '';
+                    var counterElement = document.getElementById('comment-count');
+                    if (counterElement) {
+                        counterElement.textContent = '0';
+                    }
+                }
+            }
+        }
+    }
+
+    // Валидация и управление состоянием кнопок
+    function initCheckoutValidation() {
+        // Контактная форма
+        var contactInputs = document.querySelectorAll('#form-contact input');
+        contactInputs.forEach(function (input) {
+            input.addEventListener('input', function () {
+                updateButtonStates();
+            });
+        });
+
+        // Форма доставки
+        var deliveryInputs = document.querySelectorAll('#form-delivery input, #form-delivery select');
+        deliveryInputs.forEach(function (input) {
+            input.addEventListener('change', function () {
+                updateButtonStates();
+            });
+            // Для текстовых полей также отслеживаем input
+            if (input.type === 'text') {
+                input.addEventListener('input', function () {
+                    updateButtonStates();
+                });
+            }
+        });
+
+        // Форма оплаты - используем делегирование событий
+        var formPayment = document.getElementById('form-payment');
+        if (formPayment) {
+            formPayment.addEventListener('change', function (e) {
+                if (e.target.matches('input[type="radio"]')) {
+                    updateButtonStates();
+                }
+            });
+        }
+
+        // Изначально отключаем город
+        var citySelect = document.getElementById('city');
+        if (citySelect) {
+            citySelect.disabled = true;
+        }
+    }
+
+    // Обновление состояния кнопок
+    function updateButtonStates() {
+        // Кнопка контактной формы
+        var contactBtn = document.querySelector('#form-contact .checkout__btn');
+        var surname = document.getElementById('surname').value.trim();
+        var phone = document.getElementById('phone').value.trim();
+        var email = document.getElementById('email').value.trim();
+
+        if (contactBtn) {
+            contactBtn.disabled = !(surname && phone && email && validateEmail(email));
+        }
+
+        // Кнопка формы доставки
+        var deliveryBtn = document.querySelector('#form-delivery .checkout__btn');
+        var country = document.getElementById('country').value;
+        var city = document.getElementById('city').value;
+        var deliveryMethod = document.querySelector('input[name="deliveryMethod"]:checked');
+
+        if (deliveryBtn) {
+            var isDeliveryValid = country && city && deliveryMethod;
+
+            // Проверяем адрес доставки если выбрана доставка с адресом
+            if (deliveryMethod) {
+                var methodValue = deliveryMethod.value;
+                if (methodValue === 'nova-post-branch-free') {
+                    var deliveryAddress1 = document.getElementById('deliveryAddress').value;
+                    isDeliveryValid = isDeliveryValid && deliveryAddress1;
+                } else if (methodValue === 'nova-post-branch') {
+                    var deliveryAddress2 = document.getElementById('deliveryAddress2').value;
+                    isDeliveryValid = isDeliveryValid && deliveryAddress2;
+                } else if (methodValue === 'ukrposhta') {
+                    var deliveryAddress3 = document.getElementById('deliveryAddress3').value;
+                    isDeliveryValid = isDeliveryValid && deliveryAddress3;
+                } else if (methodValue === 'nova-post-courier') {
+                    var courierAddress = document.getElementById('courierAddress').value.trim();
+                    isDeliveryValid = isDeliveryValid && courierAddress;
+                }
+            }
+
+            deliveryBtn.disabled = !isDeliveryValid;
+        }
+
+        // Кнопка формы оплаты
+        var paymentBtn = document.querySelector('#form-payment .checkout__btn');
+        var paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+
+        if (paymentBtn) {
+            var isPaymentValid = paymentMethod !== null;
+
+            // Если выбрана онлайн оплата, проверяем выбор способа
+            if (paymentMethod && paymentMethod.value === 'online') {
+                var paymentOption = document.querySelector('input[name="paymentOption"]:checked');
+                isPaymentValid = paymentOption !== null;
+            }
+
+            paymentBtn.disabled = !isPaymentValid;
+        }
+
+        // Кнопка финального подтверждения
+        var submitBtn = document.getElementById('submit-btn');
+        if (submitBtn) {
+            // Проверяем, что все три секции заполнены
+            var isContactComplete = surname && phone && email && validateEmail(email);
+            var isDeliveryComplete = country && city && deliveryMethod;
+            var isPaymentComplete = paymentMethod !== null;
+
+            // Для онлайн оплаты также проверяем выбор способа
+            if (paymentMethod && paymentMethod.value === 'online') {
+                var paymentOption2 = document.querySelector('input[name="paymentOption"]:checked');
+                isPaymentComplete = paymentOption2 !== null;
+            }
+
+            // Проверяем адреса доставки
+            if (deliveryMethod) {
+                var methodValue2 = deliveryMethod.value;
+                if (methodValue2 === 'nova-post-branch-free') {
+                    var deliveryAddress1b = document.getElementById('deliveryAddress').value;
+                    isDeliveryComplete = isDeliveryComplete && deliveryAddress1b;
+                } else if (methodValue2 === 'nova-post-branch') {
+                    var deliveryAddress2b = document.getElementById('deliveryAddress2').value;
+                    isDeliveryComplete = isDeliveryComplete && deliveryAddress2b;
+                } else if (methodValue2 === 'ukrposhta') {
+                    var deliveryAddress3b = document.getElementById('deliveryAddress3').value;
+                    isDeliveryComplete = isDeliveryComplete && deliveryAddress3b;
+                } else if (methodValue2 === 'nova-post-courier') {
+                    var courierAddressb = document.getElementById('courierAddress').value.trim();
+                    isDeliveryComplete = isDeliveryComplete && courierAddressb;
+                }
+            }
+
+            submitBtn.disabled = !(isContactComplete && isDeliveryComplete && isPaymentComplete);
+        }
+    }
+
+    // Валидация email
+    function validateEmail(email) {
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+    function handleContactSubmit(event) {
+        event.preventDefault();
+
+        var surname = document.getElementById('surname').value;
+        var phone = document.getElementById('phone').value;
+
+        document.getElementById('summary-surname').textContent = surname;
+        document.getElementById('summary-phone').textContent = phone;
+
+        collapseSection('contact');
+        expandSection('delivery');
+    }
+
+    function handleDeliverySubmit(event) {
+        event.preventDefault();
+
+        var country = document.getElementById('country').value;
+        var city = document.getElementById('city').value;
+        var deliveryMethod = document.querySelector('input[name="deliveryMethod"]:checked');
+        var deliveryAddress = '';
+
+        // Определяем адрес в зависимости от метода доставки
+        if (deliveryMethod) {
+            var methodValue = deliveryMethod.value;
+            if (methodValue === 'nova-post-branch-free') {
+                deliveryAddress = document.getElementById('deliveryAddress').value;
+            } else if (methodValue === 'nova-post-branch') {
+                deliveryAddress = document.getElementById('deliveryAddress2').value;
+            } else if (methodValue === 'ukrposhta') {
+                deliveryAddress = document.getElementById('deliveryAddress3').value;
+            } else if (methodValue === 'nova-post-courier') {
+                deliveryAddress = document.getElementById('courierAddress').value;
+            }
+        }
+
+        document.getElementById('summary-country').textContent = country;
+        document.getElementById('summary-city').textContent = city;
+
+        if (deliveryMethod) {
+            var deliveryName = deliveryMethod.parentElement.querySelector('.checkout__delivery-name').textContent;
+            document.getElementById('summary-delivery').textContent = deliveryName;
+
+            if (deliveryAddress) {
+                document.getElementById('summary-address').textContent = deliveryAddress;
+                document.getElementById('summary-address-container').classList.remove('hidden');
+            } else {
+                document.getElementById('summary-address-container').classList.add('hidden');
+            }
+        }
+
+        collapseSection('delivery');
+        expandSection('payment');
+    }
+
+    function handlePaymentSubmit(event) {
+        event.preventDefault();
+
+        var paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+        var paymentOption = document.querySelector('input[name="paymentOption"]:checked');
+
+        if (paymentMethod) {
+            // Если выбрана онлайн оплата и выбрана опция оплаты
+            if (paymentOption && paymentMethod.value === 'online') {
+                var optionLabel = paymentOption.closest('.checkout__payment-option');
+                if (optionLabel) {
+                    var optionText = optionLabel.querySelector('span').textContent.trim();
+                    document.getElementById('summary-payment-option').textContent = optionText;
+                }
+            } else if (paymentMethod.value === 'cod') {
+                // Для оплаты при получении показываем текст
+                var paymentDescElement = paymentMethod.closest('.checkout__payment-info').querySelector('.checkout__payment-desc');
+                if (paymentDescElement) {
+                    var paymentText = paymentDescElement.childNodes[0].textContent.trim();
+                    document.getElementById('summary-payment-option').textContent = paymentText;
+                }
+            } else {
+                document.getElementById('summary-payment-option').textContent = '';
+            }
+        }
+
+        collapseSection('payment');
+        
+        // Показываем секцию с чекбоксом для добавления комментария
+        document.getElementById('section-add-comment').classList.remove('hidden');
+        
+        // Проверяем, нужно ли показывать секцию комментариев
+        var commentCheckbox = document.getElementById('add-comment-checkbox');
+        if (commentCheckbox && commentCheckbox.checked) {
+            document.getElementById('section-comment').classList.remove('hidden');
+        }
+    }
+
+    function handleCountryChange() {
+        var country = document.getElementById('country').value;
+        var citySelect = document.getElementById('city');
+
+        if (country) {
+            // Разблокируем поле города
+            citySelect.disabled = false;
+            citySelect.required = true;
+        } else {
+            // Блокируем город и сбрасываем его значение
+            citySelect.disabled = true;
+            citySelect.required = false;
+            citySelect.value = '';
+            handleCityChange();
+        }
+
+        updateButtonStates();
+    }
+
+    function handleCityChange() {
+        var city = document.getElementById('city').value;
+        var deliveryGroup = document.getElementById('delivery-methods-group');
+
+        if (city) {
+            deliveryGroup.classList.remove('hidden');
+        } else {
+            deliveryGroup.classList.add('hidden');
+            // Сбрасываем выбранную доставку
+            var deliveryMethods = document.querySelectorAll('input[name="deliveryMethod"]');
+            deliveryMethods.forEach(function (method) {
+                method.checked = false;
+            });
+            document.querySelectorAll('.checkout__delivery-item').forEach(function (item) {
+                item.classList.remove('is-selected');
+            });
+            document.getElementById('delivery-address-group').classList.add('hidden');
+            document.getElementById('delivery-address-group2').classList.add('hidden');
+            document.getElementById('delivery-address-group3').classList.add('hidden');
+            document.getElementById('courier-address-group').classList.add('hidden');
+        }
+
+        updateButtonStates();
+    }
+
+    function selectDelivery(element, value) {
+        var items = document.querySelectorAll('.checkout__delivery-item');
+        for (var i = 0; i < items.length; i++) {
+            items[i].classList.remove('is-selected');
+        }
+        element.classList.add('is-selected');
+
+        // Скрываем все группы адресов
+        document.getElementById('delivery-address-group').classList.add('hidden');
+        document.getElementById('delivery-address-group2').classList.add('hidden');
+        document.getElementById('delivery-address-group3').classList.add('hidden');
+        document.getElementById('courier-address-group').classList.add('hidden');
+
+        // Показываем нужную группу
+        if (value === 'nova-post-branch-free') {
+            document.getElementById('delivery-address-group').classList.remove('hidden');
+        } else if (value === 'nova-post-branch') {
+            document.getElementById('delivery-address-group2').classList.remove('hidden');
+        } else if (value === 'ukrposhta') {
+            document.getElementById('delivery-address-group3').classList.remove('hidden');
+        } else if (value === 'nova-post-courier') {
+            document.getElementById('courier-address-group').classList.remove('hidden');
+        }
+
+        updateButtonStates();
+    }
+
+    function selectPayment(element, value) {
+        var items = document.querySelectorAll('.checkout__payment-item');
+        for (var i = 0; i < items.length; i++) {
+            items[i].classList.remove('is-selected');
+        }
+        element.classList.add('is-selected');
+
+        updateButtonStates();
+    }
+
+    function editSection(section) {
+        var sections = ['contact', 'delivery', 'payment'];
+        var currentIndex = sections.indexOf(section);
+
+        for (var i = currentIndex + 1; i < sections.length; i++) {
+            collapseSection(sections[i], true);
+        }
+
+        expandSection(section);
+
+        // Скрываем секцию с чекбоксом комментария и само текстовое поле
+        document.getElementById('section-add-comment').classList.add('hidden');
+        document.getElementById('section-comment').classList.add('hidden');
+        var commentCheckbox = document.getElementById('add-comment-checkbox');
+        if (commentCheckbox) {
+            commentCheckbox.checked = false;
+        }
+    }
+
+    function collapseSection(section, reset) {
+        var sectionElement = document.getElementById('section-' + section);
+        sectionElement.classList.add('is-collapsed');
+
+        var editBtn = sectionElement.querySelector('.checkout__edit-btn');
+        editBtn.classList.remove('hidden');
+
+        if (reset) {
+            sectionElement.classList.add('is-disabled');
+            editBtn.classList.add('hidden');
+        }
+    }
+
+    function expandSection(section) {
+        var sectionElement = document.getElementById('section-' + section);
+        sectionElement.classList.remove('is-collapsed', 'is-disabled');
+
+        var editBtn = sectionElement.querySelector('.checkout__edit-btn');
+        editBtn.classList.add('hidden');
+
+        // Специальная логика для секции доставки
+        if (section === 'delivery') {
+            var citySelect = document.getElementById('city');
+            var country = document.getElementById('country').value;
+
+            // Устанавливаем правильное состояние города при открытии секции
+            if (country) {
+                citySelect.disabled = false;
+                citySelect.required = true;
+            } else {
+                citySelect.disabled = true;
+                citySelect.required = false;
+            }
+        }
+    }
+
+    function handleSubmit() {
+        var formData = {
+            surname: document.getElementById('surname').value,
+            phone: document.getElementById('phone').value,
+            email: document.getElementById('email').value,
+            country: document.getElementById('country').value,
+            city: document.getElementById('city').value,
+            deliveryMethod: document.querySelector('input[name="deliveryMethod"]:checked') ? document.querySelector('input[name="deliveryMethod"]:checked').value : null,
+            deliveryAddress: document.getElementById('deliveryAddress').value,
+            paymentMethod: document.querySelector('input[name="paymentMethod"]:checked') ? document.querySelector('input[name="paymentMethod"]:checked').value : null,
+            paymentOption: document.querySelector('input[name="paymentOption"]:checked') ? document.querySelector('input[name="paymentOption"]:checked').value : null,
+            comment: document.getElementById('comment').value
+        };
+
+        console.log('Дані замовлення:', formData);
+        alert('Замовлення успішно оформлено!');
+    }
+</script>
+
+</html>
