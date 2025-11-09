@@ -904,7 +904,7 @@ input[type=number] {
   width: 24px;
   height: 24px;
   padding: 0 !important;
-  z-index: 100 !important;
+  z-index: 10000 !important;
   opacity: 1 !important;
   display: flex !important;
   justify-content: flex-end !important;
@@ -994,7 +994,7 @@ input[type=number] {
 
 /* Зображення */
 .fancybox__slide {
-  padding: 80px 20px 100px !important;
+  padding: 130px 20px 100px !important;
   background: var(--color-gray-primary) !important;
 }
 
@@ -1049,9 +1049,21 @@ input[type=number] {
   }
 }
 
+.fancybox__slide::before, .fancybox__slide::after {
+  content: none !important;
+}
+
+.f-thumbs__viewport {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.fancybox-image {
+  object-fit: cover !important;
+}
+
 .f-thumbs.is-horizontal .f-thumbs__track {
   justify-content: center;
-  transform: none !important;
 }
 
 .f-thumbs__slide.for-image.is-nav-selected {
@@ -8238,7 +8250,7 @@ button:disabled {
 }
 .product-detail__accordion-header::after {
   content: "";
-  background: url(../../icons/accardion-arrow.svg);
+  background: url(../icons/accardion-arrow.svg);
   background-repeat: no-repeat;
   background-size: auto;
   background-position: center;

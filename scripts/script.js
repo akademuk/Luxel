@@ -2342,7 +2342,10 @@ function initReviewsGallery() {
     // Инициализируем для галерей в списке отзывов (review1, review2, review3)
     Fancybox.bind('[data-fancybox^="review"]', {
         Hash: false,
-        Thumbs: false,
+        Thumbs: {
+            autoStart: true,
+            type: "classic",
+        },
         Toolbar: {
             display: {
                 left: [],
@@ -2350,21 +2353,106 @@ function initReviewsGallery() {
                 right: ["close"],
             },
         },
-        caption: function (fancybox, slide) {
-            const trigger = slide.triggerEl;
-            if (!trigger) return '';
-
-            const reviewItem = trigger.closest('.reviews-list__item');
-            if (!reviewItem) return '';
-
-            const authorName = reviewItem.querySelector('.reviews-list__item-autor h3')?.textContent || '';
-            const reviewDate = reviewItem.querySelector('.reviews-list__item-autor time')?.textContent || '';
-
-            return `
-                <h2 class="fancybox-title">${authorName}</h2>
-                <p class="fancybox-subtitle">${reviewDate}</p>
-            `;
+        Carousel: {
+            infinite: false,
         },
+        dragToClose: false,
+        animated: false,
+        showClass: false,
+        hideClass: false,
+        on: {
+            ready: (fancybox) => {
+                try {
+                    // Получаем карусель с миниатюрами
+                    const thumbsPlugin = fancybox.plugins?.Thumbs;
+                    if (!thumbsPlugin || !thumbsPlugin.carousel) return;
+                    
+                    const thumbsCarousel = thumbsPlugin.carousel;
+                    
+                    // Функция для управления кнопками навигации
+                    const updateNavigationButtons = () => {
+                        try {
+                            const currentIndex = fancybox.getSlide()?.index ?? 0;
+                            const totalSlides = fancybox.getSlideCount();
+                            
+                            // Находим кнопки навигации
+                            const prevButton = document.querySelector('.fancybox__nav .f-button[data-fancybox-prev]');
+                            const nextButton = document.querySelector('.fancybox__nav .f-button[data-fancybox-next]');
+                            
+                            // Отключаем кнопку "назад" на первом слайде
+                            if (prevButton) {
+                                if (currentIndex === 0) {
+                                    prevButton.disabled = true;
+                                    prevButton.style.opacity = '0.3';
+                                    prevButton.style.pointerEvents = 'none';
+                                } else {
+                                    prevButton.disabled = false;
+                                    prevButton.style.opacity = '';
+                                    prevButton.style.pointerEvents = '';
+                                }
+                            }
+                            
+                            // Отключаем кнопку "вперед" на последнем слайде
+                            if (nextButton) {
+                                if (currentIndex === totalSlides - 1) {
+                                    nextButton.disabled = true;
+                                    nextButton.style.opacity = '0.3';
+                                    nextButton.style.pointerEvents = 'none';
+                                } else {
+                                    nextButton.disabled = false;
+                                    nextButton.style.opacity = '';
+                                    nextButton.style.pointerEvents = '';
+                                }
+                            }
+                        } catch (err) {
+                            console.warn('Error updating navigation buttons:', err);
+                        }
+                    };
+                    
+                    // Функция для центрирования активной миниатюры
+                    const centerThumb = () => {
+                        try {
+                            const currentIndex = fancybox.getSlide()?.index ?? 0;
+                            
+                            // Ищем контейнер с миниатюрами
+                            const thumbsWrapper = document.querySelector('.f-thumbs__viewport, .f-thumbs');
+                            if (!thumbsWrapper) return;
+                            
+                            const activeThumb = thumbsWrapper.querySelector(`.f-thumbs__slide:nth-child(${currentIndex + 1})`);
+                            if (!activeThumb) return;
+                            
+                            // Вычисляем позицию для центрирования
+                            const containerWidth = thumbsWrapper.offsetWidth;
+                            const thumbLeft = activeThumb.offsetLeft;
+                            const thumbWidth = activeThumb.offsetWidth;
+                            const scrollLeft = thumbLeft - (containerWidth / 2) + (thumbWidth / 2);
+                            
+                            // Плавная прокрутка к центру
+                            thumbsWrapper.scrollTo({
+                                left: Math.max(0, scrollLeft),
+                                behavior: 'smooth'
+                            });
+                        } catch (err) {
+                            console.warn('Error centering thumb:', err);
+                        }
+                    };
+                    
+                    // Инициализация при открытии
+                    setTimeout(() => {
+                        updateNavigationButtons();
+                        centerThumb();
+                    }, 150);
+                    
+                    // Обновляем при смене слайда
+                    fancybox.on('change', () => {
+                        updateNavigationButtons();
+                        centerThumb();
+                    });
+                } catch (err) {
+                    console.warn('Error initializing thumbs centering:', err);
+                }
+            }
+        }
     });
 }
 
