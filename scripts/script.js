@@ -2337,6 +2337,190 @@ function initReviewsGallery() {
                 right: ["close"],
             },
         },
+        Carousel: {
+            infinite: true,
+        },
+        dragToClose: false,
+        animated: false,
+        showClass: false,
+        hideClass: false,
+        click: false, // Отключаем закрытие по клику
+        caption: function(fancybox, slide) {
+            // Получаем информацию об авторе из родительского элемента reviews-list__item
+            const triggerElement = slide.triggerEl || slide.$trigger;
+            const reviewItem = triggerElement?.closest('.reviews-list__item');
+            if (reviewItem) {
+                const author = reviewItem.querySelector('.reviews-list__item-autor h3')?.textContent || '';
+                const date = reviewItem.querySelector('.reviews-list__item-autor time')?.textContent || '';
+                
+                if (author && date) {
+                    return `
+                        <h2 class="fancybox-title">${author}</h2>
+                        <p class="fancybox-subtitle">${date}</p>
+                    `;
+                }
+            }
+            return '';
+        },
+        on: {
+            ready: (fancybox) => {
+                console.log('🟠 MODAL GALLERY - Ready event fired');
+                
+                // Добавляем обработчик клика на backdrop для закрытия
+                setTimeout(() => {
+                    const backdrop = document.querySelector('.fancybox__backdrop');
+                    if (backdrop) {
+                        backdrop.addEventListener('click', (e) => {
+                            console.log('🔵 Modal backdrop clicked');
+                            if (e.target === backdrop) {
+                                console.log('🔴 Closing modal gallery');
+                                fancybox.close();
+                            }
+                        });
+                    }
+                    
+                    // Также добавляем клик на контейнер вне carousel
+                    const container = document.querySelector('.fancybox__container');
+                    if (container) {
+                        container.addEventListener('click', (e) => {
+                            if (!e.target.closest('.fancybox__carousel') && 
+                                !e.target.closest('.fancybox__toolbar') &&
+                                !e.target.closest('.fancybox__nav') &&
+                                !e.target.closest('.f-thumbs') &&
+                                !e.target.closest('button')) {
+                                console.log('🔴 Closing modal gallery - click outside carousel');
+                                fancybox.close();
+                            }
+                        });
+                    }
+                }, 100);
+                
+                try {
+                    // Получаем карусель с миниатюрами
+                    const thumbsPlugin = fancybox.plugins?.Thumbs;
+                    if (!thumbsPlugin || !thumbsPlugin.carousel) return;
+                    
+                    // Функция для управления кнопками навигации
+                    const updateNavigationButtons = () => {
+                        try {
+                            const currentIndex = fancybox.getSlide()?.index ?? 0;
+                            const totalSlides = fancybox.getSlideCount();
+                            
+                            // Находим кнопки навигации
+                            const prevButton = document.querySelector('.fancybox__nav .f-button[data-fancybox-prev]');
+                            const nextButton = document.querySelector('.fancybox__nav .f-button[data-fancybox-next]');
+                            
+                            // Отключаем кнопку "назад" на первом слайде
+                            if (prevButton) {
+                                // Удаляем старый обработчик если есть
+                                if (prevButton._blockHandler) {
+                                    prevButton.removeEventListener('click', prevButton._blockHandler, true);
+                                    prevButton._blockHandler = null;
+                                }
+                                
+                                if (currentIndex === 0) {
+                                    prevButton.disabled = true;
+                                    prevButton.style.opacity = '0.3';
+                                    prevButton.style.cursor = 'not-allowed';
+                                    
+                                    // Блокируем клик через capture phase
+                                    prevButton._blockHandler = (e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        e.stopImmediatePropagation();
+                                        console.log('🔴 Blocked prev click - already at first');
+                                        return false;
+                                    };
+                                    prevButton.addEventListener('click', prevButton._blockHandler, true);
+                                } else {
+                                    prevButton.disabled = false;
+                                    prevButton.style.opacity = '';
+                                    prevButton.style.cursor = '';
+                                }
+                            }
+                            
+                            // Отключаем кнопку "вперед" на последнем слайде
+                            if (nextButton) {
+                                // Удаляем старый обработчик если есть
+                                if (nextButton._blockHandler) {
+                                    nextButton.removeEventListener('click', nextButton._blockHandler, true);
+                                    nextButton._blockHandler = null;
+                                }
+                                
+                                if (currentIndex === totalSlides - 1) {
+                                    nextButton.disabled = true;
+                                    nextButton.style.opacity = '0.3';
+                                    nextButton.style.cursor = 'not-allowed';
+                                    
+                                    // Блокируем клик через capture phase
+                                    nextButton._blockHandler = (e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        e.stopImmediatePropagation();
+                                        console.log('🔴 Blocked next click - already at last');
+                                        return false;
+                                    };
+                                    nextButton.addEventListener('click', nextButton._blockHandler, true);
+                                } else {
+                                    nextButton.disabled = false;
+                                    nextButton.style.opacity = '';
+                                    nextButton.style.cursor = '';
+                                }
+                            }
+                            
+                            // Показываем миниатюры, если они скрыты
+                            const thumbsWrapper = document.querySelector('.f-thumbs__viewport, .f-thumbs');
+                            if (thumbsWrapper) {
+                                thumbsWrapper.style.display = '';
+                                thumbsWrapper.style.visibility = 'visible';
+                                thumbsWrapper.style.opacity = '1';
+                            }
+                        } catch (err) {
+                            console.warn('Error updating navigation buttons:', err);
+                        }
+                    };
+                    
+                    // Функция для центрирования активной миниатюры
+                    const centerThumb = () => {
+                        try {
+                            const currentIndex = fancybox.getSlide()?.index ?? 0;
+                            
+                            const thumbsWrapper = document.querySelector('.f-thumbs__viewport, .f-thumbs');
+                            if (!thumbsWrapper) return;
+                            
+                            const activeThumb = thumbsWrapper.querySelector(`.f-thumbs__slide:nth-child(${currentIndex + 1})`);
+                            if (!activeThumb) return;
+                            
+                            const containerWidth = thumbsWrapper.offsetWidth;
+                            const thumbLeft = activeThumb.offsetLeft;
+                            const thumbWidth = activeThumb.offsetWidth;
+                            const scrollLeft = thumbLeft - (containerWidth / 2) + (thumbWidth / 2);
+                            
+                            thumbsWrapper.scrollTo({
+                                left: Math.max(0, scrollLeft),
+                                behavior: 'smooth'
+                            });
+                        } catch (err) {
+                            console.warn('Error centering thumb:', err);
+                        }
+                    };
+                    
+                    // Инициализация при открытии
+                    setTimeout(() => {
+                        updateNavigationButtons();
+                        centerThumb();
+                    }, 150);
+                    
+                    // Обновляем при смене слайда
+                    fancybox.on('change', () => {
+                        updateNavigationButtons();
+                        centerThumb();
+                    });
+                } catch (err) {
+                    console.warn('Error initializing click handlers:', err);
+                }
+            }
+        }
     });
 
     // Инициализируем для галерей в списке отзывов (review1, review2, review3)
@@ -2354,14 +2538,102 @@ function initReviewsGallery() {
             },
         },
         Carousel: {
-            infinite: false,
+            infinite: true,
         },
         dragToClose: false,
         animated: false,
         showClass: false,
         hideClass: false,
+        closeButton: "outside",
+        click: false, // Отключаем закрытие по клику
+        caption: function(fancybox, slide) {
+            console.log('🟢 REVIEW GALLERY - Caption called');
+            console.log('slide.triggerEl:', slide.triggerEl);
+            
+            // Получаем информацию об авторе из родительского элемента reviews-list__item
+            const triggerElement = slide.triggerEl || slide.$trigger;
+            const reviewItem = triggerElement?.closest('.reviews-list__item');
+            console.log('reviewItem:', reviewItem);
+            
+            if (reviewItem) {
+                const author = reviewItem.querySelector('.reviews-list__item-autor h3')?.textContent || '';
+                const date = reviewItem.querySelector('.reviews-list__item-autor time')?.textContent || '';
+                
+                console.log('author:', author, 'date:', date);
+                
+                if (author && date) {
+                    return `
+                        <h2 class="fancybox-title">${author}</h2>
+                        <p class="fancybox-subtitle">${date}</p>
+                    `;
+                }
+            }
+            return '';
+        },
         on: {
+            init: (fancybox) => {
+                console.log('� REVIEW GALLERY - Init event fired');
+                
+                // Сохраняем оригинальный метод slideTo
+                const carousel = fancybox.carousel;
+                if (carousel) {
+                    const originalSlideTo = carousel.slideTo.bind(carousel);
+                    
+                    carousel.slideTo = function(page, options = {}) {
+                        const currentPage = this.page;
+                        const totalPages = this.pages.length;
+                        
+                        console.log('🟡 slideTo called:', { currentPage, page, totalPages });
+                        
+                        // Блокируем если пытаются перейти за границы
+                        if (page < 0) {
+                            console.log('🔴 Blocked slideTo - trying to go before first');
+                            return;
+                        }
+                        
+                        if (page >= totalPages) {
+                            console.log('🔴 Blocked slideTo - trying to go after last');
+                            return;
+                        }
+                        
+                        // Разрешаем переход
+                        originalSlideTo(page, options);
+                    };
+                }
+            },
             ready: (fancybox) => {
+                console.log('🟢 REVIEW GALLERY - Ready event fired');
+                
+                // Добавляем обработчик клика на backdrop для закрытия
+                setTimeout(() => {
+                    const backdrop = document.querySelector('.fancybox__backdrop');
+                    if (backdrop) {
+                        backdrop.addEventListener('click', (e) => {
+                            console.log('🔵 Backdrop clicked');
+                            if (e.target === backdrop) {
+                                console.log('🔴 Closing gallery');
+                                fancybox.close();
+                            }
+                        });
+                    }
+                    
+                    // Также добавляем клик на контейнер вне carousel
+                    const container = document.querySelector('.fancybox__container');
+                    if (container) {
+                        container.addEventListener('click', (e) => {
+                            // Проверяем что клик вне всех интерактивных элементов
+                            if (!e.target.closest('.fancybox__carousel') && 
+                                !e.target.closest('.fancybox__toolbar') &&
+                                !e.target.closest('.fancybox__nav') &&
+                                !e.target.closest('.f-thumbs') &&
+                                !e.target.closest('button')) {
+                                console.log('🔴 Closing gallery - click outside carousel');
+                                fancybox.close();
+                            }
+                        });
+                    }
+                }, 100);
+                
                 try {
                     // Получаем карусель с миниатюрами
                     const thumbsPlugin = fancybox.plugins?.Thumbs;
@@ -2381,28 +2653,68 @@ function initReviewsGallery() {
                             
                             // Отключаем кнопку "назад" на первом слайде
                             if (prevButton) {
+                                // Удаляем старый обработчик если есть
+                                if (prevButton._blockHandler) {
+                                    prevButton.removeEventListener('click', prevButton._blockHandler, true);
+                                    prevButton._blockHandler = null;
+                                }
+                                
                                 if (currentIndex === 0) {
                                     prevButton.disabled = true;
                                     prevButton.style.opacity = '0.3';
-                                    prevButton.style.pointerEvents = 'none';
+                                    prevButton.style.cursor = 'not-allowed';
+                                    
+                                    // Блокируем клик через capture phase
+                                    prevButton._blockHandler = (e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        e.stopImmediatePropagation();
+                                        console.log('🔴 Blocked prev click - already at first');
+                                        return false;
+                                    };
+                                    prevButton.addEventListener('click', prevButton._blockHandler, true);
                                 } else {
                                     prevButton.disabled = false;
                                     prevButton.style.opacity = '';
-                                    prevButton.style.pointerEvents = '';
+                                    prevButton.style.cursor = '';
                                 }
                             }
                             
                             // Отключаем кнопку "вперед" на последнем слайде
                             if (nextButton) {
+                                // Удаляем старый обработчик если есть
+                                if (nextButton._blockHandler) {
+                                    nextButton.removeEventListener('click', nextButton._blockHandler, true);
+                                    nextButton._blockHandler = null;
+                                }
+                                
                                 if (currentIndex === totalSlides - 1) {
                                     nextButton.disabled = true;
                                     nextButton.style.opacity = '0.3';
-                                    nextButton.style.pointerEvents = 'none';
+                                    nextButton.style.cursor = 'not-allowed';
+                                    
+                                    // Блокируем клик через capture phase
+                                    nextButton._blockHandler = (e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        e.stopImmediatePropagation();
+                                        console.log('🔴 Blocked next click - already at last');
+                                        return false;
+                                    };
+                                    nextButton.addEventListener('click', nextButton._blockHandler, true);
                                 } else {
                                     nextButton.disabled = false;
                                     nextButton.style.opacity = '';
-                                    nextButton.style.pointerEvents = '';
+                                    nextButton.style.cursor = '';
                                 }
+                            }
+                            
+                            // Показываем миниатюры, если они скрыты
+                            const thumbsWrapper = document.querySelector('.f-thumbs__viewport, .f-thumbs');
+                            if (thumbsWrapper) {
+                                thumbsWrapper.style.display = '';
+                                thumbsWrapper.style.visibility = 'visible';
+                                thumbsWrapper.style.opacity = '1';
                             }
                         } catch (err) {
                             console.warn('Error updating navigation buttons:', err);
@@ -3434,3 +3746,7 @@ function initApp() {
 // Запуск приложения после загрузки DOM
 document.addEventListener('DOMContentLoaded', initApp);
 window.addEventListener('resize', initSwiperProduct);
+
+
+
+
