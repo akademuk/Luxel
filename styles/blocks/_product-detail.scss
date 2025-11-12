@@ -280,6 +280,7 @@
         min-height: 96px;
         padding: 16px;
         justify-content: center;
+        align-items: center;
         gap: 16px;
         border-radius: 20px;
         box-shadow: 0 0 0 1.5px var(--color-gray-light);
@@ -321,6 +322,10 @@
             border-left: var(--border);
             padding: 0 16px;
             border-right: var(--border);
+
+            @media (max-width: 768px)  {
+                 padding: 6px 12px;
+            }
         }
 
         img {
@@ -869,6 +874,10 @@
                     flex-direction: row;
                 }
 
+                .product-card-sale {
+                    margin-top: 0;
+                }
+
                 .product-card-value {
                     font-size: 16px;
                     font-weight: 500;
@@ -905,7 +914,9 @@
             @media(max-width: 1024px) {
                 width: 44px;
                 height: 44px;
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
 
                 img {
                     width: 24px;

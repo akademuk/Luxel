@@ -2169,12 +2169,12 @@ function initSpecificationsModal() {
 
 // Функція для модалки відгуків
 function initReviewsModal() {
-    const reviewsBtn = document.querySelector('.product-detail__reviews-rating-btn');
+    const reviewsBtns = document.querySelectorAll('.product-detail__reviews-rating-btn');
     const reviewsBtnMain = document.querySelector('.product-detail__reviews-btn');
     const reviewsModal = document.getElementById('reviewsModal');
 
     if (!reviewsModal) return;
-    if (!reviewsBtn && !reviewsBtnMain) return;
+    if (reviewsBtns.length === 0 && !reviewsBtnMain) return;
 
     // Відкриття модалки
     const openModal = (e) => {
@@ -2189,8 +2189,12 @@ function initReviewsModal() {
         document.body.classList.remove('is-lock'); // Удаляем класс is-lock
     };
 
-    // Підключення подій до кнопок
-    reviewsBtn?.addEventListener('click', openModal);
+    // Підключення подій до всіх кнопок з класом product-detail__reviews-rating-btn
+    reviewsBtns.forEach(btn => {
+        btn.addEventListener('click', openModal);
+    });
+    
+    // Підключення події до основної кнопки
     reviewsBtnMain?.addEventListener('click', openModal);
 
     // Закриття модалки

@@ -1206,13 +1206,22 @@
         collapseSection('payment');
 
         // Показываем секцию с чекбоксом для добавления комментария
-        document.getElementById('section-add-comment').classList.remove('hidden');
+        var commentSection = document.getElementById('section-add-comment');
+        commentSection.classList.remove('hidden');
 
         // Проверяем, нужно ли показывать секцию комментариев
         var commentCheckbox = document.getElementById('add-comment-checkbox');
         if (commentCheckbox && commentCheckbox.checked) {
             document.getElementById('section-comment').classList.remove('hidden');
         }
+
+        // Скролл до секции с комментарием
+        setTimeout(function() {
+            commentSection.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start'
+            });
+        }, 100);
     }
 
     function handleCountryChange() {
@@ -1373,6 +1382,14 @@
                 citySelect.required = false;
             }
         }
+
+        // Скролл до секции с небольшой задержкой для плавного перехода
+        setTimeout(function() {
+            sectionElement.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start'
+            });
+        }, 100);
     }
 
     function handleSubmit() {
