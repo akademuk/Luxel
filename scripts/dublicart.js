@@ -2033,17 +2033,26 @@ function initCartModal() {
 // Функція для повідомлення про наявність
 function initNotifyAvailability() {
     const notifyBtn = document.getElementById('notifyBtn');
+    const notifyBtnSidebar = document.getElementById('notifyBtnSidebar');
     const notifyModal = document.getElementById('notifyModal');
     const notifyForm = document.getElementById('notifyForm');
 
-    if (!notifyBtn || !notifyModal || !notifyForm) return;
+    if ((!notifyBtn && !notifyBtnSidebar) || !notifyModal || !notifyForm) return;
 
-    // Відкриття модалки
-    notifyBtn.addEventListener('click', (e) => {
+    // Функція відкриття модалки
+    const openModal = (e) => {
         e.preventDefault();
         notifyModal.classList.add('active');
         document.body.classList.add('is-lock');
-    });
+    };
+
+    // Відкриття модалки для обох кнопок
+    if (notifyBtn) {
+        notifyBtn.addEventListener('click', openModal);
+    }
+    if (notifyBtnSidebar) {
+        notifyBtnSidebar.addEventListener('click', openModal);
+    }
 
     // Закриття модалки
     const closeModal = () => {

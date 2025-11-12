@@ -14,11 +14,11 @@
     padding-bottom: 12px;
   }
 
-  @keyframes scrolling-header {
-    to {
-      box-shadow: 0 0 0.5rem 0 var(--color-dark);
-    }
-  }
+  // @keyframes scrolling-header {
+  //   to {
+  //     box-shadow: 0 0 0.5rem 0 var(--color-dark);
+  //   }
+  // }
 
   &__promo {
     border-bottom: var(--border);
@@ -627,7 +627,7 @@
     border-radius: 12px;
 
     @media (max-width: 1024px) {
-      padding-bottom: 12px;
+      padding-bottom: 0;
     }
 
     .header__body-btn-search {

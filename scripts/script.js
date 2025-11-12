@@ -1976,56 +1976,195 @@ function initQuantityControl() {
     updateDecreaseButton();
 }
 
+// Функція для управління кількістю товару в cartModal2
+function initQuantityControl2() {
+    const decreaseBtn2 = document.getElementById('decreaseBtn2');
+    const increaseBtn2 = document.getElementById('increaseBtn2');
+    const quantityInput2 = document.getElementById('quantityInput2');
+
+    if (!decreaseBtn2 || !increaseBtn2 || !quantityInput2) return;
+
+    // Перевірка чи вже ініціалізовано
+    if (decreaseBtn2.dataset.initialized === 'true') return;
+
+    // Позначаємо як ініціалізоване
+    decreaseBtn2.dataset.initialized = 'true';
+    increaseBtn2.dataset.initialized = 'true';
+
+    // Функція оновлення стану кнопки зменшення
+    function updateDecreaseButton() {
+        const value = parseInt(quantityInput2.value) || 1;
+        if (value <= 1) {
+            decreaseBtn2.disabled = true;
+        } else {
+            decreaseBtn2.disabled = false;
+        }
+    }
+
+    // Зменшення кількості
+    decreaseBtn2.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        let value = parseInt(quantityInput2.value) || 1;
+        if (value > 1) {
+            quantityInput2.value = value - 1;
+            updateDecreaseButton();
+        }
+    });
+
+    // Збільшення кількості
+    increaseBtn2.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        let value = parseInt(quantityInput2.value) || 0;
+        const max = parseInt(quantityInput2.max) || 999;
+        if (value < max) {
+            quantityInput2.value = value + 1;
+            updateDecreaseButton();
+        }
+    });
+
+    // Обробка ручного введення
+    quantityInput2.addEventListener('input', () => {
+        let value = parseInt(quantityInput2.value);
+        const min = parseInt(quantityInput2.min) || 1;
+        const max = parseInt(quantityInput2.max) || 999;
+
+        if (isNaN(value) || quantityInput2.value === '') {
+            return;
+        }
+
+        if (value < min) quantityInput2.value = min;
+        if (value > max) quantityInput2.value = max;
+
+        updateDecreaseButton();
+    });
+
+    // Обробка виходу з поля (blur)
+    quantityInput2.addEventListener('blur', () => {
+        if (quantityInput2.value === '' || isNaN(parseInt(quantityInput2.value))) {
+            quantityInput2.value = 1;
+            updateDecreaseButton();
+        }
+    });
+
+    // Ініціалізація стану кнопки
+    updateDecreaseButton();
+}
+
 // Функція для модалки додавання в кошик
 function initCartModal() {
-    const buyBtn = document.getElementById('buyBtn');
+    const buyButtons = document.querySelectorAll('.js-buy-btn');
     const cartModal = document.getElementById('cartModal');
+    const cartModal2 = document.getElementById('cartModal2');
 
-    if (!buyBtn || !cartModal) return;
-
-    if (buyBtn.dataset.cartInitialized === 'true') return;
-    buyBtn.dataset.cartInitialized = 'true';
+    if (!buyButtons.length || (!cartModal && !cartModal2)) return;
 
     const body = document.body;
 
-    buyBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        cartModal.classList.add('active');
-        body.classList.add('is-lock');
+    buyButtons.forEach(buyBtn => {
+        if (buyBtn.dataset.cartInitialized === 'true') return;
+        buyBtn.dataset.cartInitialized = 'true';
+
+        buyBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Перевіряємо розмір екрану
+            const isMobile = window.innerWidth < 768;
+            
+            if (isMobile && cartModal2) {
+                // На мобільних спочатку відкриваємо cartModal2
+                cartModal2.classList.add('active');
+                body.classList.add('is-lock');
+            } else if (cartModal) {
+                // На десктопі відкриваємо cartModal
+                cartModal.classList.add('active');
+                body.classList.add('is-lock');
+            }
+        });
     });
 
+    // Функції закриття модалок
     function closeModal() {
-        cartModal.classList.remove('active');
+        if (cartModal) {
+            cartModal.classList.remove('active');
+        }
         body.classList.remove('is-lock');
     }
 
-    const closeCartModal = document.getElementById('closeCartModal');
-    const continueShoppingBtn = document.getElementById('continueShoppingBtn');
-
-    if (closeCartModal) {
-        closeCartModal.addEventListener('click', closeModal);
-    }
-
-    if (continueShoppingBtn) {
-        continueShoppingBtn.addEventListener('click', closeModal);
-    }
-
-    cartModal.addEventListener('click', (e) => {
-        if (e.target === cartModal) {
-            closeModal();
+    function closeModal2() {
+        if (cartModal2) {
+            cartModal2.classList.remove('active');
         }
-    });
+        body.classList.remove('is-lock');
+    }
 
+    // Обробники для cartModal
+    if (cartModal) {
+        const closeCartModal = document.getElementById('closeCartModal');
+        const continueShoppingBtn = document.getElementById('continueShoppingBtn');
+
+        if (closeCartModal) {
+            closeCartModal.addEventListener('click', closeModal);
+        }
+
+        if (continueShoppingBtn) {
+            continueShoppingBtn.addEventListener('click', closeModal);
+        }
+
+        cartModal.addEventListener('click', (e) => {
+            if (e.target === cartModal) {
+                closeModal();
+            }
+        });
+    }
+
+    // Обробники для cartModal2
+    if (cartModal2) {
+        const closeCartModal2 = document.getElementById('closeCartModal2');
+        
+        if (closeCartModal2) {
+            closeCartModal2.addEventListener('click', closeModal2);
+        }
+
+        cartModal2.addEventListener('click', (e) => {
+            if (e.target === cartModal2) {
+                closeModal2();
+            }
+        });
+    }
+
+    // Обробка Escape для обох модалок
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && cartModal.classList.contains('active')) {
-            closeModal();
+        if (e.key === 'Escape') {
+            if (cartModal && cartModal.classList.contains('active')) {
+                closeModal();
+            }
+            if (cartModal2 && cartModal2.classList.contains('active')) {
+                closeModal2();
+            }
         }
     });
 
+    // Кнопка "Купити" в cartModal2 - переходить до cartModal
+    const checkoutBtn2 = document.getElementById('checkoutBtn2');
+    if (checkoutBtn2 && cartModal2 && cartModal) {
+        checkoutBtn2.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Закриваємо cartModal2
+            cartModal2.classList.remove('active');
+            // Відкриваємо cartModal
+            cartModal.classList.add('active');
+        });
+    }
+
+    // Кнопка "Купити" в cartModal - перехід на сторінку checkout
     const checkoutBtn = document.getElementById('checkoutBtn');
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
-            window.location.href = '/checkout';
+            window.location.href = '/checkout.html';
         });
     }
 }
@@ -2033,23 +2172,44 @@ function initCartModal() {
 // Функція для повідомлення про наявність
 function initNotifyAvailability() {
     const notifyBtn = document.getElementById('notifyBtn');
+    const notifyBtnSidebar = document.getElementById('notifyBtnSidebar');
     const notifyModal = document.getElementById('notifyModal');
     const notifyForm = document.getElementById('notifyForm');
 
-    if (!notifyBtn || !notifyModal || !notifyForm) return;
+    if ((!notifyBtn && !notifyBtnSidebar) || !notifyModal || !notifyForm) return;
 
-    // Відкриття модалки
-    notifyBtn.addEventListener('click', (e) => {
+    const notifyPhone = document.getElementById('notifyPhone');
+    const submitBtn = notifyForm.querySelector('button[type="submit"]');
+    const errorSpan = notifyForm.querySelector('.novalid-style');
+
+    // Функція відкриття модалки
+    const openModal = (e) => {
         e.preventDefault();
         notifyModal.classList.add('active');
         document.body.classList.add('is-lock');
-    });
+        
+        // Добавляем класс invalid при открытии
+        if (submitBtn) {
+            submitBtn.classList.add('invalid');
+        }
+    };
+
+    // Відкриття модалки для обох кнопок
+    if (notifyBtn) {
+        notifyBtn.addEventListener('click', openModal);
+    }
+    if (notifyBtnSidebar) {
+        notifyBtnSidebar.addEventListener('click', openModal);
+    }
 
     // Закриття модалки
     const closeModal = () => {
         notifyModal.classList.remove('active');
         document.body.classList.remove('is-lock');
         notifyForm.reset();
+        // Возвращаем класс invalid и скрываем ошибку при закрытии
+        if (submitBtn) submitBtn.classList.add('invalid');
+        if (errorSpan) errorSpan.classList.add('hidden');
     };
 
     document.getElementById('closeNotifyModal')?.addEventListener('click', closeModal);
@@ -2059,19 +2219,49 @@ function initNotifyAvailability() {
     });
 
     // Валідація та активація кнопки
-    const notifyPhone = document.getElementById('notifyPhone');
-    const submitBtn = notifyForm.querySelector('button[type="submit"]');
+    if (notifyPhone && submitBtn && errorSpan) {
+        // Используем jQuery для совместимости с маской
+        jQuery(notifyPhone).on('input keyup change', function() {
+            // Маска: +38(999)999-99-99 - всего 12 цифр
+            const cleanPhone = this.value.replace(/\D/g, '');
+            
+            // Управляем классом invalid вместо disabled
+            if (cleanPhone.length < 12) {
+                submitBtn.classList.add('invalid');
+            } else {
+                submitBtn.classList.remove('invalid');
+            }
+            
+            // Скрываем ошибку при вводе
+            errorSpan.classList.add('hidden');
+        });
 
-    if (notifyPhone && submitBtn) {
-        notifyPhone.addEventListener('input', () => {
+        // Обробник кліку на кнопку (спрацює навіть якщо кнопка invalid)
+        submitBtn.addEventListener('click', (e) => {
             const cleanPhone = notifyPhone.value.replace(/\D/g, '');
-            submitBtn.disabled = cleanPhone.length !== 12;
+            
+            // Якщо телефон невалідний - показуємо помилку і блокуємо submit
+            if (cleanPhone.length < 12) {
+                e.preventDefault();
+                e.stopPropagation();
+                errorSpan.classList.remove('hidden');
+                return;
+            }
+            
+            // Якщо телефон валідний -ховаємо помилку і дозволяємо submit
+            errorSpan.classList.add('hidden');
         });
     }
 
-    // Відправка форми
+    // Відправка форми (спрацює тільки якщо валідація пройшла)
     notifyForm.addEventListener('submit', (e) => {
         e.preventDefault();
+        
+        // Скрываем ошибку если была показана
+        const errorSpanElement = notifyForm.querySelector('.novalid-style');
+        if (errorSpanElement) errorSpanElement.classList.add('hidden');
+        
+        // Закрываем и показываем успех
         closeModal();
 
         const successModal2 = document.getElementById('successModal2');
@@ -2333,7 +2523,7 @@ function initReviewsGallery() {
         Toolbar: {
             display: {
                 left: [],
-                middle: [],
+                middle: ["counter"],
                 right: ["close"],
             },
         },
@@ -2344,11 +2534,13 @@ function initReviewsGallery() {
         animated: false,
         showClass: false,
         hideClass: false,
+        closeButton: "outside",
         click: false, // Отключаем закрытие по клику
         caption: function(fancybox, slide) {
             // Получаем информацию об авторе из родительского элемента reviews-list__item
             const triggerElement = slide.triggerEl || slide.$trigger;
             const reviewItem = triggerElement?.closest('.reviews-list__item');
+            
             if (reviewItem) {
                 const author = reviewItem.querySelector('.reviews-list__item-autor h3')?.textContent || '';
                 const date = reviewItem.querySelector('.reviews-list__item-autor time')?.textContent || '';
@@ -2365,6 +2557,12 @@ function initReviewsGallery() {
         on: {
             ready: (fancybox) => {
                 console.log('🟠 MODAL GALLERY - Ready event fired');
+                
+                // Добавляем кастомный класс к контейнеру для стилизации
+                const container = document.querySelector('.fancybox__container');
+                if (container) {
+                    container.classList.add('fancybox-modal-gallery');
+                }
                 
                 // Добавляем обработчик клика на backdrop для закрытия
                 setTimeout(() => {
@@ -2604,6 +2802,12 @@ function initReviewsGallery() {
             ready: (fancybox) => {
                 console.log('🟢 REVIEW GALLERY - Ready event fired');
                 
+                // Добавляем кастомный класс к контейнеру для стилизации
+                const container = document.querySelector('.fancybox__container');
+                if (container) {
+                    container.classList.add('fancybox-reviews-gallery');
+                }
+                
                 // Добавляем обработчик клика на backdrop для закрытия
                 setTimeout(() => {
                     const backdrop = document.querySelector('.fancybox__backdrop');
@@ -2796,6 +3000,7 @@ if (document.readyState === 'loading') {
 function initWishlist() {
     const likedButtons = document.querySelectorAll('.product-detail__liked');
     const successModal3 = document.getElementById('successModal3');
+    const successModal8 = document.getElementById('successModal8');
 
     if (!likedButtons.length || !successModal3) return;
 
@@ -2806,11 +3011,21 @@ function initWishlist() {
             btn.classList.toggle('active');
 
             if (btn.classList.contains('active')) {
+                // Додано в обране
                 successModal3.classList.add('active');
 
                 setTimeout(() => {
                     successModal3.classList.remove('active');
                 }, 3000);
+            } else {
+                // Видалено з обраного
+                if (successModal8) {
+                    successModal8.classList.add('active');
+
+                    setTimeout(() => {
+                        successModal8.classList.remove('active');
+                    }, 3000);
+                }
             }
         });
     });
@@ -3166,7 +3381,13 @@ function initShoppingCart() {
         }
 
         // Оновити лічильник
-        document.getElementById('cart-count').textContent = `(${itemCount})`;
+        const cartCount = document.getElementById('cart-count');
+        if (itemCount === 0) {
+            cartCount.style.display = 'none';
+        } else {
+            cartCount.style.display = 'inline';
+            cartCount.textContent = `(${itemCount})`;
+        }
 
         // Оновити всі .bascet-value
         updateBasketValue();
@@ -3437,8 +3658,10 @@ function initShoppingCart() {
             updatePromoErrors(''); // Очищаем все блоки ошибок
             promoInput.style.borderColor = '';
 
-            // Показуємо знову Toggle
+            // Показуємо знову Toggle та закриваємо контент
             promoToggle.style.display = 'flex';
+            promoToggle.classList.remove('active');
+            promoContent.classList.remove('active');
         });
     }
 
@@ -3562,6 +3785,12 @@ function initReviewModal() {
         });
     }
 
+    if (disadvantages && disCount) {
+        disadvantages.addEventListener('input', function () {
+            disCount.textContent = this.value.length;
+        });
+    }
+
     // Завантаження файлів
     if (fileInput && imagePreview && fileSizeNoteError) {
         fileInput.addEventListener('change', function (e) {
@@ -3612,6 +3841,16 @@ function initReviewModal() {
         });
     }
 
+    // Видалення всіх зображень при кліку на upload-label
+    if (uploadLabel) {
+        uploadLabel.addEventListener('click', function () {
+            uploadedFiles = [];
+            if (imagePreview) imagePreview.innerHTML = '';
+            if (fileInput) fileInput.value = '';
+            if (fileSizeNoteError) fileSizeNoteError.style.display = 'none';
+        });
+    }
+
     // Валідація
     function validateForm() {
         if (!comment || !submitBtn) return;
@@ -3650,8 +3889,11 @@ function initReviewModal() {
 
             console.log('Дані відгуку:', formData);
 
-            // 1) Закриваем модалку формы
+            // 1) Закриваем обе модалки
             closeModal(modalAddReview);
+            if (modalReviews) {
+                closeModal(modalReviews);
+            }
 
             // 2) Открываем success-модалку
             if (successModal) {
@@ -3731,6 +3973,7 @@ function initApp() {
     initProductAccordion();
     initAccordionProduct();
     initQuantityControl();
+    initQuantityControl2();
     initCartModal();
     initNotifyAvailability();
     initSpecificationsModal();

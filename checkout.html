@@ -139,38 +139,63 @@
                                                 <label class="checkout__label" for="country">
                                                     Країна <span class="required">*</span>
                                                 </label>
-                                                <select id="country" name="country" class="checkout__select" required
-                                                    onchange="handleCountryChange()">
-                                                    <option value="">Оберіть країну</option>
-                                                    <option value="Україна">Україна</option>
-                                                    <option value="Сполучені Штати">Сполучені Штати</option>
-                                                    <option value="Польща">Польща</option>
-                                                    <option value="Чеська республіка">Чеська республіка</option>
-                                                </select>
+                                                <div class="dropdown" data-dropdown="country">
+                                                    <div class="dropdown__filter">
+                                                        <span class="dropdown__filter-selected" data-value="">Оберіть країну</span>
+                                                    </div>
+                                                    <ul class="dropdown__select">
+                                                        <li class="dropdown__select-option active" data-value="Україна">
+                                                            Україна
+                                                        </li>
+                                                        <li class="dropdown__select-option" data-value="Сполучені Штати">
+                                                            Сполучені Штати
+                                                        </li>
+                                                        <li class="dropdown__select-option" data-value="Польща">
+                                                            Польща
+                                                        </li>
+                                                        <li class="dropdown__select-option" data-value="Чеська республіка">
+                                                            Чеська республіка
+                                                        </li>
+                                                    </ul>
+                                                    <input type="hidden" id="country" name="country" required />
+                                                </div>
                                             </div>
 
                                             <div class="checkout__form-group" id="city-group">
                                                 <label class="checkout__label" for="city">
                                                     Місто <span class="required">*</span>
                                                 </label>
-                                                <select id="city" name="city" class="checkout__select"
-                                                    onchange="handleCityChange()">
-                                                    <option value="">Оберіть місто</option>
-                                                    <option value="Київ">Київ</option>
-                                                    <option value="Львів">Львів</option>
-                                                    <option value="Одеса">Одеса</option>
-                                                    <option value="Харків">Харків</option>
-                                                    <option value="Дніпро">Дніпро</option>
-                                                </select>
+                                                <div class="dropdown dropdown--disabled" data-dropdown="city">
+                                                    <div class="dropdown__filter">
+                                                        <span class="dropdown__filter-selected" data-value="">Оберіть місто</span>
+                                                    </div>
+                                                    <ul class="dropdown__select">
+                                                        <li class="dropdown__select-option active" data-value="Київ">
+                                                            Київ
+                                                        </li>
+                                                        <li class="dropdown__select-option" data-value="Львів">
+                                                            Львів
+                                                        </li>
+                                                        <li class="dropdown__select-option" data-value="Одеса">
+                                                            Одеса
+                                                        </li>
+                                                        <li class="dropdown__select-option" data-value="Харків">
+                                                            Харків
+                                                        </li>
+                                                        <li class="dropdown__select-option" data-value="Дніпро">
+                                                            Дніпро
+                                                        </li>
+                                                    </ul>
+                                                    <input type="hidden" id="city" name="city" />
+                                                </div>
                                             </div>
                                         </div>
 
                                         <div class="hidden" id="delivery-methods-group">
                                             <h3 class="checkout__subtitle">Спосіб доставки</h3>
                                             <div class="checkout__delivery-methods">
-                                                <label class="checkout__delivery-item"
-                                                    onclick="selectDelivery(this, 'nova-post-branch-free')">
-                                                    <div class="checkout__delivery-item-box">
+                                                <div class="checkout__delivery-item" data-delivery="nova-post-branch-free">
+                                                    <label class="checkout__delivery-item-box">
                                                         <input type="radio" name="deliveryMethod"
                                                             value="nova-post-branch-free" class="checkout__radio"
                                                             required />
@@ -184,39 +209,49 @@
                                                                 <span>Безкоштовно</span>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </label>
                                                     <div class="checkout__form-group hidden"
                                                         id="delivery-address-group">
                                                         <label class="checkout__label" for="deliveryAddress">
                                                             Оберіть відділення <span class="required">*</span>
                                                         </label>
                                                         <div class="checkout__form-delivery-select">
-                                                            <select id="deliveryAddress" name="deliveryAddress"
-                                                                class="checkout__select">
-                                                                <option value="">Введіть адресу або номер відділення
-                                                                </option>
-                                                                <option
-                                                                    value="№1, Київ, проїзд Флоренська Чорновола, 54а">
-                                                                    №1, Київ,
-                                                                    проїзд
-                                                                    Флоренська Чорновола, 54а</option>
-                                                                <option value="№5, Київ, вул. Хрещатик, 22">№5, Київ,
-                                                                    вул.
-                                                                    Хрещатик, 22
-                                                                </option>
-                                                                <option value="№10, Київ, просп. Перемоги, 100">№10,
-                                                                    Київ,
-                                                                    просп.
-                                                                    Перемоги, 100
-                                                                </option>
-                                                            </select>
+                                                            <div class="dropdown" data-dropdown="deliveryAddress">
+                                                                <div class="dropdown__filter">
+                                                                    <span class="dropdown__filter-selected" data-value="">Введіть адресу або номер відділення</span>
+                                                                </div>
+                                                                <ul class="dropdown__select">
+                                                                    <li class="dropdown__select-option active" data-value="№1, Київ, проїзд Флоренська Чорновола, 54а">
+                                                                       <strong>Відділення №102</strong> <span>вул. Набережно-рибальська, 3</span>
+                                                                    </li>
+                                                                    <li class="dropdown__select-option" data-value="№5, Київ, вул. Хрещатик, 22">
+                                                                       <strong>Відділення №9</strong> <span>пров. В’ячеслава Чорновола, 54а (р-н Жулянського мосту)</span>
+                                                                    </li>
+                                                                    <li class="dropdown__select-option" data-value="№10, Київ, просп. Перемоги, 100">
+                                                                        <strong>Відділення №102</strong> <span>вул. Набережно-рибальська, 3</span>
+                                                                    </li>
+                                                                    <li class="dropdown__select-option" data-value="№10, Київ, просп. Перемоги, 100">
+                                                                        <strong>Відділення №102</strong> <span>вул. Набережно-рибальська, 3</span>
+                                                                    </li>
+                                                                    <li class="dropdown__select-option" data-value="№10, Київ, просп. Перемоги, 100">
+                                                                        <strong>Відділення №102</strong> <span>вул. Набережно-рибальська, 3</span>
+                                                                    </li>
+                                                                    <li class="dropdown__select-option" data-value="№10, Київ, просп. Перемоги, 100">
+                                                                        <strong>Відділення №102</strong> <span>вул. Набережно-рибальська, 3</span>
+                                                                    </li>
+                                                                    <li class="dropdown__select-option" data-value="№10, Київ, просп. Перемоги, 100">
+                                                                        <strong>Відділення №102</strong> <span>вул. Набережно-рибальська, 3</span>
+                                                                    </li>
+                                                                </ul>
+                                                                <input type="hidden" id="deliveryAddress" name="deliveryAddress" />
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </label>
+                                                </div>
 
-                                                <label class="checkout__delivery-item"
-                                                    onclick="selectDelivery(this, 'nova-post-courier')">
-                                                    <div class="checkout__delivery-item-box">
+                                                <div class="checkout__delivery-item" data-delivery="nova-post-courier">
+
+                                                    <label class="checkout__delivery-item-box">
                                                         <input type="radio" name="deliveryMethod"
                                                             value="nova-post-courier" class="checkout__radio" />
                                                         <span class="checkout__delivery-icon">
@@ -228,7 +263,7 @@
                                                             <div class="checkout__delivery-price">Завтра: від 75 грн.
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </label>
                                                     <div class="checkout__form-group hidden" id="courier-address-group">
                                                         <label class="checkout__label" for="courierAddress">
                                                             Адреса доставки <span class="required">*</span>
@@ -237,11 +272,10 @@
                                                             class="checkout__input"
                                                             placeholder="Введіть адресу для доставки" />
                                                     </div>
-                                                </label>
+                                                </div>
 
-                                                <label class="checkout__delivery-item"
-                                                    onclick="selectDelivery(this, 'nova-post-branch')">
-                                                    <div class="checkout__delivery-item-box">
+                                                <div class="checkout__delivery-item" data-delivery="nova-post-branch">
+                                                    <label class="checkout__delivery-item-box">
                                                         <input type="radio" name="deliveryMethod"
                                                             value="nova-post-branch" class="checkout__radio" />
                                                         <span class="checkout__delivery-icon">
@@ -253,39 +287,48 @@
                                                             <div class="checkout__delivery-price">Завтра: від 75 грн.
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </label>
                                                     <div class="checkout__form-group hidden"
                                                         id="delivery-address-group2">
                                                         <label class="checkout__label" for="deliveryAddress2">
                                                             Оберіть відділення <span class="required">*</span>
                                                         </label>
                                                         <div class="checkout__form-delivery-select">
-                                                            <select id="deliveryAddress2" name="deliveryAddress2"
-                                                                class="checkout__select">
-                                                                <option value="">Введіть адресу або номер відділення
-                                                                </option>
-                                                                <option
-                                                                    value="№1, Київ, проїзд Флоренська Чорновола, 54а">
-                                                                    №1, Київ,
-                                                                    проїзд
-                                                                    Флоренська Чорновола, 54а</option>
-                                                                <option value="№5, Київ, вул. Хрещатик, 22">№5, Київ,
-                                                                    вул.
-                                                                    Хрещатик, 22
-                                                                </option>
-                                                                <option value="№10, Київ, просп. Перемоги, 100">№10,
-                                                                    Київ,
-                                                                    просп.
-                                                                    Перемоги, 100
-                                                                </option>
-                                                            </select>
+                                                            <div class="dropdown" data-dropdown="deliveryAddress2">
+                                                                <div class="dropdown__filter">
+                                                                    <span class="dropdown__filter-selected" data-value="">Введіть адресу або номер відділення</span>
+                                                                </div>
+                                                                <ul class="dropdown__select">
+                                                                    <li class="dropdown__select-option active" data-value="№1, Київ, проїзд Флоренська Чорновола, 54а">
+                                                                       <strong>Відділення №102</strong> <span>вул. Набережно-рибальська, 3</span>
+                                                                    </li>
+                                                                    <li class="dropdown__select-option" data-value="№5, Київ, вул. Хрещатик, 22">
+                                                                       <strong>Відділення №9</strong> <span>пров. В’ячеслава Чорновола, 54а (р-н Жулянського мосту)</span>
+                                                                    </li>
+                                                                    <li class="dropdown__select-option" data-value="№10, Київ, просп. Перемоги, 100">
+                                                                        <strong>Відділення №102</strong> <span>вул. Набережно-рибальська, 3</span>
+                                                                    </li>
+                                                                    <li class="dropdown__select-option" data-value="№10, Київ, просп. Перемоги, 100">
+                                                                        <strong>Відділення №102</strong> <span>вул. Набережно-рибальська, 3</span>
+                                                                    </li>
+                                                                    <li class="dropdown__select-option" data-value="№10, Київ, просп. Перемоги, 100">
+                                                                        <strong>Відділення №102</strong> <span>вул. Набережно-рибальська, 3</span>
+                                                                    </li>
+                                                                    <li class="dropdown__select-option" data-value="№10, Київ, просп. Перемоги, 100">
+                                                                        <strong>Відділення №102</strong> <span>вул. Набережно-рибальська, 3</span>
+                                                                    </li>
+                                                                    <li class="dropdown__select-option" data-value="№10, Київ, просп. Перемоги, 100">
+                                                                        <strong>Відділення №102</strong> <span>вул. Набережно-рибальська, 3</span>
+                                                                    </li>
+                                                                </ul>
+                                                                <input type="hidden" id="deliveryAddress2" name="deliveryAddress2" />
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </label>
+                                                </div>
 
-                                                <label class="checkout__delivery-item"
-                                                    onclick="selectDelivery(this, 'ukrposhta')">
-                                                    <div class="checkout__delivery-item-box">
+                                                <div class="checkout__delivery-item" data-delivery="ukrposhta">
+                                                    <label class="checkout__delivery-item-box">
                                                         <input type="radio" name="deliveryMethod" value="ukrposhta"
                                                             class="checkout__radio" />
                                                         <span class="checkout__delivery-icon">
@@ -297,35 +340,45 @@
                                                             <div class="checkout__delivery-price">Завтра: від 50 грн.
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </label>
                                                     <div class="checkout__form-group hidden"
                                                         id="delivery-address-group3">
                                                         <label class="checkout__label" for="deliveryAddress3">
                                                             Оберіть відділення <span class="required">*</span>
                                                         </label>
                                                         <div class="checkout__form-delivery-select">
-                                                            <select id="deliveryAddress3" name="deliveryAddress3"
-                                                                class="checkout__select">
-                                                                <option value="">Введіть адресу або номер відділення
-                                                                </option>
-                                                                <option
-                                                                    value="№1, Київ, проїзд Флоренська Чорновола, 54а">
-                                                                    №1, Київ,
-                                                                    проїзд
-                                                                    Флоренська Чорновола, 54а</option>
-                                                                <option value="№5, Київ, вул. Хрещатик, 22">№5, Київ,
-                                                                    вул.
-                                                                    Хрещатик, 22
-                                                                </option>
-                                                                <option value="№10, Київ, просп. Перемоги, 100">№10,
-                                                                    Київ,
-                                                                    просп.
-                                                                    Перемоги, 100
-                                                                </option>
-                                                            </select>
+                                                            <div class="dropdown" data-dropdown="deliveryAddress3">
+                                                                <div class="dropdown__filter">
+                                                                    <span class="dropdown__filter-selected" data-value="">Введіть адресу або номер відділення</span>
+                                                                </div>
+                                                                 <ul class="dropdown__select">
+                                                                    <li class="dropdown__select-option active" data-value="№1, Київ, проїзд Флоренська Чорновола, 54а">
+                                                                       <strong>Відділення №102</strong> <span>вул. Набережно-рибальська, 3</span>
+                                                                    </li>
+                                                                    <li class="dropdown__select-option" data-value="№5, Київ, вул. Хрещатик, 22">
+                                                                       <strong>Відділення №9</strong> <span>пров. В’ячеслава Чорновола, 54а (р-н Жулянського мосту)</span>
+                                                                    </li>
+                                                                    <li class="dropdown__select-option" data-value="№10, Київ, просп. Перемоги, 100">
+                                                                        <strong>Відділення №102</strong> <span>вул. Набережно-рибальська, 3</span>
+                                                                    </li>
+                                                                    <li class="dropdown__select-option" data-value="№10, Київ, просп. Перемоги, 100">
+                                                                        <strong>Відділення №102</strong> <span>вул. Набережно-рибальська, 3</span>
+                                                                    </li>
+                                                                    <li class="dropdown__select-option" data-value="№10, Київ, просп. Перемоги, 100">
+                                                                        <strong>Відділення №102</strong> <span>вул. Набережно-рибальська, 3</span>
+                                                                    </li>
+                                                                    <li class="dropdown__select-option" data-value="№10, Київ, просп. Перемоги, 100">
+                                                                        <strong>Відділення №102</strong> <span>вул. Набережно-рибальська, 3</span>
+                                                                    </li>
+                                                                    <li class="dropdown__select-option" data-value="№10, Київ, просп. Перемоги, 100">
+                                                                        <strong>Відділення №102</strong> <span>вул. Набережно-рибальська, 3</span>
+                                                                    </li>
+                                                                </ul>
+                                                                <input type="hidden" id="deliveryAddress3" name="deliveryAddress3" />
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </label>
+                                                </div>
                                             </div>
                                         </div>
                                         <button type="submit" class="checkout__btn checkout__btn--continue red-btn">
@@ -532,6 +585,10 @@
                                 </div>
                             </div>
                             <p class="checkout__summary-value">3 товари</p>
+                            <div class="checkout__summary-value-delivery"> 
+                                <span>Доставка:</span>
+                                <strong>Безкоштовно</strong>
+                            </div>
                         </div>
 
                         <button type="button" class="checkout__btn checkout__btn--submit red-btn" id="submit-btn"
@@ -745,7 +802,115 @@
         updateButtonStates();
         initPhoneMask();
         initCommentCounter();
+        initCustomDropdowns();
+        initDeliveryItems();
     });
+
+    // Инициализация кастомных dropdown
+    function initCustomDropdowns() {
+        const dropdowns = document.querySelectorAll('[data-dropdown]');
+        
+        dropdowns.forEach(dropdown => {
+            const dropdownName = dropdown.dataset.dropdown;
+            const filter = dropdown.querySelector('.dropdown__filter');
+            const label = dropdown.querySelector('.dropdown__filter-selected');
+            const select = dropdown.querySelector('.dropdown__select');
+            const options = dropdown.querySelectorAll('.dropdown__select-option');
+            const hiddenInput = dropdown.querySelector('input[type="hidden"]');
+            
+            // Клик по фильтру - открыть/закрыть
+            filter.addEventListener('click', (e) => {
+                e.stopPropagation();
+                
+                // Если dropdown disabled - не открываем
+                if (dropdown.classList.contains('dropdown--disabled')) {
+                    return;
+                }
+                
+                // Закрываем все остальные
+                dropdowns.forEach(d => {
+                    if (d !== dropdown) {
+                        d.classList.remove('is-open');
+                    }
+                });
+                
+                // Переключаем текущий
+                dropdown.classList.toggle('is-open');
+            });
+            
+            // Клик по списку - тоже stopPropagation
+            if (select) {
+                select.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+            }
+            
+            // Клик по опции
+            options.forEach(option => {
+                option.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const value = option.dataset.value;
+                    const text = option.innerHTML.trim();
+                    
+                    // Убираем active у всех опций этого dropdown
+                    const allOptionsInDropdown = dropdown.querySelectorAll('.dropdown__select-option');
+                    
+                    allOptionsInDropdown.forEach(opt => {
+                        opt.classList.remove('active');
+                    });
+                    
+                    // Добавляем active к выбранной
+                    option.classList.add('active');
+                    
+                    // Обновляем текст и значение (используем innerHTML для сохранения разметки)
+                    label.innerHTML = text;
+                    label.dataset.value = value;
+                    hiddenInput.value = value;
+                    
+                    // Закрываем dropdown
+                    dropdown.classList.remove('is-open');
+                    
+                    // Вызываем обработчики
+                    if (dropdownName === 'country') {
+                        handleCountryChange();
+                    } else if (dropdownName === 'city') {
+                        handleCityChange();
+                    } else if (dropdownName.includes('deliveryAddress')) {
+                        updateButtonStates();
+                    }
+                    
+                    // Всегда обновляем состояние кнопок
+                    updateButtonStates();
+                });
+            });
+        });
+        
+        // Закрытие при клике вне dropdown
+        document.addEventListener('click', () => {
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('is-open');
+            });
+        });
+    }
+    
+    // Инициализация delivery items
+    function initDeliveryItems() {
+        const deliveryItems = document.querySelectorAll('.checkout__delivery-item[data-delivery]');
+        
+        deliveryItems.forEach(item => {
+            const deliveryValue = item.dataset.delivery;
+            const itemBox = item.querySelector('.checkout__delivery-item-box');
+            
+            if (itemBox) {
+                // Вешаем обработчик только на box (label с radio)
+                itemBox.addEventListener('click', (e) => {
+                    selectDelivery(item, deliveryValue);
+                });
+            }
+        });
+    }
 
     // Инициализация маски для телефона
     function initPhoneMask() {
@@ -959,18 +1124,36 @@
         var city = document.getElementById('city').value;
         var deliveryMethod = document.querySelector('input[name="deliveryMethod"]:checked');
         var deliveryAddress = '';
+        var deliveryAddressText = ''; // Красивый текст для отображения
 
         // Определяем адрес в зависимости от метода доставки
         if (deliveryMethod) {
             var methodValue = deliveryMethod.value;
             if (methodValue === 'nova-post-branch-free') {
                 deliveryAddress = document.getElementById('deliveryAddress').value;
+                // Берем текст из видимого элемента dropdown
+                var dropdown1 = document.querySelector('[data-dropdown="deliveryAddress"]');
+                if (dropdown1) {
+                    var selected1 = dropdown1.querySelector('.dropdown__filter-selected');
+                    deliveryAddressText = selected1 ? selected1.textContent.trim() : deliveryAddress;
+                }
             } else if (methodValue === 'nova-post-branch') {
                 deliveryAddress = document.getElementById('deliveryAddress2').value;
+                var dropdown2 = document.querySelector('[data-dropdown="deliveryAddress2"]');
+                if (dropdown2) {
+                    var selected2 = dropdown2.querySelector('.dropdown__filter-selected');
+                    deliveryAddressText = selected2 ? selected2.textContent.trim() : deliveryAddress;
+                }
             } else if (methodValue === 'ukrposhta') {
                 deliveryAddress = document.getElementById('deliveryAddress3').value;
+                var dropdown3 = document.querySelector('[data-dropdown="deliveryAddress3"]');
+                if (dropdown3) {
+                    var selected3 = dropdown3.querySelector('.dropdown__filter-selected');
+                    deliveryAddressText = selected3 ? selected3.textContent.trim() : deliveryAddress;
+                }
             } else if (methodValue === 'nova-post-courier') {
                 deliveryAddress = document.getElementById('courierAddress').value;
+                deliveryAddressText = deliveryAddress;
             }
         }
 
@@ -982,7 +1165,8 @@
             document.getElementById('summary-delivery').textContent = deliveryName;
 
             if (deliveryAddress) {
-                document.getElementById('summary-address').textContent = deliveryAddress;
+                // Используем красивый текст вместо технического значения
+                document.getElementById('summary-address').textContent = deliveryAddressText || deliveryAddress;
                 document.getElementById('summary-address-container').classList.remove('hidden');
             } else {
                 document.getElementById('summary-address-container').classList.add('hidden');
@@ -1033,17 +1217,26 @@
 
     function handleCountryChange() {
         var country = document.getElementById('country').value;
+        var cityDropdown = document.querySelector('[data-dropdown="city"]');
         var citySelect = document.getElementById('city');
 
         if (country) {
-            // Разблокируем поле города
-            citySelect.disabled = false;
+            // Разблокируем dropdown города
+            cityDropdown.classList.remove('dropdown--disabled');
             citySelect.required = true;
         } else {
-            // Блокируем город и сбрасываем его значение
-            citySelect.disabled = true;
+            // Блокируем dropdown города и сбрасываем его значение
+            cityDropdown.classList.add('dropdown--disabled');
             citySelect.required = false;
             citySelect.value = '';
+            
+            // Сбрасываем текст dropdown
+            const cityLabel = cityDropdown.querySelector('.dropdown__filter-selected');
+            if (cityLabel) {
+                cityLabel.textContent = 'Оберіть місто';
+                cityLabel.dataset.value = '';
+            }
+            
             handleCityChange();
         }
 
@@ -1076,6 +1269,21 @@
     }
 
     function selectDelivery(element, value) {
+        // Ігноруємо клік, якщо він на dropdown або його частинах
+        if (window.event) {
+            const target = window.event.target;
+            if (target.closest('.dropdown') || 
+                target.classList.contains('dropdown') ||
+                target.classList.contains('dropdown__filter') ||
+                target.classList.contains('dropdown__filter-selected') ||
+                target.classList.contains('dropdown__select') ||
+                target.classList.contains('dropdown__select-option') ||
+                target.closest('.checkout__form-delivery-select')) {
+                window.event.stopPropagation();
+                return;
+            }
+        }
+        
         var items = document.querySelectorAll('.checkout__delivery-item');
         for (var i = 0; i < items.length; i++) {
             items[i].classList.remove('is-selected');
@@ -1180,8 +1388,6 @@
             paymentOption: document.querySelector('input[name="paymentOption"]:checked') ? document.querySelector('input[name="paymentOption"]:checked').value : null,
             comment: document.getElementById('comment').value
         };
-
-        console.log('Дані замовлення:', formData);
         
         // Перенаправляем на страницу order.html
         window.location.href = 'order.html';

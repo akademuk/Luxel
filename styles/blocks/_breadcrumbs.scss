@@ -39,3 +39,22 @@
     }
 
 }
+
+.breadcrumbs.product {
+    position: sticky;
+    top: 129px;
+    background: var(--color-light);
+    z-index: 20;
+
+    @media (max-width: 1024px) {
+        position: static;
+    }
+}
+
+.product-body {
+    @media (max-width: 768px) {
+        .request-call {
+           display: none;
+        }
+    }
+}

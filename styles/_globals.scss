@@ -47,7 +47,7 @@ body {
       background: rgba(0, 0, 0, 0.10);
       -webkit-backdrop-filter: blur(12.5px);
       backdrop-filter: blur(12.5px);
-      z-index: 100;
+      z-index: 1000;
     }
   }
 
@@ -306,6 +306,12 @@ input:focus {
   &:disabled {
     background: var(--color-gray-light) !important;
     cursor: not-allowed;
+  }
+
+  &.invalid {
+    background: var(--color-gray-light) !important;
+    cursor: not-allowed;
+    pointer-events: auto !important;
   }
 
   @include mobile {
@@ -756,12 +762,17 @@ input[type="number"] {
   background: var(--color-gray-primary) !important;
 }
 
+.fancybox__content>.f-button.is-close-btn {
+  display: none !important;
+}
+
 .fancybox__footer {
   position: absolute !important;
   /* ЗМІНЕНО */
   bottom: 0 !important;
   z-index: 100 !important;
   left: 0 !important;
+  border-radius: 0 0 20px 20px !important;
   width: 100% !important;
   background: var(--color-gray-primary) !important;
 }
@@ -915,4 +926,104 @@ input[type="number"] {
 
 .fancybox__backdrop {
   transition: none !important;
+}
+
+.fancybox__container.fancybox-reviews-gallery {
+    @media(max-width: 578px) {
+      .fancybox__caption {
+        bottom: auto !important;
+        top: -51.3vh !important;
+        border-radius: 20px 20px 0 0 !important;
+        padding: 12px !important;
+      }
+
+      .fancybox__content {
+        width: calc(100% + 40px) !important;
+        height: 610px !important;
+        min-width: 100vw;
+      }
+
+      .fancybox__slide {
+        padding: 75px 20px 100px !important;
+      }
+
+      .fancybox__container {
+        max-height: 679px !important;
+      }
+
+      .fancybox-title {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 18px; 
+        letter-spacing: 0.07px;
+      }
+
+      .f-button.is-prev {
+        background: transparent !important;
+      }
+
+      .fancybox__nav svg {
+        color: #fff !important;
+      }
+
+       .f-button.is-next {
+        background: transparent !important;
+      }
+    }
+}
+
+.fancybox__container.fancybox-modal-gallery  {
+  @media(max-width: 578px) {
+      .fancybox__caption {
+        bottom: auto !important;
+        top: -51.3vh !important;
+        border-radius: 20px 20px 0 0 !important;
+        padding: 12px !important;
+      }
+
+      .fancybox__content {
+        width: calc(100% + 40px) !important;
+        height: 610px !important;
+        min-width: 100vw;
+      }
+
+      .fancybox__slide {
+        padding: 0 20px 100px !important;
+      }
+
+      .fancybox__container {
+        max-height: 679px !important;
+      }
+
+      .fancybox-title {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 18px; 
+        letter-spacing: 0.07px;
+      }
+
+      .f-button.is-prev {
+        background: transparent !important;
+      }
+
+      .f-button  svg {
+        color: #fff !important;
+      }
+
+      .fancybox__nav svg {
+        color: #fff !important;
+      }
+
+       .f-button.is-next {
+        background: transparent !important;
+      }
+    }
+}
+
+.main-product {
+  padding-top: 80px;
+
+  @media(max-width: 768px) {
+    padding-top: 0;
+  }
 }
