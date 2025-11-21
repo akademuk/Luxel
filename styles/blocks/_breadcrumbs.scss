@@ -2,6 +2,9 @@
 
 .breadcrumbs {
     padding: 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 
     &__list {
         display: flex;
@@ -14,6 +17,8 @@
         display: flex;
         gap: 4px;
         align-items: center;
+        white-space: nowrap;
+        color: #aaaaaa;
         white-space: nowrap;
 
         &::after {
@@ -56,5 +61,71 @@
         .request-call {
            display: none;
         }
+    }
+}
+
+.breadcrumbs-global {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    overflow: hidden;
+
+    @media (max-width: 576px) {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+  
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    &__link {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+        white-space: nowrap;
+        color: var(--color-dark);
+
+        @media (max-width: 576px){
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        &::after {
+            content: "";
+            display: block;
+            width: 24px;
+            height: 24px;
+            background-image: url('../icons/accardion-arrow.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            transform: rotate(-90deg);
+
+            @media (max-width: 576px) {
+                width: 16px;
+                height: 16px;
+                aspect-ratio: 1/1;
+            }
+        }
+
+        &:hover {
+
+            &:after {
+                filter: brightness(0) saturate(100%) invert(8%) sepia(65%) saturate(7365%) hue-rotate(340deg) brightness(123%) contrast(128%);
+            }
+        }
+    }
+
+    &__span {
+        color: #aaaaaa;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
     }
 }

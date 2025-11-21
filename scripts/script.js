@@ -2070,10 +2070,10 @@ function initCartModal() {
 
         buyBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            
+
             // Перевіряємо розмір екрану
             const isMobile = window.innerWidth < 768;
-            
+
             if (isMobile && cartModal2) {
                 // На мобільних спочатку відкриваємо cartModal2
                 cartModal2.classList.add('active');
@@ -2124,7 +2124,7 @@ function initCartModal() {
     // Обробники для cartModal2
     if (cartModal2) {
         const closeCartModal2 = document.getElementById('closeCartModal2');
-        
+
         if (closeCartModal2) {
             closeCartModal2.addEventListener('click', closeModal2);
         }
@@ -2187,7 +2187,7 @@ function initNotifyAvailability() {
         e.preventDefault();
         notifyModal.classList.add('active');
         document.body.classList.add('is-lock');
-        
+
         // Добавляем класс invalid при открытии
         if (submitBtn) {
             submitBtn.classList.add('invalid');
@@ -2221,17 +2221,17 @@ function initNotifyAvailability() {
     // Валідація та активація кнопки
     if (notifyPhone && submitBtn && errorSpan) {
         // Используем jQuery для совместимости с маской
-        jQuery(notifyPhone).on('input keyup change', function() {
+        jQuery(notifyPhone).on('input keyup change', function () {
             // Маска: +38(999)999-99-99 - всего 12 цифр
             const cleanPhone = this.value.replace(/\D/g, '');
-            
+
             // Управляем классом invalid вместо disabled
             if (cleanPhone.length < 12) {
                 submitBtn.classList.add('invalid');
             } else {
                 submitBtn.classList.remove('invalid');
             }
-            
+
             // Скрываем ошибку при вводе
             errorSpan.classList.add('hidden');
         });
@@ -2239,7 +2239,7 @@ function initNotifyAvailability() {
         // Обробник кліку на кнопку (спрацює навіть якщо кнопка invalid)
         submitBtn.addEventListener('click', (e) => {
             const cleanPhone = notifyPhone.value.replace(/\D/g, '');
-            
+
             // Якщо телефон невалідний - показуємо помилку і блокуємо submit
             if (cleanPhone.length < 12) {
                 e.preventDefault();
@@ -2247,7 +2247,7 @@ function initNotifyAvailability() {
                 errorSpan.classList.remove('hidden');
                 return;
             }
-            
+
             // Якщо телефон валідний -ховаємо помилку і дозволяємо submit
             errorSpan.classList.add('hidden');
         });
@@ -2256,11 +2256,11 @@ function initNotifyAvailability() {
     // Відправка форми (спрацює тільки якщо валідація пройшла)
     notifyForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         // Скрываем ошибку если была показана
         const errorSpanElement = notifyForm.querySelector('.novalid-style');
         if (errorSpanElement) errorSpanElement.classList.add('hidden');
-        
+
         // Закрываем и показываем успех
         closeModal();
 
@@ -2374,7 +2374,7 @@ function initReviewsModal() {
     reviewsBtns.forEach(btn => {
         btn.addEventListener('click', openModal);
     });
-    
+
     // Підключення події до основної кнопки
     reviewsBtnMain?.addEventListener('click', openModal);
 
@@ -2540,15 +2540,15 @@ function initReviewsGallery() {
         hideClass: false,
         closeButton: "outside",
         click: false, // Отключаем закрытие по клику
-        caption: function(fancybox, slide) {
+        caption: function (fancybox, slide) {
             // Получаем информацию об авторе из родительского элемента reviews-list__item
             const triggerElement = slide.triggerEl || slide.$trigger;
             const reviewItem = triggerElement?.closest('.reviews-list__item');
-            
+
             if (reviewItem) {
                 const author = reviewItem.querySelector('.reviews-list__item-autor h3')?.textContent || '';
                 const date = reviewItem.querySelector('.reviews-list__item-autor time')?.textContent || '';
-                
+
                 if (author && date) {
                     return `
                         <h2 class="fancybox-title">${author}</h2>
@@ -2561,13 +2561,13 @@ function initReviewsGallery() {
         on: {
             ready: (fancybox) => {
                 console.log('🟠 MODAL GALLERY - Ready event fired');
-                
+
                 // Добавляем кастомный класс к контейнеру для стилизации
                 const container = document.querySelector('.fancybox__container');
                 if (container) {
                     container.classList.add('fancybox-modal-gallery');
                 }
-                
+
                 // Добавляем обработчик клика на backdrop для закрытия
                 setTimeout(() => {
                     const backdrop = document.querySelector('.fancybox__backdrop');
@@ -2580,12 +2580,12 @@ function initReviewsGallery() {
                             }
                         });
                     }
-                    
+
                     // Также добавляем клик на контейнер вне carousel
                     const container = document.querySelector('.fancybox__container');
                     if (container) {
                         container.addEventListener('click', (e) => {
-                            if (!e.target.closest('.fancybox__carousel') && 
+                            if (!e.target.closest('.fancybox__carousel') &&
                                 !e.target.closest('.fancybox__toolbar') &&
                                 !e.target.closest('.fancybox__nav') &&
                                 !e.target.closest('.f-thumbs') &&
@@ -2596,22 +2596,22 @@ function initReviewsGallery() {
                         });
                     }
                 }, 100);
-                
+
                 try {
                     // Получаем карусель с миниатюрами
                     const thumbsPlugin = fancybox.plugins?.Thumbs;
                     if (!thumbsPlugin || !thumbsPlugin.carousel) return;
-                    
+
                     // Функция для управления кнопками навигации
                     const updateNavigationButtons = () => {
                         try {
                             const currentIndex = fancybox.getSlide()?.index ?? 0;
                             const totalSlides = fancybox.getSlideCount();
-                            
+
                             // Находим кнопки навигации
                             const prevButton = document.querySelector('.fancybox__nav .f-button[data-fancybox-prev]');
                             const nextButton = document.querySelector('.fancybox__nav .f-button[data-fancybox-next]');
-                            
+
                             // Отключаем кнопку "назад" на первом слайде
                             if (prevButton) {
                                 // Удаляем старый обработчик если есть
@@ -2619,12 +2619,12 @@ function initReviewsGallery() {
                                     prevButton.removeEventListener('click', prevButton._blockHandler, true);
                                     prevButton._blockHandler = null;
                                 }
-                                
+
                                 if (currentIndex === 0) {
                                     prevButton.disabled = true;
                                     prevButton.style.opacity = '0.3';
                                     prevButton.style.cursor = 'not-allowed';
-                                    
+
                                     // Блокируем клик через capture phase
                                     prevButton._blockHandler = (e) => {
                                         e.preventDefault();
@@ -2640,7 +2640,7 @@ function initReviewsGallery() {
                                     prevButton.style.cursor = '';
                                 }
                             }
-                            
+
                             // Отключаем кнопку "вперед" на последнем слайде
                             if (nextButton) {
                                 // Удаляем старый обработчик если есть
@@ -2648,12 +2648,12 @@ function initReviewsGallery() {
                                     nextButton.removeEventListener('click', nextButton._blockHandler, true);
                                     nextButton._blockHandler = null;
                                 }
-                                
+
                                 if (currentIndex === totalSlides - 1) {
                                     nextButton.disabled = true;
                                     nextButton.style.opacity = '0.3';
                                     nextButton.style.cursor = 'not-allowed';
-                                    
+
                                     // Блокируем клик через capture phase
                                     nextButton._blockHandler = (e) => {
                                         e.preventDefault();
@@ -2669,7 +2669,7 @@ function initReviewsGallery() {
                                     nextButton.style.cursor = '';
                                 }
                             }
-                            
+
                             // Показываем миниатюры, если они скрыты
                             const thumbsWrapper = document.querySelector('.f-thumbs__viewport, .f-thumbs');
                             if (thumbsWrapper) {
@@ -2681,23 +2681,23 @@ function initReviewsGallery() {
                             console.warn('Error updating navigation buttons:', err);
                         }
                     };
-                    
+
                     // Функция для центрирования активной миниатюры
                     const centerThumb = () => {
                         try {
                             const currentIndex = fancybox.getSlide()?.index ?? 0;
-                            
+
                             const thumbsWrapper = document.querySelector('.f-thumbs__viewport, .f-thumbs');
                             if (!thumbsWrapper) return;
-                            
+
                             const activeThumb = thumbsWrapper.querySelector(`.f-thumbs__slide:nth-child(${currentIndex + 1})`);
                             if (!activeThumb) return;
-                            
+
                             const containerWidth = thumbsWrapper.offsetWidth;
                             const thumbLeft = activeThumb.offsetLeft;
                             const thumbWidth = activeThumb.offsetWidth;
                             const scrollLeft = thumbLeft - (containerWidth / 2) + (thumbWidth / 2);
-                            
+
                             thumbsWrapper.scrollTo({
                                 left: Math.max(0, scrollLeft),
                                 behavior: 'smooth'
@@ -2706,13 +2706,13 @@ function initReviewsGallery() {
                             console.warn('Error centering thumb:', err);
                         }
                     };
-                    
+
                     // Инициализация при открытии
                     setTimeout(() => {
                         updateNavigationButtons();
                         centerThumb();
                     }, 150);
-                    
+
                     // Обновляем при смене слайда
                     fancybox.on('change', () => {
                         updateNavigationButtons();
@@ -2748,21 +2748,21 @@ function initReviewsGallery() {
         hideClass: false,
         closeButton: "outside",
         click: false, // Отключаем закрытие по клику
-        caption: function(fancybox, slide) {
+        caption: function (fancybox, slide) {
             console.log('🟢 REVIEW GALLERY - Caption called');
             console.log('slide.triggerEl:', slide.triggerEl);
-            
+
             // Получаем информацию об авторе из родительского элемента reviews-list__item
             const triggerElement = slide.triggerEl || slide.$trigger;
             const reviewItem = triggerElement?.closest('.reviews-list__item');
             console.log('reviewItem:', reviewItem);
-            
+
             if (reviewItem) {
                 const author = reviewItem.querySelector('.reviews-list__item-autor h3')?.textContent || '';
                 const date = reviewItem.querySelector('.reviews-list__item-autor time')?.textContent || '';
-                
+
                 console.log('author:', author, 'date:', date);
-                
+
                 if (author && date) {
                     return `
                         <h2 class="fancybox-title">${author}</h2>
@@ -2775,29 +2775,29 @@ function initReviewsGallery() {
         on: {
             init: (fancybox) => {
                 console.log('� REVIEW GALLERY - Init event fired');
-                
+
                 // Сохраняем оригинальный метод slideTo
                 const carousel = fancybox.carousel;
                 if (carousel) {
                     const originalSlideTo = carousel.slideTo.bind(carousel);
-                    
-                    carousel.slideTo = function(page, options = {}) {
+
+                    carousel.slideTo = function (page, options = {}) {
                         const currentPage = this.page;
                         const totalPages = this.pages.length;
-                        
+
                         console.log('🟡 slideTo called:', { currentPage, page, totalPages });
-                        
+
                         // Блокируем если пытаются перейти за границы
                         if (page < 0) {
                             console.log('🔴 Blocked slideTo - trying to go before first');
                             return;
                         }
-                        
+
                         if (page >= totalPages) {
                             console.log('🔴 Blocked slideTo - trying to go after last');
                             return;
                         }
-                        
+
                         // Разрешаем переход
                         originalSlideTo(page, options);
                     };
@@ -2805,13 +2805,13 @@ function initReviewsGallery() {
             },
             ready: (fancybox) => {
                 console.log('🟢 REVIEW GALLERY - Ready event fired');
-                
+
                 // Добавляем кастомный класс к контейнеру для стилизации
                 const container = document.querySelector('.fancybox__container');
                 if (container) {
                     container.classList.add('fancybox-reviews-gallery');
                 }
-                
+
                 // Добавляем обработчик клика на backdrop для закрытия
                 setTimeout(() => {
                     const backdrop = document.querySelector('.fancybox__backdrop');
@@ -2824,13 +2824,13 @@ function initReviewsGallery() {
                             }
                         });
                     }
-                    
+
                     // Также добавляем клик на контейнер вне carousel
                     const container = document.querySelector('.fancybox__container');
                     if (container) {
                         container.addEventListener('click', (e) => {
                             // Проверяем что клик вне всех интерактивных элементов
-                            if (!e.target.closest('.fancybox__carousel') && 
+                            if (!e.target.closest('.fancybox__carousel') &&
                                 !e.target.closest('.fancybox__toolbar') &&
                                 !e.target.closest('.fancybox__nav') &&
                                 !e.target.closest('.f-thumbs') &&
@@ -2841,24 +2841,24 @@ function initReviewsGallery() {
                         });
                     }
                 }, 100);
-                
+
                 try {
                     // Получаем карусель с миниатюрами
                     const thumbsPlugin = fancybox.plugins?.Thumbs;
                     if (!thumbsPlugin || !thumbsPlugin.carousel) return;
-                    
+
                     const thumbsCarousel = thumbsPlugin.carousel;
-                    
+
                     // Функция для управления кнопками навигации
                     const updateNavigationButtons = () => {
                         try {
                             const currentIndex = fancybox.getSlide()?.index ?? 0;
                             const totalSlides = fancybox.getSlideCount();
-                            
+
                             // Находим кнопки навигации
                             const prevButton = document.querySelector('.fancybox__nav .f-button[data-fancybox-prev]');
                             const nextButton = document.querySelector('.fancybox__nav .f-button[data-fancybox-next]');
-                            
+
                             // Отключаем кнопку "назад" на первом слайде
                             if (prevButton) {
                                 // Удаляем старый обработчик если есть
@@ -2866,12 +2866,12 @@ function initReviewsGallery() {
                                     prevButton.removeEventListener('click', prevButton._blockHandler, true);
                                     prevButton._blockHandler = null;
                                 }
-                                
+
                                 if (currentIndex === 0) {
                                     prevButton.disabled = true;
                                     prevButton.style.opacity = '0.3';
                                     prevButton.style.cursor = 'not-allowed';
-                                    
+
                                     // Блокируем клик через capture phase
                                     prevButton._blockHandler = (e) => {
                                         e.preventDefault();
@@ -2887,7 +2887,7 @@ function initReviewsGallery() {
                                     prevButton.style.cursor = '';
                                 }
                             }
-                            
+
                             // Отключаем кнопку "вперед" на последнем слайде
                             if (nextButton) {
                                 // Удаляем старый обработчик если есть
@@ -2895,12 +2895,12 @@ function initReviewsGallery() {
                                     nextButton.removeEventListener('click', nextButton._blockHandler, true);
                                     nextButton._blockHandler = null;
                                 }
-                                
+
                                 if (currentIndex === totalSlides - 1) {
                                     nextButton.disabled = true;
                                     nextButton.style.opacity = '0.3';
                                     nextButton.style.cursor = 'not-allowed';
-                                    
+
                                     // Блокируем клик через capture phase
                                     nextButton._blockHandler = (e) => {
                                         e.preventDefault();
@@ -2916,7 +2916,7 @@ function initReviewsGallery() {
                                     nextButton.style.cursor = '';
                                 }
                             }
-                            
+
                             // Показываем миниатюры, если они скрыты
                             const thumbsWrapper = document.querySelector('.f-thumbs__viewport, .f-thumbs');
                             if (thumbsWrapper) {
@@ -2928,25 +2928,25 @@ function initReviewsGallery() {
                             console.warn('Error updating navigation buttons:', err);
                         }
                     };
-                    
+
                     // Функция для центрирования активной миниатюры
                     const centerThumb = () => {
                         try {
                             const currentIndex = fancybox.getSlide()?.index ?? 0;
-                            
+
                             // Ищем контейнер с миниатюрами
                             const thumbsWrapper = document.querySelector('.f-thumbs__viewport, .f-thumbs');
                             if (!thumbsWrapper) return;
-                            
+
                             const activeThumb = thumbsWrapper.querySelector(`.f-thumbs__slide:nth-child(${currentIndex + 1})`);
                             if (!activeThumb) return;
-                            
+
                             // Вычисляем позицию для центрирования
                             const containerWidth = thumbsWrapper.offsetWidth;
                             const thumbLeft = activeThumb.offsetLeft;
                             const thumbWidth = activeThumb.offsetWidth;
                             const scrollLeft = thumbLeft - (containerWidth / 2) + (thumbWidth / 2);
-                            
+
                             // Плавная прокрутка к центру
                             thumbsWrapper.scrollTo({
                                 left: Math.max(0, scrollLeft),
@@ -2956,13 +2956,13 @@ function initReviewsGallery() {
                             console.warn('Error centering thumb:', err);
                         }
                     };
-                    
+
                     // Инициализация при открытии
                     setTimeout(() => {
                         updateNavigationButtons();
                         centerThumb();
                     }, 150);
-                    
+
                     // Обновляем при смене слайда
                     fancybox.on('change', () => {
                         updateNavigationButtons();
@@ -3259,7 +3259,7 @@ function initShoppingCart() {
         if (overlay) {
             overlay.classList.add('active');
         }
-        
+
         // Добавляем класс active к родительским элементам кнопок корзины
         cartButtons.forEach(button => {
             const parentItem = button.closest('.mobile-nav__item');
@@ -3277,16 +3277,16 @@ function initShoppingCart() {
         document.body.classList.remove('modal-open');
         document.body.classList.remove('modal-style');
         document.documentElement.classList.remove('is-lock');
-        
+
         // Принудительно убираем inline стили
         document.body.style.overflow = '';
         document.documentElement.style.overflow = '';
-        
+
         const overlay = document.querySelector('.overlay');
         if (overlay) {
             overlay.classList.remove('active');
         }
-        
+
         // Убираем класс active с родительских элементов кнопок корзины
         cartButtons.forEach(button => {
             const parentItem = button.closest('.mobile-nav__item');
@@ -3332,10 +3332,10 @@ function initShoppingCart() {
     // Оновлення кількості товарів у всіх .bascet-value
     function updateBasketValue() {
         if (basketValues.length === 0) return;
-        
+
         const items = productList.querySelectorAll('.shopping-cart-product-item');
         const itemCount = items.length;
-        
+
         // Обновляем все элементы с классом .bascet-value
         basketValues.forEach(basketValue => {
             if (itemCount > 0) {
@@ -3352,13 +3352,13 @@ function initShoppingCart() {
         const quantityEl = productItem.querySelector('.shopping-cart-product-item-quantity-number');
         const decrementBtn = productItem.querySelector('.decrement');
         const quantity = parseInt(quantityEl.textContent);
-        
+
         if (quantity <= 1) {
             decrementBtn.disabled = true;
-            
+
         } else {
             decrementBtn.disabled = false;
-          
+
         }
     }
 
@@ -3470,11 +3470,11 @@ function initShoppingCart() {
     // Модалка підтвердження видалення
     function showDeleteConfirmation(productItem) {
         const productName = productItem.querySelector('.shopping-cart-product-item-header h2')?.textContent.trim() || 'товар';
-        
+
         if (deleteProductText) {
             deleteProductText.textContent = productName;
         }
-        
+
         deleteProductModal.classList.add('active');
         document.body.classList.add('is-lock');
 
@@ -3490,7 +3490,7 @@ function initShoppingCart() {
             document.documentElement.classList.remove('is-lock');
             document.body.style.overflow = '';
             document.documentElement.style.overflow = '';
-            
+
             cancelBtn.removeEventListener('click', handleCancel);
             confirmBtn.removeEventListener('click', handleConfirm);
         }
@@ -3915,7 +3915,27 @@ function initReviewModal() {
     }
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    const tabButtons = document.querySelectorAll('.blog-page__tab-button');
+    const blogItems = document.querySelectorAll('.blog-page__grid [data-category]');
 
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const category = this.getAttribute('data-tab');
+
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            blogItems.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+});
 
 
 

@@ -1,0 +1,259 @@
+@use '../helpers' as *;
+
+.blog-page {
+    padding: 24px 0 100px 0;
+    position: relative;
+
+    @media (max-width: 576px) {
+        padding-top: 11px;
+    }
+
+    &__inner {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+
+         @media (max-width: 768px) {
+            flex-direction: column-reverse;
+            gap: 28px;
+         }
+    }
+
+    &__tabs {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        flex-shrink: 0;
+        width: 323px;
+        position: sticky;
+        top: 140px;
+
+        @media (max-width: 768px) {
+            width: 100%;
+            position: static;
+            flex-direction: row;
+        }
+    }
+
+    &__tab-button {
+        background: var(--color-gray-primary);
+        min-height: 56px;
+        border: none;
+
+        &.active {
+            background: var(--color-dark);
+            color: var(--color-light);
+        }
+
+         @media (max-width: 768px) {
+            padding: 9px 12px;
+            min-height: auto;
+            border-radius: 12px;
+         }
+    }
+
+    &__grid {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        @media (max-width: 576px) {
+            gap: 16px;
+        }
+    }
+
+    &__item {
+        display: flex;
+        gap: 24px;
+
+        @media (max-width: 1200px) {
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        &-image {
+            width: 323px;
+            height: 323px;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            flex-shrink: 0;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            @media (max-width: 1200px) {
+                width: 100%;
+            }
+
+            @media (max-width: 768px) {
+                height: 351px;
+                border-radius: 12px;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.25) 100%);
+            }
+        }
+
+        &-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            @media (max-width: 1200px)  {
+                gap: 8px;
+            }
+        }
+
+        &-header {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+             @media (max-width: 768px) {
+                gap: 4px;
+             }
+        }
+
+        &-text {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            letter-spacing: 0.08px;
+
+            @media (max-width: 576px) {
+                -webkit-line-clamp: 2;
+                font-size: 12px;
+                line-height: 16px;
+            }
+        }
+
+        &-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        &-title {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 40px; 
+            letter-spacing: 0.16px;
+
+            a {
+                 display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-decoration: none;
+                color: var(--color-dark);
+
+                @media (max-width: 576px) {
+                     -webkit-line-clamp: 2;
+
+                    &::after {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        top:0;
+                        right: 0;
+                        transform: rotate(-90deg);
+                        width: 40px;
+                        padding: 8px;
+                        height: 40px;
+                        flex-shrink: 0;
+                        background-image: url('../icons/accardion-arrow.svg');
+                        background-size: inherit;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                    }
+                }
+            }
+
+            @media (max-width: 768px) {
+                -webkit-line-clamp: 2;
+                font-weight: 700;
+                letter-spacing: 0.08px;
+                padding-right: 48px;
+                position: relative;
+                min-height: 40px;
+            }
+
+             @media (max-width: 576px) {
+                font-size: 16px;
+                line-height: 20px;
+             }
+        }
+
+        &-date {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-gray-label);
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px; 
+            letter-spacing: 0.08px;
+
+            @media (max-width: 576px) {
+                font-size: 12px;
+                line-height: 16px;
+            }
+
+            .blog-page__item-category {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                &::after {
+                    content: "";
+                    display: block;
+                    width: 4px;
+                    height: 4px;
+                    background-color: var(--color-gray-label);
+                    border-radius: 50%;
+
+                    @media (max-width: 576px) {
+                        width: 2px;
+                        height: 2px;
+                    }
+                }
+            }   
+        }
+
+        &-link {
+            width: 250px;
+            min-height: 56px;
+
+            @media (max-width: 576px) {
+                display: none;
+            }
+        }
+    }
+}
+
+.main-blog {
+    gap: 0;
+}
+
+.blog-hedaer {
+    @media (max-width: 576px) {
+        padding-bottom: 6px;
+    }
+}

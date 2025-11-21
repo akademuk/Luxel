@@ -1,0 +1,1096 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Luxel перший магазин електротоварів в Україні! | Blog</title>
+
+    <link rel="stylesheet" href="styles/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./styles/main.css" />
+</head>
+
+<body data-js-header>
+    <header class="header blog-hedaer">
+        <div class="header__promo">
+            <div class="header__promo-inner container">
+                <nav class="header__promo-navigation">
+                    <ul class="header__promo-navigation-list">
+                        <li class="header__promo-navigation-item">
+                            <a class="header__promo-navigation-link" href="/">Відгуки</a>
+                        </li>
+                        <li class="header__promo-navigation-item">
+                            <a class="header__promo-navigation-link" href="/">Доставка</a>
+                        </li>
+                        <li class="header__promo-navigation-item">
+                            <a class="header__promo-navigation-link" href="/">Оплата</a>
+                        </li>
+                        <li class="header__promo-navigation-item">
+                            <a class="header__promo-navigation-link" href="/">Контакти</a>
+                        </li>
+                        <li class="header__promo-navigation-item">
+                            <a class="header__promo-navigation-link" href="/">Блог</a>
+                        </li>
+                        <li class="header__promo-navigation-item header__promo-navigation-item--highlighted">
+                            <a class="header__promo-navigation-link" href="/">Співпраця</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header__promo-contacts">
+                    <a href="tel:+380730415111" class="header__promo-contacts-phone">
+                        <img src="icons/phone.svg" width="24" height="24" alt="">
+                        +38 (073) 041-5111
+                    </a>
+                    <div class="header__promo-dropdown">
+                        <div class="header__promo-dropdown-header" onclick="toggleDropdown()">
+                            <span class="header__promo-dropdown-text">Зв'язатися з нами</span>
+                            <img src="icons/dropdown.svg" class="header__promo-dropdown-arrow" id="dropdownArrow"
+                                width="14" height="8" alt="">
+                        </div>
+
+                        <div class="header__promo-dropdown-content" id="dropdownContent">
+                            <ul class="header__promo-dropdown-content-list">
+                                <li class="header__promo-dropdown-content-item">
+                                    <a href="/"
+                                        class="header__promo-dropdown-content-link header__promo-dropdown-content-link--viber">
+                                        <img src="icons/viber.svg" width="24" height="24" alt="">
+                                        Viber
+                                    </a>
+                                </li>
+                                <li class="header__promo-dropdown-content-item">
+                                    <button
+                                        class="header__promo-dropdown-content-link header__promo-dropdown-content-link--chat">
+                                        <img src="icons/chat.svg" width="24" height="24" alt="">
+                                        Написати в чат
+                                    </button>
+                                </li>
+                                <li class="header__promo-dropdown-content-item">
+                                    <span
+                                        class="header__promo-dropdown-content-link header__promo-dropdown-content-link--mail"
+                                        id="openwriteUsModal">
+                                        <img src="icons/mail.svg" width="24" height="24" alt="">
+                                        Написати на пошту
+                                    </span>
+                                </li>
+                                <li
+                                    class="header__promo-dropdown-content-item header__promo-dropdown-content-item--phone">
+                                    <div
+                                        class="header__promo-dropdown-content-link header__promo-dropdown-content-link--phone">
+                                        <img src="icons/phone-black.svg" width="24" height="24" alt="">
+                                        <address class="header__promo-dropdown-address">
+                                            <div class="header__promo-dropdown-address-col">
+                                                <span class="header__promo-dropdown-address-label">Інтернет
+                                                    магазин</span>
+                                                <a href="tel:+380730415111"
+                                                    class="header__promo-dropdown-address-link">+38 (073) 041-51-11</a>
+                                            </div>
+                                            <div class="header__promo-dropdown-address-col">
+                                                <span class="header__promo-dropdown-address-label">Офіс</span>
+                                                <a href="tel:+380500415111"
+                                                    class="header__promo-dropdown-address-link">+38 (050) 041-51-11</a>
+                                                <a href="tel:+380970145111"
+                                                    class="header__promo-dropdown-address-link">+38 (097) 014-51-11</a>
+                                            </div>
+                                        </address>
+                                <li class="header__promo-dropdown-content-item">
+                                    <a href="mailto:odessa@luxel.ua"
+                                        class="header__promo-dropdown-content-link header__promo-dropdown-content-link--email">
+                                        <img src="icons/google.svg" width="24" height="24" alt="">
+                                        <div class="header__promo-dropdown-content-info">
+                                            <span class="header__promo-dropdown-content-label">Пошта</span>
+                                            <span class="header__promo-dropdown-content-value">odessa@luxel.ua</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="header__promo-language-dropdown">
+                        <div class="header__promo-language-dropdown-header" onclick="toggleDropdownLanguage()">
+                            <span class="header__promo-language-dropdown-text" id="selectedLanguage">UA</span>
+                            <img src="icons/dropdown.svg" class="header__promo-language-arrow"
+                                id="dropdownArrowLanguage" width="14" height="8" alt="">
+                        </div>
+
+                        <div class="header__promo-language-dropdown-menu" id="dropdownMenuLanguage">
+                            <div class="header__promo-language-dropdown-option active"
+                                onclick="selectLanguage('UA', event)">
+                                Українська
+                            </div>
+                            <div class="header__promo-language-dropdown-option" onclick="selectLanguage('RU', event)">
+                                Русский
+                            </div>
+                            <div class="header__promo-language-dropdown-option" onclick="selectLanguage('EN', event)">
+                                English
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header__body">
+            <div class="header__body-inner container">
+                <a class="header__logo logo" href="/" aria-label="Home" title="Home">
+                    <img class="logo__image" src="./images/logo.png" alt="" width="175" height="42" />
+                </a>
+                <button class="header__body-btn-catalog red-btn" id="catalogBtn">
+                    <img src="icons/catalog-icons.svg" width="24" height="24" alt="">
+                    Каталог
+                </button>
+                <div class="header__body-btn-search">
+                    <span class="header__body-btn-search-icons">
+                        <img src="icons/search.svg" width="22" height="22" alt="">
+                    </span>
+                    <form action="">
+                        <input type="search" name="" id="" placeholder="Шукати товари">
+                    </form>
+                    <span class="header__body-btn-search-icons2">
+                        <img src="icons/search-icon.svg" width="22" height="22" alt="">
+                    </span>
+                </div>
+                <div class="header__body-btn-nav">
+                    <button class="header__body-btn-nav-box" data-menu="favorites">
+                        <img src="icons/icon1.svg" width="24" height="24" alt="">
+                        <span class="header__body-btn-nav-text visible-desktop">Обране</span>
+                    </button>
+                    <button class="header__body-btn-nav-box" data-menu="cart">
+                        <img src="icons/icon2.svg" width="24" height="24" alt="">
+                        <span class="header__body-btn-nav-text visible-desktop">Кошик</span>
+                        <span class="bascet-value"></span>
+                    </button>
+                    <button class="header__body-btn-nav-box" data-menu="account">
+                        <img src="icons/icon3.svg" width="24" height="24" alt="">
+                        <span class="header__body-btn-nav-text visible-desktop">Олексій</span>
+                    </button>
+                </div>
+                <div class="header__promo-language-dropdown header__promo-language-dropdown--mobile">
+                    <div class="header__promo-language-dropdown-header" onclick="toggleDropdownLanguage2()">
+                        <span class="header__promo-language-dropdown-text" id="selectedLanguage2">UA</span>
+                        <img src="icons/dropdown.svg" class="header__promo-language-arrow" id="dropdownArrowLanguage2"
+                            width="14" height="8" alt="">
+                    </div>
+
+                    <div class="header__promo-language-dropdown-menu" id="dropdownMenuLanguage2">
+                        <div class="header__promo-language-dropdown-option active"
+                            onclick="selectLanguage('UA', event)">
+                            Українська
+                        </div>
+                        <div class="header__promo-language-dropdown-option" onclick="selectLanguage('RU', event)">
+                            Русский
+                        </div>
+                        <div class="header__promo-language-dropdown-option" onclick="selectLanguage('EN', event)">
+                            English
+                        </div>
+                    </div>
+                </div>
+                <button class="header__burger-button burger-button visible-mobile" type="button" aria-label="Open menu"
+                    title="Open menu" data-js-header-burger-button>
+                    <span class="burger-button__line"></span>
+                    <span class="burger-button__line"></span>
+                    <span class="burger-button__line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-blog">
+        <ul class="breadcrumbs-global container">
+            <li class="breadcrumbs-global__item">
+                <a href="/" class="breadcrumbs-global__link">Головна</a>
+            </li>
+            <li class="breadcrumbs-global__item">
+                <a href="blog.html" class="breadcrumbs-global__link">Блог</a>
+            </li>
+            <li class="breadcrumbs-global__item">
+                <span class="breadcrumbs-global__span">Варіанти створення автономного електропостачання</span>
+            </li>
+        </ul>
+
+        <div class="article-page">
+            <div class="article-page__inner container">
+                <div class="article-page__container">
+                    <h1>Варіанти створення автономного електропостачання</h1>
+                    <div class="article-page-info">
+                        <time datetime="10.02.2025" class="article-page-time">
+                            <img src="icons/article-page-icons1.svg" width="32" height="32" alt="">
+                            10.02.2025
+                        </time>
+                        <p class="article-page-rubrica">
+                            <img src="icons/article-page-icons2.svg" width="32" height="32" alt="">
+                            Новини
+                        </p>
+                    </div>
+                    <div class="article-page__content">
+                        <p>Для дачі, приватного будинку на віддаленій місцевості важливо мати <a href="/">обладнання для
+                                блекауту</a>. Резервне живлення затребуване також в гаражах, майстернях, офісах,
+                            магазинах. Підбір способу організації незалежного електропостачання залежить від потреб і
+                            цілей.</p>
+                        <div class="article-page__content-box">
+                            <h2>Прилади, які накопичують електрику</h2>
+                            <div class="article-page__content-text">
+                                <p>У побуті для накопичення електрики можна використовувати найпростіші прилади:</p>
+                                <ul>
+                                    <li><strong>Повербанки</strong>– оптимальний і недорогий варіант для зарядки
+                                        телефону або роботи лід лампи.</li>
+                                    <li><strong>Портативна міні зарядна станція з виходами USB</strong> – ємний прилад
+                                        для підключення ліхтаря, гаджетів домочадців. Популярними стали зарядні станції
+                                        з розетками, які забезпечують підключення техніки, що потребує 220 В або 12 В.
+                                        Пристрій дозволяє заряджати девайси (ноутбук, планшет), а також техніку з малою
+                                        потужністю.</li>
+                                    <li><strong>ИБП (UPS)</strong> – джерела резервного живлення, здатні підтримувати
+                                        деякий час роботу підключеної електротехніки (комп'ютера, спліт-системи,
+                                        холодильника). Залежно від ємнісних показників ІБП можуть підтримувати робочий
+                                        режим до 30 хвилин, після чого потрібно переключення на інше обладнання для
+                                        автономного електроживлення.</li>
+                                </ul>
+                            </div>
+                            <p>З усіх варіантів агрегатів, які накопичують струм, вигідна покупка – UPS. Пристрій не
+                                тільки виконує проміжну функцію при відключенні централізованого світла до включення
+                                резервного, але і запобігає ризикам виходу з ладу домашньої техніки при скачках напруги.
+                            </p>
+                            <img src="images/article-image.jpg" width="888" height="320" alt="">
+                        </div>
+                        <div class="article-page__content-box">
+                            <h2>Обладнання, що генерує електрику</h2>
+                            <p>Щоб забезпечити об'єкт тривалим електропостачанням під час блекауту, використовуються
+                                більш складні агрегати.</p>
+                            <h3>АКБ</h3>
+                            <p>Аккумуляторна батарея може забезпечити струмом будь-які точки споживання в будинку або
+                                комерційному об'єкті. Кращий вибір – <a href="/">замовити гелеву акумуляторну
+                                    батарею</a> з каталогу Luxel. Щільний електроліт робить її стійкою до корозії, втрат
+                                ККД, швидкому саморазряду. Незначно за ємнісними характеристиками і тривалістю роботи
+                                поступається батарея Li-Ion. Для вуличного використання слід розглянути стійкий до
+                                перепадів температур нікель-кадмієвий варіант. У вологих приміщеннях рекомендується
+                                вибрати свинцево-вуглецеву акумуляторну батарею.</p>
+                            <h3>Електрогенератори</h3>
+                            <p>Генератор працює на паливі, що є визначальним фактором при виборі. Середній термін
+                                експлуатації і безперебійного генерування електроенергії складає 5 годин. Перевагою є
+                                можливість підключення великої кількості техніки одночасно, а недоліком – необхідність
+                                використання на вулиці або з системою відведення вихлопних газів. У магазині Люксель
+                                можна
+                                <a href="/">купити електрогенератор</a> на бензині, дизельний, двопаливний, газовий,
+                                інверторний. <br>
+                                Складні автономні системи електропостачання, такі як вітрові та сонячні станції,
+                                потребують проектування і підбору цілого комплексу обладнання.
+                            </p>
+                            <p>З усіх варіантів агрегатів, які накопичують струм, вигідна покупка – UPS. Пристрій не
+                                тільки виконує проміжну функцію при відключенні централізованого світла до включення
+                                резервного, але і запобігає ризикам виходу з ладу домашньої техніки при скачках напруги.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="blog article-page-blog">
+            <div class="blog__inner container">
+                <div class="blog__inner-header">
+                    <h2>Читати також</h2>
+                </div>
+                <div class="blog__inner-body">
+                    <div class="blog-content">
+                        <div class="blog__slider swiper">
+                            <div class="swiper-wrapper">
+                                <div class="blog__slider-slide swiper-slide">
+                                    <div class="blog__slider-box">
+                                        <div class="blog__slider-image">
+                                            <img src="images/blog-image1.jpg" width="436" height="436" alt=""
+                                                loading="lazy">
+                                            <time datetime="10.02.2025" class="blog__slider-date">10.02.2025</time>
+                                        </div>
+                                        <div class="blog__slider-content">
+                                            <h3>Варіанти створення автономного електропостачання</h3>
+                                            <p>Для дачі, приватного будинку на віддаленій місцевості важливо мати
+                                                обладнання для блекауту.
+                                                Резервне живлення затребуване також в гаражах, майстернях, офісах,
+                                                магазинах. Підбір способу
+                                                організації незалежного електропостачання залежить від потреб і цілей.
+                                            </p>
+                                        </div>
+                                        <a href="" class="blog__slider-link">Читати</a>
+                                    </div>
+                                </div>
+                                <div class="blog__slider-slide swiper-slide">
+                                    <div class="blog__slider-box">
+                                        <div class="blog__slider-image">
+                                            <img src="images/blog-image2.jpg" width="436" height="436" alt=""
+                                                loading="lazy">
+                                            <time datetime="10.02.2025" class="blog__slider-date">10.02.2025</time>
+                                        </div>
+                                        <div class="blog__slider-content">
+                                            <h3>Правила вибору бензинового електрогенератора для автономного
+                                                електропостачання</h3>
+                                            <p>Для дачі, приватного будинку на віддаленій місцевості важливо мати
+                                                обладнання для блекауту.
+                                                Резервне живлення затребуване також в гаражах, майстернях, офісах,
+                                                магазинах. Підбір способу
+                                                організації незалежного електропостачання залежить від потреб і цілей.
+                                            </p>
+                                        </div>
+                                        <a href="" class="blog__slider-link">Читати</a>
+                                    </div>
+                                </div>
+                                <div class="blog__slider-slide swiper-slide">
+                                    <div class="blog__slider-box">
+                                        <div class="blog__slider-image">
+                                            <img src="images/blog-image3.jpg" width="436" height="436" alt=""
+                                                loading="lazy">
+                                            <time datetime="10.02.2025" class="blog__slider-date">25.12.2024</time>
+                                        </div>
+                                        <div class="blog__slider-content">
+                                            <h3>Високоякісні електропристрої Luxel для комфортного та безпечного
+                                                простору</h3>
+                                            <p>Сучасні технології в галузі електротехніки пропонують широкий вибір
+                                                рішень для покращення
+                                                якості та зручності життя. Якщо ви шукаєте високоякісні електропристрої
+                                                для прихованої
+                                                установки, світлодіодне освітлення чи накладні розетки, то продукція
+                                                Luxel стане чудовим
+                                                вибором. Ці електротовари ідеально підходять для різних типів приміщень,
+                                                від житлових до
+                                                офісних, і відповідають європейським стандартам якості.</p>
+                                        </div>
+                                        <a href="" class="blog__slider-link">Читати</a>
+                                    </div>
+                                </div>
+                                <div class="blog__slider-slide swiper-slide">
+                                    <div class="blog__slider-box">
+                                        <div class="blog__slider-image">
+                                            <img src="images/blog-image1.jpg" width="436" height="436" alt=""
+                                                loading="lazy">
+                                            <time datetime="10.02.2025" class="blog__slider-date">10.02.2025</time>
+                                        </div>
+                                        <div class="blog__slider-content">
+                                            <h3>Варіанти створення автономного електропостачання</h3>
+                                            <p>Для дачі, приватного будинку на віддаленій місцевості важливо мати
+                                                обладнання для блекауту.
+                                                Резервне живлення затребуване також в гаражах, майстернях, офісах,
+                                                магазинах. Підбір способу
+                                                організації незалежного електропостачання залежить від потреб і цілей.
+                                            </p>
+                                        </div>
+                                        <a href="" class="blog__slider-link">Читати</a>
+                                    </div>
+                                </div>
+                                <div class="blog__slider-slide swiper-slide">
+                                    <div class="blog__slider-box">
+                                        <div class="blog__slider-image">
+                                            <img src="images/blog-image2.jpg" width="436" height="436" alt=""
+                                                loading="lazy">
+                                            <time datetime="10.02.2025" class="blog__slider-date">10.02.2025</time>
+                                        </div>
+                                        <div class="blog__slider-content">
+                                            <h3>Правила вибору бензинового електрогенератора для автономного
+                                                електропостачання</h3>
+                                            <p>Для дачі, приватного будинку на віддаленій місцевості важливо мати
+                                                обладнання для блекауту.
+                                                Резервне живлення затребуване також в гаражах, майстернях, офісах,
+                                                магазинах. Підбір способу
+                                                організації незалежного електропостачання залежить від потреб і цілей.
+                                            </p>
+                                        </div>
+                                        <a href="" class="blog__slider-link">Читати</a>
+                                    </div>
+                                </div>
+                                <div class="blog__slider-slide swiper-slide">
+                                    <div class="blog__slider-box">
+                                        <div class="blog__slider-image">
+                                            <img src="images/blog-image3.jpg" width="436" height="436" alt=""
+                                                loading="lazy">
+                                            <time datetime="10.02.2025" class="blog__slider-date">25.12.2024</time>
+                                        </div>
+                                        <div class="blog__slider-content">
+                                            <h3>Високоякісні електропристрої Luxel для комфортного та безпечного
+                                                простору</h3>
+                                            <p>Сучасні технології в галузі електротехніки пропонують широкий вибір
+                                                рішень для покращення
+                                                якості та зручності життя. Якщо ви шукаєте високоякісні електропристрої
+                                                для прихованої
+                                                установки, світлодіодне освітлення чи накладні розетки, то продукція
+                                                Luxel стане чудовим
+                                                вибором. Ці електротовари ідеально підходять для різних типів приміщень,
+                                                від житлових до
+                                                офісних, і відповідають європейським стандартам якості.</p>
+                                        </div>
+                                        <a href="" class="blog__slider-link">Читати</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="blog-swiper-prev swiper-button-prev slider-prev">
+                            <img src="icons/prev.svg" width="24" height="24" alt="">
+                        </div>
+                        <div class="blog-swiper-next swiper-button-next slider-next">
+                            <img src="icons/next.svg" width="24" height="24" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="article-page-blog__mobile">
+                    <div class="article-page-blog__card">
+                        <div class="article-page-blog__card-img">
+                            <img src="images/blog-image1.jpg" width="72" height="72" alt="">
+                        </div>
+                        <div class="article-page-blog__card-content">
+                            <h3>Правила вибору бензинового електрогенератора для автономного електропостачання</h3>
+                            <div class="article-page-blog__card-info">
+                                <time datetime="10.02.2025" class="article-page-blog__card-time">10.02.2025</time>
+                                <a href="" class="article-page-blog__card-link">Читати</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-page-blog__card">
+                        <div class="article-page-blog__card-img">
+                            <img src="images/blog-image1.jpg" width="72" height="72" alt="">
+                        </div>
+                        <div class="article-page-blog__card-content">
+                            <h3>Правила вибору бензинового електрогенератора для автономного електропостачання</h3>
+                            <div class="article-page-blog__card-info">
+                                <time datetime="10.02.2025" class="article-page-blog__card-time">10.02.2025</time>
+                                <a href="" class="article-page-blog__card-link">Читати</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-page-blog__card">
+                        <div class="article-page-blog__card-img">
+                            <img src="images/blog-image1.jpg" width="72" height="72" alt="">
+                        </div>
+                        <div class="article-page-blog__card-content">
+                            <h3>Правила вибору бензинового електрогенератора для автономного електропостачання</h3>
+                            <div class="article-page-blog__card-info">
+                                <time datetime="10.02.2025" class="article-page-blog__card-time">10.02.2025</time>
+                                <a href="" class="article-page-blog__card-link">Читати</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer__inner container">
+            <div class="footer__logo">
+                <a href="/" class="footer__logo-link">
+                    <img src="images/black-logo.png" width="150" height="34" alt="Luxel footer logo">
+                </a>
+            </div>
+            <div class="footer__content">
+                <div class="footer__content-box">
+                    <div class="footer__content-col">
+                        <h3 class="footer__content-col-title">Контакти</h3>
+                        <div class="footer__content-col-contact">
+                            <h4>Гаряча лінія</h4>
+                            <div class="footer__content-col-contact-row">
+                                <a href="tel:+380730415111">+38 (073) 041-5111</a>
+                                <span class="footer__content-col-contact-grafic">(пн-пт 10:00-18:00)</span>
+                            </div>
+                        </div>
+                        <div class="footer__content-col-contact">
+                            <h4>Офіс</h4>
+                            <a href="tel:+380500415111">+38 (050) 041-51-11</a>
+                            <a href="tel:+380970145111">+38 (097) 014-51-11</a>
+                        </div>
+                        <div class="footer__content-col-contact footer__content-col-contact--email">
+                            <h4>Email</h4>
+                            <a href="mailto:odessa@luxel.ua">odessa@luxel.ua</a>
+                        </div>
+                        <div class="footer__accordion">
+                            <div class="footer__accordion-item">
+                                <h3 class="footer__accordion-header">
+                                    <button class="footer__accordion-button" type="button" aria-expanded="false"
+                                        aria-controls="accordion-panel-1">
+                                        <span class="footer__accordion-title">Про компанію</span>
+                                        <span class="footer__accordion-icon" aria-hidden="true">
+                                            <img src="icons/accardion-arrow.svg" width="24" height="24" alt="">
+                                        </span>
+                                    </button>
+                                </h3>
+                                <div class="footer__accordion-panel" id="accordion-panel-1" role="region"
+                                    aria-labelledby="accordion-panel-1">
+                                    <div class="footer__accordion-content">
+                                        <ul class="footer__accordion-list">
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Доставка</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Оплата</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Умови повернення і
+                                                    гарантії</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Задати питання експертам</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Завантажити каталог</a>
+                                            </li>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Вiдео файли</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Політика конфіденційності</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="footer__accordion-item">
+                                <h3 class="footer__accordion-header">
+                                    <button class="footer__accordion-button" type="button" aria-expanded="false"
+                                        aria-controls="accordion-panel-2">
+                                        <span class="footer__accordion-title">Послуги</span>
+                                        <span class="footer__accordion-icon" aria-hidden="true">
+                                            <img src="icons/accardion-arrow.svg" width="24" height="24" alt="">
+                                        </span>
+                                    </button>
+                                </h3>
+                                <div class="footer__accordion-panel" id="accordion-panel-2" role="region"
+                                    aria-labelledby="accordion-panel-2">
+                                    <div class="footer__accordion-content">
+                                        <ul class="footer__accordion-list">
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Консультації</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Розробка</a>
+                                            </li>
+                                            <li class="footer__accordion-list-item">
+                                                <a href="#" class="footer__accordion-link">Підтримка</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer__content-col-contact footer__content-col-contact--social">
+                            <h4>Соцмережі</h4>
+                            <a href="https://t.me/yourchannel" target="_blank" aria-label="Телеграм">
+                                <img src="icons/tg-red.svg" width="21" height="18" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer__content-col footer__content-col--descktop">
+                        <h3 class="footer__content-col-title">Допомога</h3>
+                        <ul class="footer__content-list">
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Гаряча лінія</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Оплата</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Умови повернення і гарантії</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Задати питання експертам</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Завантажити каталог</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Вiдео файли</a>
+                            </li>
+                            <li class="footer__content-item">
+                                <a href="" class="footer__content-link">Політика конфіденційності</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__content-help">
+                    <h3>Підпишіться, щоб отримувати найкращі знижки та пропозиції</h3>
+                    <p>Підписуйтеся на розсилку, щоб слідкувати за останніми новинами та акційними пропозиціями та
+                        отримайте
+                        знижку на перше замовлення в нашому магазині! </p>
+                    <form action="" class="footer-form">
+                        <input type="email" name="eamil" id="footerEmail" placeholder="Ваш Email" required>
+                        <button type="submit" class="footer-btn red-btn">Підписатися</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__bottom-copiright">Luxel © 2025. Усі права захищені</p>
+                <ul class="footer__bottom-list">
+                    <li class="footer__bottom-item">
+                        <img src="icons/bank1.svg" width="22" height="22" alt="">
+                    </li>
+                    <li class="footer__bottom-item">
+                        <img src="icons/bank2.svg" width="22" height="22" alt="">
+                    </li>
+                    <li class="footer__bottom-item">
+                        <img src="icons/bank3.svg" width="22" height="22" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <div class="request-call">
+        <button class="request-call-btn" id="requestCallBtn">
+            <img src="icons/phone-white.svg" width="22" height="22" alt="">
+            Замовити дзвінок
+        </button>
+    </div>
+
+
+    <!-- Модалка с формой -->
+    <div class="modal" id="callModal">
+        <div class="modal__content">
+            <button class="modal__close" id="closeModal">
+                <img src="icons/close-black.svg" width="13" height="13" alt="">
+            </button>
+            <h2 class="modal__title">Замовити дзвінок</h2>
+            <p class="modal__text">Залиште свій номер, ми перетелефонуємо вам якнайшвидше.</p>
+            <form class="modal__form" id="callForm">
+                <div class="modal__form-col">
+                    <label for="name" class="label-required">Ім’я</label>
+                    <input type="text" name="name" id="name" placeholder="Ваше ім’я" required>
+                </div>
+                <div class="modal__form-col">
+                    <label for="phone" class="label-required">Номер телефону</label>
+                    <input type="tel" name="phone" id="phone" placeholder="+380" required>
+                    <span class="novalid-style">Невірний формат номеру телефона</span>
+                </div>
+
+                <button type="submit" class="modal__form-btn">Замовити дзвінок</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модалка с формой -->
+    <div class="modal" id="writeUs">
+        <div class="modal__content">
+            <div class="modal__content-header">
+                <h2 class="modal__title">Напишіть нам</h2>
+                <button class="modal__close" id="closeModal2">
+                    <img src="icons/close-black.svg" width="13" height="13" alt="">
+                </button>
+            </div>
+            <form class="modal__form" id="callForm2">
+                <div class="modal__form-col">
+                    <label for="name" class="label-required">Ім’я</label>
+                    <input type="text" name="name" id="name-write" placeholder="Ваше ім’я" required>
+                </div>
+                <div class="modal__form-col">
+                    <label for="Email" class="label-required">Email</label>
+                    <input type="email" name="Email" id="Email" placeholder="Ваш email" required>
+                    <span class="novalid-style">Невірний формат Email</span>
+                </div>
+                <div class="modal__form-col">
+                    <label for="thema" class="label-required">Тема</label>
+                    <input type="text" name="thema" id="thema" placeholder="Опишіть коротко тему повідомлення" required>
+                </div>
+                <div class="modal__form-col">
+                    <label for="message" class="label-required">Ваше повідомлення</label>
+                    <textarea name="message" id="message" placeholder="Опишіть детальніше ваш запит"></textarea>
+                </div>
+
+                <button type="submit" class="modal__form-btn">Надіслати</button>
+                <span class="modal__form-info">Натискаючи кнопку «Відправитит», ви надаєте свою згоду на обробку
+                    персональних
+                    даних. Правила обробки ваших даних можна ознайомитися в <a href="/"
+                        class="modal__form-politic">Політиці
+                        конфіденційності</a>.</span>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модалка с благодарностью -->
+    <div class="modal" id="successModal">
+        <div class="modal__content">
+            <img src="icons/success.svg" width="40" height="40" alt="">
+            <p class="modal__text">Ваше повідомлення було успішно відправлено! Ми якнайшвидше зв’яжемося з вами.</p>
+        </div>
+    </div>
+
+    <!-- Меню на мобильном устройстве -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav__item mobile-nav__item--active">
+            <button type="button" data-nav="home">
+                <img src="icons/home.svg" width="24" height="24" alt="">
+                Головна
+            </button>
+        </div>
+        <div class="mobile-nav__item">
+            <button type="button" data-menu="catalog">
+                <img src="icons/catalog-icons.svg" width="24" height="24" alt="">
+                Каталог
+            </button>
+        </div>
+        <div class="mobile-nav__item">
+            <button type="button" data-menu="cart">
+                <span class="bascet-value"></span>
+                <img src="icons/icon2.svg" width="24" height="24" alt="">
+                Кошик
+            </button>
+        </div>
+        <div class="mobile-nav__item">
+            <button type="button" data-menu="favorites">
+                <img src="icons/icon1.svg" width="24" height="24" alt="">
+                Обране
+            </button>
+        </div>
+        <div class="mobile-nav__item">
+            <button type="button" data-menu="account">
+                <img src="icons/icon3.svg" width="24" height="24" alt="">
+                Аккаунт
+            </button>
+        </div>
+    </nav>
+
+    <div class="overflow-hidden"></div>
+
+    <div class="header__overlay" data-js-header-overlay>
+        <div class="header-burger__menu">
+            <div class="header-burger__menu-top">
+                <a class="header__logo logo" href="/" aria-label="Home" title="Home">
+                    <img class="logo__image" src="./images/logo.png" alt="" width="175" height="42" />
+                </a>
+                <button class="header-burger__menu-close">
+                    <img src="icons/close-black.svg" width="13" height="13" alt="">
+                </button>
+            </div>
+            <ul class="header-burger__menu-main">
+                <li class="header-burger__menu-main-list">
+                    <a href="/" class="header-burger__menu-main-link">Відгуки</a>
+                </li>
+                <li class="header-burger__menu-main-list">
+                    <a href="/" class="header-burger__menu-main-link">Доставка</a>
+                </li>
+                <li class="header-burger__menu-main-list">
+                    <a href="/" class="header-burger__menu-main-link">Оплата</a>
+                </li>
+                <li class="header-burger__menu-main-list">
+                    <a href="/" class="header-burger__menu-main-link">Контакти</a>
+                </li>
+                <li class="header-burger__menu-main-list">
+                    <a href="/" class="header-burger__menu-main-link">Блог</a>
+                </li>
+                <li class="header-burger__menu-main-list">
+                    <a href="/"
+                        class="header-burger__menu-main-link header-burger__menu-main-link--active">Співпраця</a>
+                </li>
+            </ul>
+            <div class="header-burger__menu-contact">
+                <h3>Зв’язатися з нами</h3>
+                <div class="header-burger__menu-contact-box">
+                    <div class="header-burger__menu-contact-col">
+                        <a href="tel:+380730415111">+38 (073) 041-5111</a>
+                        <span>Пн-Пт: 09:00 - 17:00</span>
+                    </div>
+                    <ul class="header-burger__menu-contact-social">
+                        <li class="header-burger__menu-contacts">
+                            <a href="/"
+                                class="header-burger__menu-contact-item header-burger__menu-contact-item--viber">
+                                <img src="icons/viber.svg" alt="">
+                            </a>
+                        </li>
+                        <li class="header-burger__menu-contacts">
+                            <a href="/"
+                                class="header-burger__menu-contact-item header-burger__menu-contact-item--phone">
+                                <img src="icons/phone-white.svg" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <button class="header-burger__menu-btn">Підтримка</button>
+            <div class="header-burger__menu-top-hidden">
+                <button class="header-burger__menu-top-back" id="back1">Задати питання</button>
+                <ul class="header-burger__menu-top-hidden-list">
+                    <li class="header-burger__menu-top-hidden-item">
+                        <button class="header-burger__menu-top-hidden-link">
+                            <img src="icons/link-hidden1.svg" width="22" height="21" alt="">
+                            Написати в чат</button>
+                    </li>
+                    <li class="header-burger__menu-top-hidden-item">
+                        <button class="header-burger__menu-top-hidden-link" id="burgerform">
+                            <img src="icons/link-hidden2.svg" width="22" height="21" alt="">
+                            Написати на пошту</button>
+                    </li>
+                </ul>
+
+                <div class="header-burger__menu-top-hidden-email">
+                    <button class="header-burger__menu-top-back" id="back2">Напишіть нам</button>
+                    <div class="modal__content">
+                        <form class="modal__form" id="callFormBurger">
+                            <div class="modal__form-col">
+                                <label for="name" class="label-required">Ім’я</label>
+                                <input type="text" name="name" id="name-write" placeholder="Ваше ім’я" required>
+                            </div>
+                            <div class="modal__form-col">
+                                <label for="Email" class="label-required">Ваш email</label>
+                                <input type="email" name="Email" id="Email" placeholder="Ваш email" required>
+                                <span class="novalid-style">Невірний формат Email</span>
+                            </div>
+                            <div class="modal__form-col">
+                                <label for="thema" class="label-required">Тема</label>
+                                <input type="text" name="thema" id="thema"
+                                    placeholder="Опишіть коротко тему повідомлення" required>
+                            </div>
+                            <div class="modal__form-col">
+                                <label for="message" class="label-required">Ваше повідомлення</label>
+                                <textarea name="message" id="message"
+                                    placeholder="Опишіть детальніше ваш запит"></textarea>
+                            </div>
+                            <span class="modal__form-info">Натискаючи кнопку «Надіслати», ви надаєте свою згоду на
+                                обробку
+                                персональних
+                                даних. Правила обробки ваших даних можна ознайомитися в <a href="/"
+                                    class="modal__form-politic">Політиці
+                                    конфіденційності</a>.</span>
+                            <button type="submit" class="modal__form-btn">Надіслати</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Меню Каталог -->
+    <div class="slide-menu" id="catalog-menu">
+        <div class="header-burger__menu">
+            <div class="header-burger__menu-top">
+                <a class="header__logo logo" href="/" aria-label="Home" title="Home">
+                    <img class="logo__image" src="./images/logo.png" alt="" width="175" height="42" />
+                </a>
+                <button class="slide-menu__close header-burger__menu-close" data-close="catalog-menu"><img
+                        src="icons/close-black.svg" width="13" height="13" alt=""></button>
+            </div>
+            <div class="header-burger__menu-main">
+                <ul class="menu-list">
+                    <li class="header-burger__menu-main-item">
+                        <a href="/" class="header-burger__menu-main-link" data-submenu="lamps">
+                            <div class="header-burger__menu-main-icon">
+                                <img src="images/menu-image1.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+                            </div>
+                            <div class="header-burger__menu-main-content">
+                                <strong class="header-burger__menu-main-title">Світлові (LED) Лампи</strong>
+                                <span class="header-burger__menu-main-count">128 товарів</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="header-burger__menu-main-list">
+                        <a href="/" class="header-burger__menu-main-link" data-submenu="ledLighting">
+                            <div class="header-burger__menu-main-icon">
+                                <img src="images/menu-image2.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+                            </div>
+                            <div class="header-burger__menu-main-content">
+                                <strong class="header-burger__menu-main-title">Світодіодне (LED) Освітлення</strong>
+                                <span class="header-burger__menu-main-count">211 товарів</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="header-burger__menu-main-list">
+                        <a href="/" class="header-burger__menu-main-link">
+                            <div class="header-burger__menu-main-icon">
+                                <img src="images/menu-image3.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+                            </div>
+                            <div class="header-burger__menu-main-content">
+                                <strong class="header-burger__menu-main-title">Світодіодне Фітоосвітлення</strong>
+                                <span class="header-burger__menu-main-count">90 товарів</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="header-burger__menu-main-list">
+                        <a href="/" class="header-burger__menu-main-link">
+                            <div class="header-burger__menu-main-icon">
+                                <img src="images/menu-image4.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+                            </div>
+                            <div class="header-burger__menu-main-content">
+                                <strong class="header-burger__menu-main-title">Електро-фурнітура</strong>
+                                <span class="header-burger__menu-main-count">97 товарів</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="header-burger__menu-main-list">
+                        <a href="/" class="header-burger__menu-main-link">
+                            <div class="header-burger__menu-main-icon">
+                                <img src="images/menu-image5.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+                            </div>
+                            <div class="header-burger__menu-main-content">
+                                <strong class="header-burger__menu-main-title">WiFi смарт товари</strong>
+                                <span class="header-burger__menu-main-count">75 товарів</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="header-burger__menu-main-list">
+                        <a href="/" class="header-burger__menu-main-link">
+                            <div class="header-burger__menu-main-icon">
+                                <img src="images/menu-image6.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+                            </div>
+                            <div class="header-burger__menu-main-content">
+                                <strong class="header-burger__menu-main-title">Подовжувачі</strong>
+                                <span class="header-burger__menu-main-count">34 товарів</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="header-burger__menu-main-list">
+                        <a href="/" class="header-burger__menu-main-link">
+                            <div class="header-burger__menu-main-icon">
+                                <img src="images/menu-image7.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+                            </div>
+                            <div class="header-burger__menu-main-content">
+                                <strong class="header-burger__menu-main-title">Аксесуари</strong>
+                                <span class="header-burger__menu-main-count">213 товарів</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Підменю -->
+    <div class="submenu" id="submenu-lamps">
+        <div class="submenu__header">
+            <button class="submenu__back header-burger__menu-top-back" data-back="lamps">Світлові (LED) Лампи</button>
+        </div>
+        <ul class="header-burger__menu-top-hidden-list">
+            <li class="header-burger__menu-top-hidden-item">
+                <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи побутові</a>
+            </li>
+            <li class="header-burger__menu-top-hidden-item">
+                <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи середньої потужності</a>
+            </li>
+            <li class="header-burger__menu-top-hidden-item">
+                <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи високої потужності</a>
+            </li>
+            <li class="header-burger__menu-top-hidden-item">
+                <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Філаментні лампи</a>
+            </li>
+            <li class="header-burger__menu-top-hidden-item">
+                <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Низьковольтні лампи</a>
+            </li>
+            <li class="header-burger__menu-top-hidden-item">
+                <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи T8</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Підменю -->
+    <div class="submenu" id="submenu-ledLighting">
+        <div class="submenu__header">
+            <button class="submenu__back header-burger__menu-top-back" data-back="ledLighting">Світлові (LED)
+                Лампи</button>
+        </div>
+        <ul class="header-burger__menu-top-hidden-list">
+            <li class="header-burger__menu-top-hidden-item">
+                <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи побутові</a>
+            </li>
+            <li class="header-burger__menu-top-hidden-item">
+                <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи середньої потужності</a>
+            </li>
+            <li class="header-burger__menu-top-hidden-item">
+                <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи високої потужності</a>
+            </li>
+            <li class="header-burger__menu-top-hidden-item">
+                <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Філаментні лампи</a>
+            </li>
+            <li class="header-burger__menu-top-hidden-item">
+                <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Низьковольтні лампи</a>
+            </li>
+            <li class="header-burger__menu-top-hidden-item">
+                <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи T8</a>
+            </li>
+        </ul>
+    </div>
+
+
+
+    <!-- Меню Обране -->
+    <div class="slide-menu" id="favorites-menu">
+        <div class="slide-menu__header">
+            <div class="slide-menu__title">Обране</div>
+            <button class="slide-menu__close" data-close="favorites-menu">&times;</button>
+        </div>
+        <div class="slide-menu__content">
+            <div style="padding: 20px; text-align: center; color: #999;">
+                <p>Немає обраних товарів</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Меню Аккаунт -->
+    <div class="slide-menu" id="account-menu">
+        <div class="slide-menu__header">
+            <div class="slide-menu__title">Аккаунт</div>
+            <button class="slide-menu__close" data-close="account-menu">&times;</button>
+        </div>
+        <div class="slide-menu__content">
+            <ul class="menu-list">
+                <li class="menu-list__item">
+                    <a href="#" class="menu-list__link">Профіль</a>
+                </li>
+                <li class="menu-list__item">
+                    <a href="#" class="menu-list__link">Мої замовлення</a>
+                </li>
+                <li class="menu-list__item">
+                    <a href="#" class="menu-list__link">Адреси доставки</a>
+                </li>
+                <li class="menu-list__item">
+                    <a href="#" class="menu-list__link">Налаштування</a>
+                </li>
+                <li class="menu-list__item">
+                    <a href="#" class="menu-list__link">Вийти</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="sort-popup" id="sortPopup">
+        <div class="sort-popup__header">
+            <h3 class="sort-popup__title">Сортувати</h3>
+            <button class="sort-popup__close">
+                <img src="icons/close-black.svg" width="13" height="13" alt="">
+            </button>
+        </div>
+        <ul class="sort-popup__list">
+            <li class="sort-popup__item">
+                <label class="sort-popup__label">
+                    <span class="sort-popup__text">За популярністю</span>
+                    <input type="radio" name="sort" value="popularity" class="sort-popup__radio" checked>
+                </label>
+            </li>
+            <li class="sort-popup__item">
+                <label class="sort-popup__label">
+                    <span class="sort-popup__text">Від дешевших</span>
+                    <input type="radio" name="sort" value="price-asc" class="sort-popup__radio">
+                </label>
+            </li>
+            <li class="sort-popup__item">
+                <label class="sort-popup__label">
+                    <span class="sort-popup__text">Від дорожчих</span>
+                    <input type="radio" name="sort" value="price-desc" class="sort-popup__radio">
+                </label>
+            </li>
+            <li class="sort-popup__item">
+                <label class="sort-popup__label">
+                    <span class="sort-popup__text">Спочатку зі знижками</span>
+                    <input type="radio" name="sort" value="discount" class="sort-popup__radio">
+                </label>
+            </li>
+        </ul>
+    </div>
+
+</body>
+
+
+<script src="scripts/jquery-3.7.0.min.js"></script>
+<script src="scripts/swiper-bundle.min.js"></script>
+<script src="scripts/jquery.maskedinput.js"></script>
+<script src="scripts/script.js"></script>
+
+
+
+</html>

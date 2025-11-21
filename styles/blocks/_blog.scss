@@ -51,6 +51,7 @@
         flex-direction: column;
         row-gap: 50px;
         align-items: center;
+        padding: 2px;
 
         @include mobile {
             min-width: calc(100% + 12px);
