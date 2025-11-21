@@ -10807,6 +10807,10 @@ button:disabled {
     display: none;
   }
 }
+.blog-page .blog-page__item-link {
+  border: none;
+  box-shadow: 0 0 0 1.5px #000;
+}
 
 .main-blog {
   gap: 0;
