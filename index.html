@@ -2181,6 +2181,16 @@
     </div>
   </div>
 
+
+    <!-- Модалка с благодарностью -->
+  <div class="modal" id="successModal9">
+    <div class="modal__content">
+      <img src="icons/success.svg" width="40" height="40" alt="">
+      <p class="modal__text">Вітаємо! Ваш аккаунт було успішно зареєстровано!</p>
+    </div>
+  </div>
+
+
   <!-- Меню на мобильном устройстве -->
   <nav class="mobile-nav">
     <div class="mobile-nav__item mobile-nav__item--active">
@@ -2472,81 +2482,261 @@
 
 
 
-    <!-- Меню Обране -->
-    <div class="slide-menu" id="favorites-menu">
-      <div class="slide-menu__header">
-        <div class="slide-menu__title">Обране</div>
-        <button class="slide-menu__close" data-close="favorites-menu">&times;</button>
-      </div>
-      <div class="slide-menu__content">
-        <div style="padding: 20px; text-align: center; color: #999;">
-          <p>Немає обраних товарів</p>
-        </div>
+  <!-- Меню Обране -->
+  <div class="slide-menu" id="favorites-menu">
+    <div class="slide-menu__header">
+      <div class="slide-menu__title">Обране</div>
+      <button class="slide-menu__close" data-close="favorites-menu">&times;</button>
+    </div>
+    <div class="slide-menu__content">
+      <div style="padding: 20px; text-align: center; color: #999;">
+        <p>Немає обраних товарів</p>
       </div>
     </div>
+  </div>
 
-    <!-- Меню Аккаунт -->
-    <div class="slide-menu" id="account-menu">
-      <div class="slide-menu__header">
-        <div class="slide-menu__title">Аккаунт</div>
-        <button class="slide-menu__close" data-close="account-menu">&times;</button>
+  <!-- Меню Аккаунт -->
+  <div class="modal modal-accaunt" id="account-menu">
+    <div class="modal__content">
+      <div class="modal__content-mobile-image">
+          <button class="modal-accaunt-prev">
+            <img src="icons/accardion-arrow.svg" alt="">
+          </button>
+         <img src="images/logo.png" alt="">
+
+            <!-- Модалка с благодарностью -->
+            <div class="modal" id="successModal10">
+              <div class="modal__contentss">
+                <img src="icons/success.svg" width="40" height="40" alt="">
+                <p class="modal__text">Ми надіслали вам новий код підтвердження</p>
+              </div>
+            </div>
       </div>
-      <div class="slide-menu__content">
-        <ul class="menu-list">
-          <li class="menu-list__item">
-            <a href="#" class="menu-list__link">Профіль</a>
-          </li>
-          <li class="menu-list__item">
-            <a href="#" class="menu-list__link">Мої замовлення</a>
-          </li>
-          <li class="menu-list__item">
-            <a href="#" class="menu-list__link">Адреси доставки</a>
-          </li>
-          <li class="menu-list__item">
-            <a href="#" class="menu-list__link">Налаштування</a>
-          </li>
-          <li class="menu-list__item">
-            <a href="#" class="menu-list__link">Вийти</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-
-    <div class="sort-popup" id="sortPopup">
-      <div class="sort-popup__header">
-        <h3 class="sort-popup__title">Сортувати</h3>
-        <button class="sort-popup__close">
+      <!-- Шаг 1: Заголовок Входа -->
+      <div class="modal__content-header" id="header-login">
+        <h2 class="modal__title">Увійти в аккаунт</h2>
+        <button class="modal__close" data-close="account-menu">
           <img src="icons/close-black.svg" width="13" height="13" alt="">
         </button>
       </div>
-      <ul class="sort-popup__list">
-        <li class="sort-popup__item">
-          <label class="sort-popup__label">
-            <span class="sort-popup__text">За популярністю</span>
-            <input type="radio" name="sort" value="popularity" class="sort-popup__radio" checked>
-          </label>
-        </li>
-        <li class="sort-popup__item">
-          <label class="sort-popup__label">
-            <span class="sort-popup__text">Від дешевших</span>
-            <input type="radio" name="sort" value="price-asc" class="sort-popup__radio">
-          </label>
-        </li>
-        <li class="sort-popup__item">
-          <label class="sort-popup__label">
-            <span class="sort-popup__text">Від дорожчих</span>
-            <input type="radio" name="sort" value="price-desc" class="sort-popup__radio">
-          </label>
-        </li>
-        <li class="sort-popup__item">
-          <label class="sort-popup__label">
-            <span class="sort-popup__text">Спочатку зі знижками</span>
-            <input type="radio" name="sort" value="discount" class="sort-popup__radio">
-          </label>
-        </li>
-      </ul>
+
+      <!-- Шаг 2: Заголовок Кода (скрыт по умолчанию) -->
+      <div class="modal__content-header2" id="header-code" style="display: none;">
+        <div class="modal__content-header2-box">
+          <h2 class="modal__title">Вхід в аккаунт</h2>
+          <button class="modal__close" data-close="account-menu">
+            <img src="icons/close-black.svg" width="13" height="13" alt="">
+          </button>
+        </div>
+        <p>Введіть код, надісланий на ваш телефон.</p>
+      </div>
+
+      <!-- Шаг 1: Форма Входа -->
+      <div class="modal__content-account" id="step-login">
+        <form class="modal__form" id="accountForm">
+          <div class="modal__form-col">
+            <label for="accountLoginInput" class="label-required">Номер телефону або Email</label>
+            <input type="text" name="login" id="accountLoginInput" placeholder="Ваш номер або Email" required>
+            <span class="novalid-style" style="display: none;">Невірний формат телефону або Email</span>
+          </div>
+          <button type="submit" class="modal__form-btn" id="loginBtn" disabled>Продовжити</button>
+        </form>
+        <p class="modal__content-account-line">Або</p>
+        <button class="modal__content-account-google border-btn">
+          <img src="icons/google.svg" width="24" height="24" alt="">
+          Продовжити з Google
+        </button>
+        <div class="modal__content-account-info">
+          <span>Немає аккаунту?</span>
+          <button class="modal__content-account-new">Створити аккаунт</button>
+        </div>
+      </div>
+
+      <!-- Шаг 2: Форма Кода (скрыта по умолчанию) -->
+      <div class="modal__content-account-timer" id="step-code" style="display: none;">
+        <form class="modal__form" id="codeForm">
+          <div class="modal__form-col">
+            <label for="accountCodeInput" class="label-required">Код підтвердження</label>
+            <input type="text" name="code" id="accountCodeInput" placeholder="Код підтвердження" required maxlength="6">
+            <span class="novalid-style" style="display: none;">Невірний код</span>
+          </div>
+
+          <div class="modal__content-account-info">
+
+            <p class="modal__content-account-new-code" id="codeNotReceivedBtn" style="display: none;">
+              Не отримали код?
+            </p>
+
+            <button type="button" class="modal__content-account-new-code" id="resendBtn" style="display: none;">
+              Надіслати повторно
+            </button>
+
+            <p id="timerBlock">
+              Надіслати повторно
+              <span class="modal__content-account-timer-text" id="timerText">01:00</span>
+            </p>
+          </div>
+
+          <button type="submit" class="modal__form-btn">Підтвердити</button>
+        </form>
+      </div>
+
     </div>
+  </div>
+
+  <!-- Створити Аккаунт -->
+  <div class="modal modal-accaunt-new" id="newAccount">
+    <div class="modal__content">
+
+      <div class="modal__content-mobile-image">
+          <button class="modal-accaunt-prev">
+            <img src="icons/accardion-arrow.svg" alt="">
+          </button>
+         <img src="images/logo.png" alt="">
+
+            <!-- Модалка с благодарностью -->
+            <div class="modal" id="successModal11">
+              <div class="modal__contentss">
+                <img src="icons/success.svg" width="40" height="40" alt="">
+                <p class="modal__text">Ми надіслали вам новий код підтвердження</p>
+              </div>
+            </div>
+      </div>
+
+      <!-- Шаг 1: Заголовок Реєстрації -->
+      <div class="modal__content-header" id="header-register">
+        <h2 class="modal__title">Створення аккаунту</h2>
+        <button class="modal__close" data-close="newAccount">
+          <img src="icons/close-black.svg" width="13" height="13" alt="">
+        </button>
+      </div>
+
+      <!-- Шаг 2: Заголовок Кода (скрыт по умолчанию) -->
+      <div class="modal__content-header2" id="header-register-code" style="display: none;">
+        <div class="modal__content-header2-box">
+          <h2 class="modal__title">Код підтвердження</h2>
+          <button class="modal__close" data-close="newAccount">
+            <img src="icons/close-black.svg" width="13" height="13" alt="">
+          </button>
+        </div>
+        <p>Введіть код, надісланий на ваш телефон.</p>
+      </div>
+
+      <!-- Шаг 1: Форма Реєстрації -->
+      <div class="modal__content-account" id="step-register">
+        <form class="modal__form" id="registerForm">
+          <div class="modal__form-col">
+            <label for="registerName" class="label-required">Ім’я</label>
+            <input type="text" name="firstName" id="registerName" placeholder="Олексій" required>
+          </div>
+          <div class="modal__form-col">
+            <label for="registerSurname" class="label-required">Прізвище</label>
+            <input type="text" name="lastName" id="registerSurname" placeholder="Мавритюк" required>
+          </div>
+          <div class="modal__form-col">
+            <label for="registerPhone" class="label-required">Номер телефону</label>
+            <input type="tel" name="phone" id="registerPhone" placeholder="Номер телефону" required>
+            <span class="novalid-style" style="display: none;">Цей номер уже використовується.</span>
+          </div>
+
+          <!-- Toggle Switch -->
+          <div class="modal__form-col modal__form-col--toggle">
+            <label class="modal__toggle">
+              Email
+              <div class="modal__toggle-box">
+                <input type="checkbox" name="subscribe" class="modal__toggle-input">
+                <span class="modal__toggle-slider"></span>
+                <span class="modal__toggle-text">Розсилка акційних пропозицій та новин.</span>
+              </div>
+            </label>
+
+            <div class="email-field" id="emailField">
+              <input type="email" name="email" class="email-input" placeholder="Введіть ваш email">
+            </div>
+          </div>
+          <button type="submit" class="modal__form-btn" id="registerBtn" disabled>Створити аккаунт</button>
+          <div class="modal__form-col-info">
+            <p>Натискаючи кнопку «Створити акаунт», ви підтверджуєте свою згоду з <a href="/">Умовами використання</a>
+              та <a href="/">Політикою конфіденційності</a>.</p>
+          </div>
+        </form>
+        <div class="modal__content-account-visible">
+          <div class="modal__content-account-visible-image">
+            <img src="images/form-image.jpg" width="408" height="408" alt="">
+          </div>
+          <div class="modal__content-account-visible-image-position">
+            <img src="images/gallery__main-img1.png" width="170" height="170" alt="">
+          </div>
+        </div>
+      </div>
+
+      <!-- Шаг 2: Форма Кода (скрыта по умолчанию) -->
+      <div class="modal__content-account-timer" id="step-register-code" style="display: none;">
+        <form class="modal__form" id="registerCodeForm">
+          <div class="modal__form-col">
+            <label for="registerCodeInput" class="label-required">Код підтвердження</label>
+            <input type="text" name="code" id="registerCodeInput" placeholder="Код підтвердження" required
+              maxlength="6">
+            <span class="novalid-style" style="display: none;">Невірний код</span>
+          </div>
+
+          <div class="modal__content-account-info">
+
+            <p class="modal__content-account-new-code" id="registerCodeNotReceivedBtn" style="display: none;">
+              Не отримали код?
+            </p>
+
+            <button type="button" class="modal__content-account-new-code" id="registerResendBtn" style="display: none;">
+              Надіслати повторно
+            </button>
+
+            <p id="registerTimerBlock">
+              Надіслати повторно
+              <span class="modal__content-account-timer-text" id="registerTimerText">01:00</span>
+            </p>
+          </div>
+
+          <button type="submit" class="modal__form-btn">Підтвердити</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="sort-popup" id="sortPopup">
+    <div class="sort-popup__header">
+      <h3 class="sort-popup__title">Сортувати</h3>
+      <button class="sort-popup__close">
+        <img src="icons/close-black.svg" width="13" height="13" alt="">
+      </button>
+    </div>
+    <ul class="sort-popup__list">
+      <li class="sort-popup__item">
+        <label class="sort-popup__label">
+          <span class="sort-popup__text">За популярністю</span>
+          <input type="radio" name="sort" value="popularity" class="sort-popup__radio" checked>
+        </label>
+      </li>
+      <li class="sort-popup__item">
+        <label class="sort-popup__label">
+          <span class="sort-popup__text">Від дешевших</span>
+          <input type="radio" name="sort" value="price-asc" class="sort-popup__radio">
+        </label>
+      </li>
+      <li class="sort-popup__item">
+        <label class="sort-popup__label">
+          <span class="sort-popup__text">Від дорожчих</span>
+          <input type="radio" name="sort" value="price-desc" class="sort-popup__radio">
+        </label>
+      </li>
+      <li class="sort-popup__item">
+        <label class="sort-popup__label">
+          <span class="sort-popup__text">Спочатку зі знижками</span>
+          <input type="radio" name="sort" value="discount" class="sort-popup__radio">
+        </label>
+      </li>
+    </ul>
+  </div>
 
 </body>
 
@@ -2562,4 +2752,3 @@
 
 
 <!-- npm run sass-watch -->
-

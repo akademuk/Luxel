@@ -4610,120 +4610,55 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function initAddressTab() {
     const addressModal = document.getElementById('modal-address');
     const addAddressBtn = document.getElementById('btn-add-address');
-    const headerAddBtn = document.getElementById('btn-add-address-header');
-    const saveBtn = document.getElementById('btn-save-address');
-    const form = document.getElementById('address-form');
     
-    // Delete Modal Elements
-    const deleteModal = document.getElementById('modal-delete-address');
-    const confirmDeleteBtn = document.getElementById('btn-confirm-delete-address');
-    const deleteSuccessModal = document.getElementById('successModal13');
-    
-    let currentEditingCard = null;
-    let cardToDelete = null;
-    
-    // Helper to toggle label disabled state
-    function toggleLabel(element, isDisabled) {
-        const formGroup = element.closest('.form-group');
-        if (formGroup) {
-            const label = formGroup.querySelector('.form-label');
-            if (label) {
-                if (isDisabled) label.classList.add('disabled');
-                else label.classList.remove('disabled');
-            }
-        }
-    }
-
-    function setSelectValue(selectId, value) {
-        const select = document.getElementById(selectId);
-        if (!select) return;
-        const input = select.querySelector('input[type="hidden"]');
-        const selected = select.querySelector('.select-selected');
-        const option = select.querySelector(`.select-items div[data-value="${value}"]`);
-        
-        if (input) input.value = value || '';
-        if (selected) {
-            if (option) {
-                selected.innerHTML = option.innerHTML;
-            } else {
-                // Reset to default if value is empty
-                if (!value) {
-                    if (selectId === 'select-country') selected.innerHTML = 'Оберіть країну';
-                    if (selectId === 'select-region') selected.innerHTML = 'Оберіть область';
-                    if (selectId === 'select-city') selected.innerHTML = 'Оберіть місто';
-                    if (selectId === 'select-delivery') selected.innerHTML = 'Оберіть спосіб доставки';
-                    if (selectId === 'select-street') selected.innerHTML = 'Оберіть вулицю';
-                    if (selectId === 'select-branch') selected.innerHTML = 'Оберіть відділення';
-                }
-            }
-        }
-        
-        // Unlock logic
-        if (value) {
-            select.classList.remove('disabled');
-            toggleLabel(select, false);
-        }
-    }
-
-    function populateForm(data) {
-        // Set values
-        setSelectValue('select-country', data.country);
-        setSelectValue('select-region', data.region);
-        setSelectValue('select-city', data.city);
-        setSelectValue('select-delivery', data.delivery);
-        
-        // Handle Delivery Change Logic to show/hide sections
-        handleDeliveryChange(data.delivery);
-        
-        if (data.delivery === 'address' || data.delivery === 'courier') {
-            setSelectValue('select-street', data.street);
-            if (form.querySelector('input[name="house"]')) form.querySelector('input[name="house"]').value = data.house;
-            if (form.querySelector('input[name="apartment"]')) form.querySelector('input[name="apartment"]').value = data.apartment;
-            if (form.querySelector('input[name="zip"]')) form.querySelector('input[name="zip"]').value = data.zip;
-            
-            // Enable inputs
-            const addressDetails = document.getElementById('address-details');
-            if (addressDetails) {
-                const inputs = addressDetails.querySelectorAll('input');
-                inputs.forEach(input => {
-                    input.disabled = false;
-                    toggleLabel(input, false);
-                });
-            }
-        } else {
-            setSelectValue('select-branch', data.branch);
-        }
-        
-        validateAddressForm();
-    }
-
-    function openAddressModal(e, isEdit = false) {
-        if (e) e.preventDefault();
-        
-        const title = addressModal.querySelector('.acc-modal__title');
-
-        if (!isEdit) {
-            currentEditingCard = null;
-            if (title) title.textContent = 'Додати адресу';
+    // Відкриття модалки
+    if (addAddressBtn && addressModal) {
+        addAddressBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             
             // Reset form
+            const form = document.getElementById('address-form');
             if (form) form.reset();
             
             // Reset selects
             const selects = addressModal.querySelectorAll('.custom-select');
             selects.forEach(s => {
-                setSelectValue(s.id, '');
+                const selected = s.querySelector('.select-selected');
+                const input = s.querySelector('input[type="hidden"]');
+                
+                if (s.id === 'select-country') selected.innerHTML = 'Оберіть країну';
+                if (s.id === 'select-region') selected.innerHTML = 'Оберіть область';
+                if (s.id === 'select-city') selected.innerHTML = 'Оберіть місто';
+                if (s.id === 'select-delivery') selected.innerHTML = 'Оберіть спосіб';
+                if (s.id === 'select-street') selected.innerHTML = 'Оберіть вулицю';
+                if (s.id === 'select-branch') selected.innerHTML = 'Оберіть відділення';
+                
+                if (input) input.value = '';
+                
                 // Reset disabled states
-                if (s.id !== 'select-country') {
-                    s.classList.add('disabled');
-                    toggleLabel(s, true);
-                } else {
-                    s.classList.remove('disabled');
-                    toggleLabel(s, false);
-                }
+                if (s.id !== 'select-country') s.classList.add('disabled');
+                else s.classList.remove('disabled');
             });
             
             // Hide details
@@ -4732,10 +4667,7 @@ function initAddressTab() {
                 addressDetails.style.display = 'none';
                 addressDetails.classList.add('disabled');
                 const inputs = addressDetails.querySelectorAll('input');
-                inputs.forEach(input => {
-                    input.disabled = true;
-                    toggleLabel(input, true);
-                });
+                inputs.forEach(input => input.disabled = true);
             }
 
             const novaPoshtaDetails = document.getElementById('nova-poshta-details');
@@ -4743,29 +4675,16 @@ function initAddressTab() {
                 novaPoshtaDetails.style.display = 'none';
                 novaPoshtaDetails.classList.add('disabled');
                 const inputs = novaPoshtaDetails.querySelectorAll('input');
-                inputs.forEach(input => {
-                    input.disabled = true;
-                    toggleLabel(input, true);
-                });
+                inputs.forEach(input => input.disabled = true);
             }
             
             // Disable save button
+            const saveBtn = document.getElementById('btn-save-address');
             if (saveBtn) saveBtn.disabled = true;
-        } else {
-            if (title) title.textContent = 'Редагувати адресу';
-        }
 
-        addressModal.classList.add('open');
-        document.body.classList.add('is-lock');
-    }
-    
-    // Відкриття модалки
-    if (addAddressBtn && addressModal) {
-        addAddressBtn.addEventListener('click', (e) => openAddressModal(e, false));
-    }
-
-    if (headerAddBtn && addressModal) {
-        headerAddBtn.addEventListener('click', (e) => openAddressModal(e, false));
+            addressModal.classList.add('open');
+            document.body.classList.add('is-lock');
+        });
     }
 
     // Закриття модалки
@@ -4777,48 +4696,6 @@ function initAddressTab() {
         });
     });
 
-    // Закриття при кліку на фон
-    if (addressModal) {
-        addressModal.addEventListener('click', (e) => {
-            if (e.target === addressModal) {
-                addressModal.classList.remove('open');
-                document.body.classList.remove('is-lock');
-            }
-        });
-    }
-
-    // Закриття по Escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            if (addressModal && addressModal.classList.contains('open')) {
-                addressModal.classList.remove('open');
-                document.body.classList.remove('is-lock');
-            }
-            if (deleteModal && deleteModal.classList.contains('open')) {
-                deleteModal.classList.remove('open');
-                document.body.classList.remove('is-lock');
-            }
-        }
-    });
-    
-    // Close Delete Modal
-    if (deleteModal) {
-        const closeDeleteBtns = deleteModal.querySelectorAll('[data-close-modal]');
-        closeDeleteBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                deleteModal.classList.remove('open');
-                document.body.classList.remove('is-lock');
-            });
-        });
-
-        deleteModal.addEventListener('click', (e) => {
-            if (e.target === deleteModal) {
-                deleteModal.classList.remove('open');
-                document.body.classList.remove('is-lock');
-            }
-        });
-    }
-
     // Custom Select Logic
     const selects = addressModal ? addressModal.querySelectorAll('.custom-select') : [];
     
@@ -4828,8 +4705,10 @@ function initAddressTab() {
     const citySelect = document.getElementById('select-city');
     const deliverySelect = document.getElementById('select-delivery');
 
-    // Initialize disabled states (only if not editing)
-    // ... (Logic moved to openAddressModal)
+    // Initialize disabled states
+    if (regionSelect) regionSelect.classList.add('disabled');
+    if (citySelect) citySelect.classList.add('disabled');
+    if (deliverySelect) deliverySelect.classList.add('disabled');
     
     selects.forEach(select => {
         const selected = select.querySelector('.select-selected');
@@ -4857,30 +4736,18 @@ function initAddressTab() {
                     
                     // Sequential unlocking logic
                     if (select.id === 'select-country') {
-                        if (regionSelect) {
-                            regionSelect.classList.remove('disabled');
-                            toggleLabel(regionSelect, false);
-                        }
+                        if (regionSelect) regionSelect.classList.remove('disabled');
                     } else if (select.id === 'select-region') {
-                        if (citySelect) {
-                            citySelect.classList.remove('disabled');
-                            toggleLabel(citySelect, false);
-                        }
+                        if (citySelect) citySelect.classList.remove('disabled');
                     } else if (select.id === 'select-city') {
-                        if (deliverySelect) {
-                            deliverySelect.classList.remove('disabled');
-                            toggleLabel(deliverySelect, false);
-                        }
+                        if (deliverySelect) deliverySelect.classList.remove('disabled');
                     } else if (select.id === 'select-delivery') {
                         handleDeliveryChange(option.dataset.value);
                     } else if (select.id === 'select-street') {
                         const addressDetails = document.getElementById('address-details');
                         if (addressDetails) {
                             const inputsToEnable = addressDetails.querySelectorAll('input[name="house"], input[name="apartment"], input[name="zip"]');
-                            inputsToEnable.forEach(input => {
-                                input.disabled = false;
-                                toggleLabel(input, false);
-                            });
+                            inputsToEnable.forEach(input => input.disabled = false);
                         }
                     }
                     
@@ -4918,7 +4785,7 @@ function initAddressTab() {
         
         if (value === 'address' || value === 'courier') {
             if (addressDetails) {
-                addressDetails.style.display = 'flex';
+                addressDetails.style.display = 'block';
                 addressDetails.classList.remove('disabled');
                 
                 // Enable street input
@@ -4927,60 +4794,39 @@ function initAddressTab() {
 
                 // Disable other inputs initially
                 const inputsToDisable = addressDetails.querySelectorAll('input[name="house"], input[name="apartment"], input[name="zip"]');
-                inputsToDisable.forEach(input => {
-                    input.disabled = true;
-                    toggleLabel(input, true);
-                });
+                inputsToDisable.forEach(input => input.disabled = true);
 
-                if (streetSelect) {
-                    streetSelect.classList.remove('disabled');
-                    toggleLabel(streetSelect, false);
-                }
+                if (streetSelect) streetSelect.classList.remove('disabled');
             }
             if (novaPoshtaDetails) {
                 novaPoshtaDetails.style.display = 'none';
                 novaPoshtaDetails.classList.add('disabled');
                 const inputs = novaPoshtaDetails.querySelectorAll('input');
-                inputs.forEach(input => {
-                    input.disabled = true;
-                    toggleLabel(input, true);
-                });
-                if (branchSelect) {
-                    branchSelect.classList.add('disabled');
-                    toggleLabel(branchSelect, true);
-                }
+                inputs.forEach(input => input.disabled = true);
+                if (branchSelect) branchSelect.classList.add('disabled');
             }
-        } else if (value === 'nova_poshta' || value === 'nova_poshta_locker' || value === 'ukr_poshta') {
+        } else if (value === 'nova_poshta') {
             if (addressDetails) {
                 addressDetails.style.display = 'none';
                 addressDetails.classList.add('disabled');
                 const inputs = addressDetails.querySelectorAll('input');
-                inputs.forEach(input => {
-                    input.disabled = true;
-                    toggleLabel(input, true);
-                });
-                if (streetSelect) {
-                    streetSelect.classList.add('disabled');
-                    toggleLabel(streetSelect, true);
-                }
+                inputs.forEach(input => input.disabled = true);
+                if (streetSelect) streetSelect.classList.add('disabled');
             }
             if (novaPoshtaDetails) {
                 novaPoshtaDetails.style.display = 'block';
                 novaPoshtaDetails.classList.remove('disabled');
                 const inputs = novaPoshtaDetails.querySelectorAll('input');
-                inputs.forEach(input => {
-                    input.disabled = false;
-                    toggleLabel(input, false);
-                });
-                if (branchSelect) {
-                    branchSelect.classList.remove('disabled');
-                    toggleLabel(branchSelect, false);
-                }
+                inputs.forEach(input => input.disabled = false);
+                if (branchSelect) branchSelect.classList.remove('disabled');
             }
         }
     }
     
     // Validation
+    const saveBtn = document.getElementById('btn-save-address');
+    const form = document.getElementById('address-form');
+    
     function validateAddressForm() {
         if (!saveBtn || !form) return;
         
@@ -4998,8 +4844,8 @@ function initAddressTab() {
                 const apartment = form.querySelector('input[name="apartment"]').value.trim();
                 const zip = form.querySelector('input[name="zip"]').value.trim();
 
-                if (!street || !house || !zip) isValid = false;
-            } else if (delivery === 'nova_poshta' || delivery === 'nova_poshta_locker' || delivery === 'ukr_poshta') {
+                if (!street || !house || !apartment || !zip) isValid = false;
+            } else if (delivery === 'nova_poshta') {
                 const branch = document.getElementById('input-branch').value;
                 if (!branch) isValid = false;
             }
@@ -5013,65 +4859,6 @@ function initAddressTab() {
         form.addEventListener('change', validateAddressForm);
         form.addEventListener('keyup', validateAddressForm);
     }
-
-    function updateCardUI(card, iconSrc, deliveryText, addressText) {
-        const iconImg = card.querySelector('.address-card-icon-img');
-        if (iconImg) iconImg.src = iconSrc;
-        
-        const labelSpan = card.querySelector('.address-card__label');
-        if (labelSpan) labelSpan.textContent = deliveryText;
-
-        const addressTextDiv = card.querySelector('.address-card__text');
-        if (addressTextDiv) addressTextDiv.textContent = addressText;
-    }
-
-    function bindCardEvents(card) {
-        // Menu
-        const menuBtn = card.querySelector('.address-card__menu-btn');
-        const menu = card.querySelector('.address-card__menu');
-        
-        menuBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            // Close other menus
-            document.querySelectorAll('.address-card__menu.active').forEach(m => {
-                if (m !== menu) m.classList.remove('active');
-            });
-            menu.classList.toggle('active');
-        });
-
-        // Edit
-        const editBtn = card.querySelector('.edit-btn');
-        editBtn.addEventListener('click', () => {
-            currentEditingCard = card;
-            const data = JSON.parse(card.dataset.addressData || '{}');
-            populateForm(data);
-            openAddressModal(new Event('click'), true);
-            // Close menu
-            menu.classList.remove('active');
-        });
-
-        // Delete
-        const deleteBtn = card.querySelector('.delete-btn');
-        deleteBtn.addEventListener('click', () => {
-            cardToDelete = card;
-            if (deleteModal) {
-                deleteModal.classList.add('open');
-                document.body.classList.add('is-lock');
-            }
-            // Close menu
-            menu.classList.remove('active');
-        });
-    }
-    
-    // Global listener for closing menus (Add only once)
-    if (!window.addressMenuListenerAdded) {
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.address-card__menu') && !e.target.closest('.address-card__menu-btn')) {
-                document.querySelectorAll('.address-card__menu.active').forEach(m => m.classList.remove('active'));
-            }
-        });
-        window.addressMenuListenerAdded = true;
-    }
     
     if (saveBtn) {
         saveBtn.addEventListener('click', (e) => {
@@ -5080,32 +4867,12 @@ function initAddressTab() {
             // Gather data
             const country = document.getElementById('input-country').value;
             const region = document.getElementById('input-region').value;
-            const cityVal = document.getElementById('input-city').value;
+            const city = document.getElementById('input-city').value;
             const delivery = document.getElementById('input-delivery').value;
             
-            const formData = {
-                country,
-                region,
-                city: cityVal,
-                delivery,
-                street: document.getElementById('input-street').value,
-                house: form.querySelector('input[name="house"]').value,
-                apartment: form.querySelector('input[name="apartment"]').value,
-                zip: form.querySelector('input[name="zip"]').value,
-                branch: document.getElementById('input-branch').value
-            };
-
             let iconSrc = 'icons/location.svg';
             let addressText = '';
             let deliveryText = '';
-            let cityText = cityVal;
-
-            // Get city text
-            const citySelect = document.getElementById('select-city');
-            if (citySelect) {
-                const selectedOption = citySelect.querySelector(`.select-items div[data-value="${cityVal}"]`);
-                if (selectedOption) cityText = selectedOption.textContent;
-            }
 
             // Get delivery text
             const deliverySelect = document.getElementById('select-delivery');
@@ -5115,9 +4882,9 @@ function initAddressTab() {
             }
 
             if (delivery === 'address' || delivery === 'courier') {
-                const streetVal = formData.street;
-                const house = formData.house;
-                const apartment = formData.apartment;
+                const streetVal = document.getElementById('input-street').value;
+                const house = form.querySelector('input[name="house"]').value;
+                const apartment = form.querySelector('input[name="apartment"]').value;
                 
                 // Get street text
                 let streetText = streetVal;
@@ -5127,14 +4894,14 @@ function initAddressTab() {
                     if (selectedOption) streetText = selectedOption.textContent;
                 }
                 
-                addressText = `${cityText}, ${streetText} ${house}`;
+                addressText = `${city}, ${streetText} ${house}`;
                 if (apartment) addressText += `, кв. ${apartment}`;
                 
                 if (delivery === 'courier') {
                     iconSrc = 'icons/delivery.svg';
                 }
-            } else if (delivery === 'nova_poshta' || delivery === 'nova_poshta_locker' || delivery === 'ukr_poshta') {
-                const branchVal = formData.branch;
+            } else if (delivery === 'nova_poshta') {
+                const branchVal = document.getElementById('input-branch').value;
                 let branchText = branchVal;
                 const branchSelect = document.getElementById('select-branch');
                 if (branchSelect) {
@@ -5142,49 +4909,97 @@ function initAddressTab() {
                     if (selectedOption) branchText = selectedOption.textContent;
                 }
                 
-                if (delivery === 'ukr_poshta') {
-                    iconSrc = 'icons/ukr.png';
-                } else {
-                    iconSrc = 'icons/np-logo.png';
-                }
-                
-                addressText = `${cityText}, ${branchText}`;
+                iconSrc = 'icons/np-logo.png';
+                addressText = `${city}, ${branchText}`;
             }
             
-            if (currentEditingCard) {
-                // Update Existing
-                updateCardUI(currentEditingCard, iconSrc, deliveryText, addressText);
-                currentEditingCard.dataset.addressData = JSON.stringify(formData);
-                
-                // Show Success Modal
-                const successModal = document.getElementById('successModal12');
-                if (successModal) {
-                    successModal.classList.add('active');
-                    setTimeout(() => successModal.classList.remove('active'), 3000);
+            // Create Card HTML
+            const card = document.createElement('div');
+            card.className = 'address-card';
+            card.innerHTML = `
+                <div class="address-card__header">
+                    <div class="address-card__icon">
+                        <img src="${iconSrc}" alt="Delivery Icon">
+                    </div>
+                    <div class="address-card__actions" style="position: relative;">
+                        <button class="address-card__menu-btn">
+                            <img src="icons/dots-menu.svg" alt="Menu">
+                        </button>
+                        <div class="address-card__menu">
+                            <button class="edit-btn">
+                                <img src="icons/edit.svg" alt="Edit" style="width: 16px; height: 16px;"> Редагувати
+                            </button>
+                            <button class="delete-btn">
+                                <img src="icons/close-black.svg" alt="Delete" style="width: 16px; height: 16px;"> Видалити
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="address-card__content">
+                    ${addressText}
+                </div>
+            `;
+            
+            // Add menu functionality
+            const menuBtn = card.querySelector('.address-card__menu-btn');
+            const menu = card.querySelector('.address-card__menu');
+            
+            menuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // Close other menus
+                document.querySelectorAll('.address-card__menu.active').forEach(m => {
+                    if (m !== menu) m.classList.remove('active');
+                });
+                menu.classList.toggle('active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
+                    menu.classList.remove('active');
                 }
-            } else {
-                // Create New
-                const template = document.getElementById('address-card-template');
-                const cardFragment = template.content.cloneNode(true);
-                const card = cardFragment.querySelector('.address-card');
-
-                updateCardUI(card, iconSrc, deliveryText, addressText);
-                card.dataset.addressData = JSON.stringify(formData);
-                bindCardEvents(card);
-
-                // Update list
+            });
+            
+            // Delete functionality
+            const deleteBtn = card.querySelector('.delete-btn');
+            deleteBtn.addEventListener('click', () => {
+                card.remove();
+                // If only add button remains, show empty state
                 const list = document.getElementById('address-list');
-                const empty = document.querySelector('.address-empty');
-                
-                if (list && empty) {
-                    empty.style.display = 'none';
-                    list.style.display = 'flex';
-                    
-                    if (headerAddBtn) headerAddBtn.style.display = 'flex';
-                    
-                    // Insert card
-                    list.appendChild(card);
+                if (list.children.length === 1) { // Only add button left
+                     const empty = document.querySelector('.address-empty');
+                     empty.style.display = 'flex';
+                     list.style.display = 'none';
                 }
+            });
+
+            // Update list
+            const list = document.getElementById('address-list');
+            const empty = document.querySelector('.address-empty');
+            
+            if (list && empty) {
+                empty.style.display = 'none';
+                list.style.display = 'grid';
+                
+                // Check if Add Button exists
+                let addBtn = list.querySelector('.address-add-btn');
+                if (!addBtn) {
+                    addBtn = document.createElement('button');
+                    addBtn.className = 'address-add-btn';
+                    addBtn.innerHTML = `
+                        <img src="icons/plus.svg" alt="Add">
+                        <span>Додати адресу</span>
+                    `;
+                    addBtn.addEventListener('click', () => {
+                         // Open modal logic (reuse existing)
+                         const addAddressBtnMain = document.getElementById('btn-add-address');
+                         if (addAddressBtnMain) addAddressBtnMain.click();
+                    });
+                    list.appendChild(addBtn);
+                }
+                
+                // Insert before add button
+                list.insertBefore(card, addBtn);
             }
             
             // Close modal
@@ -5192,39 +5007,12 @@ function initAddressTab() {
                 addressModal.classList.remove('open');
                 document.body.classList.remove('is-lock');
             }
-        });
-    }
-
-    // Confirm Delete Action
-    if (confirmDeleteBtn) {
-        confirmDeleteBtn.addEventListener('click', () => {
-            if (cardToDelete) {
-                cardToDelete.remove();
-                cardToDelete = null;
-                
-                // Check Empty
-                const list = document.getElementById('address-list');
-                if (list.children.length === 0) {
-                     const empty = document.querySelector('.address-empty');
-                     empty.style.display = 'flex';
-                     list.style.display = 'none';
-
-                     if (headerAddBtn) headerAddBtn.style.display = 'none';
-                }
-
-                // Close Delete Modal
-                if (deleteModal) {
-                    deleteModal.classList.remove('open');
-                    document.body.classList.remove('is-lock');
-                }
-                
-                // Show Success
-                if (deleteSuccessModal) {
-                    deleteSuccessModal.classList.add('active');
-                    setTimeout(() => {
-                        deleteSuccessModal.classList.remove('active');
-                    }, 3000);
-                }
+            
+            // Show success
+            const successModal = document.getElementById('successModal12');
+            if (successModal) {
+                successModal.classList.add('active');
+                setTimeout(() => successModal.classList.remove('active'), 3000);
             }
         });
     }

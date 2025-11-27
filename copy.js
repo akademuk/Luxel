@@ -1,4 +1,4 @@
-// Функция для управления выпадающими списками (контакты и языки)
+// Функція для управління випадаючими списками (контакти і языки)
 function initDropdowns() {
     let isContactOpen = false;
     let isLanguageOpen = false;
@@ -223,19 +223,19 @@ function initHeader() {
         return;
     }
 
-    // Функция блокировки скролла
+    // Функція блокировки скролла
     function lockScroll() {
         document.documentElement.classList.add(stateClasses.isLock);
         document.body.classList.add(stateClasses.isLock);
     }
 
-    // Функция разблокировки скролла
+    // Функція разблокировки скролла
     function unlockScroll() {
         document.documentElement.classList.remove(stateClasses.isLock);
         document.body.classList.remove(stateClasses.isLock);
     }
 
-    // Функция открытия модалки успеха
+    // Функція открытия модалки успеха
     function openSuccessModal() {
         if (successModal) {
             successModal.classList.add(stateClasses.active);
@@ -243,7 +243,7 @@ function initHeader() {
         }
     }
 
-    // Функция закрытия модалки успеха
+    // Функція закриття модалки успеха
     function closeSuccessModal() {
         if (successModal) {
             successModal.classList.remove(stateClasses.active);
@@ -251,7 +251,7 @@ function initHeader() {
         }
     }
 
-    // Функция открытия главного меню
+    // Функція открытия главного меню
     function openMenu() {
         burgerButtonElement.classList.add(stateClasses.isActive);
         overlayElement.classList.add(stateClasses.isActive);
@@ -261,7 +261,7 @@ function initHeader() {
         lockScroll();
     }
 
-    // Функция закрытия главного меню
+    // Функція закриття главного меню
     function closeMenu() {
         burgerButtonElement.classList.remove(stateClasses.isActive);
         overlayElement.classList.remove(stateClasses.isActive);
@@ -270,7 +270,7 @@ function initHeader() {
         }
         unlockScroll();
 
-        // Закрываем все вложенные меню
+        // Закриваем все вложенные меню
         if (hiddenMenu) {
             hiddenMenu.classList.remove(stateClasses.isOpen);
         }
@@ -443,7 +443,7 @@ function initHeader() {
     });
 }
 
-// Функция для управления каталогом меню
+// Функція для управління каталогом меню
 function initCatalogMenu() {
     const menuItems = document.querySelectorAll('.menu__container-list-item');
     const submenuContents = document.querySelectorAll('.menu__container-submenus-content');
@@ -506,7 +506,7 @@ function initCatalogMenu() {
         }
     });
 }
-// Функция для управления поиском
+// Функція для управління пошуком
 function initSearch() {
     const searchBtn = document.querySelector('.header__body-btn-search');
     const htmlSearch = document.documentElement;
@@ -543,7 +543,7 @@ function initSearch() {
     });
 }
 
-// Функция для инициализации Swiper слайдера
+// Функція для іниціалізації Swiper злайдера
 function initSwiper() {
     if (typeof Swiper !== 'undefined') {
         new Swiper(".hero__slider", {
@@ -807,7 +807,7 @@ function initSwiperReviews() {
     }
 }
 
-// Функция для управления табами
+// Функція для управління табами
 function initTabs() {
     const tabButtons = document.querySelectorAll('.offers__tab-button');
     const tabContents = document.querySelectorAll('.offers__tab-content');
@@ -845,7 +845,7 @@ function initTabs() {
     });
 }
 
-// Функция для управления модальными окнами
+// Функція для управління модальними окнами
 function initModals() {
     const requestCallBtn = document.getElementById('requestCallBtn');
     const callModal = document.getElementById('callModal');
@@ -952,7 +952,7 @@ if (!window.modalsInitialized) {
     window.modalsInitialized = true;
 }
 
-// Функция для управления модальным окном "Написать нам"
+// Функція для управління модальним окном "Написати нам"
 function initWriteUsModal() {
     const openwriteUsModalBtn = document.getElementById('openwriteUsModal');
     const writeUsModal = document.getElementById('writeUs');
@@ -981,20 +981,20 @@ function initWriteUsModal() {
         e.preventDefault();
         openModal(writeUsModal);
 
-        // Закрываем дропдаун, если он открыт
+        // Закриваємо дропдаун, якщо він відкритий
         const dropdown = openwriteUsModalBtn.closest('.dropdown');
         if (dropdown) {
             dropdown.classList.remove('active');
         }
     });
 
-    // Закрытие по кнопке крестика
+    // Закриття по кнопке крестика
     closeModal2.addEventListener('click', function (e) {
         e.preventDefault();
         closeModalFunc(writeUsModal);
     });
 
-    // Закрытие при клике ВНЕ modal__content
+    // Закриття при клике ВНЕ modal__content
     document.addEventListener('click', function (e) {
         if (writeUsModal.classList.contains('active')) {
             const modalContent = writeUsModal.querySelector('.modal__content');
@@ -1102,7 +1102,7 @@ function initAccordion() {
     });
 }
 
-// Функция для управления табами
+// Функція для управління табами
 function initTabsTop() {
     const tabButtons = document.querySelectorAll('.section-top__tab-button');
     const tabContents = document.querySelectorAll('.section-top-content');
@@ -1541,7 +1541,7 @@ function initMobileFilter() {
 
     if (!filterBtn || !filters) return;
 
-    // Функция для обновления кнопки фильтра
+    // Функція для оновлення кнопки фільтра
     function updateFilterButton() {
         const selectedFilters = [];
         const filterGroups = {};
@@ -1669,7 +1669,7 @@ function initMobileFilter() {
         });
     }
 
-    // Инициализация при загрузке (если есть предвыбранные фильтры)
+    // Ініціалізація при завантаженні (якщо є попередньо обрані фільтри)
     updateFilterButton();
 }
 
@@ -1755,7 +1755,7 @@ function initGallery() {
     const thumbsElement = document.getElementById('galleryThumbs');
     const mainElement = document.getElementById('galleryMain');
 
-    // Если элементов галереи нет на странице, просто выходим из функции
+    // Якщо елементів галереї немає на сторінці, просто виходимо з функції
     if (!thumbsElement || !mainElement) {
         return;
     }
@@ -2234,7 +2234,7 @@ function initNotifyAvailability() {
     if (notifyPhone && submitBtn && errorSpan) {
         // Используем jQuery для совместимости с маской
         jQuery(notifyPhone).on('input keyup change', function () {
-            // Маска: +38(999)999-99-99 - всего 12 цифр
+            // Маска: +38(999)999-99-99 - всього 12 цифр
             const cleanPhone = this.value.replace(/\D/g, '');
 
             // Управляем классом invalid вместо disabled
@@ -2266,7 +2266,7 @@ function initNotifyAvailability() {
     }
 
     // Відправка форми (спрацює тільки якщо валідація пройшла)
-    notifyForm.addEventListener('submit', (e) => {
+    notifyForm.addEventListener('submit', ( e) => {
         e.preventDefault();
 
         // Скрываем ошибку если была показана
@@ -2291,7 +2291,7 @@ function initNotifyAvailability() {
     });
 }
 
-// Функція для модалки характеристик
+// Функція для модальності характеристик
 function initSpecificationsModal() {
     const toggleBtn = document.querySelector('[data-spec="toggle"]');
     const specsModal = document.getElementById('specsModal');
@@ -2314,7 +2314,7 @@ function initSpecificationsModal() {
         body.classList.add('is-lock');
     });
 
-    // Закрытие модалки
+    // Закриття модалки
     const closeModal = () => {
         specsModal.classList.remove('active');
         body.classList.remove('is-lock');
@@ -2325,12 +2325,12 @@ function initSpecificationsModal() {
         closeSpecsModal.addEventListener('click', closeModal);
     }
 
-    // Закрытие по клику на overlay
+    // Закриття по клику на overlay
     specsModal.addEventListener('click', (e) => {
         if (e.target === specsModal) closeModal();
     });
 
-    // Закрытие по Escape
+    // Закриття по Escape
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && specsModal.classList.contains('active')) {
             closeModal();
@@ -2525,6 +2525,8 @@ function initProductGallery() {
     });
 }
 
+
+
 // Инициализация Fancybox для галерей в отзывах
 function initReviewsGallery() {
     if (typeof Fancybox === 'undefined') return;
@@ -2699,253 +2701,6 @@ function initReviewsGallery() {
                         try {
                             const currentIndex = fancybox.getSlide()?.index ?? 0;
 
-                            const thumbsWrapper = document.querySelector('.f-thumbs__viewport, .f-thumbs');
-                            if (!thumbsWrapper) return;
-
-                            const activeThumb = thumbsWrapper.querySelector(`.f-thumbs__slide:nth-child(${currentIndex + 1})`);
-                            if (!activeThumb) return;
-
-                            const containerWidth = thumbsWrapper.offsetWidth;
-                            const thumbLeft = activeThumb.offsetLeft;
-                            const thumbWidth = activeThumb.offsetWidth;
-                            const scrollLeft = thumbLeft - (containerWidth / 2) + (thumbWidth / 2);
-
-                            thumbsWrapper.scrollTo({
-                                left: Math.max(0, scrollLeft),
-                                behavior: 'smooth'
-                            });
-                        } catch (err) {
-                            console.warn('Error centering thumb:', err);
-                        }
-                    };
-
-                    // Инициализация при открытии
-                    setTimeout(() => {
-                        updateNavigationButtons();
-                        centerThumb();
-                    }, 150);
-
-                    // Обновляем при смене слайда
-                    fancybox.on('change', () => {
-                        updateNavigationButtons();
-                        centerThumb();
-                    });
-                } catch (err) {
-                    console.warn('Error initializing click handlers:', err);
-                }
-            }
-        }
-    });
-
-    // Инициализируем для галерей в списке отзывов (review1, review2, review3)
-    Fancybox.bind('[data-fancybox^="review"]', {
-        Hash: false,
-        Thumbs: {
-            autoStart: true,
-            type: "classic",
-        },
-        Toolbar: {
-            display: {
-                left: [],
-                middle: ["counter"],
-                right: ["close"],
-            },
-        },
-        Carousel: {
-            infinite: true,
-        },
-        dragToClose: false,
-        animated: false,
-        showClass: false,
-        hideClass: false,
-        closeButton: "outside",
-        click: false, // Отключаем закрытие по клику
-        caption: function (fancybox, slide) {
-            console.log('🟢 REVIEW GALLERY - Caption called');
-            console.log('slide.triggerEl:', slide.triggerEl);
-
-            // Получаем информацию об авторе из родительского элемента reviews-list__item
-            const triggerElement = slide.triggerEl || slide.$trigger;
-            const reviewItem = triggerElement?.closest('.reviews-list__item');
-            console.log('reviewItem:', reviewItem);
-
-            if (reviewItem) {
-                const author = reviewItem.querySelector('.reviews-list__item-autor h3')?.textContent || '';
-                const date = reviewItem.querySelector('.reviews-list__item-autor time')?.textContent || '';
-
-                console.log('author:', author, 'date:', date);
-
-                if (author && date) {
-                    return `
-                        <h2 class="fancybox-title">${author}</h2>
-                        <p class="fancybox-subtitle">${date}</p>
-                    `;
-                }
-            }
-            return '';
-        },
-        on: {
-            init: (fancybox) => {
-                console.log('� REVIEW GALLERY - Init event fired');
-
-                // Сохраняем оригинальный метод slideTo
-                const carousel = fancybox.carousel;
-                if (carousel) {
-                    const originalSlideTo = carousel.slideTo.bind(carousel);
-
-                    carousel.slideTo = function (page, options = {}) {
-                        const currentPage = this.page;
-                        const totalPages = this.pages.length;
-
-                        console.log('🟡 slideTo called:', { currentPage, page, totalPages });
-
-                        // Блокируем если пытаются перейти за границы
-                        if (page < 0) {
-                            console.log('🔴 Blocked slideTo - trying to go before first');
-                            return;
-                        }
-
-                        if (page >= totalPages) {
-                            console.log('🔴 Blocked slideTo - trying to go after last');
-                            return;
-                        }
-
-                        // Разрешаем переход
-                        originalSlideTo(page, options);
-                    };
-                }
-            },
-            ready: (fancybox) => {
-                console.log('🟢 REVIEW GALLERY - Ready event fired');
-
-                // Добавляем кастомный класс к контейнеру для стилизации
-                const container = document.querySelector('.fancybox__container');
-                if (container) {
-                    container.classList.add('fancybox-reviews-gallery');
-                }
-
-                // Добавляем обработчик клика на backdrop для закрытия
-                setTimeout(() => {
-                    const backdrop = document.querySelector('.fancybox__backdrop');
-                    if (backdrop) {
-                        backdrop.addEventListener('click', (e) => {
-                            console.log('🔵 Backdrop clicked');
-                            if (e.target === backdrop) {
-                                console.log('🔴 Closing gallery');
-                                fancybox.close();
-                            }
-                        });
-                    }
-
-                    // Также добавляем клик на контейнер вне carousel
-                    const container = document.querySelector('.fancybox__container');
-                    if (container) {
-                        container.addEventListener('click', (e) => {
-                            // Проверяем что клик вне всех интерактивных элементов
-                            if (!e.target.closest('.fancybox__carousel') &&
-                                !e.target.closest('.fancybox__toolbar') &&
-                                !e.target.closest('.fancybox__nav') &&
-                                !e.target.closest('.f-thumbs') &&
-                                !e.target.closest('button')) {
-                                console.log('🔴 Closing gallery - click outside carousel');
-                                fancybox.close();
-                            }
-                        });
-                    }
-                }, 100);
-
-                try {
-                    // Получаем карусель с миниатюрами
-                    const thumbsPlugin = fancybox.plugins?.Thumbs;
-                    if (!thumbsPlugin || !thumbsPlugin.carousel) return;
-
-                    const thumbsCarousel = thumbsPlugin.carousel;
-
-                    // Функция для управления кнопками навигации
-                    const updateNavigationButtons = () => {
-                        try {
-                            const currentIndex = fancybox.getSlide()?.index ?? 0;
-                            const totalSlides = fancybox.getSlideCount();
-
-                            // Находим кнопки навигации
-                            const prevButton = document.querySelector('.fancybox__nav .f-button[data-fancybox-prev]');
-                            const nextButton = document.querySelector('.fancybox__nav .f-button[data-fancybox-next]');
-
-                            // Отключаем кнопку "назад" на первом слайде
-                            if (prevButton) {
-                                // Удаляем старый обработчик если есть
-                                if (prevButton._blockHandler) {
-                                    prevButton.removeEventListener('click', prevButton._blockHandler, true);
-                                    prevButton._blockHandler = null;
-                                }
-
-                                if (currentIndex === 0) {
-                                    prevButton.disabled = true;
-                                    prevButton.style.opacity = '0.3';
-                                    prevButton.style.cursor = 'not-allowed';
-
-                                    // Блокируем клик через capture phase
-                                    prevButton._blockHandler = (e) => {
-                                        e.preventDefault();
-                                        e.stopPropagation();
-                                        e.stopImmediatePropagation();
-                                        console.log('🔴 Blocked prev click - already at first');
-                                        return false;
-                                    };
-                                    prevButton.addEventListener('click', prevButton._blockHandler, true);
-                                } else {
-                                    prevButton.disabled = false;
-                                    prevButton.style.opacity = '';
-                                    prevButton.style.cursor = '';
-                                }
-                            }
-
-                            // Отключаем кнопку "вперед" на последнем слайде
-                            if (nextButton) {
-                                // Удаляем старый обработчик если есть
-                                if (nextButton._blockHandler) {
-                                    nextButton.removeEventListener('click', nextButton._blockHandler, true);
-                                    nextButton._blockHandler = null;
-                                }
-
-                                if (currentIndex === totalSlides - 1) {
-                                    nextButton.disabled = true;
-                                    nextButton.style.opacity = '0.3';
-                                    nextButton.style.cursor = 'not-allowed';
-
-                                    // Блокируем клик через capture phase
-                                    nextButton._blockHandler = (e) => {
-                                        e.preventDefault();
-                                        e.stopPropagation();
-                                        e.stopImmediatePropagation();
-                                        console.log('🔴 Blocked next click - already at last');
-                                        return false;
-                                    };
-                                    nextButton.addEventListener('click', nextButton._blockHandler, true);
-                                } else {
-                                    nextButton.disabled = false;
-                                    nextButton.style.opacity = '';
-                                    nextButton.style.cursor = '';
-                                }
-                            }
-
-                            // Показываем миниатюры, если они скрыты
-                            const thumbsWrapper = document.querySelector('.f-thumbs__viewport, .f-thumbs');
-                            if (thumbsWrapper) {
-                                thumbsWrapper.style.display = '';
-                                thumbsWrapper.style.visibility = 'visible';
-                                thumbsWrapper.style.opacity = '1';
-                            }
-                        } catch (err) {
-                            console.warn('Error updating navigation buttons:', err);
-                        }
-                    };
-
-                    // Функция для центрирования активной миниатюры
-                    const centerThumb = () => {
-                        try {
-                            const currentIndex = fancybox.getSlide()?.index ?? 0;
-
                             // Ищем контейнер с миниатюрами
                             const thumbsWrapper = document.querySelector('.f-thumbs__viewport, .f-thumbs');
                             if (!thumbsWrapper) return;
@@ -2981,7 +2736,7 @@ function initReviewsGallery() {
                         centerThumb();
                     });
                 } catch (err) {
-                    console.warn('Error initializing thumbs centering:', err);
+                    console.warn('Error initializing click handlers:', err);
                 }
             }
         }
@@ -3211,1021 +2966,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-document.addEventListener('DOMContentLoaded', initWishlist);
-
-
-
-function initShoppingCart() {
-    const FREE_DELIVERY_THRESHOLD = 2000; // 2000 грн для безкоштовної доставки
-    const productList = document.querySelector('.shopping-cart-product-list');
-    const emptyCart = document.querySelector('.shopping-cart-empty');
-    const filledCart = document.querySelector('.shopping-cart-product');
-    const togetherSection = document.querySelector('.shopping-cart-together');
-    const promoToggle = document.querySelector('.promo-code__toggle');
-    const promoContent = document.querySelector('.promo-code__content');
-    const promoInput = document.querySelector('.promo-code__input');
-    const promoApply = document.querySelector('.promo-code__apply');
-    const promoErrors = document.querySelectorAll('.promo-code__error'); // Изменено на querySelectorAll
-    const appliedPromo = document.getElementById('applied-promo');
-    const promoName = document.getElementById('promo-name');
-    const removePromo = document.getElementById('remove-promo');
-    const shoppingCart = document.getElementById('cart-menu');
-    const shoppingCartClose = document.querySelector('.shopping-cart__close');
-    const emptyCartBtn = document.querySelector('.shopping-cart-empty-btn');
-    const basketValues = document.querySelectorAll('.bascet-value'); // Получаем все элементы
-    const cartButtons = document.querySelectorAll('[data-menu="cart"]'); // Кнопки открытия корзины
-    const promoInputClose = document.querySelector('.promo-code__input-close');
-
-    // Модалки
-    const successModal5 = document.getElementById('successModal5');
-    const successModal6 = document.getElementById('successModal6');
-    const successModal7 = document.getElementById('successModal7');
-    const deleteProductModal = document.getElementById('delateProductModal');
-    const deleteProductText = document.querySelector('.delate-product-text');
-
-    // Функция для обновления всех блоков ошибок промокода
-    function updatePromoErrors(text, color = '') {
-        promoErrors.forEach(errorEl => {
-            errorEl.textContent = text;
-            if (color) {
-                errorEl.style.color = color;
-            }
-        });
-    }
-
-    // Функції для модалок
-    function showModal(modal) {
-        modal.classList.add('active');
-        document.body.classList.add('is-lock');
-        setTimeout(() => {
-            modal.classList.remove('active');
-            document.body.classList.remove('is-lock');
-        }, 3000);
-    }
-
-    // Открытие корзины
-    function openCart() {
-        shoppingCart.classList.add('active');
-        document.body.classList.add('is-lock');
-        const overlay = document.querySelector('.overlay');
-        if (overlay) {
-            overlay.classList.add('active');
-        }
-
-        // Добавляем класс active к родительским элементам кнопок корзины
-        cartButtons.forEach(button => {
-            const parentItem = button.closest('.mobile-nav__item');
-            if (parentItem) {
-                parentItem.classList.add('active');
-            }
-        });
-    }
-
-    // Закрытие корзины
-    function closeCart() {
-        shoppingCart.classList.remove('active');
-        // Принудительно убираем все возможные классы блокировки
-        document.body.classList.remove('is-lock');
-        document.body.classList.remove('modal-open');
-        document.body.classList.remove('modal-style');
-        document.documentElement.classList.remove('is-lock');
-
-        // Принудительно убираем inline стили
-        document.body.style.overflow = '';
-        document.documentElement.style.overflow = '';
-
-        const overlay = document.querySelector('.overlay');
-        if (overlay) {
-            overlay.classList.remove('active');
-        }
-
-        // Убираем класс active с родительских элементов кнопок корзины
-        cartButtons.forEach(button => {
-            const parentItem = button.closest('.mobile-nav__item');
-            if (parentItem) {
-                parentItem.classList.remove('active');
-            }
-        });
-    }
-
-    // Открытие корзины по кнопкам
-    cartButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            openCart();
-        });
-    });
-
-    // Закрытие по кнопке close
-    if (shoppingCartClose) {
-        shoppingCartClose.addEventListener('click', (e) => {
-            e.preventDefault();
-            closeCart();
-        });
-    }
-
-    // Закрытие по кнопке shopping-cart-empty-btn
-    if (emptyCartBtn) {
-        emptyCartBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            closeCart();
-        });
-    }
-
-    // Закрытие при клике вне shopping-cart__content
-    if (shoppingCart) {
-        shoppingCart.addEventListener('click', function (e) {
-            if (!e.target.closest('.shopping-cart__content')) {
-                closeCart();
-            }
-        });
-    }
-
-    // Оновлення кількості товарів у всіх .bascet-value
-    function updateBasketValue() {
-        if (basketValues.length === 0) return;
-
-        const items = productList.querySelectorAll('.shopping-cart-product-item');
-        const itemCount = items.length;
-
-        // Обновляем все элементы с классом .bascet-value
-        basketValues.forEach(basketValue => {
-            if (itemCount > 0) {
-                basketValue.textContent = itemCount;
-                basketValue.style.display = 'flex';
-            } else {
-                basketValue.style.display = 'none';
-            }
-        });
-    }
-
-    // Оновлення стану кнопки зменшення кількості
-    function updateDecrementButton(productItem) {
-        const quantityEl = productItem.querySelector('.shopping-cart-product-item-quantity-number');
-        const decrementBtn = productItem.querySelector('.decrement');
-        const quantity = parseInt(quantityEl.textContent);
-
-        if (quantity <= 1) {
-            decrementBtn.disabled = true;
-
-        } else {
-            decrementBtn.disabled = false;
-
-        }
-    }
-
-    // Оновлення стану корзини
-    // Оновлення стану корзини
-    function updateCartState() {
-        if (!productList) return;
-        const items = productList.querySelectorAll('.shopping-cart-product-item');
-        const itemCount = items.length;
-        // 1. Показати порожню корзину або заповнену
-        if (itemCount === 0) {
-            emptyCart.classList.add('active');
-            filledCart.classList.remove('active');
-        } else {
-            emptyCart.classList.remove('active');
-            filledCart.classList.add('active');
-        }
-
-        // 2. Показати "Разом з цим беруть" тільки якщо 1 товар
-        if (itemCount === 1) {
-            togetherSection.classList.add('active');
-        } else {
-            togetherSection.classList.remove('active');
-        }
-
-        // Оновити лічильник
-        const cartCount = document.getElementById('cart-count');
-        if (itemCount === 0) {
-            cartCount.style.display = 'none';
-        } else {
-            cartCount.style.display = 'inline';
-            cartCount.textContent = `(${itemCount})`;
-        }
-
-        // Оновити всі .bascet-value
-        updateBasketValue();
-
-        // 3. Оновити загальні суми та прогрес-бар
-        updateTotals();
-
-        // 4. Оновити стан кнопок зменшення для всіх товарів
-        items.forEach(item => updateDecrementButton(item));
-    }
-
-    // Оновлення загальних сум та прогрес-бару
-    function updateTotals() {
-        if (!productList) return;
-        const items = productList.querySelectorAll('.shopping-cart-product-item');
-        let totalCurrent = 0;
-        let totalOld = 0;
-
-        items.forEach(item => {
-            const quantity = parseInt(item.querySelector('.shopping-cart-product-item-quantity-number').textContent);
-            const price = parseFloat(item.dataset.price);
-            const oldPrice = parseFloat(item.dataset.oldPrice);
-
-            totalCurrent += price * quantity;
-            totalOld += oldPrice * quantity;
-        });
-
-        const discount = totalOld - totalCurrent;
-
-        // Оновити відображення сум
-        document.getElementById('total-current').textContent = totalCurrent.toFixed(2) + ' ₴';
-        document.getElementById('total-old').textContent = totalOld.toFixed(2) + ' ₴';
-        document.getElementById('total-discount').textContent = '-' + discount.toFixed(2) + ' ₴';
-
-        // Оновити прогрес-бар з градієнтом від червоного до зеленого
-        const remaining = Math.max(0, FREE_DELIVERY_THRESHOLD - totalCurrent);
-        const progress = Math.min(100, (totalCurrent / FREE_DELIVERY_THRESHOLD) * 100);
-
-        const progressFill = document.getElementById('progress-fill');
-        const messageBlock = document.querySelector('.delivery-progress__message');
-        const successBlock = document.querySelector('.delivery-progress__success');
-
-        progressFill.style.width = progress + '%';
-
-        // Видаляємо всі попередні класи
-        progressFill.classList.remove('progress-low', 'progress-medium', 'progress-high', 'progress-complete');
-
-        // Додаємо потрібний клас в залежності від прогресу
-        if (progress >= 100) {
-            progressFill.classList.add('progress-complete');
-            // Ховаємо повідомлення про додавання товарів, показуємо вітання
-            messageBlock.style.display = 'none';
-            successBlock.style.display = 'block';
-        } else {
-            // Показуємо повідомлення про додавання товарів, ховаємо вітання
-            messageBlock.style.display = 'block';
-            successBlock.style.display = 'none';
-            document.getElementById('remaining-amount').textContent = remaining.toFixed(0);
-
-            if (progress >= 66) {
-                progressFill.classList.add('progress-high');
-            } else if (progress >= 33) {
-                progressFill.classList.add('progress-medium');
-            } else {
-                progressFill.classList.add('progress-low');
-            }
-        }
-    }
-
-    // Оновлення ціни товару - тепер НЕ змінюємо ціну в карточці
-    function updateItemPrice() {
-        // Просто оновлюємо загальні суми
-        updateTotals();
-    }
-
-    // Модалка підтвердження видалення
-    function showDeleteConfirmation(productItem) {
-        const productName = productItem.querySelector('.shopping-cart-product-item-header h2')?.textContent.trim() || 'товар';
-
-        if (deleteProductText) {
-            deleteProductText.textContent = productName;
-        }
-
-        deleteProductModal.classList.add('active');
-        document.body.classList.add('is-lock');
-
-        const cancelBtn = deleteProductModal.querySelector('.cancel-delete');
-        const confirmBtn = deleteProductModal.querySelector('.confirm-delete');
-
-        function closeModal() {
-            deleteProductModal.classList.remove('active');
-            // Принудительно убираем блокировку при закрытии модалки
-            document.body.classList.remove('is-lock');
-            document.body.classList.remove('modal-open');
-            document.body.classList.remove('modal-style');
-            document.documentElement.classList.remove('is-lock');
-            document.body.style.overflow = '';
-            document.documentElement.style.overflow = '';
-
-            cancelBtn.removeEventListener('click', handleCancel);
-            confirmBtn.removeEventListener('click', handleConfirm);
-        }
-
-        function handleCancel() {
-            closeModal();
-        }
-
-        function handleConfirm() {
-            closeModal();
-
-            productItem.style.transition = 'opacity 0.3s, transform 0.3s';
-            productItem.style.opacity = '0';
-            productItem.style.transform = 'translateX(20px)';
-
-            setTimeout(() => {
-                productItem.remove();
-                updateCartState();
-                showModal(successModal7);
-            }, 300);
-
-            closeAllPopups();
-        }
-
-        cancelBtn.addEventListener('click', handleCancel);
-        confirmBtn.addEventListener('click', handleConfirm);
-    }
-
-    // Делегування подій
-    if (productList) {
-        productList.addEventListener('click', function (e) {
-            const target = e.target.closest('button');
-            if (!target) return;
-
-            const productItem = target.closest('.shopping-cart-product-item');
-            if (!productItem) return;
-            // Збільшення кількості
-            if (target.classList.contains('increment')) {
-                const quantityEl = productItem.querySelector('.shopping-cart-product-item-quantity-number');
-                let quantity = parseInt(quantityEl.textContent);
-                quantityEl.textContent = quantity + 1;
-                updateItemPrice();
-                updateDecrementButton(productItem);
-            }
-
-            // Зменшення кількості
-            if (target.classList.contains('decrement')) {
-                const quantityEl = productItem.querySelector('.shopping-cart-product-item-quantity-number');
-                let quantity = parseInt(quantityEl.textContent);
-                if (quantity > 1) {
-                    quantityEl.textContent = quantity - 1;
-                    updateItemPrice();
-                    updateDecrementButton(productItem);
-                }
-            }
-
-            // Відкриття меню
-            if (target.classList.contains('shopping-cart-product-item-menu')) {
-                e.stopPropagation();
-                const popup = productItem.querySelector('.product-menu-popup');
-                const isActive = popup.classList.contains('active');
-
-                closeAllPopups();
-
-                if (!isActive) {
-                    popup.classList.add('active');
-                }
-            }
-
-            // Додати в обране
-            if (target.classList.contains('favorite-product-btn')) {
-                const isActive = target.classList.toggle('active');
-                if (isActive) {
-                    showModal(successModal5);
-                }
-                closeAllPopups();
-            }
-
-            // Видалення товару
-            if (target.classList.contains('delete-product-btn')) {
-                showDeleteConfirmation(productItem);
-            }
-        });
-    }
-
-    // Закриття всіх попапів
-    function closeAllPopups() {
-        document.querySelectorAll('.product-menu-popup').forEach(popup => {
-            popup.classList.remove('active');
-        });
-    }
-
-    // Закриття попапів при кліку поза ними
-    document.addEventListener('click', closeAllPopups);
-
-    // Промокод
-    if (promoToggle) {
-        promoToggle.addEventListener('click', function () {
-            promoToggle.classList.toggle('active');
-            promoContent.classList.toggle('active');
-            updatePromoErrors(''); // Очищаем все блоки ошибок
-            promoInput.style.borderColor = '';
-        });
-    }
-
-    // Закрытие промокода по кнопке close (только на мобильных)
-    if (promoInputClose) {
-        promoInputClose.addEventListener('click', function (e) {
-            e.stopPropagation();
-            if (window.innerWidth < 768) {
-                promoContent.classList.remove('active');
-            }
-        });
-    }
-
-    // Закрытие промокода при клике вне input-wrapper (только на мобильных)
-    if (promoContent) {
-        promoContent.addEventListener('click', function (e) {
-            if (window.innerWidth < 768) {
-                if (!e.target.closest('.promo-code__input-wrapper')) {
-                    promoContent.classList.remove('active');
-                }
-            }
-        });
-    }
-
-    // Видалення помилки при введенні
-    if (promoInput) {
-        promoInput.addEventListener('input', function () {
-            updatePromoErrors(''); // Очищаем все блоки ошибок
-            promoInput.style.borderColor = '';
-        });
-    }
-
-    if (promoApply) {
-        promoApply.addEventListener('click', function () {
-            const code = promoInput.value.trim();
-            if (code === '') {
-                updatePromoErrors('Введіть промокод', '#EF0022');
-                promoInput.style.borderColor = '#EF0022';
-            } else if (code.toLowerCase() === 'test123') {
-                updatePromoErrors('✓ Промокод активовано!', '#4CAF50');
-                promoInput.style.borderColor = '';
-
-                // Показуємо застосований промокод
-                appliedPromo.style.display = 'flex';
-                promoName.textContent = code;
-                document.querySelector('.promocode-text').textContent = code;
-
-                // ХоваємоToggle та Content
-                promoToggle.style.display = 'none';
-                promoContent.classList.remove('active');
-
-                promoInput.value = '';
-
-                showModal(successModal6);
-            } else {
-                updatePromoErrors('Не дійсний промокод', '#EF0022');
-                promoInput.style.borderColor = '#EF0022';
-            }
-        });
-    }
-
-    // Видалення промокоду
-    if (removePromo) {
-        removePromo.addEventListener('click', function () {
-            appliedPromo.style.display = 'none';
-            promoName.textContent = '';
-            updatePromoErrors(''); // Очищаем все блоки ошибок
-            promoInput.style.borderColor = '';
-
-            // Показуємо знову Toggle та закриваємо контент
-            promoToggle.style.display = 'flex';
-            promoToggle.classList.remove('active');
-            promoContent.classList.remove('active');
-        });
-    }
-
-    // Ініціалізація
-    if (appliedPromo) {
-        appliedPromo.style.display = 'none';
-    }
-    updateCartState();
-}
-
-function initReviewModal() {
-    // Элементы
-    const modalAddReview = document.getElementById('addReviews');
-    const modalReviews = document.getElementById('reviewsModal');
-    const closeModalBtn = document.getElementById('closeModal');
-    const form = document.getElementById('reviewForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const body = document.body;
-
-    // Success-модалка
-    const successModal = document.getElementById('successModal4');
-
-    // Рейтинг
-    const ratingStars = document.querySelectorAll('.star-btn');
-    let selectedRating = 0;
-
-    // Поля
-    const comment = document.getElementById('comment');
-    const charCount = document.getElementById('charCount');
-    const advantages = document.getElementById('advantages');
-    const advCount = document.getElementById('advCount');
-    const disadvantages = document.getElementById('disadvantages');
-    const disCount = document.getElementById('disCount');
-
-    // Зображення
-    const fileInput = document.getElementById('fileInput');
-    const imagePreview = document.getElementById('imagePreview');
-    const uploadLabel = document.querySelector('.upload-label');
-    const fileSizeNoteBox = document.querySelector('.file-size-note-box');
-    const fileSizeNoteError = document.querySelector('.file-size-note-error');
-    const fileSizeNote = document.querySelector('.file-size-note');
-    let uploadedFiles = [];
-
-    // Универсальные функции модалок
-    function openModal(modalEl) {
-        if (!modalEl) return;
-        modalEl.classList.add('active');
-        body.classList.add('is-lock');
-    }
-
-    function closeModal(modalEl) {
-        if (!modalEl) return;
-        modalEl.classList.remove('active');
-        const anyOpen = document.querySelector('.modal.active');
-        if (!anyOpen) body.classList.remove('is-lock');
-    }
-
-    function closeAllModals() {
-        document.querySelectorAll('.modal.active').forEach(modal => {
-            modal.classList.remove('active');
-        });
-    }
-
-    // Открыть форму отзывов по клику на кнопки с классом reviews-modal-btn
-    document.addEventListener('click', (e) => {
-        if (e.target.closest('.reviews-modal-btn')) {
-            openModal(modalAddReview);
-        }
-    });
-
-    // Закрытие модалки по кнопке
-    closeModalBtn?.addEventListener('click', () => {
-        closeModal(modalAddReview);
-    });
-
-    // Закрытие по клику на backdrop (для всех модалок с классом .modal)
-    document.addEventListener('click', (e) => {
-        const modalEl = e.target.closest('.modal');
-        if (modalEl && e.target === modalEl) closeModal(modalEl);
-    });
-
-    // Делегирование кликов по кнопкам закрытия
-    document.addEventListener('click', (e) => {
-        const closeBtn = e.target.closest('[data-modal-close], .modal__back, .js-modal-close');
-        if (closeBtn) {
-            const modalEl = closeBtn.closest('.modal');
-            if (modalEl) closeModal(modalEl);
-        }
-    });
-
-    // Рейтинг зірок
-    ratingStars.forEach(star => {
-        star.addEventListener('click', function () {
-            selectedRating = parseInt(this.dataset.rating);
-
-            ratingStars.forEach((s, index) => {
-                if (index < selectedRating) {
-                    s.classList.add('active');
-                    s.classList.remove('inactive');
-                } else {
-                    s.classList.remove('active');
-                    s.classList.add('inactive');
-                }
-            });
-
-            validateForm();
-        });
-    });
-
-    // Лічильники
-    if (comment && charCount) {
-        comment.addEventListener('input', function () {
-            charCount.textContent = this.value.length;
-            validateForm();
-        });
-    }
-
-    if (advantages && advCount) {
-        advantages.addEventListener('input', function () {
-            advCount.textContent = this.value.length;
-        });
-    }
-
-    if (disadvantages && disCount) {
-        disadvantages.addEventListener('input', function () {
-            disCount.textContent = this.value.length;
-        });
-    }
-
-    // Завантаження файлів
-    if (fileInput && imagePreview && fileSizeNoteError) {
-        fileInput.addEventListener('change', function (e) {
-            const files = Array.from(e.target.files);
-            const maxSize = 10 * 1024 * 1024; // 10 MB в байтах
-            let hasOversizedFile = false;
-
-            files.forEach(file => {
-                if (file.type.startsWith('image/')) {
-                    if (file.size > maxSize) {
-                        hasOversizedFile = true;
-                    } else {
-                        uploadedFiles.push(file);
-
-                        const reader = new FileReader();
-                        reader.onload = function (ev) {
-                            const previewItem = document.createElement('div');
-                            previewItem.className = 'preview-item';
-                            previewItem.innerHTML = `
-                                <img src="${ev.target.result}" alt="Preview">
-                                <button type="button" class="remove-image" aria-label="Remove image">×</button>
-                            `;
-                            imagePreview.appendChild(previewItem);
-                        };
-                        reader.readAsDataURL(file);
-                    }
-                }
-            });
-
-            // Показ/приховування повідомлення про помилку
-            if (hasOversizedFile) {
-                fileSizeNoteError.style.display = 'block';
-                fileInput.value = '';
-            } else {
-                fileSizeNoteError.style.display = 'none';
-            }
-        });
-    }
-
-    // Видалення одного зображення
-    if (imagePreview) {
-        imagePreview.addEventListener('click', function (e) {
-            if (e.target.classList.contains('remove-image')) {
-                const idx = Array.from(imagePreview.children).indexOf(e.target.closest('.preview-item'));
-                if (idx > -1) uploadedFiles.splice(idx, 1);
-                e.target.closest('.preview-item').remove();
-            }
-        });
-    }
-
-    // Видалення всіх зображень при кліку на upload-label
-    if (uploadLabel) {
-        uploadLabel.addEventListener('click', function () {
-            uploadedFiles = [];
-            if (imagePreview) imagePreview.innerHTML = '';
-            if (fileInput) fileInput.value = '';
-            if (fileSizeNoteError) fileSizeNoteError.style.display = 'none';
-        });
-    }
-
-    // Валідація
-    function validateForm() {
-        if (!comment || !submitBtn) return;
-        const isValid = selectedRating > 0 && comment.value.trim().length > 0;
-        submitBtn.disabled = !isValid;
-    }
-
-    // Сброс формы
-    function resetReviewForm() {
-        if (!form) return;
-        form.reset();
-        selectedRating = 0;
-        uploadedFiles = [];
-        imagePreview.innerHTML = '';
-        if (charCount) charCount.textContent = '0';
-        if (fileSizeNoteError) fileSizeNoteError.style.display = 'none';
-        ratingStars.forEach(s => {
-            s.classList.remove('active');
-            s.classList.add('inactive');
-        });
-        if (submitBtn) submitBtn.disabled = true;
-    }
-
-    // Відправка форми
-    if (form) {
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const formData = {
-                rating: selectedRating,
-                comment: comment.value,
-                advantages: advantages ? advantages.value : '',
-                disadvantages: disadvantages ? disadvantages.value : '',
-                images: uploadedFiles.length
-            };
-
-            console.log('Дані відгуку:', formData);
-
-            // 1) Закриваем обе модалки
-            closeModal(modalAddReview);
-            if (modalReviews) {
-                closeModal(modalReviews);
-            }
-
-            // 2) Открываем success-модалку
-            if (successModal) {
-                successModal.classList.add('active');
-
-                // 3) Закрываем successModal4 через 3 секунды
-                setTimeout(() => {
-                    successModal.classList.remove('active');
-                }, 3000);
-            }
-
-            // 4) Очищаем форму
-            resetReviewForm();
-        });
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    const tabButtons = document.querySelectorAll('.blog-page__tab-button');
-    const blogItems = document.querySelectorAll('.blog-page__grid [data-category]');
-
-    tabButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const category = this.getAttribute('data-tab');
-
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-
-            blogItems.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = '';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
-    });
-});
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    // --- Элементы DOM ---
-    const loginForm = document.getElementById('accountForm');
-    const loginInput = document.getElementById('accountLoginInput');
-    const loginBtn = document.getElementById('loginBtn');
-
-    const codeForm = document.getElementById('codeForm');
-    const codeInput = document.getElementById('accountCodeInput');
-    const codeBtn = codeForm ? codeForm.querySelector('.modal__form-btn') : null;
-
-    const step1Header = document.getElementById('header-login');
-    const step1Body = document.getElementById('step-login');
-    const step2Header = document.getElementById('header-code');
-    const step2Body = document.getElementById('step-code');
-
-    const timerText = document.getElementById('timerText');
-    const timerBlock = document.getElementById('timerBlock');
-    const resendBtn = document.getElementById('resendBtn');
-    const notReceivedBtn = document.getElementById('codeNotReceivedBtn');
-
-    // Кнопка "Назад"
-    const backBtn = document.querySelector('.modal-accaunt-prev');
-
-    const accountMenu = document.getElementById('account-menu');
-    const overlay = document.querySelector('.overlay');
-
-    let timerInterval;
-
-    // Функция для закрытия модалки
-    function closeAccountMenu() {
-        if (accountMenu) accountMenu.classList.remove('active');
-
-        // Check if any other menus are still open before removing overlay
-        const anyMenuOpen = document.querySelector('.slide-menu.active');
-        if (!anyMenuOpen) {
-            if (overlay) overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    }
-
-    function validateLogin(value) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const phoneRegex = /^(\+)?(\d[\s-]?){9,15}$/;
-        return emailRegex.test(value) || phoneRegex.test(value);
-    }
-
-    // Слушаем ввод в первом поле
-    if (loginInput) {
-        loginInput.addEventListener('input', function () {
-            // При вводе скрываем ошибку
-            const errorSpan = this.parentElement.querySelector('.novalid-style');
-            if (errorSpan) errorSpan.style.display = 'none';
-            this.style.borderColor = '';
-
-            // Кнопка активна, если поле не пустое (валидация будет при клике)
-            if (this.value.trim().length > 0) {
-                loginBtn.disabled = false;
-                loginBtn.classList.remove('invalid');
-            } else {
-                loginBtn.disabled = true;
-                loginBtn.classList.add('invalid');
-            }
-        });
-    }
-
-    // --- Переход к шагу 2 ---
-    if (loginForm) {
-        loginForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Валидация происходит при отправке
-            if (!validateLogin(loginInput.value.trim())) {
-                const errorSpan = loginInput.parentElement.querySelector('.novalid-style');
-                if (errorSpan) errorSpan.style.display = 'block';
-                loginInput.style.borderColor = '#E31E24';
-                return;
-            }
-
-            step1Header.style.display = 'none';
-            step1Body.style.display = 'none';
-            step2Header.style.display = 'flex';
-            step2Body.style.display = 'flex';
-
-            // Показуємо кнопки, приховуємо таймер
-            timerBlock.style.display = 'none';
-            resendBtn.style.display = 'inline-block';
-            notReceivedBtn.style.display = 'inline-block';
-        });
-    }
-
-    // --- Обработка кнопки "Назад" ---
-    if (backBtn) {
-        backBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            // Если мы на первом шаге (форма логина видна), закрываем модалку
-            if (step1Body.style.display !== 'none') {
-                closeAccountMenu();
-                setTimeout(() => {
-                    resetForm();
-                }, 300);
-                return;
-            }
-
-            // Возвращаемся на шаг 1
-            step1Header.style.display = 'flex';
-            step1Body.style.display = 'flex';
-            step2Header.style.display = 'none';
-            step2Body.style.display = 'none';
-
-            // Останавливаем таймер
-            clearInterval(timerInterval);
-
-            // Очищаем поле ввода кода и ошибки
-            if (codeInput) {
-                codeInput.value = '';
-                const errorSpan = codeInput.parentElement.querySelector('.novalid-style');
-                if (errorSpan) errorSpan.style.display = 'none';
-                codeInput.style.borderColor = '';
-            }
-
-            // Сбрасываем состояние кнопки подтверждения
-            if (codeBtn) {
-                codeBtn.disabled = true;
-                codeBtn.classList.add('invalid');
-            }
-        });
-    }
-
-    // --- Таймер ---
-    function startTimer(duration) {
-        let timer = duration, minutes, seconds;
-
-        timerBlock.style.display = 'flex';
-        resendBtn.style.display = 'none';
-        // notReceivedBtn не ховаємо, він залишається видимим
-
-        clearInterval(timerInterval);
-
-        timerInterval = setInterval(function () {
-            minutes = parseInt(timer / 60, 10);
-            seconds = parseInt(timer % 60, 10);
-
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-
-            timerText.textContent = minutes + ":" + seconds;
-
-            if (--timer < 0) {
-                clearInterval(timerInterval);
-                timerBlock.style.display = 'none';
-                resendBtn.style.display = 'inline-block';
-                notReceivedBtn.style.display = 'inline-block';
-            }
-        }, 1000);
-    }
-
-    // Кнопка "Надіслати повторно"
-    if (resendBtn) {
-        resendBtn.addEventListener('click', function () {
-            console.log('Код отправлен повторно');
-            startTimer(60);
-
-            const successModal10 = document.getElementById('successModal10');
-            if (successModal10) {
-                successModal10.classList.add('active');
-                setTimeout(() => {
-                    successModal10.classList.remove('active');
-                }, 3000);
-            }
-        });
-    }
-
-    // Функция сброса формы
-    function resetForm() {
-        step1Header.style.display = 'flex';
-        step1Body.style.display = 'flex';
-        step2Header.style.display = 'none';
-        step2Body.style.display = 'none';
-
-        if (loginInput) {
-            loginInput.value = '';
-            // Сбрасываем стили ошибок
-            const errorSpan = loginInput.parentElement.querySelector('.novalid-style');
-            if (errorSpan) errorSpan.style.display = 'none';
-            loginInput.style.borderColor = '';
-        }
-        if (codeInput) codeInput.value = '';
-        if (loginBtn) {
-            loginBtn.disabled = true;
-            loginBtn.classList.add('invalid');
-        }
-        if (codeBtn) {
-            codeBtn.disabled = true;
-            codeBtn.classList.add('invalid');
-        }
-        clearInterval(timerInterval);
-    }
-
-    // --- Проверка кода ---
-    if (codeForm) {
-        // Инициализация состояния кнопки
-        if (codeBtn) {
-            codeBtn.disabled = true;
-            codeBtn.classList.add('invalid');
-        }
-
-        codeForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const code = codeInput.value.trim();
-            const errorSpan = codeInput.parentElement.querySelector('.novalid-style');
-
-            if (code === '1234') {
-                // Закрываем модалку после успеха
-                closeAccountMenu();
-
-                // Сбрасываем форму
-                setTimeout(() => {
-                    resetForm();
-                }, 300);
-            } else {
-                if (errorSpan) errorSpan.style.display = 'block';
-                codeInput.style.borderColor = '#E31E24';
-            }
-        });
-
-        codeInput.addEventListener('input', function () {
-            const errorSpan = this.parentElement.querySelector('.novalid-style');
-            if (errorSpan) errorSpan.style.display = 'none';
-            this.style.borderColor = '';
-
-            if (codeBtn) {
-                if (this.value.trim().length > 0) {
-                    codeBtn.disabled = false;
-                    codeBtn.classList.remove('invalid');
-                } else {
-                    codeBtn.disabled = true;
-                    codeBtn.classList.add('invalid');
-                }
-            }
-        });
-    }
-
-    // --- Сброс модалки при закрытии ---
-    const closeButtons = document.querySelectorAll('[data-close="account-menu"]');
-    closeButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            closeAccountMenu();
-            setTimeout(() => {
-                resetForm();
-            }, 300);
-        });
-    });
-
-    // Закрытие при клике вне области modal__content
-    document.addEventListener('click', function (e) {
-        if (accountMenu && accountMenu.classList.contains('active')) {
-            const content = accountMenu.querySelector('.modal__content') || accountMenu.querySelector('.slide-menu__content');
-
-            if (content) {
-                const isClickInside = content.contains(e.target);
-                const isClickOnOpenBtn = e.target.closest('[data-menu="account"]');
-
-                if (!isClickInside && !isClickOnOpenBtn) {
-                    closeAccountMenu();
-                    setTimeout(() => {
-                        resetForm();
-                    }, 300);
-                }
-            }
-        }
-    });
-});
-
-
 document.addEventListener('DOMContentLoaded', function () {
     // Перевірка на успішну реєстрацію після редіректу
     if (localStorage.getItem('registrationSuccess') === 'true') {
@@ -4331,15 +3071,15 @@ document.addEventListener('DOMContentLoaded', function () {
         backBtn.addEventListener('click', function (e) {
             e.preventDefault();
 
-            // Якщо ми на першому кроці (форма реєстрації видима), закриваємо модалку
+            // Якщо ми на першому кроці (форма реєстрації видна), закриваємо модалку
             if (stepRegister.style.display !== 'none') {
                 closeModal();
                 return;
             }
 
             // Повертаємося на крок 1
-            headerRegister.style.display = '';
-            stepRegister.style.display = '';
+            headerRegister.style.display = 'flex';
+            stepRegister.style.display = 'flex';
             headerCode.style.display = 'none';
             stepCode.style.display = 'none';
 
@@ -4365,11 +3105,56 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // --- Скидання форми ---
+    // --- Таймер ---
+    function startTimer(duration) {
+        let timer = duration, minutes, seconds;
+
+        timerBlock.style.display = 'flex';
+        resendBtn.style.display = 'none';
+        // notReceivedBtn не ховаємо, він залишається видимим
+
+        clearInterval(timerInterval);
+
+        timerInterval = setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            timerText.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                clearInterval(timerInterval);
+                timerBlock.style.display = 'none';
+                resendBtn.style.display = 'inline-block';
+                notReceivedBtn.style.display = 'inline-block';
+            }
+        }, 1000);
+    }
+
+    // Кнопка "Надіслати повторно"
+    if (resendBtn) {
+        resendBtn.addEventListener('click', () => {
+            console.log('Код отправлен повторно');
+            startTimer(60);
+
+            // Відображення successModal11
+            const successModal11 = document.getElementById('successModal11');
+            if (successModal11) {
+                successModal11.classList.add('active');
+                setTimeout(() => {
+                    successModal11.classList.remove('active');
+                }, 3000);
+            }
+        });
+    }
+
+    // Функция сброса формы
     function resetForm() {
         // Скидання видимості кроків
-        if (headerRegister) headerRegister.style.display = '';
-        if (stepRegister) stepRegister.style.display = '';
+        if (headerRegister) headerRegister.style.display = 'flex';
+        if (stepRegister) stepRegister.style.display = 'flex';
         if (headerCode) headerCode.style.display = 'none';
         if (stepCode) stepCode.style.display = 'none';
 
@@ -4610,6 +3395,697 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+function initShoppingCart() {
+    const FREE_DELIVERY_THRESHOLD = 2000; // 2000 грн для безкоштовної доставки
+    const productList = document.querySelector('.shopping-cart-product-list');
+    const emptyCart = document.querySelector('.shopping-cart-empty');
+    const filledCart = document.querySelector('.shopping-cart-product');
+    const togetherSection = document.querySelector('.shopping-cart-together');
+    const promoToggle = document.querySelector('.promo-code__toggle');
+    const promoContent = document.querySelector('.promo-code__content');
+    const promoInput = document.querySelector('.promo-code__input');
+    const promoApply = document.querySelector('.promo-code__apply');
+    const promoErrors = document.querySelectorAll('.promo-code__error'); // Изменено на querySelectorAll
+    const appliedPromo = document.getElementById('applied-promo');
+    const promoName = document.getElementById('promo-name');
+    const removePromo = document.getElementById('remove-promo');
+    const shoppingCart = document.getElementById('cart-menu');
+    const shoppingCartClose = document.querySelector('.shopping-cart__close');
+    const emptyCartBtn = document.querySelector('.shopping-cart-empty-btn');
+    const basketValues = document.querySelectorAll('.bascet-value'); // Получаем все элементы
+    const cartButtons = document.querySelectorAll('[data-menu="cart"]'); // Кнопки открытия корзины
+    const promoInputClose = document.querySelector('.promo-code__input-close');
+
+    // Модалки
+    const successModal5 = document.getElementById('successModal5');
+    const successModal6 = document.getElementById('successModal6');
+    const successModal7 = document.getElementById('successModal7');
+    const deleteProductModal = document.getElementById('delateProductModal');
+    const deleteProductText = document.querySelector('.delate-product-text');
+
+    // Функція для обновлення всіх блоків помилок промокоду
+    function updatePromoErrors(text, color = '') {
+        promoErrors.forEach(errorEl => {
+            errorEl.textContent = text;
+            if (color) {
+                errorEl.style.color = color;
+            }
+        });
+    }
+
+    // Функції для модалок
+    function showModal(modal) {
+        modal.classList.add('active');
+        document.body.classList.add('is-lock');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            document.body.classList.remove('is-lock');
+        }, 3000);
+    }
+
+    // Открытие корзины
+    function openCart() {
+        shoppingCart.classList.add('active');
+        document.body.classList.add('is-lock');
+        const overlay = document.querySelector('.overlay');
+        if (overlay) {
+            overlay.classList.add('active');
+        }
+        
+        // Добавляем класс active к родительским элементам кнопок корзины
+        cartButtons.forEach(button => {
+            const parentItem = button.closest('.mobile-nav__item');
+            if (parentItem) {
+                parentItem.classList.add('active');
+            }
+        });
+    }
+
+    // Закриття корзини
+    function closeCart() {
+        shoppingCart.classList.remove('active');
+        // Принудительно убираем все возможные классы блокировки
+        document.body.classList.remove('is-lock');
+        document.body.classList.remove('modal-open');
+        document.body.classList.remove('modal-style');
+        document.documentElement.classList.remove('is-lock');
+        
+        // Принудительно убираем inline стили
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+        
+        const overlay = document.querySelector('.overlay');
+        if (overlay) {
+            overlay.classList.remove('active');
+        }
+        
+        // Убираем класс active с родительских элементов кнопок корзины
+        cartButtons.forEach(button => {
+            const parentItem = button.closest('.mobile-nav__item');
+            if (parentItem) {
+                parentItem.classList.remove('active');
+            }
+        });
+    }
+
+    // Открытие корзины по кнопкам
+    cartButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            openCart();
+        });
+    });
+
+    // Закриття по кнопке close
+    if (shoppingCartClose) {
+        shoppingCartClose.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeCart();
+        });
+    }
+
+    // Закриття по кнопке shopping-cart-empty-btn
+    if (emptyCartBtn) {
+        emptyCartBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeCart();
+        });
+    }
+
+    // Закриття при клике вне shopping-cart__content
+    if (shoppingCart) {
+        shoppingCart.addEventListener('click', function (e) {
+            if (!e.target.closest('.shopping-cart__content')) {
+                closeCart();
+            }
+        });
+    }
+
+    // Оновлення кількості товарів у всіх .bascet-value
+    function updateBasketValue() {
+        if (basketValues.length === 0) return;
+        
+        const items = productList.querySelectorAll('.shopping-cart-product-item');
+        const itemCount = items.length;
+        
+        // Обновляем все элементы с классом .bascet-value
+        basketValues.forEach(basketValue => {
+            if (itemCount > 0) {
+                basketValue.textContent = itemCount;
+                basketValue.style.display = 'flex';
+            } else {
+                basketValue.style.display = 'none';
+            }
+        });
+    }
+
+    // Оновлення стану кнопки зменшення кількості
+    function updateDecrementButton(productItem) {
+        const quantityEl = productItem.querySelector('.shopping-cart-product-item-quantity-number');
+        const decrementBtn = productItem.querySelector('.decrement');
+        const quantity = parseInt(quantityEl.textContent);
+        
+        if (quantity <= 1) {
+            decrementBtn.disabled = true;
+            
+        } else {
+            decrementBtn.disabled = false;
+          
+        }
+    }
+
+    // Оновлення стану корзини
+    // Оновлення стану корзини
+    function updateCartState() {
+        if (!productList) return;
+        const items = productList.querySelectorAll('.shopping-cart-product-item');
+        const itemCount = items.length;
+        // 1. Показати порожню корзину або заповнену
+        if (itemCount === 0) {
+            emptyCart.classList.add('active');
+            filledCart.classList.remove('active');
+        } else {
+            emptyCart.classList.remove('active');
+            filledCart.classList.add('active');
+        }
+
+        // 2. Показати "Разом з цим беруть" тільки якщо 1 товар
+        if (itemCount === 1) {
+            togetherSection.classList.add('active');
+        } else {
+            togetherSection.classList.remove('active');
+        }
+
+        // Оновити лічильник
+        const cartCount = document.getElementById('cart-count');
+        if (cartCount) {
+            if (itemCount === 0) {
+                cartCount.style.display = 'none';
+            } else {
+                cartCount.style.display = 'inline';
+                cartCount.textContent = `(${itemCount})`;
+            }
+        }
+
+        // Оновити всі .bascet-value
+        updateBasketValue();
+
+        // 3. Оновити загальні суми та прогрес-бар
+        updateTotals();
+
+        // 4. Оновити стан кнопок зменшення для всіх товарів
+        items.forEach(item => updateDecrementButton(item));
+    }
+
+    // Оновлення загальних сум та прогрес-бару
+    function updateTotals() {
+        if (!productList) return;
+        const items = productList.querySelectorAll('.shopping-cart-product-item');
+        let totalCurrent = 0;
+        let totalOld = 0;
+
+        items.forEach(item => {
+            const quantity = parseInt(item.querySelector('.shopping-cart-product-item-quantity-number').textContent);
+            const price = parseFloat(item.dataset.price);
+            const oldPrice = parseFloat(item.dataset.oldPrice);
+
+            totalCurrent += price * quantity;
+            totalOld += oldPrice * quantity;
+        });
+
+        const discount = totalOld - totalCurrent;
+
+        // Оновити відображення сум
+        document.getElementById('total-current').textContent = totalCurrent.toFixed(2) + ' ₴';
+        document.getElementById('total-old').textContent = totalOld.toFixed(2) + ' ₴';
+        document.getElementById('total-discount').textContent = '-' + discount.toFixed(2) + ' ₴';
+
+        // Оновити прогрес-бар з градієнтом від червоного до зеленого
+        const remaining = Math.max(0, FREE_DELIVERY_THRESHOLD - totalCurrent);
+        const progress = Math.min(100, (totalCurrent / FREE_DELIVERY_THRESHOLD) * 100);
+
+        const progressFill = document.getElementById('progress-fill');
+        const messageBlock = document.querySelector('.delivery-progress__message');
+        const successBlock = document.querySelector('.delivery-progress__success');
+
+        progressFill.style.width = progress + '%';
+
+        // Видаляємо всі попередні класи
+        progressFill.classList.remove('progress-low', 'progress-medium', 'progress-high', 'progress-complete');
+
+        // Додаємо потрібний клас в залежності від прогресу
+        if (progress >= 100) {
+            progressFill.classList.add('progress-complete');
+            // Ховаємо повідомлення про додавання товарів, показуємо вітання
+            messageBlock.style.display = 'none';
+            successBlock.style.display = 'block';
+        } else {
+            // Показуємо повідомлення про додавання товарів, ховаємо вітання
+            messageBlock.style.display = 'block';
+            successBlock.style.display = 'none';
+            document.getElementById('remaining-amount').textContent = remaining.toFixed(0);
+
+            if (progress >= 66) {
+                progressFill.classList.add('progress-high');
+            } else if (progress >= 33) {
+                progressFill.classList.add('progress-medium');
+            } else {
+                progressFill.classList.add('progress-low');
+            }
+        }
+    }
+
+    // Оновлення ціни товару - тепер НЕ змінюємо ціну в карточці
+    function updateItemPrice() {
+        // Просто оновлюємо загальні суми
+        updateTotals();
+    }
+
+    // Модалка підтвердження видалення
+    function showDeleteConfirmation(productItem) {
+        const productName = productItem.querySelector('.shopping-cart-product-item-header h2')?.textContent.trim() || 'товар';
+        
+        if (deleteProductText) {
+            deleteProductText.textContent = productName;
+        }
+        
+        deleteProductModal.classList.add('active');
+        document.body.classList.add('is-lock');
+
+        const cancelBtn = deleteProductModal.querySelector('.cancel-delete');
+        const confirmBtn = deleteProductModal.querySelector('.confirm-delete');
+
+        function closeModal() {
+            deleteProductModal.classList.remove('active');
+            // Принудительно убираем блокировку при закрытии модалки
+            document.body.classList.remove('is-lock');
+            document.body.classList.remove('modal-open');
+            document.body.classList.remove('modal-style');
+            document.documentElement.classList.remove('is-lock');
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+        }
+
+        function handleCancel() {
+            closeModal();
+        }
+
+        function handleConfirm() {
+            closeModal();
+
+            productItem.style.transition = 'opacity 0.3s, transform 0.3s';
+            productItem.style.opacity = '0';
+            productItem.style.transform = 'translateX(20px)';
+
+            setTimeout(() => {
+                productItem.remove();
+                updateCartState();
+                showModal(successModal7);
+            }, 300);
+
+            closeAllPopups();
+        }
+
+        cancelBtn.addEventListener('click', handleCancel);
+        confirmBtn.addEventListener('click', handleConfirm);
+    }
+
+    // Делегування подій
+    if (productList) {
+        productList.addEventListener('click', function (e) {
+            const target = e.target.closest('button');
+            if (!target) return;
+
+            const productItem = target.closest('.shopping-cart-product-item');
+            if (!productItem) return;
+            // Збільшення кількості
+            if (target.classList.contains('increment')) {
+                const quantityEl = productItem.querySelector('.shopping-cart-product-item-quantity-number');
+                let quantity = parseInt(quantityEl.textContent);
+                quantityEl.textContent = quantity + 1;
+                updateItemPrice();
+                updateDecrementButton(productItem);
+            }
+
+            // Зменшення кількості
+            if (target.classList.contains('decrement')) {
+                const quantityEl = productItem.querySelector('.shopping-cart-product-item-quantity-number');
+                let quantity = parseInt(quantityEl.textContent);
+                if (quantity > 1) {
+                    quantityEl.textContent = quantity - 1;
+                    updateItemPrice();
+                    updateDecrementButton(productItem);
+                }
+            }
+
+            // Відкриття меню
+            if (target.classList.contains('shopping-cart-product-item-menu')) {
+                e.stopPropagation();
+                const popup = productItem.querySelector('.product-menu-popup');
+                const isActive = popup.classList.contains('active');
+
+                closeAllPopups();
+
+                if (!isActive) {
+                    popup.classList.add('active');
+                }
+            }
+
+            // Додати в обране
+            if (target.classList.contains('favorite-product-btn')) {
+                const isActive = target.classList.toggle('active');
+                if (isActive) {
+                    showModal(successModal5);
+                }
+                closeAllPopups();
+            }
+
+            // Видалення товару
+            if (target.classList.contains('delete-product-btn')) {
+                showDeleteConfirmation(productItem);
+            }
+        });
+    }
+
+    // Закриття всіх попапів
+    function closeAllPopups() {
+        document.querySelectorAll('.product-menu-popup').forEach(popup => {
+            popup.classList.remove('active');
+        });
+    }
+
+    // Закриття попапів при кліку поза ними
+    document.addEventListener('click', closeAllPopups);
+
+    // Промокод
+    if (promoToggle) {
+        promoToggle.addEventListener('click', function () {
+            promoToggle.classList.toggle('active');
+            promoContent.classList.toggle('active');
+            updatePromoErrors(''); // Очищаем все блоки ошибок
+            promoInput.style.borderColor = '';
+        });
+    }
+
+    // Закрытие промокода по кнопке close (только на мобильных)
+    if (promoInputClose) {
+        promoInputClose.addEventListener('click', function (e) {
+            e.stopPropagation();
+            if (window.innerWidth < 768) {
+                promoContent.classList.remove('active');
+            }
+        });
+    }
+
+    // Закрытие промокода при клике вне input-wrapper (только на мобильных)
+    if (promoContent) {
+        promoContent.addEventListener('click', function (e) {
+            if (window.innerWidth < 768) {
+                if (!e.target.closest('.promo-code__input-wrapper')) {
+                    promoContent.classList.remove('active');
+                }
+            }
+        });
+    }
+
+    // Видалення помилки при введенні
+    if (promoInput) {
+        promoInput.addEventListener('input', function () {
+            updatePromoErrors(''); // Очищаем все блоки ошибок
+            promoInput.style.borderColor = '';
+        });
+    }
+
+    if (promoApply) {
+        promoApply.addEventListener('click', function () {
+            const code = promoInput.value.trim();
+            if (code === '') {
+                updatePromoErrors('Введіть промокод', '#EF0022');
+                promoInput.style.borderColor = '#EF0022';
+            } else if (code.toLowerCase() === 'test123') {
+                updatePromoErrors('✓ Промокод активовано!', '#4CAF50');
+                promoInput.style.borderColor = '';
+
+                // Показуємо застосований промокод
+                appliedPromo.style.display = 'flex';
+                promoName.textContent = code;
+                document.querySelector('.promocode-text').textContent = code;
+
+                // ХоваємоToggle та Content
+                promoToggle.style.display = 'none';
+                promoContent.classList.remove('active');
+
+                promoInput.value = '';
+
+                showModal(successModal6);
+            } else {
+                updatePromoErrors('Не дійсний промокод', '#EF0022');
+                promoInput.style.borderColor = '#EF0022';
+            }
+        });
+    }
+
+    // Видалення промокоду
+    if (removePromo) {
+        removePromo.addEventListener('click', function () {
+            appliedPromo.style.display = 'none';
+            promoName.textContent = '';
+            updatePromoErrors(''); // Очищаем все блоки ошибок
+            promoInput.style.borderColor = '';
+
+            // Показуємо знову Toggle
+            promoToggle.style.display = 'flex';
+        });
+    }
+
+    // Ініціалізація
+    if (appliedPromo) {
+        appliedPromo.style.display = 'none';
+    }
+    updateCartState();
+}
+
+function initReviewModal() {
+    // Элементы
+    const modalAddReview = document.getElementById('addReviews');
+    const modalReviews = document.getElementById('reviewsModal');
+    const closeModalBtn = document.getElementById('closeModal');
+    const form = document.getElementById('reviewForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const body = document.body;
+
+    // Success-модалка
+    const successModal = document.getElementById('successModal4');
+
+    // Рейтинг
+    const ratingStars = document.querySelectorAll('.star-btn');
+    let selectedRating = 0;
+
+    // Поля
+    const comment = document.getElementById('comment');
+    const charCount = document.getElementById('charCount');
+    const advantages = document.getElementById('advantages');
+    const advCount = document.getElementById('advCount');
+    const disadvantages = document.getElementById('disadvantages');
+    const disCount = document.getElementById('disCount');
+
+    // Зображення
+    const fileInput = document.getElementById('fileInput');
+    const imagePreview = document.getElementById('imagePreview');
+    const uploadLabel = document.querySelector('.upload-label');
+    const fileSizeNoteBox = document.querySelector('.file-size-note-box');
+    const fileSizeNoteError = document.querySelector('.file-size-note-error');
+    const fileSizeNote = document.querySelector('.file-size-note');
+    let uploadedFiles = [];
+
+    // Универсальные функции модалок
+    function openModal(modalEl) {
+        if (!modalEl) return;
+        modalEl.classList.add('active');
+        body.classList.add('is-lock');
+    }
+
+    function closeModal(modalEl) {
+        if (!modalEl) return;
+        modalEl.classList.remove('active');
+        const anyOpen = document.querySelector('.modal.active');
+        if (!anyOpen) body.classList.remove('is-lock');
+    }
+
+    function closeAllModals() {
+        document.querySelectorAll('.modal.active').forEach(modal => {
+            modal.classList.remove('active');
+        });
+    }
+
+    // Открыть форму отзывов по клику на кнопки с классом reviews-modal-btn
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('.reviews-modal-btn')) {
+            openModal(modalAddReview);
+        }
+    });
+
+    // Закриття модалки по кнопке
+    closeModalBtn?.addEventListener('click', () => {
+        closeModal(modalAddReview);
+    });
+
+    // Закриття при клику на backdrop (для всіх модалок с класом .modal)
+    document.addEventListener('click', (e) => {
+        const modalEl = e.target.closest('.modal');
+        if (modalEl && e.target === modalEl) closeModal(modalEl);
+    });
+
+    // Делегирование кликов по кнопкам закрытия
+    document.addEventListener('click', (e) => {
+        const closeBtn = e.target.closest('[data-modal-close], .modal__back, .js-modal-close');
+        if (closeBtn) {
+            const modalEl = closeBtn.closest('.modal');
+            if (modalEl) closeModal(modalEl);
+        }
+    });
+
+    // Рейтинг зірок
+    ratingStars.forEach(star => {
+        star.addEventListener('click', function () {
+            selectedRating = parseInt(this.dataset.rating);
+
+            ratingStars.forEach((s, index) => {
+                if (index < selectedRating) {
+                    s.classList.add('active');
+                    s.classList.remove('inactive');
+                } else {
+                    s.classList.remove('active');
+                    s.classList.add('inactive');
+                }
+            });
+
+            validateForm();
+        });
+    });
+
+    // Лічильники
+    if (comment && charCount) {
+        comment.addEventListener('input', function () {
+            charCount.textContent = this.value.length;
+            validateForm();
+        });
+    }
+
+    if (advantages && advCount) {
+        advantages.addEventListener('input', function () {
+            advCount.textContent = this.value.length;
+        });
+    }
+
+    // Завантаження файлів
+    if (fileInput && imagePreview && fileSizeNoteError) {
+        fileInput.addEventListener('change', function (e) {
+            const files = Array.from(e.target.files);
+            const maxSize = 10 * 1024 * 1024; // 10 MB в байтах
+            let hasOversizedFile = false;
+
+            files.forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    if (file.size > maxSize) {
+                        hasOversizedFile = true;
+                    } else {
+                        uploadedFiles.push(file);
+
+                        const reader = new FileReader();
+                        reader.onload = function (ev) {
+                            const previewItem = document.createElement('div');
+                            previewItem.className = 'preview-item';
+                            previewItem.innerHTML = `
+                                <img src="${ev.target.result}" alt="Preview">
+                                <button type="button" class="remove-image" aria-label="Remove image">×</button>
+                            `;
+                            imagePreview.appendChild(previewItem);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                }
+            });
+
+            // Показ/приховування повідомлення про помилку
+            if (hasOversizedFile) {
+                fileSizeNoteError.style.display = 'block';
+                fileInput.value = '';
+            } else {
+                fileSizeNoteError.style.display = 'none';
+            }
+        });
+    }
+
+    // Видалення одного зображення
+    if (imagePreview) {
+        imagePreview.addEventListener('click', function (e) {
+            if (e.target.classList.contains('remove-image')) {
+                const idx = Array.from(imagePreview.children).indexOf(e.target.closest('.preview-item'));
+                if (idx > -1) uploadedFiles.splice(idx, 1);
+                e.target.closest('.preview-item').remove();
+            }
+        });
+    }
+
+    // Валідація
+    function validateForm() {
+        if (!comment || !submitBtn) return;
+        const isValid = selectedRating > 0 && comment.value.trim().length > 0;
+        submitBtn.disabled = !isValid;
+    }
+
+    // Сброс формы
+    function resetReviewForm() {
+        if (!form) return;
+        form.reset();
+        selectedRating = 0;
+        uploadedFiles = [];
+        imagePreview.innerHTML = '';
+        if (charCount) charCount.textContent = '0';
+        if (fileSizeNoteError) fileSizeNoteError.style.display = 'none';
+        ratingStars.forEach(s => {
+            s.classList.remove('active');
+            s.classList.add('inactive');
+        });
+        if (submitBtn) submitBtn.disabled = true;
+    }
+
+    // Відправка форми
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = {
+                rating: selectedRating,
+                comment: comment.value,
+                advantages: advantages ? advantages.value : '',
+                disadvantages: disadvantages ? disadvantages.value : '',
+                images: uploadedFiles.length
+            };
+
+            console.log('Дані відгуку:', formData);
+
+            // 1) Закриваем модалку формы
+            closeModal(modalAddReview);
+
+            // 2) Открываем success-модалку
+            if (successModal) {
+                successModal.classList.add('active');
+
+                // 3) Закриваем successModal4 через 3 секунды
+                setTimeout(() => {
+                    successModal.classList.remove('active');
+                }, 3000);
+            }
+
+            // 4) Очищаем форму
+            resetReviewForm();
+        });
+    }
+}
+
+
 function initAddressTab() {
     const addressModal = document.getElementById('modal-address');
     const addAddressBtn = document.getElementById('btn-add-address');
@@ -4620,7 +4096,7 @@ function initAddressTab() {
     // Delete Modal Elements
     const deleteModal = document.getElementById('modal-delete-address');
     const confirmDeleteBtn = document.getElementById('btn-confirm-delete-address');
-    const deleteSuccessModal = document.getElementById('successModal13');
+    const deleteSuccessModal = document.getElementById('modal-address-deleted-success');
     
     let currentEditingCard = null;
     let cardToDelete = null;
@@ -4776,30 +4252,6 @@ function initAddressTab() {
             document.body.classList.remove('is-lock');
         });
     });
-
-    // Закриття при кліку на фон
-    if (addressModal) {
-        addressModal.addEventListener('click', (e) => {
-            if (e.target === addressModal) {
-                addressModal.classList.remove('open');
-                document.body.classList.remove('is-lock');
-            }
-        });
-    }
-
-    // Закриття по Escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            if (addressModal && addressModal.classList.contains('open')) {
-                addressModal.classList.remove('open');
-                document.body.classList.remove('is-lock');
-            }
-            if (deleteModal && deleteModal.classList.contains('open')) {
-                deleteModal.classList.remove('open');
-                document.body.classList.remove('is-lock');
-            }
-        }
-    });
     
     // Close Delete Modal
     if (deleteModal) {
@@ -4809,13 +4261,6 @@ function initAddressTab() {
                 deleteModal.classList.remove('open');
                 document.body.classList.remove('is-lock');
             });
-        });
-
-        deleteModal.addEventListener('click', (e) => {
-            if (e.target === deleteModal) {
-                deleteModal.classList.remove('open');
-                document.body.classList.remove('is-lock');
-            }
         });
     }
 
@@ -5213,17 +4658,17 @@ function initAddressTab() {
                 }
 
                 // Close Delete Modal
-                if (deleteModal) {
-                    deleteModal.classList.remove('open');
-                    document.body.classList.remove('is-lock');
-                }
+                if (deleteModal) deleteModal.classList.remove('open');
                 
                 // Show Success
                 if (deleteSuccessModal) {
                     deleteSuccessModal.classList.add('active');
                     setTimeout(() => {
                         deleteSuccessModal.classList.remove('active');
+                        document.body.classList.remove('is-lock');
                     }, 3000);
+                } else {
+                    document.body.classList.remove('is-lock');
                 }
             }
         });
@@ -5271,7 +4716,6 @@ function initApp() {
     initShoppingCart();
     initReviewModal();
     initAddressTab();
-
 }
 
 // Запуск приложения после загрузки DOM

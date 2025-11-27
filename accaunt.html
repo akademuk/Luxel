@@ -1,0 +1,2041 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Luxel перший магазин електротоварів в Україні! | Home</title>
+
+  <link rel="stylesheet" href="styles/swiper-bundle.min.css">
+  <link rel="stylesheet" href="./styles/main.css" />
+</head>
+
+<body data-js-header>
+  <header class="header">
+    <div class="header__promo">
+      <div class="header__promo-inner container">
+        <nav class="header__promo-navigation">
+          <ul class="header__promo-navigation-list">
+            <li class="header__promo-navigation-item">
+              <a class="header__promo-navigation-link" href="/">Відгуки</a>
+            </li>
+            <li class="header__promo-navigation-item">
+              <a class="header__promo-navigation-link" href="/">Доставка</a>
+            </li>
+            <li class="header__promo-navigation-item">
+              <a class="header__promo-navigation-link" href="/">Оплата</a>
+            </li>
+            <li class="header__promo-navigation-item">
+              <a class="header__promo-navigation-link" href="/">Контакти</a>
+            </li>
+            <li class="header__promo-navigation-item">
+              <a class="header__promo-navigation-link" href="/">Блог</a>
+            </li>
+            <li class="header__promo-navigation-item header__promo-navigation-item--highlighted">
+              <a class="header__promo-navigation-link" href="/">Співпраця</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="header__promo-contacts">
+          <a href="tel:+380730415111" class="header__promo-contacts-phone">
+            <img src="icons/phone.svg" width="24" height="24" alt="">
+            +38 (073) 041-5111
+          </a>
+          <div class="header__promo-dropdown">
+            <div class="header__promo-dropdown-header" onclick="toggleDropdown()">
+              <span class="header__promo-dropdown-text">Зв'язатися з нами</span>
+              <img src="icons/dropdown.svg" class="header__promo-dropdown-arrow" id="dropdownArrow" width="14"
+                height="8" alt="">
+            </div>
+
+            <div class="header__promo-dropdown-content" id="dropdownContent">
+              <ul class="header__promo-dropdown-content-list">
+                <li class="header__promo-dropdown-content-item">
+                  <a href="/" class="header__promo-dropdown-content-link header__promo-dropdown-content-link--viber">
+                    <img src="icons/viber.svg" width="24" height="24" alt="">
+                    Viber
+                  </a>
+                </li>
+                <li class="header__promo-dropdown-content-item">
+                  <button class="header__promo-dropdown-content-link header__promo-dropdown-content-link--chat">
+                    <img src="icons/chat.svg" width="24" height="24" alt="">
+                    Написати в чат
+                  </button>
+                </li>
+                <li class="header__promo-dropdown-content-item">
+                  <span class="header__promo-dropdown-content-link header__promo-dropdown-content-link--mail"
+                    id="openwriteUsModal">
+                    <img src="icons/mail.svg" width="24" height="24" alt="">
+                    Написати на пошту
+                  </span>
+                </li>
+                <li class="header__promo-dropdown-content-item header__promo-dropdown-content-item--phone">
+                  <div class="header__promo-dropdown-content-link header__promo-dropdown-content-link--phone">
+                    <img src="icons/phone-black.svg" width="24" height="24" alt="">
+                    <address class="header__promo-dropdown-address">
+                      <div class="header__promo-dropdown-address-col">
+                        <span class="header__promo-dropdown-address-label">Інтернет магазин</span>
+                        <a href="tel:+380730415111" class="header__promo-dropdown-address-link">+38 (073) 041-51-11</a>
+                      </div>
+                      <div class="header__promo-dropdown-address-col">
+                        <span class="header__promo-dropdown-address-label">Офіс</span>
+                        <a href="tel:+380500415111" class="header__promo-dropdown-address-link">+38 (050) 041-51-11</a>
+                        <a href="tel:+380970145111" class="header__promo-dropdown-address-link">+38 (097) 014-51-11</a>
+                      </div>
+                    </address>
+                <li class="header__promo-dropdown-content-item">
+                  <a href="mailto:odessa@luxel.ua"
+                    class="header__promo-dropdown-content-link header__promo-dropdown-content-link--email">
+                    <img src="icons/google.svg" width="24" height="24" alt="">
+                    <div class="header__promo-dropdown-content-info">
+                      <span class="header__promo-dropdown-content-label">Пошта</span>
+                      <span class="header__promo-dropdown-content-value">odessa@luxel.ua</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="header__promo-language-dropdown">
+            <div class="header__promo-language-dropdown-header" onclick="toggleDropdownLanguage()">
+              <span class="header__promo-language-dropdown-text" id="selectedLanguage">UA</span>
+              <img src="icons/dropdown.svg" class="header__promo-language-arrow" id="dropdownArrowLanguage" width="14"
+                height="8" alt="">
+            </div>
+
+            <div class="header__promo-language-dropdown-menu" id="dropdownMenuLanguage">
+              <div class="header__promo-language-dropdown-option active" onclick="selectLanguage('UA', event)">
+                Українська
+              </div>
+              <div class="header__promo-language-dropdown-option" onclick="selectLanguage('RU', event)">
+                Русский
+              </div>
+              <div class="header__promo-language-dropdown-option" onclick="selectLanguage('EN', event)">
+                English
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="header__body">
+      <div class="header__body-inner container">
+        <a class="header__logo logo" href="/" aria-label="Home" title="Home">
+          <img class="logo__image" src="./images/logo.png" alt="" width="175" height="42" />
+        </a>
+        <button class="header__body-btn-catalog red-btn" id="catalogBtn">
+          <img src="icons/catalog-icons.svg" width="24" height="24" alt="">
+          Каталог
+        </button>
+        <div class="header__body-btn-search">
+          <span class="header__body-btn-search-icons">
+            <img src="icons/search.svg" width="22" height="22" alt="">
+          </span>
+          <form action="">
+            <input type="search" name="" id="" placeholder="Шукати товари">
+          </form>
+          <span class="header__body-btn-search-icons2">
+            <img src="icons/search-icon.svg" width="22" height="22" alt="">
+          </span>
+        </div>
+        <div class="header__body-btn-nav">
+          <button class="header__body-btn-nav-box" data-menu="favorites">
+            <img src="icons/icon1.svg" width="24" height="24" alt="">
+            <span class="header__body-btn-nav-text visible-desktop">Обране</span>
+          </button>
+          <button class="header__body-btn-nav-box" data-menu="cart">
+            <img src="icons/icon2.svg" width="24" height="24" alt="">
+            <span class="header__body-btn-nav-text visible-desktop">Кошик</span>
+            <span class="bascet-value"></span>
+          </button>
+          <button class="header__body-btn-nav-box" data-menu="account">
+            <img src="icons/icon3.svg" width="24" height="24" alt="">
+            <span class="header__body-btn-nav-text visible-desktop">Олексій</span>
+          </button>
+        </div>
+        <div class="header__promo-language-dropdown header__promo-language-dropdown--mobile">
+          <div class="header__promo-language-dropdown-header" onclick="toggleDropdownLanguage2()">
+            <span class="header__promo-language-dropdown-text" id="selectedLanguage2">UA</span>
+            <img src="icons/dropdown.svg" class="header__promo-language-arrow" id="dropdownArrowLanguage2" width="14"
+              height="8" alt="">
+          </div>
+
+          <div class="header__promo-language-dropdown-menu" id="dropdownMenuLanguage2">
+            <div class="header__promo-language-dropdown-option active" onclick="selectLanguage('UA', event)">
+              Українська
+            </div>
+            <div class="header__promo-language-dropdown-option" onclick="selectLanguage('RU', event)">
+              Русский
+            </div>
+            <div class="header__promo-language-dropdown-option" onclick="selectLanguage('EN', event)">
+              English
+            </div>
+          </div>
+        </div>
+        <button class="header__burger-button burger-button visible-mobile" type="button" aria-label="Open menu"
+          title="Open menu" data-js-header-burger-button>
+          <span class="burger-button__line"></span>
+          <span class="burger-button__line"></span>
+          <span class="burger-button__line"></span>
+        </button>
+      </div>
+    </div>
+    <div class="header__body-search-mobile">
+      <div class="header__promo-inner container">
+        <div class="header__body-btn-search">
+          <span class="header__body-btn-search-icons">
+            <img src="icons/search.svg" width="22" height="22" alt="">
+          </span>
+          <form action="">
+            <input type="search" name="" id="" placeholder="Шукати товари">
+          </form>
+          <span class="header__body-btn-search-icons2">
+            <img src="icons/search-icon.svg" width="22" height="22" alt="">
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+
+    <div class="account-page">
+      <div class="account-page__inner container">
+        <div class="account-page__inner-sect">
+          <h1 class="account-title">Аккаунт</h1>
+          <button class="account-title-btn-add border-btn" id="btn-add-address-header"
+            style="display: none; gap: 8px; padding: 12px 24px; align-items: center;">
+            <img src="icons/plus.svg" alt="Add">
+            Додати адресу
+          </button>
+        </div>
+
+        <div class="account-layout">
+          <!-- Left Sidebar -->
+          <aside class="account-sidebar">
+            <nav class="account-nav">
+              <ul class="account-nav__list">
+                <li class="account-nav__item active" data-tab="profile-card">
+                  <span class="account-nav__icon">
+                    <img src="icons/account-nav__icon1.svg" width="22" height="22" alt="">
+                  </span>
+                  <span class="account-nav__text">Профіль</span>
+                </li>
+                <li class="account-nav__item" data-tab="address">
+                  <span class="account-nav__icon">
+                    <img src="icons/account-nav__icon2.svg" width="22" height="22" alt="">
+                  </span>
+                  <span class="account-nav__text">Адреси доставки</span>
+                </li>
+                <li class="account-nav__item" data-tab="orders">
+                  <span class="account-nav__icon">
+                    <img src="icons/account-nav__icon3.svg" width="22" height="22" alt="">
+                  </span>
+                  <span class="account-nav__text">Історія замовлень</span>
+                </li>
+                <li class="account-nav__item" data-tab="reviews">
+                  <span class="account-nav__icon">
+                    <img src="icons/account-nav__icon4.svg" width="22" height="22" alt="">
+                  </span>
+                  <span class="account-nav__text">Мої відгуки та питання</span>
+                </li>
+                <li class="account-nav__item" id="logout-btn">
+                  <span class="account-nav__text">Вийти з аккаунту</span>
+                </li>
+              </ul>
+            </nav>
+            <a href="#" class="account-sidebar__delete">Видалити аккаунт</a>
+          </aside>
+
+          <!-- Right Content -->
+          <div class="account-content-box">
+            <div class="account-content">
+
+              <!-- TAB 1: Профіль -->
+              <div class="profile-card tab-content active" id="profile-card">
+                <div class="profile-card--border">
+                  <div class="profile-card__header">
+                    <h2 class="profile-card__title">Контактна інформація</h2>
+                    <button class="btn-text-edit" id="btn-edit-mode">Редагувати
+                      <img src="icons/edit.svg" width="17" height="17" alt="Редагувати">
+                    </button>
+                  </div>
+
+                  <form class="profile-card__form" id="profile-form">
+                    <!-- Name -->
+                    <div class="form-group">
+                      <label class="form-label">Ім’я</label>
+                      <div class="form-group__wrapper value-container">
+                        <input type="text" class="form-input" name="firstName" value="Олексій" readonly>
+                        <button type="button" class="btn-edit-field" data-type="text" data-name="firstName"
+                          data-label="Ім’я" aria-label="Редагувати ім'я">
+                          <img src="icons/edit.svg" width="15" height="15" alt="Редагувати" aria-hidden="true">
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Surname -->
+                    <div class="form-group">
+                      <label class="form-label">Прізвище</label>
+                      <div class="form-group__wrapper value-container">
+                        <input type="text" class="form-input" name="lastName" value="Мавритюк" readonly>
+                        <button type="button" class="btn-edit-field" data-type="text" data-name="lastName"
+                          data-label="Прізвище" aria-label="Редагувати прізвище">
+                          <img src="icons/edit.svg" width="15" height="15" alt="Редагувати" aria-hidden="true">
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Date of Birth -->
+                    <div class="form-group">
+                      <label class="form-label">Дата народження</label>
+                      <div class="form-group__wrapper value-container is-empty" id="dob-container">
+                        <input type="text" class="form-input" name="dob" value="" placeholder="Не вказано" readonly>
+                        <span class="empty-value form-input" style="display:none;">Не вказано</span>
+                        <!-- Fallback for read mode -->
+                        <button type="button" class="btn-add-value" id="btn-add-dob">Додати
+                          <img src="icons/add.svg" width="14" height="14" alt="Додати">
+                        </button>
+                        <button type="button" class="btn-edit-field" data-type="dob" data-name="dob"
+                          data-label="Дата народження" aria-label="Редагувати дату народження">
+                          <img src="icons/edit.svg" width="15" height="15" alt="Редагувати" aria-hidden="true">
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="form-group">
+                      <label class="form-label">Телефон</label>
+                      <div class="form-group__wrapper value-container">
+                        <input type="tel" class="form-input" name="phone" value="+380 (66) 111-22-33" readonly>
+                        <button type="button" class="btn-edit-field" data-type="phone" data-name="phone"
+                          data-label="Телефон" aria-label="Редагувати телефон">
+                          <img src="icons/edit.svg" width="15" height="15" alt="Редагувати" aria-hidden="true">
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                      <label class="form-label">Email</label>
+                      <div class="form-group__wrapper value-container is-empty" id="email-container">
+                        <input type="email" class="form-input" name="email" value="" placeholder="Не вказано" readonly>
+                        <button type="button" class="btn-add-value" id="btn-add-email">Додати
+                          <img src="icons/add.svg" width="14" height="14" alt="Додати">
+                        </button>
+                        <button type="button" class="btn-edit-field" data-type="email" data-name="email"
+                          data-label="Email" aria-label="Редагувати email">
+                          <img src="icons/edit.svg" width="15" height="15" alt="Редагувати" aria-hidden="true">
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="profile-card__footer">
+                  <button class="btn-action btn-cancel border-btn" id="btn-cancel-edit">Скасувати</button>
+                  <button class="btn-action btn-save red-btn" id="btn-save-changes" disabled>Зберегти зміни</button>
+                </div>
+              </div>
+              <!-- TAB 2: Адреси доставки -->
+              <div class="profile-card tab-content" id="address">
+                <div class="address-empty">
+                  <h2 class="address-empty__title">У вас ще немає адрес</h2>
+                  <p>Додайти адресу для ваших майбутніх замовленнь.</p>
+                  <button class="address-empty__btn red-btn" id="btn-add-address">
+                    Додати адресу
+                  </button>
+                </div>
+                <div class="address-list" id="address-list" style="display: none;">
+                  <!-- Addresses will be added here dynamically -->
+                </div>
+              </div>
+              <!-- TAB 3: Історія замовлень -->
+              <div class="profile-card tab-content" id="orders">
+                <div class="address-empty" style="display: none;">
+                  <h2 class="address-empty__title">У вас ще немає замовлень</h2>
+                  <p>Оформлюйте та відстежуйте статус ваших замовлень тут.</p>
+                  <a href="/" class="address-empty__btn red-btn">
+                    До каталогу
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Generic Text Edit -->
+    <div class="acc-modal" id="modal-generic">
+      <div class="acc-modal__content">
+        <div class="acc-modal__content-header">
+          <h3 class="acc-modal__title" id="modal-generic-title">Редагувати</h3>
+          <button class="acc-modal__close" data-close-modal="modal-generic">
+            <img src="icons/close-black.svg" width="12" height="12" alt="Close">
+          </button>
+        </div>
+        <div class="acc-modal__body">
+          <div class="form-group">
+            <label class="form-label" id="modal-generic-label">Значення</label>
+            <input type="text" id="modal-generic-input" class="form-input">
+          </div>
+        </div>
+        <div class="acc-modal__footer">
+          <button class="btn-action btn-save red-btn" id="btn-confirm-generic" style="width: 100%;">Зберегти</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Add Email -->
+    <div class="acc-modal" id="modal-email">
+      <div class="acc-modal__content">
+        <div class="acc-modal__content-header">
+          <h3 class="acc-modal__title">Додати Email</h3>
+          <button class="acc-modal__close" data-close-modal="modal-email">
+            <img src="icons/close-black.svg" width="12" height="12" alt="Close">
+          </button>
+        </div>
+        <div class="acc-modal__body">
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" id="modal-email-input" class="form-input" placeholder="Ваш Email">
+            <span class="novalid-style" id="modal-email-error" style="display:none; margin-top:5px;">Невірний формат
+              Email</span>
+          </div>
+        </div>
+        <div class="acc-modal__footer">
+          <button class="btn-action red-btn btn-save" id="btn-confirm-email" disabled
+            style="width: 100%;">Підтвердити</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Date of Birth -->
+    <div class="acc-modal" id="modal-dob">
+      <div class="acc-modal__content">
+        <div class="acc-modal__content-header">
+          <h3 class="acc-modal__title">Оберіть дату народження</h3>
+          <button class="acc-modal__close" data-close-modal="modal-dob">
+            <img src="icons/close-black.svg" width="12" height="12" alt="Close">
+          </button>
+        </div>
+        <div class="acc-modal__body">
+          <div class="date-selectors">
+            <!-- Day -->
+            <div class="date-select-wrapper">
+              <span>День</span>
+              <div class="date-select-btn" id="sel-day">
+                <span class="val">--</span>
+                <img src="icons/dropdown.svg" width="10" height="6" alt="v">
+              </div>
+              <div class="date-dropdown" id="list-day"></div>
+            </div>
+            <!-- Month -->
+            <div class="date-select-wrapper">
+              <span>Місяць</span>
+              <div class="date-select-btn" id="sel-month">
+                <span class="val">--</span>
+                <img src="icons/dropdown.svg" width="10" height="6" alt="v">
+              </div>
+              <div class="date-dropdown" id="list-month"></div>
+            </div>
+            <!-- Year -->
+            <div class="date-select-wrapper">
+              <span>Рік</span>
+              <div class="date-select-btn" id="sel-year">
+                <span class="val">--</span>
+                <img src="icons/dropdown.svg" width="10" height="6" alt="v">
+              </div>
+              <div class="date-dropdown" id="list-year"></div>
+            </div>
+          </div>
+        </div>
+        <div class="acc-modal__footer">
+          <button class="btn-action btn-save red-btn" id="btn-confirm-dob" disabled
+            style="width: 100%;">Підтвердити</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Unsaved Changes (Navigation) -->
+    <div class="acc-modal" id="modal-unsaved">
+      <div class="acc-modal__content">
+        <h3 class="acc-modal__title">Зберегти зміни?</h3>
+        <div class="acc-modal__body" style="text-align: center; color: #666;">
+          <p>Ви внесли зміни до даних облікового запису, але не завершили редагування. Зберегти їх перед виходом?</p>
+        </div>
+        <div class="acc-modal__footer">
+          <button class="btn-action btn-text-edit" id="btn-unsaved-cancel" style="border:none;">Скасувати</button>
+          <button class="btn-action btn-cancel" id="btn-unsaved-continue">Продовжити</button>
+          <button class="btn-action btn-save" id="btn-unsaved-save">Зберегти</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Confirm Save (Explicit Save Button) -->
+    <div class="acc-modal" id="modal-confirm-save">
+      <div class="acc-modal__content">
+        <h3 class="acc-modal__title">Зберегти зміни?</h3>
+        <div class="acc-modal__body">
+          <p>Ви внесли зміни до даних облікового запису, але не завершили редагування. Зберегти їх перед виходом?</p>
+        </div>
+        <div class="acc-modal__footer">
+          <button class="btn-action btn-text-edit" id="btn-confirm-save-cancel" style="border:none;">Скасувати</button>
+          <button class="btn-action btn-cancel" id="btn-confirm-save-continue">Продовжити</button>
+          <button class="btn-action btn-save" id="btn-confirm-save-save">Зберегти</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Logout -->
+    <div class="acc-modal" id="modal-logout">
+      <div class="acc-modal__content">
+        <div class="acc-modal__content-header">
+          <h3 class="acc-modal__title">Вийти з аккаунту</h3>
+        </div>
+        <div class="acc-modal__body">
+          <p>Ви справді хочете вийти зі свого аккаунту?</p>
+        </div>
+        <div class="acc-modal__footer">
+          <button class="btn-action btn-text-edit" data-close-modal="modal-logout"
+            style="border:none;">Скасувати</button>
+          <button class="btn-action btn-save red-btn" id="btn-confirm-logout">Вийти</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Delete Account -->
+    <div class="acc-modal" id="modal-delete-account">
+      <div class="acc-modal__content">
+        <div class="acc-modal__content-header">
+          <h3 class="acc-modal__title">Видалити аккаунт?</h3>
+        </div>
+        <div class="acc-modal__body">
+          <p>Після видалення акаунту ви втратите доступ до всіх збережених даних, історії та налаштувань. Цю дію
+            неможливо буде скасувати.</p>
+        </div>
+        <div class="acc-modal__footer">
+          <button class="btn-action btn-text-edit" data-close-modal="modal-delete-account"
+            style="border:none;">Скасувати</button>
+          <button class="btn-action btn-save red-btn" id="btn-confirm-delete">Видалити</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Delete Success -->
+    <div class="acc-modal" id="modal-delete-success">
+      <div class="acc-modal__content">
+        <div class="acc-modal__content-header">
+          <h3 class="acc-modal__title">Аккаунт видалено</h3>
+        </div>
+        <div class="acc-modal__body">
+          <p>Ваш акаунт успішно видалено. Дякуємо, що були з нами.</p>
+        </div>
+        <div class="acc-modal__footer">
+          <a href="/" class="btn-action btn-save red-btn"
+            style="text-decoration: none; display: flex; align-items: center; justify-content: center;">На головну</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Add Address -->
+    <div class="acc-modal" id="modal-address">
+      <div class="acc-modal__content">
+        <div class="acc-modal__content-header">
+          <h3 class="acc-modal__title">Додати адресу</h3>
+          <button class="acc-modal__close" data-close-modal="modal-address">
+            <img src="icons/close-black.svg" width="12" height="12" alt="Close">
+          </button>
+        </div>
+        <div class="acc-modal__body">
+          <form id="address-form" class="address-form">
+            <!-- Country -->
+            <div class="form-group">
+              <label class="form-label">Країна
+                <span class="required">*</span>
+              </label>
+              <div class="custom-select" id="select-country">
+                <div class="select-selected">Оберіть країну</div>
+                <div class="select-items select-hide">
+                  <div data-value="ukraine">Україна</div>
+                </div>
+                <input type="hidden" name="country" id="input-country">
+              </div>
+            </div>
+
+            <!-- Region -->
+            <div class="form-group">
+              <label class="form-label">Область
+                <span class="required">*</span>
+              </label>
+              <div class="custom-select" id="select-region">
+                <div class="select-selected">Оберіть область</div>
+                <div class="select-items select-hide">
+                  <div data-value="kyiv">Київська</div>
+                  <div data-value="lviv">Львівська</div>
+                  <div data-value="odesa">Одеська</div>
+                </div>
+                <input type="hidden" name="region" id="input-region">
+              </div>
+            </div>
+
+            <!-- City -->
+            <div class="form-group">
+              <label class="form-label">Місто
+                <span class="required">*</span>
+              </label>
+              <div class="custom-select" id="select-city">
+                <div class="select-selected">Оберіть місто</div>
+                <div class="select-items select-hide">
+                  <div data-value="kyiv">Київ</div>
+                  <div data-value="lviv">Львів</div>
+                  <div data-value="odesa">Одеса</div>
+                </div>
+                <input type="hidden" name="city" id="input-city">
+              </div>
+            </div>
+
+            <!-- Delivery Method -->
+            <div class="form-group">
+              <label class="form-label">Спосіб доставки
+                <span class="required">*</span>
+              </label>
+              <div class="custom-select" id="select-delivery">
+                <div class="select-selected">Оберіть спосіб доставки</div>
+                <div class="select-items select-hide">
+                  <div data-value="address">За адресою</div>
+                  <div data-value="nova_poshta">Нова пошта - відділення</div>
+                  <div data-value="nova_poshta_locker">Нова пошта - поштомат</div>
+                  <div data-value="ukr_poshta">Укрпошта - відділення</div>
+                </div>
+                <input type="hidden" name="delivery" id="input-delivery">
+              </div>
+            </div>
+
+            <!-- Conditional Fields for "By Address" -->
+            <div id="address-details" class="address-details" style="display: none;">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Вулиця</label>
+                  <div class="custom-select" id="select-street">
+                    <div class="select-selected">Оберіть вулицю</div>
+                    <div class="select-items select-hide">
+                      <div data-value="khreshchatyk">Хрещатик</div>
+                      <div data-value="shevchenka">Шевченка</div>
+                      <div data-value="lesi">Лесі Українки</div>
+                    </div>
+                    <input type="hidden" name="street" id="input-street">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Будинок<span class="required">*</span></label>
+                  <input type="text" class="form-input" name="house" placeholder="Номер будинку">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Індекс<span class="required">*</span></label>
+                  <input type="text" class="form-input" name="zip" placeholder="Індекс">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Корпус</label>
+                  <input type="text" class="form-input" name="apartment" placeholder="Корпус">
+                </div>
+              </div>
+            </div>
+
+            <!-- Conditional Fields for "Nova Poshta" -->
+            <div id="nova-poshta-details" class="address-details" style="display: none;">
+              <div class="form-group">
+                <label class="form-label">Відділення</label>
+                <div class="custom-select" id="select-branch">
+                  <div class="select-selected">Оберіть відділення</div>
+                  <div class="select-items select-hide">
+                    <div data-value="1">Відділення №1: вул. Хрещатик, 1</div>
+                    <div data-value="2">Відділення №2: вул. Шевченка, 10</div>
+                    <div data-value="3">Відділення №3: вул. Лесі Українки, 5</div>
+                  </div>
+                  <input type="hidden" name="branch" id="input-branch">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="acc-modal__footer">
+          <button class="btn-action btn-save red-btn" id="btn-save-address" style="width: 100%;"
+            disabled>Зберегти</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Delete Address Confirmation -->
+    <div class="acc-modal" id="modal-delete-address">
+      <div class="acc-modal__content">
+        <div class="acc-modal__content-header">
+          <h3 class="acc-modal__title">Видалити адресу?</h3>
+        </div>
+        <div class="acc-modal__body">
+          <p>Вся інформація про цю адресу буде видалена назажди.</p>
+        </div>
+        <div class="acc-modal__footer">
+          <button class="btn-action btn-text-edit" data-close-modal="modal-delete-address"
+            style="border:none;">Скасувати</button>
+          <button class="btn-action btn-save" id="btn-confirm-delete-address">Видалити</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Address Deleted Success -->
+    <div class="acc-modal" id="modal-address-deleted-success">
+      <div class="acc-modal__content">
+        <img src="icons/success.svg" width="40" height="40" alt="">
+        <p class="modal__text">Адресу було видалено!</p>
+      </div>
+    </div>
+
+    <div class="modal" id="successModal13">
+      <div class="modal__content">
+        <img src="icons/success.svg" width="40" height="40" alt="">
+        <p class="modal__text">Адресу було видалено!</p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner container">
+      <div class="footer__logo">
+        <a href="/" class="footer__logo-link">
+          <img src="images/black-logo.png" width="150" height="34" alt="Luxel footer logo">
+        </a>
+      </div>
+      <div class="footer__content">
+        <div class="footer__content-box">
+          <div class="footer__content-col">
+            <h3 class="footer__content-col-title">Контакти</h3>
+            <div class="footer__content-col-contact">
+              <h4>Гаряча лінія</h4>
+              <div class="footer__content-col-contact-row">
+                <a href="tel:+380730415111">+38 (073) 041-5111</a>
+                <span class="footer__content-col-contact-grafic">(пн-пт 10:00-18:00)</span>
+              </div>
+            </div>
+            <div class="footer__content-col-contact">
+              <h4>Офіс</h4>
+              <a href="tel:+380500415111">+38 (050) 041-51-11</a>
+              <a href="tel:+380970145111">+38 (097) 014-51-11</a>
+            </div>
+            <div class="footer__content-col-contact footer__content-col-contact--email">
+              <h4>Email</h4>
+              <a href="mailto:odessa@luxel.ua">odessa@luxel.ua</a>
+            </div>
+            <div class="footer__accordion">
+              <div class="footer__accordion-item">
+                <h3 class="footer__accordion-header">
+                  <button class="footer__accordion-button" type="button" aria-expanded="false"
+                    aria-controls="accordion-panel-1">
+                    <span class="footer__accordion-title">Про компанію</span>
+                    <span class="footer__accordion-icon" aria-hidden="true">
+                      <img src="icons/accardion-arrow.svg" width="24" height="24" alt="">
+                    </span>
+                  </button>
+                </h3>
+                <div class="footer__accordion-panel" id="accordion-panel-1" role="region"
+                  aria-labelledby="accordion-panel-1">
+                  <div class="footer__accordion-content">
+                    <ul class="footer__accordion-list">
+                      <li class="footer__accordion-list-item">
+                        <a href="#" class="footer__accordion-link">Доставка</a>
+                      </li>
+                      <li class="footer__accordion-list-item">
+                        <a href="#" class="footer__accordion-link">Оплата</a>
+                      </li>
+                      <li class="footer__accordion-list-item">
+                        <a href="#" class="footer__accordion-link">Умови повернення і
+                          гарантії</a>
+                      </li>
+                      <li class="footer__accordion-list-item">
+                        <a href="#" class="footer__accordion-link">Задати питання експертам</a>
+                      </li>
+                      <li class="footer__accordion-list-item">
+                        <a href="#" class="footer__accordion-link">Завантажити каталог</a>
+                      </li>
+                      </li>
+                      <li class="footer__accordion-list-item">
+                        <a href="#" class="footer__accordion-link">Вiдео файли</a>
+                      </li>
+                      <li class="footer__accordion-list-item">
+                        <a href="#" class="footer__accordion-link">Політика конфіденційності</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="footer__accordion-item">
+                <h3 class="footer__accordion-header">
+                  <button class="footer__accordion-button" type="button" aria-expanded="false"
+                    aria-controls="accordion-panel-2">
+                    <span class="footer__accordion-title">Послуги</span>
+                    <span class="footer__accordion-icon" aria-hidden="true">
+                      <img src="icons/accardion-arrow.svg" width="24" height="24" alt="">
+                    </span>
+                  </button>
+                </h3>
+                <div class="footer__accordion-panel" id="accordion-panel-2" role="region"
+                  aria-labelledby="accordion-panel-2">
+                  <div class="footer__accordion-content">
+                    <ul class="footer__accordion-list">
+                      <li class="footer__accordion-list-item">
+                        <a href="#" class="footer__accordion-link">Консультації</a>
+                      </li>
+                      <li class="footer__accordion-list-item">
+                        <a href="#" class="footer__accordion-link">Розробка</a>
+                      </li>
+                      <li class="footer__accordion-list-item">
+                        <a href="#" class="footer__accordion-link">Підтримка</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer__content-col-contact footer__content-col-contact--social">
+              <h4>Соцмережі</h4>
+              <a href="https://t.me/yourchannel" target="_blank" aria-label="Телеграм">
+                <img src="icons/tg-red.svg" width="21" height="18" alt="">
+              </a>
+            </div>
+          </div>
+          <div class="footer__content-col footer__content-col--descktop">
+            <h3 class="footer__content-col-title">Допомога</h3>
+            <ul class="footer__content-list">
+              <li class="footer__content-item">
+                <a href="" class="footer__content-link">Гаряча лінія</a>
+              </li>
+              <li class="footer__content-item">
+                <a href="" class="footer__content-link">Оплата</a>
+              </li>
+              <li class="footer__content-item">
+                <a href="" class="footer__content-link">Умови повернення і гарантії</a>
+              </li>
+              <li class="footer__content-item">
+                <a href="" class="footer__content-link">Задати питання експертам</a>
+              </li>
+              <li class="footer__content-item">
+                <a href="" class="footer__content-link">Завантажити каталог</a>
+              </li>
+              <li class="footer__content-item">
+                <a href="" class="footer__content-link">Вiдео файли</a>
+              </li>
+              <li class="footer__content-item">
+                <a href="" class="footer__content-link">Політика конфіденційності</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__content-help">
+          <h3>Підпишіться, щоб отримувати найкращі знижки та пропозиції</h3>
+          <p>Підписуйтеся на розсилку, щоб слідкувати за останніми новинами та акційними пропозиціями та
+            отримайте
+            знижку на перше замовлення в нашому магазині! </p>
+          <form action="" class="footer-form">
+            <input type="email" name="eamil" id="footerEmail" placeholder="Ваш Email" required>
+            <button type="submit" class="footer-btn red-btn">Підписатися</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__bottom-copiright">Luxel © 2025. Усі права захищені</p>
+        <ul class="footer__bottom-list">
+          <li class="footer__bottom-item">
+            <img src="icons/bank1.svg" width="22" height="22" alt="">
+          </li>
+          <li class="footer__bottom-item">
+            <img src="icons/bank2.svg" width="22" height="22" alt="">
+          </li>
+          <li class="footer__bottom-item">
+            <img src="icons/bank3.svg" width="22" height="22" alt="">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <div class="request-call">
+    <button class="request-call-btn" id="requestCallBtn">
+      <img src="icons/phone-white.svg" width="22" height="22" alt="">
+      Замовити дзвінок
+    </button>
+  </div>
+
+  <!-- Модалка с формой -->
+  <div class="modal" id="callModal">
+    <div class="modal__content">
+      <button class="modal__close" id="closeModal">
+        <img src="icons/close-black.svg" width="13" height="13" alt="">
+      </button>
+      <h2 class="modal__title">Замовити дзвінок</h2>
+      <p class="modal__text">Залиште свій номер, ми перетелефонуємо вам якнайшвидше.</p>
+      <form class="modal__form" id="callForm">
+        <div class="modal__form-col">
+          <label for="name" class="label-required">Ім’я</label>
+          <input type="text" name="name" id="name" placeholder="Ваше ім’я" required>
+        </div>
+        <div class="modal__form-col">
+          <label for="phone" class="label-required">Номер телефону</label>
+          <input type="tel" name="phone" id="phone" placeholder="+380" required>
+          <span class="novalid-style">Невірний формат номеру телефона</span>
+        </div>
+
+        <button type="submit" class="modal__form-btn">Замовити дзвінок</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Модалка с формой -->
+  <div class="modal" id="writeUs">
+    <div class="modal__content">
+      <div class="modal__content-header">
+        <h2 class="modal__title">Напишіть нам</h2>
+        <button class="modal__close" id="closeModal2">
+          <img src="icons/close-black.svg" width="13" height="13" alt="">
+        </button>
+      </div>
+      <form class="modal__form" id="callForm2">
+        <div class="modal__form-col">
+          <label for="name" class="label-required">Ім’я</label>
+          <input type="text" name="name" id="name-write" placeholder="Ваше ім’я" required>
+        </div>
+        <div class="modal__form-col">
+          <label for="Email" class="label-required">Email</label>
+          <input type="email" name="Email" id="Email" placeholder="Ваш email" required>
+          <span class="novalid-style">Невірний формат Email</span>
+        </div>
+        <div class="modal__form-col">
+          <label for="thema" class="label-required">Тема</label>
+          <input type="text" name="thema" id="thema" placeholder="Опишіть коротко тему повідомлення" required>
+        </div>
+        <div class="modal__form-col">
+          <label for="message" class="label-required">Ваше повідомлення</label>
+          <textarea name="message" id="message" placeholder="Опишіть детальніше ваш запит"></textarea>
+        </div>
+
+        <button type="submit" class="modal__form-btn">Надіслати</button>
+        <span class="modal__form-info">Натискаючи кнопку «Відправитит», ви надаєте свою згоду на обробку персональних
+          даних. Правила обробки ваших даних можна ознайомитися в <a href="/" class="modal__form-politic">Політиці
+            конфіденційності</a>.</span>
+      </form>
+    </div>
+  </div>
+
+  <!-- Модалка с благодарностью -->
+  <div class="modal" id="successModal">
+    <div class="modal__content">
+      <img src="icons/success.svg" width="40" height="40" alt="">
+      <p class="modal__text">Ваше повідомлення було успішно відправлено! Ми якнайшвидше зв’яжемося з вами.</p>
+    </div>
+  </div>
+
+  <!-- Модалка с благодарностью -->
+  <div class="modal" id="successModal9">
+    <div class="modal__content">
+      <img src="icons/success.svg" width="40" height="40" alt="">
+      <p class="modal__text">Вітаємо! Ваш аккаунт було успішно зареєстровано!</p>
+    </div>
+  </div>
+
+  <!-- Модалка с благодарностью -->
+  <div class="modal" id="successModal12">
+    <div class="modal__content">
+      <img src="icons/success.svg" width="40" height="40" alt="">
+      <p class="modal__text">Зміни були успішно збережені!</p>
+    </div>
+  </div>
+
+  <!-- Меню на мобильном устройстве -->
+  <nav class="mobile-nav">
+    <div class="mobile-nav__item mobile-nav__item--active">
+      <button type="button" data-nav="home">
+        <img src="icons/home.svg" width="24" height="24" alt="">
+        Головна
+      </button>
+    </div>
+    <div class="mobile-nav__item">
+      <button type="button" data-menu="catalog">
+        <img src="icons/catalog-icons.svg" width="24" height="24" alt="">
+        Каталог
+      </button>
+    </div>
+    <div class="mobile-nav__item">
+      <button type="button" data-menu="cart">
+        <span class="bascet-value"></span>
+        <img src="icons/icon2.svg" width="24" height="24" alt="">
+        Кошик
+      </button>
+    </div>
+    <div class="mobile-nav__item">
+      <button type="button" data-menu="favorites">
+        <img src="icons/icon1.svg" width="24" height="24" alt="">
+        Обране
+      </button>
+    </div>
+    <div class="mobile-nav__item">
+      <button type="button" data-menu="account">
+        <img src="icons/icon3.svg" width="24" height="24" alt="">
+        Аккаунт
+      </button>
+    </div>
+  </nav>
+
+  <div class="overflow-hidden"></div>
+
+  <div class="header__overlay" data-js-header-overlay>
+    <div class="header-burger__menu">
+      <div class="header-burger__menu-top">
+        <a class="header__logo logo" href="/" aria-label="Home" title="Home">
+          <img class="logo__image" src="./images/logo.png" alt="" width="175" height="42" />
+        </a>
+        <button class="header-burger__menu-close">
+          <img src="icons/close-black.svg" width="13" height="13" alt="">
+        </button>
+      </div>
+      <ul class="header-burger__menu-main">
+        <li class="header-burger__menu-main-list">
+          <a href="/" class="header-burger__menu-main-link">Відгуки</a>
+        </li>
+        <li class="header-burger__menu-main-list">
+          <a href="/" class="header-burger__menu-main-link">Доставка</a>
+        </li>
+        <li class="header-burger__menu-main-list">
+          <a href="/" class="header-burger__menu-main-link">Оплата</a>
+        </li>
+        <li class="header-burger__menu-main-list">
+          <a href="/" class="header-burger__menu-main-link">Контакти</a>
+        </li>
+        <li class="header-burger__menu-main-list">
+          <a href="/" class="header-burger__menu-main-link">Блог</a>
+        </li>
+        <li class="header-burger__menu-main-list">
+          <a href="/" class="header-burger__menu-main-link header-burger__menu-main-link--active">Співпраця</a>
+        </li>
+      </ul>
+      <div class="header-burger__menu-contact">
+        <h3>Зв’язатися з нами</h3>
+        <div class="header-burger__menu-contact-box">
+          <div class="header-burger__menu-contact-col">
+            <a href="tel:+380730415111">+38 (073) 041-5111</a>
+            <span>Пн-Пт: 09:00 - 17:00</span>
+          </div>
+          <ul class="header-burger__menu-contact-social">
+            <li class="header-burger__menu-contacts">
+              <a href="/" class="header-burger__menu-contact-item header-burger__menu-contact-item--viber">
+                <img src="icons/viber.svg" alt="">
+              </a>
+            </li>
+            <li class="header-burger__menu-contacts">
+              <a href="/" class="header-burger__menu-contact-item header-burger__menu-contact-item--phone">
+                <img src="icons/phone-white.svg" alt="">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <button class="header-burger__menu-btn">Підтримка</button>
+      <div class="header-burger__menu-top-hidden">
+        <button class="header-burger__menu-top-back" id="back1">Задати питання</button>
+        <ul class="header-burger__menu-top-hidden-list">
+          <li class="header-burger__menu-top-hidden-item">
+            <button class="header-burger__menu-top-hidden-link">
+              <img src="icons/link-hidden1.svg" width="22" height="21" alt="">
+              Написати в чат</button>
+          </li>
+          <li class="header-burger__menu-top-hidden-item">
+            <button class="header-burger__menu-top-hidden-link" id="burgerform">
+              <img src="icons/link-hidden2.svg" width="22" height="21" alt="">
+              Написати на пошту</button>
+          </li>
+        </ul>
+
+        <div class="header-burger__menu-top-hidden-email">
+          <button class="header-burger__menu-top-back" id="back2">Напишіть нам</button>
+          <div class="modal__content">
+            <form class="modal__form" id="callFormBurger">
+              <div class="modal__form-col">
+                <label for="name" class="label-required">Ім’я</label>
+                <input type="text" name="name" id="name-write" placeholder="Ваше ім’я" required>
+              </div>
+              <div class="modal__form-col">
+                <label for="Email" class="label-required">Ваш email</label>
+                <input type="email" name="Email" id="Email" placeholder="Ваш email" required>
+                <span class="novalid-style">Невірний формат Email</span>
+              </div>
+              <div class="modal__form-col">
+                <label for="thema" class="label-required">Тема</label>
+                <input type="text" name="thema" id="thema" placeholder="Опишіть коротко тему повідомлення" required>
+              </div>
+              <div class="modal__form-col">
+                <label for="message" class="label-required">Ваше повідомлення</label>
+                <textarea name="message" id="message" placeholder="Опишіть детальніше ваш запит"></textarea>
+              </div>
+              <span class="modal__form-info">Натискаючи кнопку «Надіслати», ви надаєте свою згоду на обробку
+                персональних
+                даних. Правила обробки ваших даних можна ознайомитися в <a href="/" class="modal__form-politic">Політиці
+                  конфіденційності</a>.</span>
+              <button type="submit" class="modal__form-btn">Надіслати</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Overlay -->
+  <div class="overlay"></div>
+
+  <!-- Меню Каталог -->
+  <div class="slide-menu" id="catalog-menu">
+    <div class="header-burger__menu">
+      <div class="header-burger__menu-top">
+        <a class="header__logo logo" href="/" aria-label="Home" title="Home">
+          <img class="logo__image" src="./images/logo.png" alt="" width="175" height="42" />
+        </a>
+        <button class="slide-menu__close header-burger__menu-close" data-close="catalog-menu"><img
+            src="icons/close-black.svg" width="13" height="13" alt=""></button>
+      </div>
+      <div class="header-burger__menu-main">
+        <ul class="menu-list">
+          <li class="header-burger__menu-main-item">
+            <a href="/" class="header-burger__menu-main-link" data-submenu="lamps">
+              <div class="header-burger__menu-main-icon">
+                <img src="images/menu-image1.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+              </div>
+              <div class="header-burger__menu-main-content">
+                <strong class="header-burger__menu-main-title">Світлові (LED) Лампи</strong>
+                <span class="header-burger__menu-main-count">128 товарів</span>
+              </div>
+            </a>
+          </li>
+          <li class="header-burger__menu-main-list">
+            <a href="/" class="header-burger__menu-main-link" data-submenu="ledLighting">
+              <div class="header-burger__menu-main-icon">
+                <img src="images/menu-image2.png" alt="LED Лампи" loading="lazy" width="56" height="56">
+              </div>
+              <div class="header-burger__menu-main-content">
+                <strong class="header-burger__menu-main-title">Світодіодне (LED) Освітлення</strong>
+                <span class="header-burger__menu-main-count">211 товарів</span>
+              </div>
+            </a>
+          </li>
+          <li class="header-burger__menu-main-list">
+            <a href="/" class="header-burger__menu-main-link">
+              <div class="header-burger__menu-main-icon">
+                <img src="images/menu-image3.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+              </div>
+              <div class="header-burger__menu-main-content">
+                <strong class="header-burger__menu-main-title">Світодіодне Фітоосвітлення</strong>
+                <span class="header-burger__menu-main-count">90 товарів</span>
+              </div>
+            </a>
+          </li>
+          <li class="header-burger__menu-main-list">
+            <a href="/" class="header-burger__menu-main-link">
+              <div class="header-burger__menu-main-icon">
+                <img src="images/menu-image4.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+              </div>
+              <div class="header-burger__menu-main-content">
+                <strong class="header-burger__menu-main-title">Електро-фурнітура</strong>
+                <span class="header-burger__menu-main-count">97 товарів</span>
+              </div>
+            </a>
+          </li>
+          <li class="header-burger__menu-main-list">
+            <a href="/" class="header-burger__menu-main-link">
+              <div class="header-burger__menu-main-icon">
+                <img src="images/menu-image5.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+              </div>
+              <div class="header-burger__menu-main-content">
+                <strong class="header-burger__menu-main-title">WiFi смарт товари</strong>
+                <span class="header-burger__menu-main-count">75 товарів</span>
+              </div>
+            </a>
+          </li>
+          <li class="header-burger__menu-main-list">
+            <a href="/" class="header-burger__menu-main-link">
+              <div class="header-burger__menu-main-icon">
+                <img src="images/menu-image6.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+              </div>
+              <div class="header-burger__menu-main-content">
+                <strong class="header-burger__menu-main-title">Подовжувачі</strong>
+                <span class="header-burger__menu-main-count">34 товарів</span>
+              </div>
+            </a>
+          </li>
+          <li class="header-burger__menu-main-list">
+            <a href="/" class="header-burger__menu-main-link">
+              <div class="header-burger__menu-main-icon">
+                <img src="images/menu-image7.png" alt="LED Lампи" loading="lazy" width="56" height="56">
+              </div>
+              <div class="header-burger__menu-main-content">
+                <strong class="header-burger__menu-main-title">Аксесуари</strong>
+                <span class="header-burger__menu-main-count">213 товарів</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Підменю -->
+  <div class="submenu" id="submenu-lamps">
+    <div class="submenu__header">
+      <button class="submenu__back header-burger__menu-top-back" data-back="lamps">Світлові (LED) Лампи</button>
+    </div>
+    <ul class="header-burger__menu-top-hidden-list">
+      <li class="header-burger__menu-top-hidden-item">
+        <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи побутові</a>
+      </li>
+      <li class="header-burger__menu-top-hidden-item">
+        <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи середньої потужності</a>
+      </li>
+      <li class="header-burger__menu-top-hidden-item">
+        <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи високої потужності</a>
+      </li>
+      <li class="header-burger__menu-top-hidden-item">
+        <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Філаментні лампи</a>
+      </li>
+      <li class="header-burger__menu-top-hidden-item">
+        <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Низьковольтні лампи</a>
+      </li>
+      <li class="header-burger__menu-top-hidden-item">
+        <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи T8</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Підменю -->
+  <div class="submenu" id="submenu-ledLighting">
+    <div class="submenu__header">
+      <button class="submenu__back header-burger__menu-top-back" data-back="ledLighting">Світлові (LED) Лампи</button>
+    </div>
+    <ul class="header-burger__menu-top-hidden-list">
+      <li class="header-burger__menu-top-hidden-item">
+        <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи побутові</a>
+      </li>
+      <li class="header-burger__menu-top-hidden-item">
+        <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи середньої потужності</a>
+      </li>
+      <li class="header-burger__menu-top-hidden-item">
+        <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи високої потужності</a>
+      </li>
+      <li class="header-burger__menu-top-hidden-item">
+        <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Філаментні лампи</a>
+      </li>
+      <li class="header-burger__menu-top-hidden-item">
+        <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Низьковольтні лампи</a>
+      </li>
+      <li class="header-burger__menu-top-hidden-item">
+        <a href="catalog.html" class="header-burger__menu-top-hidden-link">LED Лампи T8</a>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- Меню Аккаунт -->
+  <div class="modal" id="account-menu">
+    <div class="modal__content">
+
+      <!-- Шаг 1: Заголовок Входа -->
+      <div class="modal__content-header" id="header-login">
+        <h2 class="modal__title">Увійти в аккаунт</h2>
+        <button class="modal__close" data-close="account-menu">
+          <img src="icons/close-black.svg" width="13" height="13" alt="">
+        </button>
+      </div>
+
+      <!-- Шаг 2: Заголовок Кода (скрыт по умолчанию) -->
+      <div class="modal__content-header2" id="header-code" style="display: none;">
+        <div class="modal__content-header2-box">
+          <h2 class="modal__title">Вхід в аккаунт</h2>
+          <button class="modal__close" data-close="account-menu">
+            <img src="icons/close-black.svg" width="13" height="13" alt="">
+          </button>
+        </div>
+        <p>Введіть код, надісланий на ваш телефон.</p>
+      </div>
+
+      <!-- Шаг 1: Форма Входа -->
+      <div class="modal__content-account" id="step-login">
+        <form class="modal__form" id="accountForm">
+          <div class="modal__form-col">
+            <label for="accountLoginInput" class="label-required">Номер телефону або Email</label>
+            <input type="text" name="login" id="accountLoginInput" placeholder="Ваш номер або Email" required>
+            <span class="novalid-style" style="display: none;">Невірний формат телефону або Email</span>
+          </div>
+          <button type="submit" class="modal__form-btn" id="loginBtn" disabled>Продовжити</button>
+        </form>
+        <p class="modal__content-account-line">Або</p>
+        <button class="modal__content-account-google border-btn">
+          <img src="icons/google.svg" width="24" height="24" alt="">
+          Продовжити з Google
+        </button>
+        <div class="modal__content-account-info">
+          <span>Немає аккаунту?</span>
+          <button class="modal__content-account-new">Створити аккаунт</button>
+        </div>
+      </div>
+
+      <!-- Шаг 2: Форма Кода (скрыта по умолчанию) -->
+      <div class="modal__content-account-timer" id="step-code" style="display: none;">
+        <form class="modal__form" id="codeForm">
+          <div class="modal__form-col">
+            <label for="accountCodeInput" class="label-required">Код підтвердження</label>
+            <input type="text" name="code" id="accountCodeInput" placeholder="Код підтвердження" required maxlength="6">
+            <span class="novalid-style" style="display: none;">Невірний код</span>
+          </div>
+
+          <div class="modal__content-account-info">
+
+            <p class="modal__content-account-new-code" id="codeNotReceivedBtn" style="display: none;">
+              Не отримали код?
+            </p>
+
+            <button type="button" class="modal__content-account-new-code" id="resendBtn" style="display: none;">
+              Надіслати повторно
+            </button>
+
+            <p id="timerBlock">
+              Надіслати повторно
+              <span class="modal__content-account-timer-text" id="timerText">01:00</span>
+            </p>
+          </div>
+
+          <button type="submit" class="modal__form-btn">Підтвердити</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Створити Аккаунт -->
+  <div class="modal" id="newAccount">
+    <div class="modal__content">
+
+      <!-- Шаг 1: Заголовок Реєстрації -->
+      <div class="modal__content-header" id="header-register">
+        <h2 class="modal__title">Створення аккаунту</h2>
+        <button class="modal__close" data-close="newAccount">
+          <img src="icons/close-black.svg" width="13" height="13" alt="">
+        </button>
+      </div>
+
+      <!-- Шаг 2: Заголовок Кода (скрыт по умолчанию) -->
+      <div class="modal__content-header2" id="header-register-code" style="display: none;">
+        <div class="modal__content-header2-box">
+          <h2 class="modal__title">Код підтвердження</h2>
+          <button class="modal__close" data-close="newAccount">
+            <img src="icons/close-black.svg" width="13" height="13" alt="">
+          </button>
+        </div>
+        <p>Введіть код, надісланий на ваш телефон.</p>
+      </div>
+
+      <!-- Шаг 1: Форма Реєстрації -->
+      <div class="modal__content-account" id="step-register">
+        <form class="modal__form" id="registerForm">
+          <div class="modal__form-col">
+            <label for="registerName" class="label-required">Ім’я</label>
+            <input type="text" name="firstName" id="registerName" placeholder="Олексій" required>
+          </div>
+          <div class="modal__form-col">
+            <label for="registerSurname" class="label-required">Прізвище</label>
+            <input type="text" name="lastName" id="registerSurname" placeholder="Мавритюк" required>
+          </div>
+          <div class="modal__form-col">
+            <label for="registerPhone" class="label-required">Номер телефону</label>
+            <input type="tel" name="phone" id="registerPhone" placeholder="Номер телефону" required>
+            <span class="novalid-style" style="display: none;">Цей номер уже використовується.</span>
+          </div>
+
+          <!-- Toggle Switch -->
+          <div class="modal__form-col">
+            <label class="modal__toggle">
+              Email
+              <div class="modal__toggle-box">
+                <input type="checkbox" name="subscribe" class="modal__toggle-input">
+                <span class="modal__toggle-slider"></span>
+                <span class="modal__toggle-text">Розсилка акційних пропозицій та новин.</span>
+              </div>
+            </label>
+
+            <div class="email-field" id="emailField">
+              <input type="email" name="email" class="email-input" placeholder="Введіть ваш email">
+            </div>
+          </div>
+          <button type="submit" class="modal__form-btn" id="registerBtn" disabled>Створити аккаунт</button>
+          <div class="modal__form-col-info">
+            <p>Натискаючи кнопку «Створити акаунт», ви підтверджуєте свою згоду з <a href="/">Умовами використання</a>
+              та <a href="/">Політикою конфіденційності</a>.</p>
+          </div>
+        </form>
+        <div class="modal__content-account-visible">
+          <div class="modal__content-account-visible-image">
+            <img src="images/form-image.jpg" width="408" height="408" alt="">
+          </div>
+          <div class="modal__content-account-visible-image-position">
+            <img src="images/gallery__main-img1.png" width="170" height="170" alt="">
+          </div>
+        </div>
+      </div>
+
+      <!-- Шаг 2: Форма Кода (скрыта по умолчанию) -->
+      <div class="modal__content-account-timer" id="step-register-code" style="display: none;">
+        <form class="modal__form" id="registerCodeForm">
+          <div class="modal__form-col">
+            <label for="registerCodeInput" class="label-required">Код підтвердження</label>
+            <input type="text" name="code" id="registerCodeInput" placeholder="Код підтвердження" required
+              maxlength="6">
+            <span class="novalid-style" style="display: none;">Невірний код</span>
+          </div>
+
+          <div class="modal__content-account-info">
+
+            <p class="modal__content-account-new-code" id="registerCodeNotReceivedBtn" style="display: none;">
+              Не отримали код?
+            </p>
+
+            <button type="button" class="modal__content-account-new-code" id="registerResendBtn" style="display: none;">
+              Надіслати повторно
+            </button>
+
+            <p id="registerTimerBlock">
+              Надіслати повторно
+              <span class="modal__content-account-timer-text" id="registerTimerText">01:00</span>
+            </p>
+          </div>
+
+          <button type="submit" class="modal__form-btn">Підтвердити</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="sort-popup" id="sortPopup">
+    <div class="sort-popup__header">
+      <h3 class="sort-popup__title">Сортувати</h3>
+      <button class="sort-popup__close">
+        <img src="icons/close-black.svg" width="13" height="13" alt="">
+      </button>
+    </div>
+    <ul class="sort-popup__list">
+      <li class="sort-popup__item">
+        <label class="sort-popup__label">
+          <span class="sort-popup__text">За популярністю</span>
+          <input type="radio" name="sort" value="popularity" class="sort-popup__radio" checked>
+        </label>
+      </li>
+      <li class="sort-popup__item">
+        <label class="sort-popup__label">
+          <span class="sort-popup__text">Від дешевших</span>
+          <input type="radio" name="sort" value="price-asc" class="sort-popup__radio">
+        </label>
+      </li>
+      <li class="sort-popup__item">
+        <label class="sort-popup__label">
+          <span class="sort-popup__text">Від дорожчих</span>
+          <input type="radio" name="sort" value="price-desc" class="sort-popup__radio">
+        </label>
+      </li>
+      <li class="sort-popup__item">
+        <label class="sort-popup__label">
+          <span class="sort-popup__text">Спочатку зі знижками</span>
+          <input type="radio" name="sort" value="discount" class="sort-popup__radio">
+        </label>
+      </li>
+    </ul>
+  </div>
+
+  <template id="address-card-template">
+    <div class="address-card">
+      <div class="address-card__header">
+        <div class="address-card__type">
+          <div class="address-card__icon">
+            <img src="" alt="Delivery Icon" class="address-card-icon-img">
+          </div>
+        </div>
+        <div class="address-card__content">
+          <span class="address-card__label"></span>
+          <div class="address-card__text"></div>
+        </div>
+        <div class="address-card__actions" style="position: relative;">
+          <button class="address-card__menu-btn">
+            <img src="icons/dots-menu.svg" alt="Menu">
+          </button>
+          <div class="address-card__menu">
+            <button class="edit-btn">
+              <img src="icons/edit.svg" alt="Edit"> Редагувати
+            </button>
+            <button class="delete-btn">
+              <img src="icons/Vectors.svg" alt="Delete"> Видалити
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+</body>
+
+
+<script src="scripts/jquery-3.7.0.min.js"></script>
+<script src="scripts/swiper-bundle.min.js"></script>
+<script src="scripts/jquery.maskedinput.js"></script>
+<script src="scripts/script.js"></script>
+
+
+
+<!-- Module 1: UI Utilities & Modal Management -->
+<script>
+  const UIManager = {
+    init() {
+      this.bindCloseEvents();
+    },
+
+    bindCloseEvents() {
+      document.querySelectorAll('[data-close-modal]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const modalId = e.currentTarget.getAttribute('data-close-modal');
+          this.closeModal(modalId);
+        });
+      });
+
+      document.querySelectorAll('.acc-modal').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            this.closeModal(modal.id);
+          }
+        });
+      });
+    },
+
+    openModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    },
+
+    closeModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    },
+
+    showSuccessBanner(id) {
+      const banner = document.getElementById(id);
+      if (banner) {
+        banner.classList.add('active');
+        setTimeout(() => {
+          banner.classList.remove('active');
+        }, 3000);
+      }
+    }
+  };
+</script>
+
+<!-- Module 2: Date Picker Logic -->
+<script>
+  const DatePicker = {
+    elements: {
+      dayBtn: 'sel-day',
+      monthBtn: 'sel-month',
+      yearBtn: 'sel-year',
+      dayList: 'list-day',
+      monthList: 'list-month',
+      yearList: 'list-year',
+      confirmBtn: 'btn-confirm-dob'
+    },
+
+    init() {
+      const days = Array.from({ length: 31 }, (_, i) => i + 1);
+      const months = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
+      const currentYear = new Date().getFullYear();
+      const years = Array.from({ length: 100 }, (_, i) => currentYear - i);
+
+      this.fillDropdown(this.elements.dayList, days, this.elements.dayBtn, 'day');
+      this.fillDropdown(this.elements.monthList, months, this.elements.monthBtn, 'month');
+      this.fillDropdown(this.elements.yearList, years, this.elements.yearBtn, 'year');
+
+      // Close dropdowns when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.date-select-wrapper')) {
+          document.querySelectorAll('.date-dropdown').forEach(d => d.classList.remove('show'));
+          document.querySelectorAll('.date-select-btn').forEach(b => b.classList.remove('active'));
+        }
+      });
+    },
+
+    reset() {
+      [this.elements.dayBtn, this.elements.monthBtn, this.elements.yearBtn].forEach(id => {
+        const btn = document.getElementById(id);
+        const valSpan = btn.querySelector('.val');
+        valSpan.textContent = '--';
+        valSpan.dataset.value = '';
+        btn.classList.remove('active');
+      });
+
+      document.querySelectorAll('.date-option').forEach(o => o.classList.remove('selected'));
+
+      this.setSelectorState(this.elements.dayBtn, true);
+      this.setSelectorState(this.elements.monthBtn, false);
+      this.setSelectorState(this.elements.yearBtn, false);
+
+      const confirmBtn = document.getElementById(this.elements.confirmBtn);
+      if (confirmBtn) confirmBtn.disabled = true;
+    },
+
+    setSelectorState(btnId, isEnabled) {
+      const btn = document.getElementById(btnId);
+      const wrapper = btn.closest('.date-select-wrapper');
+      if (isEnabled) {
+        wrapper.style.opacity = '1';
+        wrapper.style.pointerEvents = 'auto';
+      } else {
+        wrapper.style.opacity = '0.5';
+        wrapper.style.pointerEvents = 'none';
+      }
+    },
+
+    fillDropdown(listId, items, btnId, type) {
+      const list = document.getElementById(listId);
+      const btn = document.getElementById(btnId);
+      const valSpan = btn.querySelector('.val');
+
+      list.innerHTML = ''; // Clear existing
+
+      items.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'date-option';
+        div.textContent = item;
+        div.onclick = (e) => {
+          e.stopPropagation();
+          valSpan.textContent = item;
+          valSpan.dataset.value = item;
+          list.classList.remove('show');
+          btn.classList.remove('active');
+
+          list.querySelectorAll('.date-option').forEach(o => o.classList.remove('selected'));
+          div.classList.add('selected');
+
+          if (type === 'day') this.setSelectorState(this.elements.monthBtn, true);
+          if (type === 'month') this.setSelectorState(this.elements.yearBtn, true);
+
+          this.checkComplete();
+        };
+        list.appendChild(div);
+      });
+
+      btn.onclick = () => {
+        const wasShown = list.classList.contains('show');
+        document.querySelectorAll('.date-dropdown').forEach(d => d.classList.remove('show'));
+        document.querySelectorAll('.date-select-btn').forEach(b => b.classList.remove('active'));
+
+        if (!wasShown) {
+          list.classList.add('show');
+          btn.classList.add('active');
+        }
+      };
+    },
+
+    checkComplete() {
+      const d = document.querySelector(`#${this.elements.dayBtn} .val`).dataset.value;
+      const m = document.querySelector(`#${this.elements.monthBtn} .val`).dataset.value;
+      const y = document.querySelector(`#${this.elements.yearBtn} .val`).dataset.value;
+
+      const confirmBtn = document.getElementById(this.elements.confirmBtn);
+      if (confirmBtn) {
+        confirmBtn.disabled = !(d && m && y);
+      }
+    },
+
+    getSelectedDate() {
+      const d = document.querySelector(`#${this.elements.dayBtn} .val`).dataset.value;
+      const m = document.querySelector(`#${this.elements.monthBtn} .val`).dataset.value;
+      const y = document.querySelector(`#${this.elements.yearBtn} .val`).dataset.value;
+      return (d && m && y) ? `${d}/${m}/${y}` : null;
+    }
+  };
+</script>
+
+<!-- Module 3: Profile Data & Form State -->
+<script>
+  const ProfileManager = {
+    isEditing: false,
+    isDirty: false,
+    initialData: {},
+
+    elements: {
+      form: 'profile-form',
+      card: 'profile-card',
+      footer: '.profile-card__footer',
+      btnEdit: 'btn-edit-mode',
+      btnSave: 'btn-save-changes',
+      emailContainer: 'email-container',
+      dobContainer: 'dob-container'
+    },
+
+    init() {
+      this.cacheInitialData();
+      // Initial UI check
+      this.checkEmptyStates();
+      // Hide footer initially
+      const footer = document.querySelector(this.elements.footer);
+      if (footer) footer.style.display = 'none';
+    },
+
+    cacheInitialData() {
+      const form = document.getElementById(this.elements.form);
+      const inputs = form.querySelectorAll('input');
+      inputs.forEach(input => {
+        this.initialData[input.name] = input.value;
+      });
+    },
+
+    toggleEditMode(enable) {
+      this.isEditing = enable;
+      const card = document.getElementById(this.elements.card);
+      const btnEdit = document.getElementById(this.elements.btnEdit);
+      const footer = document.querySelector(this.elements.footer);
+
+      if (enable) {
+        card.classList.add('edit-mode');
+        btnEdit.style.display = 'none';
+        footer.style.display = 'flex';
+      } else {
+        card.classList.remove('edit-mode');
+        btnEdit.style.display = 'flex';
+        footer.style.display = 'none';
+      }
+      this.checkEmptyStates();
+    },
+
+    checkEmptyStates() {
+      this.checkSingleEmptyState('email', this.elements.emailContainer);
+      this.checkSingleEmptyState('dob', this.elements.dobContainer);
+    },
+
+    checkSingleEmptyState(inputName, containerId) {
+      const form = document.getElementById(this.elements.form);
+      const input = form.querySelector(`input[name="${inputName}"]`);
+      const container = document.getElementById(containerId);
+      const addBtn = container.querySelector('.btn-add-value');
+
+      const isEmpty = !input.value;
+
+      if (isEmpty) {
+        container.classList.add('is-empty');
+      } else {
+        container.classList.remove('is-empty');
+      }
+
+      if (addBtn) {
+        // Only show Add button if empty AND editing
+        addBtn.style.display = (isEmpty && this.isEditing) ? '' : 'none';
+      }
+    },
+
+    updateField(name, value) {
+      const form = document.getElementById(this.elements.form);
+      const input = form.querySelector(`input[name="${name}"]`);
+      if (input) {
+        input.value = value;
+        this.isDirty = true;
+        this.updateSaveButtonState();
+        this.checkEmptyStates();
+      }
+    },
+
+    getFieldValue(name) {
+      const form = document.getElementById(this.elements.form);
+      const input = form.querySelector(`input[name="${name}"]`);
+      return input ? input.value : '';
+    },
+
+    revertChanges() {
+      const form = document.getElementById(this.elements.form);
+      const inputs = form.querySelectorAll('input');
+      inputs.forEach(input => {
+        input.value = this.initialData[input.name];
+      });
+      this.isDirty = false;
+      this.updateSaveButtonState();
+      this.checkEmptyStates();
+    },
+
+    saveChanges() {
+      // Simulate API Save
+      this.cacheInitialData(); // Update initial to current
+      this.isDirty = false;
+      this.updateSaveButtonState();
+    },
+
+    updateSaveButtonState() {
+      const btn = document.getElementById(this.elements.btnSave);
+      if (btn) btn.disabled = !this.isDirty;
+    }
+  };
+</script>
+
+<!-- Module 4: Main Controller (The Glue) -->
+<script>
+  const AccountController = {
+    currentEditField: null,
+    pendingNav: null,
+
+    init() {
+      // Prevent FOUC
+      this.hideElementsImmediately();
+
+      document.addEventListener('DOMContentLoaded', () => {
+        UIManager.init();
+        DatePicker.init();
+        ProfileManager.init();
+        this.bindEvents();
+      });
+    },
+
+    hideElementsImmediately() {
+      // Immediate execution before DOMContentLoaded
+      (function () {
+        var addBtns = document.querySelectorAll('.btn-add-value');
+        addBtns.forEach(function (btn) { btn.style.display = 'none'; });
+        var footer = document.querySelector('.profile-card__footer');
+        if (footer) { footer.style.display = 'none'; }
+      })();
+    },
+
+    bindEvents() {
+      // --- Profile Actions ---
+      document.getElementById('btn-edit-mode').addEventListener('click', () => ProfileManager.toggleEditMode(true));
+
+      document.getElementById('btn-cancel-edit').addEventListener('click', () => {
+        if (ProfileManager.isDirty) {
+          UIManager.openModal('modal-unsaved');
+        } else {
+          ProfileManager.toggleEditMode(false);
+        }
+      });
+
+      document.getElementById('btn-save-changes').addEventListener('click', () => {
+        UIManager.openModal('modal-confirm-save');
+      });
+
+      // --- Edit Buttons (Pencils) ---
+      document.querySelectorAll('.btn-edit-field').forEach(btn => {
+        btn.addEventListener('click', (e) => this.handleEditClick(e));
+      });
+
+      // --- Add Buttons ---
+      document.getElementById('btn-add-email').addEventListener('click', () => {
+        this.currentEditField = 'email';
+        UIManager.openModal('modal-email');
+      });
+      document.getElementById('btn-add-dob').addEventListener('click', () => {
+        this.currentEditField = 'dob';
+        DatePicker.reset();
+        UIManager.openModal('modal-dob');
+      });
+
+      // --- Generic Modal Logic ---
+      document.getElementById('btn-confirm-generic').addEventListener('click', () => {
+        const val = document.getElementById('modal-generic-input').value;
+        ProfileManager.updateField(this.currentEditField, val);
+        UIManager.closeModal('modal-generic');
+      });
+
+      // --- Email Modal Logic ---
+      const emailInput = document.getElementById('modal-email-input');
+      emailInput.addEventListener('input', (e) => this.validateEmail(e.target.value));
+
+      document.getElementById('btn-confirm-email').addEventListener('click', () => {
+        ProfileManager.updateField('email', emailInput.value);
+        UIManager.closeModal('modal-email');
+      });
+
+      // --- DOB Modal Logic ---
+      document.getElementById('btn-confirm-dob').addEventListener('click', () => {
+        const dateStr = DatePicker.getSelectedDate();
+        if (dateStr) {
+          ProfileManager.updateField('dob', dateStr);
+          UIManager.closeModal('modal-dob');
+        }
+      });
+
+      // --- Navigation Protection ---
+      document.querySelectorAll('.account-nav__item').forEach(item => {
+        item.addEventListener('click', (e) => this.handleNavigation(e, item));
+      });
+
+      // --- Unsaved Changes Modal Actions ---
+      document.getElementById('btn-unsaved-cancel').addEventListener('click', () => UIManager.closeModal('modal-unsaved'));
+
+      document.getElementById('btn-unsaved-continue').addEventListener('click', () => {
+        UIManager.closeModal('modal-unsaved');
+        ProfileManager.revertChanges();
+        ProfileManager.toggleEditMode(false);
+        if (this.pendingNav) {
+          this.performNavigation(this.pendingNav);
+        }
+      });
+
+      document.getElementById('btn-unsaved-save').addEventListener('click', () => {
+        UIManager.closeModal('modal-unsaved');
+        this.saveAndExit();
+      });
+
+      // --- Confirm Save Modal Actions ---
+      document.getElementById('btn-confirm-save-cancel').addEventListener('click', () => UIManager.closeModal('modal-confirm-save'));
+
+      document.getElementById('btn-confirm-save-continue').addEventListener('click', () => {
+        // "Continue" here means discard changes
+        UIManager.closeModal('modal-confirm-save');
+        ProfileManager.revertChanges();
+        ProfileManager.toggleEditMode(false);
+      });
+
+      document.getElementById('btn-confirm-save-save').addEventListener('click', () => {
+        UIManager.closeModal('modal-confirm-save');
+        this.saveAndExit();
+      });
+
+      // --- Logout & Delete ---
+      document.getElementById('logout-btn').addEventListener('click', () => UIManager.openModal('modal-logout'));
+      document.getElementById('btn-confirm-logout').addEventListener('click', () => window.location.href = '/');
+
+      document.querySelector('.account-sidebar__delete').addEventListener('click', (e) => {
+        e.preventDefault();
+        UIManager.openModal('modal-delete-account');
+      });
+      document.getElementById('btn-confirm-delete').addEventListener('click', () => {
+        UIManager.closeModal('modal-delete-account');
+        UIManager.openModal('modal-delete-success');
+      });
+    },
+
+    handleEditClick(e) {
+      const btn = e.currentTarget;
+      const type = btn.dataset.type;
+      const fieldName = btn.dataset.name;
+      const label = btn.dataset.label;
+
+      this.currentEditField = fieldName;
+
+      if (type === 'text' || type === 'phone') {
+        this.openGenericModal(label, fieldName, type);
+      } else if (type === 'email') {
+        const currentVal = ProfileManager.getFieldValue(fieldName);
+        document.getElementById('modal-email-input').value = currentVal;
+        this.validateEmail(currentVal);
+        UIManager.openModal('modal-email');
+      } else if (type === 'dob') {
+        DatePicker.reset();
+        UIManager.openModal('modal-dob');
+      }
+    },
+
+    openGenericModal(label, fieldName, type) {
+      document.getElementById('modal-generic-title').textContent = `Редагувати ${label}`;
+      document.getElementById('modal-generic-label').textContent = label;
+
+      const input = document.getElementById('modal-generic-input');
+      input.value = ProfileManager.getFieldValue(fieldName);
+
+      if (type === 'phone') {
+        input.setAttribute('type', 'tel');
+        if ($.fn.mask) $(input).mask("+380 (99) 999-99-99");
+      } else {
+        input.setAttribute('type', 'text');
+        if ($.fn.mask) $(input).unmask();
+      }
+
+      UIManager.openModal('modal-generic');
+    },
+
+    validateEmail(val) {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const isValid = regex.test(val);
+      const errorMsg = document.getElementById('modal-email-error');
+      const btn = document.getElementById('btn-confirm-email');
+
+      if (val.length > 0 && !isValid) {
+        errorMsg.style.display = 'block';
+        btn.disabled = true;
+      } else {
+        errorMsg.style.display = 'none';
+        btn.disabled = !isValid;
+      }
+    },
+
+    handleNavigation(e, item) {
+      if (item.id === 'logout-btn') return; // Handled separately
+
+      if (ProfileManager.isDirty) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.pendingNav = item;
+        UIManager.openModal('modal-unsaved');
+      } else {
+        this.performNavigation(item);
+      }
+    },
+
+    performNavigation(item) {
+      document.querySelectorAll('.account-nav__item').forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+
+      const tabId = item.getAttribute('data-tab');
+      if (tabId) {
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.remove('active');
+        });
+        const targetContent = document.getElementById(tabId);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+      }
+
+      // Handle Header Add Button Visibility
+      const headerAddBtn = document.getElementById('btn-add-address-header');
+      const addressList = document.getElementById('address-list');
+      if (headerAddBtn) {
+        // Show only if on address tab AND list is not empty (hidden)
+        // Note: address-list is hidden by default style="display:none" when empty.
+        // We check if address-list is visible (display != none) which implies it has items.
+        // Or check children count.
+        if (tabId === 'address' && addressList && addressList.style.display !== 'none') {
+          headerAddBtn.style.display = 'flex';
+        } else {
+          headerAddBtn.style.display = 'none';
+        }
+      }
+
+      this.pendingNav = null;
+    },
+
+    saveAndExit() {
+      ProfileManager.saveChanges();
+      ProfileManager.toggleEditMode(false);
+      UIManager.showSuccessBanner('successModal12');
+    }
+  };
+
+  // Start the application
+  AccountController.init();
+</script>

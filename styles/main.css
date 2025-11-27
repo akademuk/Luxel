@@ -2926,7 +2926,11 @@ input[type=number] {
 #successModal5,
 #successModal6,
 #successModal7,
-#successModal8 {
+#successModal8,
+#successModal9,
+#successModal10 #successModal11,
+#successModal12,
+#successModal13 {
   width: 662px;
   height: max-content;
   padding: 20px;
@@ -2944,7 +2948,11 @@ input[type=number] {
   #successModal5,
   #successModal6,
   #successModal7,
-  #successModal8 {
+  #successModal8,
+  #successModal9,
+  #successModal10 #successModal11,
+  #successModal12,
+  #successModal13 {
     max-width: 351px;
     width: 100%;
     height: max-content;
@@ -2960,7 +2968,11 @@ input[type=number] {
 #successModal5 .modal__content,
 #successModal6 .modal__content,
 #successModal7 .modal__content,
-#successModal8 .modal__content {
+#successModal8 .modal__content,
+#successModal9 .modal__content,
+#successModal10 #successModal11 .modal__content,
+#successModal12 .modal__content,
+#successModal13 .modal__content {
   padding: 0;
   display: flex;
   justify-content: flex-start;
@@ -2982,7 +2994,11 @@ input[type=number] {
   #successModal5 .modal__content,
   #successModal6 .modal__content,
   #successModal7 .modal__content,
-  #successModal8 .modal__content {
+  #successModal8 .modal__content,
+  #successModal9 .modal__content,
+  #successModal10 #successModal11 .modal__content,
+  #successModal12 .modal__content,
+  #successModal13 .modal__content {
     position: static;
     transform: none;
   }
@@ -2994,7 +3010,11 @@ input[type=number] {
 #successModal5 img,
 #successModal6 img,
 #successModal7 img,
-#successModal8 img {
+#successModal8 img,
+#successModal9 img,
+#successModal10 #successModal11 img,
+#successModal12 img,
+#successModal13 img {
   width: 40px;
   height: 40px;
   flex-shrink: 0;
@@ -3007,7 +3027,11 @@ input[type=number] {
   #successModal5 img,
   #successModal6 img,
   #successModal7 img,
-  #successModal8 img {
+  #successModal8 img,
+  #successModal9 img,
+  #successModal10 #successModal11 img,
+  #successModal12 img,
+  #successModal13 img {
     width: 24px;
     height: 24px;
     flex-shrink: 0;
@@ -3020,7 +3044,11 @@ input[type=number] {
 #successModal5 p,
 #successModal6 p,
 #successModal7 p,
-#successModal8 p {
+#successModal8 p,
+#successModal9 p,
+#successModal10 #successModal11 p,
+#successModal12 p,
+#successModal13 p {
   color: #005600;
   font-size: 16px;
   font-weight: 400;
@@ -3036,12 +3064,181 @@ input[type=number] {
   #successModal5 p,
   #successModal6 p,
   #successModal7 p,
-  #successModal8 p {
+  #successModal8 p,
+  #successModal9 p,
+  #successModal10 #successModal11 p,
+  #successModal12 p,
+  #successModal13 p {
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
     line-height: 16px;
   }
+}
+
+#successModal10 {
+  transform: none;
+  top: 12px;
+  left: auto;
+  right: 12px;
+  height: 56px;
+  padding: 20px;
+  border-radius: 20px;
+  background: #CAFFCA;
+}
+@media (width <= 63.99875rem) {
+  #successModal10 {
+    max-width: 351px;
+    width: 100%;
+    height: max-content;
+    min-height: 56px;
+    padding: 16px 12px;
+    border-radius: 16px;
+  }
+}
+#successModal10 .modal__content {
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  box-shadow: none;
+  background: transparent;
+  border-radius: 0;
+}
+@media (width <= 63.99875rem) {
+  #successModal10 .modal__content {
+    position: static;
+    transform: none;
+  }
+}
+#successModal10 img {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+@media (width <= 63.99875rem) {
+  #successModal10 img {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+}
+#successModal10 p {
+  color: #005600;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+  margin: 0;
+}
+@media (width <= 63.99875rem) {
+  #successModal10 p {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+  }
+}
+#successModal10 .modal__contentss {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0;
+}
+#successModal10 .modal__contentss img {
+  width: 24px !important;
+  height: 24px !important;
+  flex-shrink: 0;
+}
+
+#successModal11 {
+  transform: none;
+  top: 12px;
+  left: auto;
+  right: 12px;
+  height: 56px;
+  padding: 20px;
+  border-radius: 20px;
+  background: #CAFFCA;
+}
+@media (width <= 63.99875rem) {
+  #successModal11 {
+    max-width: 351px;
+    width: 100%;
+    height: max-content;
+    min-height: 56px;
+    padding: 16px 12px;
+    border-radius: 16px;
+  }
+}
+#successModal11 .modal__content {
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  box-shadow: none;
+  background: transparent;
+  border-radius: 0;
+}
+@media (width <= 63.99875rem) {
+  #successModal11 .modal__content {
+    position: static;
+    transform: none;
+  }
+}
+#successModal11 img {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+@media (width <= 63.99875rem) {
+  #successModal11 img {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+}
+#successModal11 p {
+  color: #005600;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+  margin: 0;
+}
+@media (width <= 63.99875rem) {
+  #successModal11 p {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+  }
+}
+#successModal11 .modal__contentss {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0;
+}
+#successModal11 .modal__contentss img {
+  width: 24px !important;
+  height: 24px !important;
+  flex-shrink: 0;
+}
+
+#successModal12,
+#successModal13 {
+  top: 30% !important;
 }
 
 #writeUs h2 {
@@ -4646,7 +4843,8 @@ input[type=number] {
 .shopping-cart-product-info .delivery-progress__message {
   font-weight: var(--font-weight-regular);
 }
-.shopping-cart-product-info .delivery-progress__message span, .shopping-cart-product-info .delivery-progress__message b {
+.shopping-cart-product-info .delivery-progress__message span,
+.shopping-cart-product-info .delivery-progress__message b {
   font-weight: var(--font-weight-bold);
 }
 .shopping-cart-product-info .delivery-progress__message b {
@@ -4684,7 +4882,8 @@ input[type=number] {
   .shopping-cart-product-info .cart-summary-row span {
     font-size: 16px;
   }
-  .shopping-cart-product-info .cart-summary-row #total-current, .shopping-cart-product-info .cart-summary-row #total-discount {
+  .shopping-cart-product-info .cart-summary-row #total-current,
+  .shopping-cart-product-info .cart-summary-row #total-discount {
     font-weight: var(--font-weight-bold);
   }
 }
@@ -5042,6 +5241,794 @@ button:disabled {
   cursor: not-allowed;
   border: 1px solid transparent;
   color: var(--color-light);
+}
+
+#account-menu {
+  align-items: center;
+  justify-content: center;
+}
+#account-menu .modal__content {
+  margin: 0;
+  padding: 24px;
+  border-radius: 20px;
+}
+#account-menu .modal__content .modal-accaunt-prev {
+  display: flex;
+  width: 44px;
+  height: 44px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: -4px;
+  padding: 10px;
+  background: transparent;
+  border: none;
+}
+#account-menu .modal__content .modal-accaunt-prev img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: rotate(90deg);
+}
+#account-menu .modal__content .modal__content-account {
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content {
+    right: 0;
+    top: 0;
+    left: auto;
+    transform: none;
+    min-height: 100vh;
+    max-width: 375px;
+    border-radius: 0;
+    padding: 14px 12px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+}
+#account-menu .modal__content .modal__content-header {
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content .modal__content-header {
+    margin-bottom: 24px;
+  }
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content .modal__content-header .modal__close {
+    display: none;
+  }
+}
+#account-menu .modal__content .modal__form-col label {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content .modal__form-col label {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+#account-menu .modal__content .modal__form-col label::after {
+  content: none;
+}
+#account-menu .modal__content .modal__content-account-line {
+  margin: 40px 0;
+  color: #727272;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: nowrap;
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content .modal__content-account-line {
+    margin: 24px;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+#account-menu .modal__content .modal__content-account-line::before, #account-menu .modal__content .modal__content-account-line::after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  height: 1px;
+  background-color: #E3E3E3;
+  vertical-align: middle;
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content .modal__content-account-line::before, #account-menu .modal__content .modal__content-account-line::after {
+    content: none;
+  }
+}
+#account-menu .modal__content .modal__content-account-google {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  width: 100%;
+  gap: 16px;
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content .modal__content-account-google {
+    min-height: 44px;
+    padding: 11px 16px;
+    border-radius: 12px;
+  }
+  #account-menu .modal__content .modal__content-account-google img {
+    width: 20px;
+    height: 20px;
+  }
+}
+#account-menu .modal__content .modal__content-account-info {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 0;
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content .modal__content-account-info {
+    margin-top: auto;
+  }
+}
+#account-menu .modal__content .modal__content-account-info span {
+  overflow: hidden;
+  color: #727272;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content .modal__content-account-info span {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+#account-menu .modal__content .modal__content-account-info .modal__content-account-new {
+  color: var(--color-red);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+  text-decoration: underline;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content .modal__content-account-info .modal__content-account-new {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+#account-menu .modal__content-mobile-image {
+  display: none;
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content-mobile-image {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 32px;
+    padding: 4px 3.172px 4px 4.176px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    margin: 0 auto 56px auto;
+  }
+  #account-menu .modal__content-mobile-image img {
+    width: 107px;
+    height: 24px;
+  }
+}
+#account-menu .modal__content-header2 {
+  flex-direction: column;
+}
+#account-menu .modal__content-header2 p {
+  margin-bottom: 50px;
+  letter-spacing: 0.08px;
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content-header2 p {
+    margin-bottom: 24px;
+  }
+}
+#account-menu .modal__content-header2-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content-header2-box {
+    margin-bottom: 8px;
+  }
+}
+#account-menu .modal__content-header2-box .modal__title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.12px;
+}
+#account-menu .modal__content-header2-box .modal__close {
+  position: static;
+  transform: none;
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content-header2-box .modal__close {
+    display: none;
+  }
+}
+#account-menu .modal__form {
+  width: 100%;
+}
+#account-menu .modal__content-account-timer {
+  min-height: 429px;
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content-account-timer {
+    min-height: auto;
+    height: 100%;
+  }
+}
+#account-menu .modal__content-account-timer .modal__form {
+  gap: 0;
+}
+#account-menu .modal__content-account-timer #codeNotReceivedBtn {
+  color: #727272;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content-account-timer #codeNotReceivedBtn {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+  }
+}
+#account-menu .modal__content-account-timer .modal__form-btn {
+  margin-top: auto;
+}
+#account-menu .modal__content-account-timer .modal__content-account-info {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content-account-timer .modal__content-account-info {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+#account-menu .modal__content-account-timer #timerBlock {
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  color: #AAA;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content-account-timer #timerBlock {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+#account-menu .modal__content-account-timer #timerBlock span {
+  color: #AAA;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content-account-timer #timerBlock span {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+#account-menu .modal__content-account-timer #resendBtn {
+  color: var(--color-red);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+  text-decoration: underline;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+@media (max-width: 1024px) {
+  #account-menu .modal__content-account-timer #resendBtn {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+@media (max-width: 1024px) {
+  #account-menu {
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+}
+
+.modal-accaunt {
+  display: flex;
+  height: 100%;
+  transform: translateX(100%);
+  transition-duration: var(--transition-duration);
+  padding: 0;
+}
+.modal-accaunt.active {
+  transform: translateX(0);
+}
+
+#newAccount {
+  align-items: center;
+  justify-content: center;
+}
+#newAccount .modal__content {
+  margin: 0;
+  max-width: 888px;
+  width: 100%;
+  padding: 24px;
+  border-radius: 20px;
+}
+@media (max-width: 1024px) {
+  #newAccount .modal__content {
+    right: 0;
+    top: 0;
+    left: auto;
+    transform: none;
+    min-height: 100vh;
+    max-width: 375px;
+    border-radius: 0;
+    padding: 14px 12px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  #newAccount .modal__content .modal__close {
+    display: none;
+  }
+}
+#newAccount .modal__content .modal-accaunt-prev {
+  display: flex;
+  width: 44px;
+  height: 44px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: -4px;
+  padding: 10px;
+  background: transparent;
+  border: none;
+}
+#newAccount .modal__content .modal-accaunt-prev img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: rotate(90deg);
+}
+#newAccount .modal__content .modal__content-header {
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+@media (max-width: 1024px) {
+  #newAccount .modal__content .modal__content-header {
+    margin-bottom: 24px;
+  }
+}
+#newAccount .modal__content .modal__form-col label {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+#newAccount .modal__content .modal__form-col label::after {
+  content: none;
+}
+@media (max-width: 1024px) {
+  #newAccount .modal__content .modal__form-col label {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+#newAccount .modal__content .modal__content-account-line {
+  margin: 40px 0;
+  color: #727272;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: nowrap;
+}
+#newAccount .modal__content .modal__content-account-line::before, #newAccount .modal__content .modal__content-account-line::after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  height: 1px;
+  background-color: #E3E3E3;
+  vertical-align: middle;
+}
+#newAccount .modal__content .modal__content-account-google {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  width: 100%;
+  gap: 16px;
+}
+@media (max-width: 1024px) {
+  #newAccount .modal__content .modal__form-col--toggle {
+    margin-top: auto;
+  }
+}
+@media (max-width: 1024px) {
+  #newAccount .modal__content .modal__toggle {
+    gap: 16px;
+  }
+}
+#newAccount .modal__content .modal__content-account-info {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 0;
+}
+#newAccount .modal__content .modal__content-account-info span {
+  overflow: hidden;
+  color: #727272;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+#newAccount .modal__content .modal__content-account-info .modal__content-account-new {
+  color: var(--color-red);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+  text-decoration: underline;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+#newAccount .modal__content-mobile-image {
+  display: none;
+}
+@media (max-width: 1024px) {
+  #newAccount .modal__content-mobile-image {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 32px;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    margin: 0 auto 56px auto;
+  }
+  #newAccount .modal__content-mobile-image img {
+    width: 107px;
+    height: 24px;
+  }
+}
+#newAccount .modal__content-account {
+  display: flex;
+  gap: 24px;
+}
+@media (max-width: 1024px) {
+  #newAccount .modal__content-account {
+    height: 100%;
+  }
+}
+#newAccount .modal__content-account-visible {
+  width: 408px;
+  flex-shrink: 0;
+  position: relative;
+}
+@media (max-width: 1024px) {
+  #newAccount .modal__content-account-visible {
+    display: none;
+  }
+}
+#newAccount .modal__content-header2 {
+  flex-direction: column;
+}
+#newAccount .modal__content-header2 p {
+  margin-bottom: 50px;
+  letter-spacing: 0.08px;
+}
+@media (max-width: 1024px) {
+  #newAccount .modal__content-header2 p {
+    margin-bottom: 24px;
+  }
+}
+#newAccount .modal__content-header2-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+@media (max-width: 1024px) {
+  #newAccount .modal__content-header2-box {
+    margin-bottom: 8px;
+  }
+}
+#newAccount .modal__content-header2-box .modal__title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.12px;
+}
+#newAccount .modal__content-header2-box .modal__close {
+  position: static;
+  transform: none;
+}
+#newAccount .modal__form {
+  width: 100%;
+}
+@media (max-width: 1024px) {
+  #newAccount .modal__form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+#newAccount .modal__content-account-timer {
+  min-height: 429px;
+}
+@media (max-width: 1024px) {
+  #newAccount .modal__content-account-timer {
+    min-height: auto;
+    height: 100%;
+  }
+}
+#newAccount .modal__content-account-timer .modal__form {
+  gap: 0;
+}
+#newAccount .modal__content-account-timer #codeNotReceivedBtn {
+  color: #727272;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+#newAccount .modal__content-account-timer .modal__form-btn {
+  margin-top: auto;
+}
+#newAccount .modal__content-account-timer .modal__content-account-info {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+}
+#newAccount .modal__content-account-timer #timerBlock {
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  color: #AAA;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+#newAccount .modal__content-account-timer #timerBlock span {
+  color: #AAA;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+#newAccount .modal__content-account-timer #resendBtn {
+  color: var(--color-red);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+  text-decoration: underline;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+#newAccount .modal__toggle-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+#newAccount .modal__toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease;
+}
+#newAccount .modal__toggle:hover {
+  transform: translateY(-2px);
+}
+#newAccount .modal__toggle-input {
+  display: none;
+}
+#newAccount .modal__toggle-slider {
+  position: relative;
+  width: 48px;
+  height: 24px;
+  background: #E3E3E3;
+  border-radius: 50px;
+  transition: background 0.3s ease;
+  flex-shrink: 0;
+}
+#newAccount .modal__toggle-slider::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.1);
+}
+#newAccount .modal__toggle-input:checked + .modal__toggle-slider {
+  background: var(--color-red);
+}
+#newAccount .modal__toggle-input:checked + .modal__toggle-slider::before {
+  transform: translateX(24px);
+}
+#newAccount .modal__toggle-text {
+  color: #000;
+  font-size: 16px;
+  line-height: 1.5;
+}
+@media (max-width: 1024px) {
+  #newAccount .modal__toggle-text {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+#newAccount .email-field {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s ease;
+  margin-top: 0;
+  width: 100%;
+}
+#newAccount .email-field.show {
+  max-height: 100px;
+  opacity: 1;
+  margin-top: 16px;
+}
+#newAccount .modal__form-col-info {
+  margin-top: -8px;
+}
+#newAccount .modal__form-col-info p {
+  color: #727272;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0.07px;
+  display: inline;
+}
+#newAccount .modal__form-col-info p a {
+  color: var(--color-red);
+  text-decoration: underline;
+}
+#newAccount .modal__content-account-visible-image-position {
+  position: absolute;
+  top: 308px;
+  right: 24px;
+  display: flex;
+  width: 220px;
+  height: 220px;
+  padding: 24.52px 24.52px 25.201px 25.201px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  background: #F2F2F2;
+}
+#newAccount .modal__content.modal__content-account-timer {
+  max-width: 436px;
+}
+#newAccount .modal__content.modal__content-account-timer .modal__form-btn {
+  margin-top: auto;
+}
+#newAccount #registerResendBtn {
+  color: var(--color-red);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+  text-decoration: underline;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+@media (max-width: 1024px) {
+  #newAccount #registerResendBtn {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+#newAccount #registerTimerBlock,
+#newAccount #registerTimerText {
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  color: #AAA;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+@media (max-width: 1024px) {
+  #newAccount #registerTimerBlock,
+  #newAccount #registerTimerText {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+.modal-accaunt-new {
+  display: flex;
+  height: 100%;
+  transform: translateX(100%);
+  transition-duration: var(--transition-duration);
+  padding: 0;
+}
+.modal-accaunt-new.active {
+  transform: translateX(0);
+}
+
+@media (max-width: 1024px) {
+  #newAccount .modal__content.modal__content-account-timer {
+    min-height: 100vh;
+  }
 }
 
 .offers__inner {
@@ -5566,6 +6553,9 @@ button:disabled {
   }
 }
 
+.blog {
+  overflow: hidden;
+}
 .blog__inner {
   display: flex;
   flex-direction: column;
@@ -5829,6 +6819,9 @@ button:disabled {
   right: -30px;
 }
 
+.reviews {
+  overflow: hidden;
+}
 .reviews__inner {
   display: flex;
   flex-direction: column;
@@ -11115,6 +12108,1155 @@ button:disabled {
   font-weight: 500;
   line-height: 20px;
   margin: 0;
+}
+
+.account-page {
+  padding: 24px 0 100px;
+}
+.account-page__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.account-page__inner-sect {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.account-page .account-title {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.28px;
+}
+.account-page .account-layout {
+  display: flex;
+  justify-content: space-between;
+}
+.account-page .account-sidebar {
+  width: 323px;
+  flex-shrink: 0;
+}
+.account-page .account-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.account-page .account-nav__item {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 0 0 1.5px transparent;
+  border-radius: 16px;
+  cursor: pointer;
+  transition-duration: var(--transition-duration);
+}
+.account-page .account-nav__item:hover {
+  color: var(--color-red);
+}
+.account-page .account-nav__item:hover .account-nav__icon img {
+  filter: brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(6181%) hue-rotate(344deg) brightness(88%) contrast(116%);
+}
+.account-page .account-nav__icon {
+  width: 24px;
+  height: 24px;
+  aspect-ratio: 1/1;
+}
+.account-page .account-nav__icon img {
+  transition-duration: var(--transition-duration);
+}
+.account-page #logout-btn {
+  margin-top: 50px;
+  border-bottom: var(--border);
+  border-radius: 0;
+}
+.account-page .account-sidebar__delete {
+  padding: 14px 16px;
+  color: var(--color-red);
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+  transition-duration: var(--transition-duration);
+}
+.account-page .account-nav__item.active {
+  box-shadow: 0 0 0 1.5px var(--color-red);
+}
+.account-page .account-nav__item.active .account-nav__icon img {
+  filter: brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(6181%) hue-rotate(344deg) brightness(88%) contrast(116%);
+}
+.account-page .account-nav__text {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+}
+.account-page .account-content-box {
+  max-width: 888px;
+  width: 100%;
+  height: auto;
+}
+.account-page .account-content {
+  width: 100%;
+  height: 100%;
+}
+.account-page .profile-card--border {
+  padding: 24px;
+  border-radius: 20px;
+  box-shadow: 0 0 0 1.5px #E3E3E3;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.account-page .btn-edit-field {
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  aspect-ratio: 1/1;
+}
+.account-page .form-group__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.account-page .profile-card {
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+}
+.account-page .profile-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.account-page .profile-card__title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.1px;
+}
+.account-page .profile-card .btn-text-edit {
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--color-red);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+.account-page .profile-card .profile-card__form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 16px;
+}
+.account-page .profile-card .form-group {
+  flex: 0 0 calc(50% - 8px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.account-page .profile-card .form-group .form-label {
+  color: var(--color-gray-label);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+.account-page .profile-card .form-group .form-input {
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+  padding: 0;
+}
+.account-page .profile-card .form-group .form-input::placeholder {
+  color: #000;
+}
+.account-page .account-content-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.account-page .profile-card__footer {
+  display: none;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+}
+.account-page .profile-card__footer .btn-action {
+  width: 198px;
+  min-height: 56px;
+}
+.account-page .profile-card.edit-mode .profile-card__footer {
+  display: flex;
+}
+
+/* Success Banner */
+.success-banner {
+  opacity: 0;
+  display: none;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.success-banner.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.btn-edit-field {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 2;
+}
+
+.profile-card.edit-mode .btn-edit-field {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.btn-add-value {
+  display: none;
+}
+
+.profile-card.edit-mode .value-container.is-empty .btn-add-value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--color-red);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+
+/* Hide edit pencil if empty and showing add button */
+.profile-card.edit-mode .value-container.is-empty .btn-edit-field {
+  display: none;
+}
+
+/* Footer Actions */
+.profile-footer {
+  display: none;
+  /* Hidden in read mode */
+}
+
+.profile-card.edit-mode .profile-footer {
+  display: flex;
+}
+
+/* Address Empty State */
+.address-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.address-empty__title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+.address-empty p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+.address-empty__btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  background: var(--color-red);
+  color: var(--color-light);
+  max-width: 436px;
+  min-height: 56px;
+  width: 100%;
+}
+.address-empty__btn img {
+  width: 24px;
+  height: 24px;
+}
+
+/* --- Custom Modals --- */
+.acc-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.acc-modal.open {
+  opacity: 1;
+  visibility: visible;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12.5px);
+}
+
+.acc-modal__content {
+  background: #fff;
+  max-width: 436px;
+  padding: 24px;
+  border-radius: 20px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: flex-start;
+  margin: auto;
+}
+
+.address-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.acc-modal__close {
+  width: 24px;
+  height: 24px;
+  aspect-ratio: 1/1;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.acc-modal__content-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.acc-modal__title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.12px;
+}
+
+.acc-modal__body {
+  width: 100%;
+}
+.acc-modal__body .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+.acc-modal__body .form-group .form-label {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.acc-modal__body .form-group .form-label .required {
+  color: var(--color-red);
+}
+.acc-modal__body .form-group .form-label.disabled {
+  opacity: 0.5;
+}
+.acc-modal__body .form-group .form-input {
+  border-radius: 16px;
+  background: var(--color-gray-primary);
+  width: 100%;
+  min-height: 56px;
+  padding: 16px;
+}
+.acc-modal__body #modal-email-error {
+  color: var(--color-red);
+  text-align: right;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+
+.acc-modal__footer {
+  width: 100%;
+}
+.acc-modal__footer .btn-action {
+  width: 100%;
+  min-height: 56px;
+  border-radius: 16px;
+}
+
+.account-title-btn-add {
+  max-width: 250px;
+  width: 100%;
+  min-height: 56px;
+}
+.account-title-btn-add img {
+  filter: brightness(0) saturate(100%) invert(0%) sepia(4%) saturate(7%) hue-rotate(59deg) brightness(97%) contrast(100%);
+}
+
+/* Date Picker Specifics */
+.date-selectors {
+  display: flex;
+  gap: 10px;
+}
+
+.date-select-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+.date-select-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--color-gray-primary);
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1.5px solid transparent;
+}
+
+.date-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 88px;
+  padding: 5px;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 12px;
+  border: 1.5px solid var(--color-gray-light);
+  background: var(--color-light);
+  box-shadow: 0 6px 28.1px 8px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+  display: none;
+}
+
+#modal-confirm-save .acc-modal__content {
+  align-items: center;
+  gap: 0;
+  padding: 24px 24px 0 24px;
+  overflow: hidden;
+}
+#modal-confirm-save .acc-modal__content .acc-modal__title {
+  margin-bottom: 16px;
+}
+#modal-confirm-save .acc-modal__content .acc-modal__body {
+  margin-bottom: 24px;
+}
+#modal-confirm-save .acc-modal__content .acc-modal__body p {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+#modal-confirm-save .acc-modal__content .acc-modal__footer {
+  width: calc(100% + 48px);
+  display: flex;
+  border-top: 1px solid var(--color-gray-light);
+}
+#modal-confirm-save .acc-modal__content .acc-modal__footer .btn-action {
+  border-radius: 0;
+  padding: 16px 0;
+  background: transparent;
+  border: none;
+}
+#modal-confirm-save .acc-modal__content .acc-modal__footer .btn-action:nth-of-type(2) {
+  border-left: 1px solid var(--color-gray-light);
+  border-right: 1px solid var(--color-gray-light);
+}
+#modal-confirm-save .acc-modal__content .acc-modal__footer .btn-text-edit {
+  color: var(--color-red);
+}
+
+#modal-logout .acc-modal__content {
+  align-items: center;
+  gap: 0;
+  padding: 24px 24px 0 24px;
+  overflow: hidden;
+}
+#modal-logout .acc-modal__content .acc-modal__title {
+  margin-bottom: 16px;
+  width: 100%;
+  text-align: center;
+}
+#modal-logout .acc-modal__content .acc-modal__body {
+  margin-bottom: 24px;
+}
+#modal-logout .acc-modal__content .acc-modal__body p {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+#modal-logout .acc-modal__content .acc-modal__footer {
+  width: calc(100% + 48px);
+  display: flex;
+  border-top: 1px solid var(--color-gray-light);
+}
+#modal-logout .acc-modal__content .acc-modal__footer .btn-action {
+  border-radius: 0;
+  padding: 16px 0;
+  background: transparent;
+  border: none;
+}
+#modal-logout .acc-modal__content .acc-modal__footer .btn-action:nth-of-type(2) {
+  border-left: 1px solid var(--color-gray-light);
+}
+#modal-logout .acc-modal__content .acc-modal__footer .btn-save {
+  color: var(--color-red);
+}
+
+#modal-delete-account .acc-modal__content {
+  align-items: center;
+  gap: 0;
+  padding: 24px 24px 0 24px;
+  overflow: hidden;
+}
+#modal-delete-account .acc-modal__content .acc-modal__title {
+  margin-bottom: 16px;
+  width: 100%;
+  text-align: center;
+}
+#modal-delete-account .acc-modal__content .acc-modal__body {
+  margin-bottom: 24px;
+}
+#modal-delete-account .acc-modal__content .acc-modal__body p {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+#modal-delete-account .acc-modal__content .acc-modal__footer {
+  width: calc(100% + 48px);
+  display: flex;
+  border-top: 1px solid var(--color-gray-light);
+}
+#modal-delete-account .acc-modal__content .acc-modal__footer .btn-action {
+  border-radius: 0;
+  padding: 16px 0;
+  background: transparent;
+  border: none;
+}
+#modal-delete-account .acc-modal__content .acc-modal__footer .btn-action:nth-of-type(2) {
+  border-left: 1px solid var(--color-gray-light);
+}
+#modal-delete-account .acc-modal__content .acc-modal__footer .btn-save {
+  color: var(--color-red);
+}
+
+#modal-delete-success .acc-modal__content {
+  align-items: center;
+  gap: 0;
+  padding: 24px;
+  overflow: hidden;
+}
+#modal-delete-success .acc-modal__content .acc-modal__title {
+  margin-bottom: 16px;
+  width: 100%;
+  text-align: center;
+}
+#modal-delete-success .acc-modal__content .acc-modal__body {
+  margin-bottom: 24px;
+}
+#modal-delete-success .acc-modal__content .acc-modal__body p {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+#modal-delete-success .acc-modal__content .acc-modal__footer {
+  width: 100%;
+  display: flex;
+}
+#modal-delete-success .acc-modal__content .acc-modal__footer .btn-action {
+  min-height: 56px;
+  width: 100%;
+}
+#modal-delete-success .acc-modal__content .acc-modal__footer .btn-action:active {
+  color: var(--color-light);
+}
+
+.profile-card {
+  display: none;
+}
+.profile-card.active {
+  display: flex;
+}
+
+/* Custom Select Dropdown */
+.custom-select {
+  position: relative;
+  width: 100%;
+}
+
+.select-selected {
+  background-color: var(--color-gray-primary);
+  border-radius: 16px;
+  padding: 16px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 56px;
+}
+.select-selected:after {
+  content: "";
+  width: 10px;
+  height: 6px;
+  background: url("../icons/dropdown.svg") no-repeat center;
+  background-size: contain;
+  transition: transform 0.3s;
+}
+
+.select-selected.select-arrow-active:after {
+  transform: rotate(180deg);
+}
+
+.select-items {
+  position: absolute;
+  background-color: var(--color-light);
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  border-radius: 16px;
+  box-shadow: 0 6px 28.1px 8px rgba(0, 0, 0, 0.25);
+  margin-top: 8px;
+  overflow: hidden;
+  padding: 0 24px;
+}
+
+.select-hide {
+  display: none;
+}
+
+.select-items div {
+  padding: 16px 0;
+  cursor: pointer;
+  border-bottom: 1.5px solid #E3E3E3;
+}
+.select-items div:hover {
+  color: var(--color-red);
+}
+.select-items div:last-child {
+  border-bottom: none;
+}
+
+.custom-select.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.custom-select.disabled .select-selected {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+/* Date Picker Specifics */
+.date-selectors {
+  display: flex;
+  gap: 10px;
+}
+
+.date-select-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+.date-select-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--color-gray-primary);
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1.5px solid transparent;
+}
+
+.date-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 88px;
+  padding: 5px;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 12px;
+  border: 1.5px solid var(--color-gray-light);
+  background: var(--color-light);
+  box-shadow: 0 6px 28.1px 8px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+  display: none;
+}
+
+#modal-confirm-save .acc-modal__content {
+  align-items: center;
+  gap: 0;
+  padding: 24px 24px 0 24px;
+  overflow: hidden;
+}
+#modal-confirm-save .acc-modal__content .acc-modal__title {
+  margin-bottom: 16px;
+}
+#modal-confirm-save .acc-modal__content .acc-modal__body {
+  margin-bottom: 24px;
+}
+#modal-confirm-save .acc-modal__content .acc-modal__body p {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+#modal-confirm-save .acc-modal__content .acc-modal__footer {
+  width: calc(100% + 48px);
+  display: flex;
+  border-top: 1px solid var(--color-gray-light);
+}
+#modal-confirm-save .acc-modal__content .acc-modal__footer .btn-action {
+  border-radius: 0;
+  padding: 16px 0;
+  background: transparent;
+  border: none;
+}
+#modal-confirm-save .acc-modal__content .acc-modal__footer .btn-action:nth-of-type(2) {
+  border-left: 1px solid var(--color-gray-light);
+  border-right: 1px solid var(--color-gray-light);
+}
+#modal-confirm-save .acc-modal__content .acc-modal__footer .btn-text-edit {
+  color: var(--color-red);
+}
+
+#modal-logout .acc-modal__content {
+  align-items: center;
+  gap: 0;
+  padding: 24px 24px 0 24px;
+  overflow: hidden;
+}
+#modal-logout .acc-modal__content .acc-modal__title {
+  margin-bottom: 16px;
+  width: 100%;
+  text-align: center;
+}
+#modal-logout .acc-modal__content .acc-modal__body {
+  margin-bottom: 24px;
+}
+#modal-logout .acc-modal__content .acc-modal__body p {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+#modal-logout .acc-modal__content .acc-modal__footer {
+  width: calc(100% + 48px);
+  display: flex;
+  border-top: 1px solid var(--color-gray-light);
+}
+#modal-logout .acc-modal__content .acc-modal__footer .btn-action {
+  border-radius: 0;
+  padding: 16px 0;
+  background: transparent;
+  border: none;
+}
+#modal-logout .acc-modal__content .acc-modal__footer .btn-action:nth-of-type(2) {
+  border-left: 1px solid var(--color-gray-light);
+}
+#modal-logout .acc-modal__content .acc-modal__footer .btn-save {
+  color: var(--color-red);
+}
+
+#modal-delete-account .acc-modal__content {
+  align-items: center;
+  gap: 0;
+  padding: 24px 24px 0 24px;
+  overflow: hidden;
+}
+#modal-delete-account .acc-modal__content .acc-modal__title {
+  margin-bottom: 16px;
+  width: 100%;
+  text-align: center;
+}
+#modal-delete-account .acc-modal__content .acc-modal__body {
+  margin-bottom: 24px;
+}
+#modal-delete-account .acc-modal__content .acc-modal__body p {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+#modal-delete-account .acc-modal__content .acc-modal__footer {
+  width: calc(100% + 48px);
+  display: flex;
+  border-top: 1px solid var(--color-gray-light);
+}
+#modal-delete-account .acc-modal__content .acc-modal__footer .btn-action {
+  border-radius: 0;
+  padding: 16px 0;
+  background: transparent;
+  border: none;
+}
+#modal-delete-account .acc-modal__content .acc-modal__footer .btn-action:nth-of-type(2) {
+  border-left: 1px solid var(--color-gray-light);
+}
+#modal-delete-account .acc-modal__content .acc-modal__footer .btn-save {
+  color: var(--color-red);
+}
+
+#modal-delete-success .acc-modal__content {
+  align-items: center;
+  gap: 0;
+  padding: 24px;
+  overflow: hidden;
+}
+#modal-delete-success .acc-modal__content .acc-modal__title {
+  margin-bottom: 16px;
+  width: 100%;
+  text-align: center;
+}
+#modal-delete-success .acc-modal__content .acc-modal__body {
+  margin-bottom: 24px;
+}
+#modal-delete-success .acc-modal__content .acc-modal__body p {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+#modal-delete-success .acc-modal__content .acc-modal__footer {
+  width: 100%;
+  display: flex;
+}
+#modal-delete-success .acc-modal__content .acc-modal__footer .btn-action {
+  min-height: 56px;
+  width: 100%;
+}
+#modal-delete-success .acc-modal__content .acc-modal__footer .btn-action:active {
+  color: var(--color-light);
+}
+
+.profile-card {
+  display: none;
+}
+.profile-card.active {
+  display: flex;
+}
+
+.address-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .account-layout {
+    flex-direction: column;
+  }
+  .account-sidebar {
+    width: 100%;
+  }
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+  .account-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+  .account-nav__item {
+    white-space: nowrap;
+  }
+}
+.date-select-btn.active {
+  border-radius: 16px;
+  border: 1.5px solid #AAA;
+  background: var(--color-light);
+}
+
+.date-dropdown.show {
+  display: block;
+}
+
+.date-option {
+  display: flex;
+  height: 24px;
+  padding: 3px 12px 3px 7px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2px;
+  align-self: stretch;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.date-option:hover,
+.date-option.selected {
+  border-radius: 5px;
+  background: var(--color-red);
+  color: var(--color-light);
+}
+
+#address-details {
+  transition: opacity 0.3s;
+  flex-direction: column;
+  gap: 24px;
+}
+#address-details .form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+#address-details .form-row:nth-last-of-type(1) {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+#address-details .form-row:nth-last-of-type(1) .form-group {
+  width: calc(50% - 12px);
+}
+#address-details.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Address Card */
+.address-card {
+  border-radius: 20px;
+  border: 1.5px solid #E3E3E3;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  background: #fff;
+  transition: border-color 0.3s;
+  min-height: 58px;
+}
+.address-card:hover {
+  border-color: var(--color-red);
+}
+.address-card__header {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.address-card__type {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.address-card__label {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.1px;
+}
+.address-card .address-card__text {
+  color: var(--color-gray-label);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+.address-card__icon {
+  width: 32px;
+  height: 32px;
+  aspect-ratio: 1/1;
+  flex-shrink: 0;
+}
+.address-card__menu-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.address-card__menu-btn img {
+  width: 24px;
+  height: 24px;
+}
+.address-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+.address-card__menu {
+  position: absolute;
+  top: 50px;
+  right: 24px;
+  width: 250px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 28.1px 8px rgba(0, 0, 0, 0.25);
+  display: none;
+  z-index: 10;
+  flex-direction: column;
+  min-width: 140px;
+}
+.address-card__menu.active {
+  display: flex;
+}
+.address-card__menu button {
+  background: transparent;
+  border: none;
+  display: flex;
+  padding: 16px;
+  align-items: center;
+  gap: 16px;
+  align-self: stretch;
+  transition: background 0.2s;
+  width: 100%;
+  border-bottom: 1.5px solid #E3E3E3;
+}
+.address-card__menu button img {
+  width: 16px;
+  height: 16px;
+  aspect-ratio: 1/1;
+  flex-shrink: 0;
+}
+.address-card__menu button.delete-btn {
+  color: var(--color-red);
+  border-bottom: 0;
+}
+.address-card__menu button.edit-btn img {
+  filter: brightness(0) saturate(100%) invert(0%) sepia(1%) saturate(7447%) hue-rotate(16deg) brightness(104%) contrast(100%);
+}
+
+/* Add Address Button (Card style) */
+.address-add-btn {
+  border-radius: 20px;
+  border: 1.5px dashed #E3E3E3;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 180px;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: var(--color-gray-label);
+  width: 100%;
+}
+.address-add-btn:hover {
+  border-color: var(--color-red);
+  color: var(--color-red);
+  background: rgba(227, 6, 19, 0.03);
+}
+.address-add-btn img {
+  width: 40px;
+  height: 40px;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+.address-add-btn:hover img {
+  opacity: 1;
+  filter: brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(6181%) hue-rotate(344deg) brightness(88%) contrast(116%);
+}
+.address-add-btn span {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+#select-delivery .select-items,
+#select-branch .select-items {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+#modal-delete-address .acc-modal__content {
+  gap: 0;
+  padding-bottom: 0;
+}
+#modal-delete-address .acc-modal__content-header {
+  margin-bottom: 16px;
+}
+#modal-delete-address .acc-modal__content-header .acc-modal__title {
+  text-align: center;
+  width: 100%;
+}
+#modal-delete-address .acc-modal__body {
+  margin-bottom: 24px;
+}
+#modal-delete-address .acc-modal__body p {
+  text-align: center;
+}
+#modal-delete-address .acc-modal__footer {
+  width: calc(100% + 48px);
+  margin-left: -24px;
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid var(--color-gray-light);
+}
+#modal-delete-address .acc-modal__footer .btn-action {
+  background: transparent;
+  border-radius: 0;
+  border: none;
+}
+#modal-delete-address .acc-modal__footer .btn-action.btn-text-edit {
+  border-right: 1px solid var(--color-gray-light) !important;
+}
+#modal-delete-address .acc-modal__footer #btn-confirm-delete-address {
+  color: var(--color-red);
+}
+
+.address-card-icon-img {
+  width: 22.994px;
+  height: 26.66px;
+  object-fit: cover;
 }
 
 /*# sourceMappingURL=main.css.map */

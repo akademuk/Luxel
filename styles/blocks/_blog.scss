@@ -1,6 +1,7 @@
 @use '../helpers' as *;
 
 .blog {
+    overflow: hidden;
     &__inner {
         display: flex;
         flex-direction: column;
