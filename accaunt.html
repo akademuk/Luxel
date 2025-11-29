@@ -208,6 +208,16 @@
             <img src="icons/plus.svg" alt="Add">
             Додати адресу
           </button>
+          <div class="profile-card__order-tabs">
+            <button class="profile-card__order__tab-button active" data-tab="orderAll">Всі <span
+                class="profile-card__order-value">(21)</span></button>
+            <button class="profile-card__order__tab-button" data-tab="orderNew">Нові <span
+                class="profile-card__order-value">(1)</span></button>
+            <button class="profile-card__order__tab-button" data-tab="orderCompleted">Виконані <span
+                class="profile-card__order-value">(14)</span></button>
+            <button class="profile-card__order__tab-button" data-tab="orderCancelled">Скасовані <span
+                class="profile-card__order-value">(6)</span></button>
+          </div>
         </div>
 
         <div class="account-layout">
@@ -358,6 +368,160 @@
                   <a href="/" class="address-empty__btn red-btn">
                     До каталогу
                   </a>
+                </div>
+                <div class="profile-card__order">
+                  <div class="profile-card__order-list">
+                    <div class="profile-card__order-item order-item orderNew">
+                      <div class="order-item__header">
+                        <div class="order-item__meta">
+                          <p class="order-item__number">№ 56249346</p>
+                          <time class="order-item__date" datetime="2025-08-17">17 серпня 2025</time>
+                        </div>
+                        <div class="order-item__total">
+                          <span class="order-item__label">На суму:</span>
+                          <p class="order-item__sum">2731.80 ₴</p>
+                        </div>
+                        <div class="order-item__actions">
+                          <button class="order-item__toggle-btn"><span class="yellow">Нове замовлення</span><span class="gray">Скасовано</span>
+                            <img src="icons/accardion-arrow.svg" width="24" height="24" alt="" class="order-item__icon">
+                          </button>
+                        </div>
+                      </div>
+                      <div class="order-item__body">
+                        <h2 class="order-item__title">Товари <span class="order-item__count">(3)</span></h2>
+
+                        <article class="order-item__product">
+                          <div class="order-item__product-image">
+                            <img src="images/catalog-item4.png" width="80" height="80" alt="Product">
+                          </div>
+                          <div class="order-item__product-info">
+                            <h3 class="order-item__product-name">Світлодіодний настільний світильник Luxel 220-240V 6W
+                            </h3>
+                            <div class="order-item__product-details">
+                              <p class="order-item__product-quantity">2 од.</p>
+                              <div class="order-item__product-prices">
+                                <p class="order-item__product-old-price">98.00 ₴</p>
+                                <p class="order-item__product-price">82.00 ₴</p>
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+
+                        <article class="order-item__product">
+                          <div class="order-item__product-image">
+                            <img src="images/catalog-item5.png" width="80" height="80" alt="Product">
+                          </div>
+                          <div class="order-item__product-info">
+                            <h3 class="order-item__product-name">Світлодіодний настільний світильник Luxel 220-240V 6W
+                            </h3>
+                            <div class="order-item__product-details">
+                              <p class="order-item__product-quantity">2 од.</p>
+                              <div class="order-item__product-prices">
+                                <p class="order-item__product-old-price">98.00 ₴</p>
+                                <p class="order-item__product-price">82.00 ₴</p>
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+
+                        <article class="order-item__product">
+                          <div class="order-item__product-image">
+                            <img src="images/catalog-item.png" width="80" height="80" alt="Product">
+                          </div>
+                          <div class="order-item__product-info">
+                            <h3 class="order-item__product-name">Світлодіодний настільний світильник Luxel 220-240V 6W
+                            </h3>
+                            <div class="order-item__product-details">
+                              <p class="order-item__product-quantity">2 од.</p>
+                              <div class="order-item__product-prices">
+                                <p class="order-item__product-old-price">98.00 ₴</p>
+                                <p class="order-item__product-price">82.00 ₴</p>
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+
+
+                        <h2 class="order-item__title">Отримувач</h2>
+                        <div class="order-item__info">
+                          <div class="order-item__info-row">
+                            <span class="order-item__info-label">ПІБ</span>
+                            <p class="order-item__info-name">Мавритюк Олексій Олександрович</p>
+                          </div>
+                          <div class="order-item__info-row">
+                            <span class="order-item__info-label">Телефон</span>
+                            <p class="order-item__info-phone">+380 (66) 111-22-33</p>
+                          </div>
+                          <div class="order-item__info-row">
+                            <span class="order-item__info-label">Email</span>
+                            <p class="order-item__info-email">mygmail@gmail.com</p>
+                          </div>
+                        </div>
+
+                        <h2 class="order-item__title">Доставка</h2>
+                        <div class="order-item__info">
+                          <div class="order-item__info-row">
+                            <span class="order-item__info-label">Країна</span>
+                            <p class="order-item__info-country">Україна</p>
+                          </div>
+                          <div class="order-item__info-row">
+                            <span class="order-item__info-label">Місто</span>
+                            <p class="order-item__info-city">Київ</p>
+                          </div>
+                          <div class="order-item__info-row">
+                            <span class="order-item__info-label">Спосіб доставки</span>
+                            <p class="order-item__info-delivery">Нова пошта - відділення</p>
+                          </div>
+                          <div class="order-item__info-row">
+                            <span class="order-item__info-label">Адреса доставки</span>
+                            <p class="order-item__info-delivery-address">№9, Київ, пров. В’ячеслава Чорновола, 54а (р-н
+                              Жулянського мосту)</p>
+                          </div>
+                        </div>
+                        <h2 class="order-item__title">Оплата</h2>
+                        <div class="order-item__info">
+                          <div class="order-item__info-row">
+                            <span class="order-item__info-label">Спосіб оплати</span>
+                            <p class="order-item__info-pay">Google Pay</p>
+                          </div>
+                          <div class="order-item__info-row">
+                            <span class="order-item__info-label">Сума замовлення</span>
+                            <p class="order-item__info-value">2731.80 ₴</p>
+                          </div>
+                          <div class="order-item__info-row">
+                            <span class="order-item__info-label">Знижка</span>
+                            <p class="order-item__info-sale">-166.00 ₴</p>
+                          </div>
+                          <div class="order-item__info-row">
+                            <span class="order-item__info-label">Доставка</span>
+                            <p class="order-item__info-delivery-value">Безкоштовно</p>
+                          </div>
+                        </div>
+                        <div class="order-item__info-sum">
+                          <p class="order-item__info-text">Всього</p>
+                          <p class="order-item__info-sum-value">2731.80 ₴</p>
+                        </div>
+                        <button class="order-item__info-delate">Скасувати замовлення</button>
+                        <button class="order-item__info-feedback">Залишити відгук</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="profile-card__order-pagination">
+                    <div class="pagination-box">
+                      <ul class="pagination">
+                        <li class="pagination__item"><a href="/" class="pagination__link"><img
+                              src="icons/pagin-prev.svg" width="24" height="24" alt=""></a></li>
+                        <li class="pagination__item"><a href="/" class="pagination__link pagination__link--active">1</a>
+                        </li>
+                        <li class="pagination__item"><a href="/" class="pagination__link">2</a></li>
+                        <li class="pagination__item"><a href="/" class="pagination__link">3</a></li>
+                        <li class="pagination__item"><a href="/" class="pagination__link">4</a></li>
+                        <li class="pagination__item"><a href="/" class="pagination__link">5</a></li>
+                        <li class="pagination__item"><a href="/" class="pagination__link"><img
+                              src="icons/pagin-next.svg" width="24" height="24" alt=""></a></li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -701,6 +865,65 @@
       </div>
     </div>
 
+    <!-- Modal: Cancel Order -->
+    <div class="acc-modal" id="modal-cancel-order">
+      <div class="acc-modal__content">
+        <div class="acc-modal__content-header">
+          <h3 class="acc-modal__title">Скасування замовлення?</h3>
+          <button class="acc-modal__close" data-close-modal="modal-cancel-order">
+            <img src="icons/close-black.svg" width="12" height="12" alt="Close">
+          </button>
+        </div>
+        <div class="acc-modal__body">
+          <p>Ви дійсно хочете скасувати замовлення?</p>
+        </div>
+        <div class="acc-modal__footer">
+          <button class="btn-action btn-text-edit" data-close-modal="modal-cancel-order"
+            style="border:none;">Повернутися</button>
+          <button class="btn-action btn-save red-btn" id="btn-confirm-cancel-order">Підтвердити</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Feedback -->
+    <div class="acc-modal" id="modal-feedback">
+      <div class="acc-modal__content">
+        <div class="acc-modal__content-header">
+          <h3 class="acc-modal__title">Залишити відгук</h3>
+          <button class="acc-modal__close" data-close-modal="modal-feedback">
+            <img src="icons/close-black.svg" width="12" height="12" alt="Close">
+          </button>
+        </div>
+        <div class="acc-modal__body">
+          <div class="feedback-products">
+            <!-- Product 1 -->
+            <div class="feedback-product">
+              <img src="images/blog-image1.jpg" width="60" height="60" alt="Product">
+              <div class="feedback-product__info">
+                <h4 class="feedback-product__title">Світлодіодний настільний світильник Luxel 220-240V 6W</h4>
+                <button class="btn-action btn-text-edit feedback-btn">Залишити відгук</button>
+              </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="feedback-product">
+              <img src="images/blog-image1.jpg" width="60" height="60" alt="Product">
+              <div class="feedback-product__info">
+                <h4 class="feedback-product__title">Світлодіодний настільний світильник Luxel 220-240V 6W</h4>
+                <button class="btn-action btn-text-edit feedback-btn">Залишити відгук</button>
+              </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="feedback-product">
+              <img src="images/blog-image1.jpg" width="60" height="60" alt="Product">
+              <div class="feedback-product__info">
+                <h4 class="feedback-product__title">Світлодіодний настільний світильник Luxel 220-240V 6W</h4>
+                <button class="btn-action btn-text-edit feedback-btn">Залишити відгук</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   <footer class="footer">
@@ -1487,6 +1710,68 @@
       </div>
     </div>
   </template>
+
+  <!-- Modal: Delete Address Confirmation -->
+  <div class="acc-modal" id="cancelOrderModal">
+      <div class="acc-modal__content">
+        <div class="acc-modal__content-header">
+          <h3 class="acc-modal__title">Скасування замовлення?</h3>
+        </div>
+        <div class="acc-modal__body">
+          <p>Ви дійсно хочете скасувати замовлення?</p>
+        </div>
+        <div class="acc-modal__footer">
+          <button class="btn-action btn-text-edit" data-close-modal="cancelOrderModal"
+            style="border:none;">Повернутися</button>
+          <button class="btn-action btn-save" id="btn-order-delete">Підтвердити</button>
+        </div>
+      </div>
+  </div>
+
+  <div class="sort-popup" id="cancelOrderModalReason">
+        <div class="sort-popup__header">
+            <h3 class="sort-popup__title">Оберіть причину скасування</h3>
+            <button class="sort-popup__close">
+                <img src="icons/close-black.svg" width="13" height="13" alt="">
+            </button>
+        </div>
+        <ul class="sort-popup__list">
+            <li class="sort-popup__item">
+                <label class="sort-popup__label">
+                    <span class="sort-popup__text">Товар вже не потрібен</span>
+                    <input type="radio" name="reason" value="popularity" class="sort-popup__radio" checked>
+                </label>
+            </li>
+            <li class="sort-popup__item">
+                <label class="sort-popup__label">
+                    <span class="sort-popup__text">Не встигаю забрати</span>
+                    <input type="radio" name="reason" value="price-asc" class="sort-popup__radio">
+                </label>
+            </li>
+            <li class="sort-popup__item">
+                <label class="sort-popup__label">
+                    <span class="sort-popup__text">Знайшов в іншому місці</span>
+                    <input type="radio" name="reason" value="price-desc" class="sort-popup__radio">
+                </label>
+            </li>
+            <li class="sort-popup__item">
+                <label class="sort-popup__label">
+                    <span class="sort-popup__text">Інша причина</span>
+                    <input type="radio" name="reason" value="discount" class="sort-popup__radio">
+                </label>
+            </li>
+            <li class="sort-popup__item">
+                <label class="sort-popup__label">
+                    <span class="sort-popup__text">Інша причина</span>
+                    <input type="radio" name="reason" value="discount" class="sort-popup__radio">
+                </label>
+                <textarea name="" id=""></textarea>
+                <span>0/1000 символів</span>
+            </li>
+        </ul>
+
+        <button class="red-btn cancel-order-btn">Продовжити</button>
+    </div>
 
 </body>
 
