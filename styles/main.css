@@ -12122,6 +12122,8 @@ button:disabled {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 .account-page .account-title {
   font-size: 56px;
@@ -12131,16 +12133,35 @@ button:disabled {
 }
 .account-page .account-layout {
   display: flex;
+  gap: 16px;
   justify-content: space-between;
+}
+@media (max-width: 992px) {
+  .account-page .account-layout {
+    flex-direction: column;
+  }
 }
 .account-page .account-sidebar {
   width: 323px;
   flex-shrink: 0;
 }
+@media (max-width: 992px) {
+  .account-page .account-sidebar {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
 .account-page .account-nav__list {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+@media (max-width: 992px) {
+  .account-page .account-nav__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 .account-page .account-nav__item {
   padding: 14px 16px;
@@ -12171,6 +12192,11 @@ button:disabled {
   border-bottom: var(--border);
   border-radius: 0;
 }
+@media (max-width: 992px) {
+  .account-page #logout-btn {
+    margin-top: 0;
+  }
+}
 .account-page .account-sidebar__delete {
   padding: 14px 16px;
   color: var(--color-red);
@@ -12195,6 +12221,11 @@ button:disabled {
   max-width: 888px;
   width: 100%;
   height: auto;
+}
+@media (max-width: 992px) {
+  .account-page .account-content-box {
+    max-width: 100%;
+  }
 }
 .account-page .account-content {
   width: 100%;
@@ -12222,6 +12253,12 @@ button:disabled {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+}
+@media (max-width: 576px) {
+  .account-page .form-group__wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 .account-page .profile-card {
   flex-direction: column;
@@ -12997,26 +13034,6 @@ button:disabled {
   gap: 16px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .account-layout {
-    flex-direction: column;
-  }
-  .account-sidebar {
-    width: 100%;
-  }
-  .profile-grid {
-    grid-template-columns: 1fr;
-  }
-  .account-nav {
-    flex-direction: row;
-    overflow-x: auto;
-    padding-bottom: 10px;
-  }
-  .account-nav__item {
-    white-space: nowrap;
-  }
-}
 .date-select-btn.active {
   border-radius: 16px;
   border: 1.5px solid #aaa;
@@ -13091,10 +13108,20 @@ button:disabled {
   gap: 24px;
   align-items: center;
 }
+@media (max-width: 576px) {
+  .address-card__header {
+    flex-wrap: wrap;
+  }
+}
 .address-card__type {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+@media (max-width: 576px) {
+  .address-card__type {
+    width: 100%;
+  }
 }
 .address-card__label {
   font-size: 20px;
@@ -13114,6 +13141,9 @@ button:disabled {
   height: 32px;
   aspect-ratio: 1/1;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .address-card__menu-btn {
   background: transparent;
@@ -13130,6 +13160,11 @@ button:disabled {
   flex-direction: column;
   gap: 8px;
   flex-grow: 1;
+}
+@media (max-width: 576px) {
+  .address-card__content {
+    width: calc(100% - 60px);
+  }
 }
 .address-card__menu {
   position: absolute;
@@ -13256,7 +13291,7 @@ button:disabled {
 .address-card-icon-img {
   width: 22.994px;
   height: 26.66px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .profile-card__order {
@@ -13281,6 +13316,12 @@ button:disabled {
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+}
+@media (max-width: 576px) {
+  .order-item__header {
+    flex-direction: column;
+    gap: 16px;
+  }
 }
 .order-item__info {
   display: flex;
@@ -13312,6 +13353,12 @@ button:disabled {
   flex: 1 0 0;
   padding-right: 24px;
   border-right: 1.5px solid var(--color-gray-light);
+}
+@media (max-width: 576px) {
+  .order-item__meta {
+    padding-right: 0;
+    border: none;
+  }
 }
 .order-item__info-sum {
   padding-bottom: 24px;
@@ -13371,6 +13418,12 @@ button:disabled {
   align-items: center;
   gap: 8px;
 }
+@media (max-width: 576px) {
+  .order-item__total {
+    padding: 0;
+    border: none;
+  }
+}
 .order-item__label {
   color: var(--color-gray-label);
   font-size: 16px;
@@ -13388,6 +13441,11 @@ button:disabled {
   display: flex;
   align-items: center;
 }
+@media (max-width: 576px) {
+  .order-item__actions {
+    padding: 0;
+  }
+}
 .order-item__toggle-btn {
   display: flex;
   gap: 24px;
@@ -13401,6 +13459,11 @@ button:disabled {
 }
 .order-item__toggle-btn span {
   padding: 0 16px;
+}
+@media (max-width: 576px) {
+  .order-item__toggle-btn span {
+    padding: 0;
+  }
 }
 .order-item__toggle-btn span.yellow {
   color: #e4ab00;
@@ -13434,6 +13497,7 @@ button:disabled {
   display: flex;
   gap: 16px;
   align-self: stretch;
+  flex-wrap: wrap;
   margin-bottom: 24px;
 }
 .order-item__product:nth-last-of-type(1) {
@@ -13498,6 +13562,7 @@ button:disabled {
 .profile-card__order-tabs {
   display: none;
   gap: 8px;
+  flex-wrap: wrap;
 }
 .profile-card__order-tabs .profile-card__order__tab-button {
   display: flex;
@@ -13691,11 +13756,13 @@ button:disabled {
   padding-bottom: 24px;
   border-bottom: 1.5px solid var(--color-gray-light);
   margin-bottom: 24px;
+  flex-wrap: wrap;
 }
 .profile-card__reviews-item-header-content {
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 200px;
   justify-content: space-between;
 }
 .profile-card__reviews-item-header-content h2 {
@@ -13810,6 +13877,7 @@ button:disabled {
   display: flex;
   align-items: flex-start;
   gap: 16px;
+  flex-wrap: wrap;
   align-self: stretch;
   margin-bottom: 24px;
 }
@@ -13948,6 +14016,13 @@ button:disabled {
 
 .reviewsQuestion {
   display: none;
+}
+
+#modal-delete-success .btn-action:hover {
+  color: var(--color-light);
+}
+#modal-delete-success .btn-action:active {
+  color: var(--color-light);
 }
 
 /*# sourceMappingURL=main.css.map */

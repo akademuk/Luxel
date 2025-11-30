@@ -5586,6 +5586,15 @@ function initOrderManagement() {
     reason: get("#cancelOrderModalReason"),
     feedback: get("#feedbackModal"),
   };
+
+  const btnCancelReturn = get("#btn-cancel-return");
+  if (btnCancelReturn) {
+    btnCancelReturn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (modals.reason) modals.reason.classList.remove("open", "active");
+      document.body.classList.remove("is-lock", "modal-open");
+    });
+  }
   let currentOrder = null;
 
   const openModal = (modal) => {
@@ -5644,13 +5653,33 @@ function initOrderManagement() {
 
     // Закрытие модалок (крестик или клик по фону)
     const closeBtn = t.closest(".sort-popup__close, .modal__btn--close");
+
+    // Explicit check for background click on known modals
+    if (t === modals.simple || t === modals.reason || t === modals.feedback) {
+      closeModal(t);
+      return;
+    }
+
     const activeModal =
       t.closest(".sort-popup.active, .modal.active") ||
       (t.classList.contains("active") ? t : null);
 
     if (closeBtn || (activeModal && activeModal === t)) {
       // Если клик по фону (t === activeModal)
-      closeModal(t.closest(".sort-popup, .modal") || t);
+      let modalToClose = t.closest(".sort-popup, .modal");
+
+      // Fallback if classes are missing
+      if (!modalToClose) {
+        if (modals.simple && modals.simple.contains(t))
+          modalToClose = modals.simple;
+        else if (modals.reason && modals.reason.contains(t))
+          modalToClose = modals.reason;
+        else if (modals.feedback && modals.feedback.contains(t))
+          modalToClose = modals.feedback;
+        else modalToClose = t; // Last resort
+      }
+
+      closeModal(modalToClose);
       return;
     }
 
@@ -5658,7 +5687,16 @@ function initOrderManagement() {
     if (t.closest(".cancel-order-btn")) {
       e.preventDefault();
       if (currentOrder) cancelOrder(currentOrder);
-      closeModal(t.closest(".sort-popup"));
+
+      // Fix: ensure we find the modal even if .sort-popup class is missing
+      let modal = t.closest(".sort-popup, .modal");
+      if (!modal) {
+        if (modals.simple && modals.simple.contains(t)) modal = modals.simple;
+        else if (modals.reason && modals.reason.contains(t))
+          modal = modals.reason;
+      }
+
+      closeModal(modal);
       currentOrder = null;
       return;
     }
@@ -5667,6 +5705,7 @@ function initOrderManagement() {
     if (t.closest(".modal__btn--submit") && modals.feedback?.contains(t)) {
       alert("Відгук залишено.");
       modals.feedback.classList.add("hidden");
+      closeModal(modals.feedback); // Ensure body classes are removed
     }
   });
 

@@ -13,6 +13,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
   }
 
   .account-title {
@@ -24,18 +26,34 @@
 
   .account-layout {
     display: flex;
+    gap: 16px;
     justify-content: space-between;
+
+    @media (max-width: 992px) {
+      flex-direction: column;
+    }
   }
 
   .account-sidebar {
     width: 323px;
     flex-shrink: 0;
+
+    @media (max-width: 992px) {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 
   .account-nav__list {
     display: flex;
     flex-direction: column;
     gap: 8px;
+
+    @media (max-width: 992px) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 
   .account-nav__item {
@@ -76,6 +94,10 @@
     margin-top: 50px;
     border-bottom: var(--border);
     border-radius: 0;
+
+    @media (max-width: 992px) {
+      margin-top: 0;
+    }
   }
 
   .account-sidebar__delete {
@@ -107,6 +129,10 @@
     max-width: 888px;
     width: 100%;
     height: auto;
+
+    @media (max-width: 992px) {
+      max-width: 100%;
+    }
   }
 
   .account-content {
@@ -138,6 +164,11 @@
     align-items: center;
     justify-content: space-between;
     gap: 8px;
+
+    @media (max-width: 576px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
   .profile-card {
@@ -1018,31 +1049,6 @@
   gap: 16px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .account-layout {
-    flex-direction: column;
-  }
-
-  .account-sidebar {
-    width: 100%;
-  }
-
-  .profile-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .account-nav {
-    flex-direction: row;
-    overflow-x: auto;
-    padding-bottom: 10px;
-  }
-
-  .account-nav__item {
-    white-space: nowrap;
-  }
-}
-
 .date-select-btn.active {
   border-radius: 16px;
   border: 1.5px solid #aaa;
@@ -1121,12 +1127,20 @@
     display: flex;
     gap: 24px;
     align-items: center;
+
+    @media (max-width: 576px) {
+      flex-wrap: wrap;
+    }
   }
 
   &__type {
     display: flex;
     align-items: center;
     gap: 12px;
+
+    @media (max-width: 576px) {
+      width: 100%;
+    }
   }
 
   &__label {
@@ -1149,6 +1163,9 @@
     height: 32px;
     aspect-ratio: 1/1;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__menu-btn {
@@ -1168,6 +1185,10 @@
     flex-direction: column;
     gap: 8px;
     flex-grow: 1;
+
+    @media (max-width: 576px) {
+      width: calc(100% - 60px);
+    }
   }
 
   &__menu {
@@ -1319,7 +1340,7 @@
 .address-card-icon-img {
   width: 22.994px;
   height: 26.66px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .profile-card__order {
@@ -1347,6 +1368,11 @@
     display: flex;
     justify-content: space-between;
     cursor: pointer;
+
+    @media (max-width: 576px) {
+      flex-direction: column;
+      gap: 16px;
+    }
   }
 
   &__info {
@@ -1382,6 +1408,11 @@
     flex: 1 0 0;
     padding-right: 24px;
     border-right: 1.5px solid var(--color-gray-light);
+
+    @media (max-width: 576px) {
+      padding-right: 0;
+      border: none;
+    }
   }
 
   &__info-sum {
@@ -1449,6 +1480,11 @@
     display: flex;
     align-items: center;
     gap: 8px;
+
+    @media (max-width: 576px) {
+      padding: 0;
+      border: none;
+    }
   }
 
   &__label {
@@ -1469,6 +1505,10 @@
     padding-left: 24px;
     display: flex;
     align-items: center;
+
+    @media (max-width: 576px) {
+      padding: 0;
+    }
   }
 
   &__toggle-btn {
@@ -1487,6 +1527,10 @@
 
     span {
       padding: 0 16px;
+
+      @media (max-width: 576px) {
+        padding: 0;
+      }
 
       &.yellow {
         color: #e4ab00;
@@ -1526,6 +1570,7 @@
     display: flex;
     gap: 16px;
     align-self: stretch;
+    flex-wrap: wrap;
     margin-bottom: 24px;
 
     &:nth-last-of-type(1) {
@@ -1600,6 +1645,7 @@
 .profile-card__order-tabs {
   display: none;
   gap: 8px;
+  flex-wrap: wrap;
 
   .profile-card__order__tab-button {
     display: flex;
@@ -1822,11 +1868,13 @@
       padding-bottom: 24px;
       border-bottom: 1.5px solid var(--color-gray-light);
       margin-bottom: 24px;
+      flex-wrap: wrap;
 
       &-content {
         flex: 1;
         display: flex;
         flex-direction: column;
+        min-width: 200px;
         justify-content: space-between;
 
         h2 {
@@ -1958,6 +2006,7 @@
       display: flex;
       align-items: flex-start;
       gap: 16px;
+      flex-wrap: wrap;
       align-self: stretch;
       margin-bottom: 24px;
     }
@@ -2114,4 +2163,15 @@
 
 .reviewsQuestion {
   display: none;
+}
+
+#modal-delete-success {
+  .btn-action {
+    &:hover {
+      color: var(--color-light);
+    }
+    &:active {
+      color: var(--color-light);
+    }
+  }
 }
