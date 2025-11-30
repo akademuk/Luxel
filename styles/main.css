@@ -13796,7 +13796,7 @@ button:disabled {
 }
 .profile-card__reviews-item-header-rating::before {
   content: "";
-  background: url(../../icons/rating-star.svg);
+  background: url(../icons/rating-star.svg);
   background-repeat: no-repeat;
   background-size: contain;
   width: 24px;

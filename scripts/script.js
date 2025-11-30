@@ -6373,22 +6373,34 @@ function initReviewsTabs() {
   document
     .querySelectorAll(".profile-card__reviews__tab-button")
     .forEach((btn) => {
-      btn.addEventListener("click", () => switchReviewsTab(btn));
+      // Видали всі старі listeners через клонування
+      const newBtn = btn.cloneNode(true);
+      btn.replaceWith(newBtn);
+
+      // Додай новий listener
+      newBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        switchReviewsTab(e.currentTarget);
+      });
     });
 }
 
 function switchReviewsTab(btn) {
+  // Видали active з усіх кнопок
   document
     .querySelectorAll(".profile-card__reviews__tab-button")
     .forEach((b) => b.classList.remove("active"));
+
+  // Додай active до натиснутої кнопки
   btn.classList.add("active");
 
+  // Покажи тільки елементи потрібного табу
   const tab = btn.getAttribute("data-tab");
   document.querySelectorAll(".profile-card__reviews-item").forEach((item) => {
     item.style.display = item.classList.contains(tab) ? "flex" : "none";
   });
 }
-
 function initReviewsModal() {
   const reviewButtons = document.querySelectorAll(
     ".profile-card__reviews-item-body-button"
