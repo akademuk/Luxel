@@ -4725,3 +4725,334 @@ window.addEventListener('resize', initSwiperProduct);
 
 
 
+<!-- Module 4: Main Controller (The Glue) -->
+<script>
+  const AccountController = {
+    currentEditField: null,
+    pendingNav: null,
+
+    init() {
+      // Prevent FOUC
+      this.hideElementsImmediately();
+
+      document.addEventListener('DOMContentLoaded', () => {
+        UIManager.init();
+        DatePicker.init();
+        ProfileManager.init();
+        this.bindEvents();
+      });
+    },
+
+    hideElementsImmediately() {
+      // Immediate execution before DOMContentLoaded
+      (function () {
+        var addBtns = document.querySelectorAll('.btn-add-value');
+        addBtns.forEach(function (btn) { btn.style.display = 'none'; });
+        var footer = document.querySelector('.profile-card__footer');
+        if (footer) { footer.style.display = 'none'; }
+
+        // Show order tabs initially if on orders tab (CSS hides it by default)
+        const orderTabs = document.querySelector('.profile-card__order-tabs');
+        const activeTab = document.querySelector('.account-nav__item.active');
+        if (orderTabs && activeTab && activeTab.getAttribute('data-tab') === 'orders') {
+          orderTabs.style.display = 'flex';
+        }
+
+        // Reviews Tabs
+        const reviewsTabs = document.querySelector('.profile-card__reviews-tabs');
+        if (reviewsTabs) {
+          if (activeTab && activeTab.getAttribute('data-tab') === 'reviews') {
+            reviewsTabs.style.display = 'flex';
+          } else {
+            reviewsTabs.style.display = 'none';
+          }
+        }
+
+        // Hide answer blocks initially
+        document.querySelectorAll('.profile-card__reviews-item-body-hidden').forEach(el => el.style.display = 'none');
+
+        // Hide "Hide answer" span initially
+        document.querySelectorAll('.profile-card__reviews-item-body-open').forEach(btn => {
+          const spans = btn.querySelectorAll('.reviews-item-open');
+          if (spans.length > 1) spans[1].style.display = 'none';
+        });
+      })();
+    }, bindEvents() {
+      // --- Profile Actions ---
+      document.getElementById('btn-edit-mode').addEventListener('click', () => ProfileManager.toggleEditMode(true));
+
+      document.getElementById('btn-cancel-edit').addEventListener('click', () => {
+        if (ProfileManager.isDirty) {
+          UIManager.openModal('modal-unsaved');
+        } else {
+          ProfileManager.toggleEditMode(false);
+        }
+      });
+
+      document.getElementById('btn-save-changes').addEventListener('click', () => {
+        UIManager.openModal('modal-confirm-save');
+      });
+
+      // --- Edit Buttons (Pencils) ---
+      document.querySelectorAll('.btn-edit-field').forEach(btn => {
+        btn.addEventListener('click', (e) => this.handleEditClick(e));
+      });
+
+      // --- Add Buttons ---
+      document.getElementById('btn-add-email').addEventListener('click', () => {
+        this.currentEditField = 'email';
+        UIManager.openModal('modal-email');
+      });
+      document.getElementById('btn-add-dob').addEventListener('click', () => {
+        this.currentEditField = 'dob';
+        DatePicker.reset();
+        UIManager.openModal('modal-dob');
+      });
+
+      // --- Generic Modal Logic ---
+      document.getElementById('btn-confirm-generic').addEventListener('click', () => {
+        const val = document.getElementById('modal-generic-input').value;
+        ProfileManager.updateField(this.currentEditField, val);
+        UIManager.closeModal('modal-generic');
+      });
+
+      // --- Email Modal Logic ---
+      const emailInput = document.getElementById('modal-email-input');
+      emailInput.addEventListener('input', (e) => this.validateEmail(e.target.value));
+
+      document.getElementById('btn-confirm-email').addEventListener('click', () => {
+        ProfileManager.updateField('email', emailInput.value);
+        UIManager.closeModal('modal-email');
+      });
+
+      // --- DOB Modal Logic ---
+      document.getElementById('btn-confirm-dob').addEventListener('click', () => {
+        const dateStr = DatePicker.getSelectedDate();
+        if (dateStr) {
+          ProfileManager.updateField('dob', dateStr);
+          UIManager.closeModal('modal-dob');
+        }
+      });
+
+      // --- Navigation Protection ---
+      document.querySelectorAll('.account-nav__item').forEach(item => {
+        item.addEventListener('click', (e) => this.handleNavigation(e, item));
+      });
+
+      // --- Unsaved Changes Modal Actions ---
+      document.getElementById('btn-unsaved-cancel').addEventListener('click', () => UIManager.closeModal('modal-unsaved'));
+
+      document.getElementById('btn-unsaved-continue').addEventListener('click', () => {
+        UIManager.closeModal('modal-unsaved');
+        ProfileManager.revertChanges();
+        ProfileManager.toggleEditMode(false);
+        if (this.pendingNav) {
+          this.performNavigation(this.pendingNav);
+        }
+      });
+
+      document.getElementById('btn-unsaved-save').addEventListener('click', () => {
+        UIManager.closeModal('modal-unsaved');
+        this.saveAndExit();
+      });
+
+      // --- Confirm Save Modal Actions ---
+      document.getElementById('btn-confirm-save-cancel').addEventListener('click', () => UIManager.closeModal('modal-confirm-save'));
+
+      document.getElementById('btn-confirm-save-continue').addEventListener('click', () => {
+        // "Continue" here means discard changes
+        UIManager.closeModal('modal-confirm-save');
+        ProfileManager.revertChanges();
+        ProfileManager.toggleEditMode(false);
+      });
+
+      document.getElementById('btn-confirm-save-save').addEventListener('click', () => {
+        UIManager.closeModal('modal-confirm-save');
+        this.saveAndExit();
+      });
+
+      // --- Logout & Delete ---
+      document.getElementById('logout-btn').addEventListener('click', () => UIManager.openModal('modal-logout'));
+      document.getElementById('btn-confirm-logout').addEventListener('click', () => window.location.href = '/');
+
+      document.querySelector('.account-sidebar__delete').addEventListener('click', (e) => {
+        e.preventDefault();
+        UIManager.openModal('modal-delete-account');
+      });
+      document.getElementById('btn-confirm-delete').addEventListener('click', () => {
+        UIManager.closeModal('modal-delete-account');
+        UIManager.openModal('modal-delete-success');
+      });
+
+      // --- Reviews Logic ---
+      document.querySelectorAll('.profile-card__reviews__tab-button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.profile-card__reviews__tab-button').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const tab = btn.getAttribute('data-tab');
+          document.querySelectorAll('.profile-card__reviews-item').forEach(item => {
+            if (item.classList.contains(tab)) {
+              item.style.display = 'flex';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      document.querySelectorAll('.profile-card__reviews-item-body-open').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const parent = btn.closest('.profile-card__reviews-item-body');
+          const hiddenBlock = parent.querySelector('.profile-card__reviews-item-body-hidden');
+          const spans = btn.querySelectorAll('.reviews-item-open');
+
+          if (hiddenBlock) {
+            if (hiddenBlock.style.display === 'none') {
+              hiddenBlock.style.display = 'block';
+              if (spans.length > 1) {
+                spans[0].style.display = 'none';
+                spans[1].style.display = 'flex';
+              }
+            } else {
+              hiddenBlock.style.display = 'none';
+              if (spans.length > 1) {
+                spans[0].style.display = 'flex';
+                spans[1].style.display = 'none';
+              }
+            }
+          }
+        });
+      });
+    },
+
+    handleEditClick(e) {
+      const btn = e.currentTarget;
+      const type = btn.dataset.type;
+      const fieldName = btn.dataset.name;
+      const label = btn.dataset.label;
+
+      this.currentEditField = fieldName;
+
+      if (type === 'text' || type === 'phone') {
+        this.openGenericModal(label, fieldName, type);
+      } else if (type === 'email') {
+        const currentVal = ProfileManager.getFieldValue(fieldName);
+        document.getElementById('modal-email-input').value = currentVal;
+        this.validateEmail(currentVal);
+        UIManager.openModal('modal-email');
+      } else if (type === 'dob') {
+        DatePicker.reset();
+        UIManager.openModal('modal-dob');
+      }
+    },
+
+    openGenericModal(label, fieldName, type) {
+      document.getElementById('modal-generic-title').textContent = `Редагувати ${label}`;
+      document.getElementById('modal-generic-label').textContent = label;
+
+      const input = document.getElementById('modal-generic-input');
+      input.value = ProfileManager.getFieldValue(fieldName);
+
+      if (type === 'phone') {
+        input.setAttribute('type', 'tel');
+        if ($.fn.mask) $(input).mask("+380 (99) 999-99-99");
+      } else {
+        input.setAttribute('type', 'text');
+        if ($.fn.mask) $(input).unmask();
+      }
+
+      UIManager.openModal('modal-generic');
+    },
+
+    validateEmail(val) {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const isValid = regex.test(val);
+      const errorMsg = document.getElementById('modal-email-error');
+      const btn = document.getElementById('btn-confirm-email');
+
+      if (val.length > 0 && !isValid) {
+        errorMsg.style.display = 'block';
+        btn.disabled = true;
+      } else {
+        errorMsg.style.display = 'none';
+        btn.disabled = !isValid;
+      }
+    },
+
+    handleNavigation(e, item) {
+      if (item.id === 'logout-btn') return; // Handled separately
+
+      if (ProfileManager.isDirty) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.pendingNav = item;
+        UIManager.openModal('modal-unsaved');
+      } else {
+        this.performNavigation(item);
+      }
+    },
+
+    performNavigation(item) {
+      document.querySelectorAll('.account-nav__item').forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+
+      const tabId = item.getAttribute('data-tab');
+      if (tabId) {
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.remove('active');
+        });
+        const targetContent = document.getElementById(tabId);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+      }
+
+      // Handle Order Tabs Visibility
+      const orderTabs = document.querySelector('.profile-card__order-tabs');
+      if (orderTabs) {
+        if (tabId === 'orders') {
+          orderTabs.style.display = 'flex';
+        } else {
+          orderTabs.style.display = 'none';
+        }
+      }
+
+      // Handle Reviews Tabs Visibility
+      const reviewsTabs = document.querySelector('.profile-card__reviews-tabs');
+      if (reviewsTabs) {
+        if (tabId === 'reviews') {
+          reviewsTabs.style.display = 'flex';
+        } else {
+          reviewsTabs.style.display = 'none';
+        }
+      }
+
+      // Handle Header Add Button Visibility
+      const headerAddBtn = document.getElementById('btn-add-address-header');
+      const addressList = document.getElementById('address-list');
+      if (headerAddBtn) {
+        // Show only if on address tab AND list is not empty (hidden)
+        // Note: address-list is hidden by default style="display:none" when empty.
+        // We check if address-list is visible (display != none) which implies it has items.
+        // Or check children count.
+        if (tabId === 'address' && addressList && addressList.style.display !== 'none') {
+          headerAddBtn.style.display = 'flex';
+        } else {
+          headerAddBtn.style.display = 'none';
+        }
+      }
+
+      this.pendingNav = null;
+    },
+
+    saveAndExit() {
+      ProfileManager.saveChanges();
+      ProfileManager.toggleEditMode(false);
+      UIManager.showSuccessBanner('successModal12');
+    }
+  };
+
+  // Start the application
+  AccountController.init();
+</script>

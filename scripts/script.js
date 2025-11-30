@@ -5540,341 +5540,163 @@ function initAddressTab() {
   }
 }
 
-// Утилиты для работы с модальными окнами
-const ModalUtils = {
-  open(modal) {
+function initOrderManagement() {
+  // --- Хелперы ---
+  const get = (sel, parent = document) => parent.querySelector(sel);
+  const getAll = (sel, parent = document) => parent.querySelectorAll(sel);
+  const toggleDisplay = (el, show) =>
+    el && (el.style.display = show ? "block" : "none");
+
+  // --- 1. Табы ---
+  getAll(".profile-card__order__tab-button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      getAll(".profile-card__order__tab-button").forEach((b) =>
+        b.classList.remove("active")
+      );
+      btn.classList.add("active");
+      const tab = btn.dataset.tab;
+      getAll(".profile-card__order-item").forEach((item) => {
+        item.style.display = item.classList.contains(tab) ? "flex" : "none";
+      });
+    });
+  });
+
+  // --- 2. Логика отмены заказа (общая) ---
+  const cancelOrder = (order) => {
+    if (!order) return;
+    const btn = get(".order-item__toggle-btn", order);
+    if (btn) {
+      getAll("span", btn).forEach(
+        (s) =>
+          (s.style.display = s.classList.contains("gray") ? "inline" : "none")
+      );
+    }
+    const delBtn = get(".order-item__info-delate", order);
+    if (delBtn) delBtn.style.display = "none";
+  };
+
+  // Скрываем лейблы "Скасовано" при старте
+  getAll(".order-item__toggle-btn span.gray").forEach(
+    (s) => (s.style.display = "none")
+  );
+
+  // --- 3. Модальные окна и Аккордеон (Делегирование) ---
+  const modals = {
+    simple: get("#cancelOrderModal"),
+    reason: get("#cancelOrderModalReason"),
+    feedback: get("#feedbackModal"),
+  };
+  let currentOrder = null;
+
+  const openModal = (modal) => {
     if (!modal) return;
     modal.classList.add("open", "active");
     document.body.classList.add("is-lock", "modal-open");
-  },
+  };
 
-  close(modal) {
+  const closeModal = (modal) => {
     if (!modal) return;
     modal.classList.remove("open", "active");
     document.body.classList.remove("is-lock", "modal-open");
-  },
+    if (modal === modals.feedback) modal.classList.add("hidden"); // Специфика feedback
+  };
 
-  setupCloseButton(modal, closeBtn) {
-    if (!modal || !closeBtn) return;
+  document.addEventListener("click", (e) => {
+    const t = e.target;
 
-    closeBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      ModalUtils.close(modal);
-    });
-  },
-
-  setupOutsideClick(modal, triggerSelectors = []) {
-    if (!modal) return;
-
-    document.addEventListener("click", (e) => {
-      const isModalOpen =
-        modal.classList.contains("open") || modal.classList.contains("active");
-      if (!isModalOpen) return;
-
-      const clickedInside = modal.contains(e.target);
-      const clickedTrigger = triggerSelectors.some((sel) =>
-        e.target.closest(sel)
-      );
-
-      if (!clickedInside && !clickedTrigger) {
-        ModalUtils.close(modal);
-      }
-    });
-  },
-};
-
-// Работа со статусом заказа (Нове замовлення / Скасовано)
-const OrderStatusUtils = {
-  // Скрыть все .gray при старте
-  hideAllCanceledLabels() {
-    const toggleButtons = document.querySelectorAll(".order-item__toggle-btn");
-    toggleButtons.forEach((button) => {
-      const graySpan = button.querySelector("span.gray");
-      if (graySpan) graySpan.style.display = "none";
-    });
-  },
-
-  // Перевести конкретный заказ в статус "Скасовано"
-  setCanceled(orderItem) {
-    if (!orderItem) return;
-
-    const toggleBtn = orderItem.querySelector(".order-item__toggle-btn");
-    const deleteBtn = orderItem.querySelector(".order-item__info-delate");
-
+    // Аккордеон (Детали заказа)
+    const toggleBtn = t.closest(".order-item__toggle-btn");
     if (toggleBtn) {
-      const spans = toggleBtn.querySelectorAll("span");
-      spans.forEach((span) => {
-        span.style.display = span.classList.contains("gray")
-          ? "inline"
-          : "none";
-      });
+      toggleBtn.classList.toggle("active");
+      toggleBtn
+        .closest(".order-item")
+        ?.querySelector(".order-item__body")
+        ?.classList.toggle("hidden");
+      return;
     }
 
-    if (deleteBtn) {
-      deleteBtn.style.display = "none";
-    }
-  },
-};
-
-// Модуль переключения вкладок
-const TabsModule = {
-  init() {
-    const tabs = document.querySelectorAll(".profile-card__order__tab-button");
-    if (!tabs.length) return;
-
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", () => this.switchTab(tab, tabs));
-    });
-  },
-
-  switchTab(activeTab, allTabs) {
-    allTabs.forEach((tab) => tab.classList.remove("active"));
-    activeTab.classList.add("active");
-
-    const tabData = activeTab.getAttribute("data-tab");
-    const orderItems = document.querySelectorAll(".profile-card__order-item");
-
-    orderItems.forEach((item) => {
-      item.style.display = item.classList.contains(tabData) ? "flex" : "none";
-    });
-  },
-};
-
-// Модуль раскрытия деталей заказа
-const OrderToggleModule = {
-  init() {
-    const toggleButtons = document.querySelectorAll(".order-item__toggle-btn");
-    if (!toggleButtons.length) return;
-
-    toggleButtons.forEach((button) => {
-      button.addEventListener("click", () => this.toggleOrderBody(button));
-    });
-  },
-
-  toggleOrderBody(button) {
-    const orderItem = button.closest(".order-item");
-    const orderBody = orderItem?.querySelector(".order-item__body");
-
-    if (!orderBody) return;
-
-    orderBody.classList.toggle("hidden");
-    button.classList.toggle("active");
-  },
-};
-
-// Модуль простого удаления заказа (без причины)
-const SimpleCancelModule = {
-  currentOrder: null,
-
-  init() {
-    const modal = document.getElementById("cancelOrderModal");
-    if (!modal) return;
-
-    const triggers = document.querySelectorAll(".order-item__info-delate");
-    const closeBtn = modal.querySelector(".sort-popup__close");
-    const confirmBtn = modal.querySelector(".cancel-order-btn");
-
-    if (triggers.length) {
-      triggers.forEach((button) => {
-        button.addEventListener("click", (e) => {
-          e.preventDefault();
-          this.currentOrder = button.closest(".order-item");
-          ModalUtils.open(modal);
-        });
-      });
-    }
-
-    this.setupConfirm(modal, confirmBtn);
-    ModalUtils.setupCloseButton(modal, closeBtn);
-    ModalUtils.setupOutsideClick(modal, [".order-item__info-delate"]);
-  },
-
-  setupConfirm(modal, confirmBtn) {
-    if (!confirmBtn) return;
-
-    confirmBtn.addEventListener("click", (e) => {
+    // Открытие простого удаления
+    if (t.closest(".order-item__info-delate")) {
       e.preventDefault();
+      currentOrder = t.closest(".order-item");
+      openModal(modals.simple);
+      return;
+    }
 
-      if (this.currentOrder) {
-        OrderStatusUtils.setCanceled(this.currentOrder);
-        this.currentOrder = null;
-      }
-
-      ModalUtils.close(modal);
-    });
-  },
-};
-
-// Модуль удаления заказа с причиной
-const ReasonCancelModule = {
-  currentOrder: null,
-
-  init() {
-    const modal = document.getElementById("cancelOrderModalReason");
-    if (!modal) return;
-
-    const triggers = document.querySelectorAll(
-      "#btn-order-delete, .btn-order-delete"
-    );
-    const closeBtn = modal.querySelector(".sort-popup__close");
-    const confirmBtn = modal.querySelector(".cancel-order-btn");
-    const radios = modal.querySelectorAll('input[name="reason"]');
-
-    this.setupTriggers(modal, triggers);
-    this.setupRadios(modal, radios, confirmBtn);
-    this.setupTextareas(modal);
-    this.setupConfirm(modal, confirmBtn);
-
-    ModalUtils.setupCloseButton(modal, closeBtn);
-    ModalUtils.setupOutsideClick(modal, [
-      "#btn-order-delete",
-      ".btn-order-delete",
-    ]);
-  },
-
-  setupTriggers(modal, triggers) {
-    if (!triggers.length) return;
-
-    triggers.forEach((button) => {
-      button.addEventListener("click", (e) => {
-        e.preventDefault();
-
-        const simpleCancelModal = document.getElementById("cancelOrderModal");
-        if (simpleCancelModal) ModalUtils.close(simpleCancelModal);
-
-        this.currentOrder = button.closest(".order-item");
-        ModalUtils.open(modal);
-        this.resetForm(modal);
-      });
-    });
-  },
-
-  setupRadios(modal, radios, confirmBtn) {
-    if (!radios.length) return;
-
-    radios.forEach((radio) => {
-      radio.addEventListener("change", () =>
-        this.updateTextareaVisibility(modal, confirmBtn)
-      );
-    });
-
-    this.updateTextareaVisibility(modal, confirmBtn);
-  },
-
-  setupTextareas(modal) {
-    const textareas = modal.querySelectorAll("textarea");
-    if (!textareas.length) return;
-
-    textareas.forEach((textarea) => {
-      textarea.addEventListener("input", function () {
-        const maxLength = 1000;
-        const counter = this.nextElementSibling;
-        if (counter) {
-          counter.textContent = `${this.value.length}/${maxLength} символів`;
-        }
-      });
-    });
-  },
-
-  setupConfirm(modal, confirmBtn) {
-    if (!confirmBtn) return;
-
-    confirmBtn.addEventListener("click", (e) => {
+    // Открытие удаления с причиной
+    if (t.closest("#btn-order-delete, .btn-order-delete")) {
       e.preventDefault();
+      closeModal(modals.simple);
 
-      if (this.currentOrder) {
-        OrderStatusUtils.setCanceled(this.currentOrder);
-        this.currentOrder = null;
+      const order = t.closest(".order-item");
+      if (order) currentOrder = order;
+
+      openModal(modals.reason);
+      // Сброс формы
+      if (modals.reason) {
+        getAll('input[name="reason"]', modals.reason).forEach(
+          (r) => (r.checked = false)
+        );
+        updateReasonForm();
       }
+      return;
+    }
 
-      ModalUtils.close(modal);
+    // Закрытие модалок (крестик или клик по фону)
+    const closeBtn = t.closest(".sort-popup__close, .modal__btn--close");
+    const activeModal =
+      t.closest(".sort-popup.active, .modal.active") ||
+      (t.classList.contains("active") ? t : null);
+
+    if (closeBtn || (activeModal && activeModal === t)) {
+      // Если клик по фону (t === activeModal)
+      closeModal(t.closest(".sort-popup, .modal") || t);
+      return;
+    }
+
+    // Подтверждение отмены
+    if (t.closest(".cancel-order-btn")) {
+      e.preventDefault();
+      if (currentOrder) cancelOrder(currentOrder);
+      closeModal(t.closest(".sort-popup"));
+      currentOrder = null;
+      return;
+    }
+
+    // Отправка отзыва
+    if (t.closest(".modal__btn--submit") && modals.feedback?.contains(t)) {
+      alert("Відгук залишено.");
+      modals.feedback.classList.add("hidden");
+    }
+  });
+
+  // --- 4. Логика формы с причиной ---
+  const updateReasonForm = () => {
+    if (!modals.reason) return;
+    let hasChecked = false;
+    getAll(".sort-popup__item", modals.reason).forEach((item) => {
+      const checked = get('input[type="radio"]', item)?.checked;
+      if (checked) hasChecked = true;
+      const txt = get("textarea", item);
+      const cnt = txt?.nextElementSibling;
+      if (txt) txt.style.display = checked ? "block" : "none";
+      if (cnt) cnt.style.display = checked ? "block" : "none";
     });
-  },
+    const btn = get(".cancel-order-btn", modals.reason);
+    if (btn) btn.disabled = !hasChecked;
+  };
 
-  updateTextareaVisibility(modal, confirmBtn) {
-    const items = modal.querySelectorAll(".sort-popup__item");
-    let isAnyChecked = false;
-
-    items.forEach((item) => {
-      const radio = item.querySelector('input[type="radio"]');
-      const textarea = item.querySelector("textarea");
-      const counter = textarea?.nextElementSibling;
-
-      if (radio?.checked) {
-        isAnyChecked = true;
-        if (textarea) textarea.style.display = "block";
-        if (counter) counter.style.display = "block";
-      } else {
-        if (textarea) textarea.style.display = "none";
-        if (counter) counter.style.display = "none";
+  if (modals.reason) {
+    modals.reason.addEventListener("change", updateReasonForm);
+    modals.reason.addEventListener("input", (e) => {
+      if (e.target.tagName === "TEXTAREA") {
+        const counter = e.target.nextElementSibling;
+        if (counter)
+          counter.textContent = `${e.target.value.length}/1000 символів`;
       }
     });
-
-    if (confirmBtn) {
-      confirmBtn.disabled = !isAnyChecked;
-    }
-  },
-
-  resetForm(modal) {
-    const radios = modal.querySelectorAll('input[name="reason"]');
-    radios.forEach((radio) => (radio.checked = false));
-
-    const confirmBtn = modal.querySelector(".cancel-order-btn");
-    this.updateTextareaVisibility(modal, confirmBtn);
-  },
-};
-
-// Модуль отзывов
-const FeedbackModule = {
-  init() {
-    const buttons = document.querySelectorAll(".order-item__info-feedback");
-    if (!buttons.length) return;
-
-    buttons.forEach((button) => {
-      button.addEventListener("click", () => this.openModal());
-    });
-  },
-
-  openModal() {
-    const modal = document.getElementById("feedbackModal");
-    if (!modal) return;
-
-    modal.classList.remove("hidden");
-
-    const submitBtn = modal.querySelector(".modal__btn--submit");
-    const closeBtn = modal.querySelector(".modal__btn--close");
-
-    if (submitBtn) {
-      submitBtn.onclick = () => {
-        alert("Відгук залишено.");
-        modal.classList.add("hidden");
-      };
-    }
-
-    if (closeBtn) {
-      closeBtn.onclick = () => {
-        modal.classList.add("hidden");
-      };
-    }
-  },
-};
-
-// Модуль инициализации начального состояния
-const InitModule = {
-  init() {
-    OrderStatusUtils.hideAllCanceledLabels();
-  },
-};
-
-// Инициализация всех модулей
-document.addEventListener("DOMContentLoaded", () => {
-  InitModule.init();
-  TabsModule.init();
-  OrderToggleModule.init();
-  SimpleCancelModule.init();
-  ReasonCancelModule.init();
-  FeedbackModule.init();
-});
+  }
+}
 
 // Главная функция инициализации
 function initApp() {
@@ -5917,8 +5739,740 @@ function initApp() {
   initShoppingCart();
   initReviewModal();
   initAddressTab();
+  initOrderManagement();
 }
 
 // Запуск приложения после загрузки DOM
 document.addEventListener("DOMContentLoaded", initApp);
 window.addEventListener("resize", initSwiperProduct);
+
+// ============================================
+// INITIALIZATION
+// ============================================
+function initAccountPage() {
+  // Core UI
+  initModals();
+  initDatePicker();
+  initProfileForm();
+
+  // Profile Features
+  initProfileEdit();
+  initFieldEditing();
+  initEmptyStates();
+
+  // Navigation & Tabs
+  initAccountNavigation();
+  initOrderTabs();
+  initReviewsTabs();
+
+  // Reviews
+  initReviewsModal();
+  initReviewsToggle();
+
+  // Account Actions
+  initLogout();
+  initDeleteAccount();
+
+  // Prevent FOUC
+  hideInitialElements();
+}
+
+// ============================================
+// MODALS
+// ============================================
+function initModals() {
+  // Close buttons
+  document.querySelectorAll("[data-close-modal]").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const modalId = e.currentTarget.getAttribute("data-close-modal");
+      closeModal(modalId);
+    });
+  });
+
+  // Click outside to close
+  document.querySelectorAll(".acc-modal").forEach((modal) => {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        closeModal(modal.id);
+      }
+    });
+  });
+}
+
+function openModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+}
+
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+}
+
+function showSuccessBanner(id) {
+  const banner = document.getElementById(id);
+  if (banner) {
+    banner.classList.add("active");
+    setTimeout(() => banner.classList.remove("active"), 3000);
+  }
+}
+
+// ============================================
+// DATE PICKER
+// ============================================
+function initDatePicker() {
+  const days = Array.from({ length: 31 }, (_, i) => i + 1);
+  const months = Array.from({ length: 12 }, (_, i) =>
+    (i + 1).toString().padStart(2, "0")
+  );
+  const currentYear = new Date().getFullYear();
+  const years = Array.from({ length: 100 }, (_, i) => currentYear - i);
+
+  fillDateDropdown("list-day", days, "sel-day", "day");
+  fillDateDropdown("list-month", months, "sel-month", "month");
+  fillDateDropdown("list-year", years, "sel-year", "year");
+
+  // Close on outside click
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".date-select-wrapper")) {
+      document
+        .querySelectorAll(".date-dropdown")
+        .forEach((d) => d.classList.remove("show"));
+      document
+        .querySelectorAll(".date-select-btn")
+        .forEach((b) => b.classList.remove("active"));
+    }
+  });
+}
+
+function fillDateDropdown(listId, items, btnId, type) {
+  const list = document.getElementById(listId);
+  const btn = document.getElementById(btnId);
+  const valSpan = btn.querySelector(".val");
+
+  list.innerHTML = "";
+
+  items.forEach((item) => {
+    const div = document.createElement("div");
+    div.className = "date-option";
+    div.textContent = item;
+
+    div.onclick = (e) => {
+      e.stopPropagation();
+      valSpan.textContent = item;
+      valSpan.dataset.value = item;
+      list.classList.remove("show");
+      btn.classList.remove("active");
+
+      list
+        .querySelectorAll(".date-option")
+        .forEach((o) => o.classList.remove("selected"));
+      div.classList.add("selected");
+
+      if (type === "day") setDateSelectorState("sel-month", true);
+      if (type === "month") setDateSelectorState("sel-year", true);
+
+      checkDateComplete();
+    };
+
+    list.appendChild(div);
+  });
+
+  btn.onclick = () => {
+    const wasShown = list.classList.contains("show");
+    document
+      .querySelectorAll(".date-dropdown")
+      .forEach((d) => d.classList.remove("show"));
+    document
+      .querySelectorAll(".date-select-btn")
+      .forEach((b) => b.classList.remove("active"));
+
+    if (!wasShown) {
+      list.classList.add("show");
+      btn.classList.add("active");
+    }
+  };
+}
+
+function setDateSelectorState(btnId, isEnabled) {
+  const btn = document.getElementById(btnId);
+  const wrapper = btn.closest(".date-select-wrapper");
+  wrapper.style.opacity = isEnabled ? "1" : "0.5";
+  wrapper.style.pointerEvents = isEnabled ? "auto" : "none";
+}
+
+function checkDateComplete() {
+  const d = document.querySelector("#sel-day .val").dataset.value;
+  const m = document.querySelector("#sel-month .val").dataset.value;
+  const y = document.querySelector("#sel-year .val").dataset.value;
+
+  const confirmBtn = document.getElementById("btn-confirm-dob");
+  if (confirmBtn) confirmBtn.disabled = !(d && m && y);
+}
+
+function resetDatePicker() {
+  ["sel-day", "sel-month", "sel-year"].forEach((id) => {
+    const btn = document.getElementById(id);
+    const valSpan = btn.querySelector(".val");
+    valSpan.textContent = "--";
+    valSpan.dataset.value = "";
+    btn.classList.remove("active");
+  });
+
+  document
+    .querySelectorAll(".date-option")
+    .forEach((o) => o.classList.remove("selected"));
+
+  setDateSelectorState("sel-day", true);
+  setDateSelectorState("sel-month", false);
+  setDateSelectorState("sel-year", false);
+
+  const confirmBtn = document.getElementById("btn-confirm-dob");
+  if (confirmBtn) confirmBtn.disabled = true;
+}
+
+function getSelectedDate() {
+  const d = document.querySelector("#sel-day .val").dataset.value;
+  const m = document.querySelector("#sel-month .val").dataset.value;
+  const y = document.querySelector("#sel-year .val").dataset.value;
+  return d && m && y ? `${d}/${m}/${y}` : null;
+}
+
+// ============================================
+// PROFILE FORM
+// ============================================
+let profileInitialData = {};
+let isProfileDirty = false;
+
+function initProfileForm() {
+  cacheProfileData();
+  checkEmptyStates();
+
+  const footer = document.querySelector(".profile-card__footer");
+  if (footer) footer.style.display = "none";
+}
+
+function cacheProfileData() {
+  const form = document.getElementById("profile-form");
+  const inputs = form.querySelectorAll("input");
+
+  profileInitialData = {};
+  inputs.forEach((input) => {
+    profileInitialData[input.name] = input.value;
+  });
+}
+
+function updateProfileField(name, value) {
+  const form = document.getElementById("profile-form");
+  const input = form.querySelector(`input[name="${name}"]`);
+
+  if (input) {
+    input.value = value;
+    isProfileDirty = true;
+    updateSaveButton();
+    checkEmptyStates();
+  }
+}
+
+function getProfileFieldValue(name) {
+  const form = document.getElementById("profile-form");
+  const input = form.querySelector(`input[name="${name}"]`);
+  return input ? input.value : "";
+}
+
+function revertProfileChanges() {
+  const form = document.getElementById("profile-form");
+  const inputs = form.querySelectorAll("input");
+
+  inputs.forEach((input) => {
+    input.value = profileInitialData[input.name];
+  });
+
+  isProfileDirty = false;
+  updateSaveButton();
+  checkEmptyStates();
+}
+
+function saveProfileChanges() {
+  // API call here
+  cacheProfileData();
+  isProfileDirty = false;
+  updateSaveButton();
+}
+
+function updateSaveButton() {
+  const btn = document.getElementById("btn-save-changes");
+  if (btn) btn.disabled = !isProfileDirty;
+}
+
+// ============================================
+// PROFILE EDITING
+// ============================================
+let isEditMode = false;
+let currentEditField = null;
+
+function initProfileEdit() {
+  document.getElementById("btn-edit-mode")?.addEventListener("click", () => {
+    toggleEditMode(true);
+  });
+
+  document.getElementById("btn-cancel-edit")?.addEventListener("click", () => {
+    handleCancelEdit();
+  });
+
+  document.getElementById("btn-save-changes")?.addEventListener("click", () => {
+    openModal("modal-confirm-save");
+  });
+
+  // Save confirmation modal
+  document
+    .getElementById("btn-confirm-save-cancel")
+    ?.addEventListener("click", () => {
+      closeModal("modal-confirm-save");
+    });
+
+  document
+    .getElementById("btn-confirm-save-continue")
+    ?.addEventListener("click", () => {
+      closeModal("modal-confirm-save");
+      revertProfileChanges();
+      toggleEditMode(false);
+    });
+
+  document
+    .getElementById("btn-confirm-save-save")
+    ?.addEventListener("click", () => {
+      closeModal("modal-confirm-save");
+      saveAndExit();
+    });
+
+  // Unsaved changes modal
+  document
+    .getElementById("btn-unsaved-cancel")
+    ?.addEventListener("click", () => {
+      closeModal("modal-unsaved");
+    });
+
+  document
+    .getElementById("btn-unsaved-continue")
+    ?.addEventListener("click", () => {
+      closeModal("modal-unsaved");
+      revertProfileChanges();
+      toggleEditMode(false);
+    });
+
+  document.getElementById("btn-unsaved-save")?.addEventListener("click", () => {
+    closeModal("modal-unsaved");
+    saveAndExit();
+  });
+}
+
+function toggleEditMode(enable) {
+  isEditMode = enable;
+
+  const card = document.getElementById("profile-card");
+  const btnEdit = document.getElementById("btn-edit-mode");
+  const footer = document.querySelector(".profile-card__footer");
+
+  if (enable) {
+    card.classList.add("edit-mode");
+    btnEdit.style.display = "none";
+    footer.style.display = "flex";
+  } else {
+    card.classList.remove("edit-mode");
+    btnEdit.style.display = "flex";
+    footer.style.display = "none";
+  }
+
+  checkEmptyStates();
+}
+
+function handleCancelEdit() {
+  if (isProfileDirty) {
+    openModal("modal-unsaved");
+  } else {
+    toggleEditMode(false);
+  }
+}
+
+function saveAndExit() {
+  saveProfileChanges();
+  toggleEditMode(false);
+  showSuccessBanner("successModal12");
+}
+
+// ============================================
+// FIELD EDITING
+// ============================================
+function initFieldEditing() {
+  // Edit buttons
+  document.querySelectorAll(".btn-edit-field").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const { type, name: fieldName, label } = e.currentTarget.dataset;
+      currentEditField = fieldName;
+
+      if (type === "text" || type === "phone") {
+        openGenericModal(label, fieldName, type);
+      } else if (type === "email") {
+        openEmailModal(fieldName);
+      } else if (type === "dob") {
+        openDobModal();
+      }
+    });
+  });
+
+  // Add buttons
+  document.getElementById("btn-add-email")?.addEventListener("click", () => {
+    currentEditField = "email";
+    openEmailModal();
+  });
+
+  document.getElementById("btn-add-dob")?.addEventListener("click", () => {
+    currentEditField = "dob";
+    openDobModal();
+  });
+
+  // Generic modal
+  document
+    .getElementById("btn-confirm-generic")
+    ?.addEventListener("click", () => {
+      const val = document.getElementById("modal-generic-input").value;
+      updateProfileField(currentEditField, val);
+      closeModal("modal-generic");
+    });
+
+  // Email modal
+  const emailInput = document.getElementById("modal-email-input");
+  emailInput?.addEventListener("input", (e) => validateEmail(e.target.value));
+
+  document
+    .getElementById("btn-confirm-email")
+    ?.addEventListener("click", () => {
+      updateProfileField("email", emailInput.value);
+      closeModal("modal-email");
+    });
+
+  // DOB modal
+  document.getElementById("btn-confirm-dob")?.addEventListener("click", () => {
+    const dateStr = getSelectedDate();
+    if (dateStr) {
+      updateProfileField("dob", dateStr);
+      closeModal("modal-dob");
+    }
+  });
+}
+
+function openGenericModal(label, fieldName, type) {
+  document.getElementById(
+    "modal-generic-title"
+  ).textContent = `Редагувати ${label}`;
+  document.getElementById("modal-generic-label").textContent = label;
+
+  const input = document.getElementById("modal-generic-input");
+  input.value = getProfileFieldValue(fieldName);
+
+  if (type === "phone") {
+    input.setAttribute("type", "tel");
+    if ($.fn.mask) $(input).mask("+380 (99) 999-99-99");
+  } else {
+    input.setAttribute("type", "text");
+    if ($.fn.mask) $(input).unmask();
+  }
+
+  openModal("modal-generic");
+}
+
+function openEmailModal(fieldName = null) {
+  const currentVal = fieldName ? getProfileFieldValue(fieldName) : "";
+  document.getElementById("modal-email-input").value = currentVal;
+  validateEmail(currentVal);
+  openModal("modal-email");
+}
+
+function openDobModal() {
+  resetDatePicker();
+  openModal("modal-dob");
+}
+
+function validateEmail(val) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const isValid = regex.test(val);
+  const errorMsg = document.getElementById("modal-email-error");
+  const btn = document.getElementById("btn-confirm-email");
+
+  const showError = val.length > 0 && !isValid;
+  errorMsg.style.display = showError ? "block" : "none";
+  btn.disabled = !isValid;
+}
+
+// ============================================
+// EMPTY STATES
+// ============================================
+function initEmptyStates() {
+  checkEmptyStates();
+}
+
+function checkEmptyStates() {
+  checkSingleEmptyState("email", "email-container");
+  checkSingleEmptyState("dob", "dob-container");
+}
+
+function checkSingleEmptyState(inputName, containerId) {
+  const form = document.getElementById("profile-form");
+  const input = form.querySelector(`input[name="${inputName}"]`);
+  const container = document.getElementById(containerId);
+  const addBtn = container?.querySelector(".btn-add-value");
+
+  const isEmpty = !input?.value;
+
+  if (container) {
+    if (isEmpty) {
+      container.classList.add("is-empty");
+    } else {
+      container.classList.remove("is-empty");
+    }
+  }
+
+  if (addBtn) {
+    addBtn.style.display = isEmpty && isEditMode ? "" : "none";
+  }
+}
+
+// ============================================
+// NAVIGATION
+// ============================================
+let pendingNavItem = null;
+
+function initAccountNavigation() {
+  document.querySelectorAll(".account-nav__item").forEach((item) => {
+    item.addEventListener("click", (e) => handleNavClick(e, item));
+  });
+}
+
+function handleNavClick(e, item) {
+  if (item.id === "logout-btn") return;
+
+  if (isProfileDirty) {
+    e.preventDefault();
+    e.stopPropagation();
+    pendingNavItem = item;
+    openModal("modal-unsaved");
+  } else {
+    performNavigation(item);
+  }
+}
+
+function performNavigation(item) {
+  // Update active state
+  document
+    .querySelectorAll(".account-nav__item")
+    .forEach((i) => i.classList.remove("active"));
+  item.classList.add("active");
+
+  // Switch tab content
+  const tabId = item.getAttribute("data-tab");
+  if (tabId) {
+    document
+      .querySelectorAll(".tab-content")
+      .forEach((content) => content.classList.remove("active"));
+
+    const targetContent = document.getElementById(tabId);
+    if (targetContent) {
+      targetContent.classList.add("active");
+    }
+
+    // Update tab visibility
+    updateTabVisibility(tabId);
+    updateHeaderElements(tabId);
+  }
+
+  pendingNavItem = null;
+}
+
+function updateTabVisibility(tabId) {
+  const orderTabs = document.querySelector(".profile-card__order-tabs");
+  if (orderTabs) {
+    orderTabs.style.display = tabId === "orders" ? "flex" : "none";
+  }
+
+  const reviewsTabs = document.querySelector(".profile-card__reviews-tabs");
+  if (reviewsTabs) {
+    reviewsTabs.style.display = tabId === "reviews" ? "flex" : "none";
+  }
+}
+
+function updateHeaderElements(tabId) {
+  const headerAddBtn = document.getElementById("btn-add-address-header");
+  const addressList = document.getElementById("address-list");
+
+  if (headerAddBtn) {
+    const shouldShow =
+      tabId === "address" &&
+      addressList &&
+      addressList.style.display !== "none";
+    headerAddBtn.style.display = shouldShow ? "flex" : "none";
+  }
+}
+
+// ============================================
+// ORDER TABS
+// ============================================
+function initOrderTabs() {
+  // Implementation if needed
+}
+
+// ============================================
+// REVIEWS
+// ============================================
+function initReviewsTabs() {
+  document
+    .querySelectorAll(".profile-card__reviews__tab-button")
+    .forEach((btn) => {
+      btn.addEventListener("click", () => switchReviewsTab(btn));
+    });
+}
+
+function switchReviewsTab(btn) {
+  document
+    .querySelectorAll(".profile-card__reviews__tab-button")
+    .forEach((b) => b.classList.remove("active"));
+  btn.classList.add("active");
+
+  const tab = btn.getAttribute("data-tab");
+  document.querySelectorAll(".profile-card__reviews-item").forEach((item) => {
+    item.style.display = item.classList.contains(tab) ? "flex" : "none";
+  });
+}
+
+function initReviewsModal() {
+  const reviewButtons = document.querySelectorAll(
+    ".profile-card__reviews-item-body-button"
+  );
+  const modal = document.getElementById("productsReview");
+  const closeButton = document.getElementById("closeProductsReview");
+
+  reviewButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      modal.classList.add("active");
+      document.body.classList.add("is-lock");
+    });
+  });
+
+  function closeReviewModal() {
+    modal.classList.remove("active");
+    document.body.classList.remove("is-lock");
+  }
+
+  closeButton?.addEventListener("click", closeReviewModal);
+
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      closeReviewModal();
+    }
+  });
+}
+
+function initReviewsToggle() {
+  document
+    .querySelectorAll(".profile-card__reviews-item-body-open")
+    .forEach((btn) => {
+      btn.addEventListener("click", () => toggleReviewAnswer(btn));
+    });
+}
+
+function toggleReviewAnswer(btn) {
+  const parent = btn.closest(".profile-card__reviews-item-body");
+  const hiddenBlock = parent?.querySelector(
+    ".profile-card__reviews-item-body-hidden"
+  );
+  const spans = btn.querySelectorAll(".reviews-item-open");
+
+  if (!hiddenBlock || spans.length < 2) return;
+
+  const isHidden = hiddenBlock.style.display === "none";
+  hiddenBlock.style.display = isHidden ? "block" : "none";
+  spans[0].style.display = isHidden ? "none" : "flex";
+  spans[1].style.display = isHidden ? "flex" : "none";
+}
+
+// ============================================
+// ACCOUNT ACTIONS
+// ============================================
+function initLogout() {
+  document.getElementById("logout-btn")?.addEventListener("click", () => {
+    openModal("modal-logout");
+  });
+
+  document
+    .getElementById("btn-confirm-logout")
+    ?.addEventListener("click", () => {
+      window.location.href = "/";
+    });
+}
+
+function initDeleteAccount() {
+  document
+    .querySelector(".account-sidebar__delete")
+    ?.addEventListener("click", (e) => {
+      e.preventDefault();
+      openModal("modal-delete-account");
+    });
+
+  document
+    .getElementById("btn-confirm-delete")
+    ?.addEventListener("click", () => {
+      closeModal("modal-delete-account");
+      openModal("modal-delete-success");
+    });
+}
+
+// ============================================
+// FOUC PREVENTION
+// ============================================
+function hideInitialElements() {
+  const hideElements = (selector) => {
+    document
+      .querySelectorAll(selector)
+      .forEach((el) => (el.style.display = "none"));
+  };
+
+  const showElement = (selector, display = "flex") => {
+    const el = document.querySelector(selector);
+    if (el) el.style.display = display;
+  };
+
+  hideElements(".btn-add-value");
+  hideElements(".profile-card__footer");
+  hideElements(".profile-card__reviews-item-body-hidden");
+
+  document
+    .querySelectorAll(".profile-card__reviews-item-body-open")
+    .forEach((btn) => {
+      const spans = btn.querySelectorAll(".reviews-item-open");
+      if (spans.length > 1) spans[1].style.display = "none";
+    });
+
+  const activeTab = document.querySelector(".account-nav__item.active");
+  if (activeTab) {
+    const tabName = activeTab.getAttribute("data-tab");
+
+    if (tabName === "orders") {
+      showElement(".profile-card__order-tabs");
+    }
+
+    if (tabName === "reviews") {
+      showElement(".profile-card__reviews-tabs");
+    }
+  }
+}
+
+// ============================================
+// START APPLICATION
+// ============================================
+document.addEventListener("DOMContentLoaded", initAccountPage);
