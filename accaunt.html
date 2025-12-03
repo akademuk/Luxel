@@ -597,6 +597,26 @@
                     </div>
                   </div>
 
+                  <div class="profile-card__reviews-item reviewsQuestion">
+                    <div class="profile-card__reviews-item-header">
+                      <div class="profile-card__reviews-item-img">
+                        <img src="images/premium-products__item1.png" width="77" height="77" alt="Image">
+                      </div>
+                      <div class="profile-card__reviews-item-header-content">
+                        <h2>Світлодіодний настільний світильник Luxel 220-240V 6W</h2>
+                        <div class="profile-card__reviews-item-header-info">
+                          <time datetime="2025-06-14">14 червня 2025</time>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="profile-card__reviews-item-body">
+                      <h3 class="profile-card__reviews-item-body-title">Ваше запитання</h3>
+                      <p class="profile-card__reviews-item-body-text">Доброго дня. Чи можна замовити окремо патрон для
+                        ліхтаря?</p>
+                        <button class="profile-card__reviews-item-waiting">Очікується відповідь</button>
+                    </div>
+                  </div>
+
 
                   <div class="profile-card__reviews-item reviewsQuestion">
                     <div class="profile-card__reviews-item-header">
@@ -935,7 +955,7 @@
             <div id="address-details" class="address-details" style="display: none;">
               <div class="form-row">
                 <div class="form-group">
-                  <label class="form-label">Вулиця</label>
+                  <label class="form-label">Вулиця <span class="required">*</span></label>
                   <div class="custom-select" id="select-street">
                     <div class="select-selected">Оберіть вулицю</div>
                     <div class="select-items select-hide">
@@ -1370,6 +1390,14 @@
     </div>
   </div>
 
+    <!-- Модалка с благодарностью -->
+    <div class="modal" id="successModal14">
+      <div class="modal__content">
+        <img src="icons/success.svg" width="40" height="40" alt="">
+        <p class="modal__text">Ми надіслали вам новий код підтвердження</p>
+      </div>
+    </div>
+
   <!-- Меню на мобильном устройстве -->
   <nav class="mobile-nav">
     <div class="mobile-nav__item mobile-nav__item--active">
@@ -1763,15 +1791,15 @@
       <div class="modal__content-account" id="step-register">
         <form class="modal__form" id="registerForm">
           <div class="modal__form-col">
-            <label for="registerName" class="label-required">Ім’я</label>
+            <label for="registerName" class="label-required">Ім’я<span class="required">*</span></label>
             <input type="text" name="firstName" id="registerName" placeholder="Олексій" required>
           </div>
           <div class="modal__form-col">
-            <label for="registerSurname" class="label-required">Прізвище</label>
+            <label for="registerSurname" class="label-required">Прізвище<span class="required">*</span></label>
             <input type="text" name="lastName" id="registerSurname" placeholder="Мавритюк" required>
           </div>
           <div class="modal__form-col">
-            <label for="registerPhone" class="label-required">Номер телефону</label>
+            <label for="registerPhone" class="label-required">Номер телефону<span class="required">*</span></label>
             <input type="tel" name="phone" id="registerPhone" placeholder="Номер телефону" required>
             <span class="novalid-style" style="display: none;">Цей номер уже використовується.</span>
           </div>

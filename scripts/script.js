@@ -4364,11 +4364,11 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Код отправлен повторно");
       startTimer(60);
 
-      const successModal10 = document.getElementById("successModal10");
-      if (successModal10) {
-        successModal10.classList.add("active");
+      const successModal14 = document.getElementById("successModal14");
+      if (successModal14) {
+        successModal14.classList.add("active");
         setTimeout(() => {
-          successModal10.classList.remove("active");
+          successModal14.classList.remove("active");
         }, 3000);
       }
     });
