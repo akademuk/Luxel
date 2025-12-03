@@ -2585,23 +2585,8 @@
   </div>
 
   <!-- Створити Аккаунт -->
-  <div class="modal modal-accaunt-new" id="newAccount">
+  <div class="modal" id="newAccount">
     <div class="modal__content">
-
-      <div class="modal__content-mobile-image">
-          <button class="modal-accaunt-prev">
-            <img src="icons/accardion-arrow.svg" alt="">
-          </button>
-         <img src="images/logo.png" alt="">
-
-            <!-- Модалка с благодарностью -->
-            <div class="modal" id="successModal11">
-              <div class="modal__contentss">
-                <img src="icons/success.svg" width="40" height="40" alt="">
-                <p class="modal__text">Ми надіслали вам новий код підтвердження</p>
-              </div>
-            </div>
-      </div>
 
       <!-- Шаг 1: Заголовок Реєстрації -->
       <div class="modal__content-header" id="header-register">
@@ -2626,21 +2611,21 @@
       <div class="modal__content-account" id="step-register">
         <form class="modal__form" id="registerForm">
           <div class="modal__form-col">
-            <label for="registerName" class="label-required">Ім’я</label>
+            <label for="registerName" class="label-required">Ім’я<span class="required">*</span></label>
             <input type="text" name="firstName" id="registerName" placeholder="Олексій" required>
           </div>
           <div class="modal__form-col">
-            <label for="registerSurname" class="label-required">Прізвище</label>
+            <label for="registerSurname" class="label-required">Прізвище<span class="required">*</span></label>
             <input type="text" name="lastName" id="registerSurname" placeholder="Мавритюк" required>
           </div>
           <div class="modal__form-col">
-            <label for="registerPhone" class="label-required">Номер телефону</label>
+            <label for="registerPhone" class="label-required">Номер телефону<span class="required">*</span></label>
             <input type="tel" name="phone" id="registerPhone" placeholder="Номер телефону" required>
             <span class="novalid-style" style="display: none;">Цей номер уже використовується.</span>
           </div>
 
           <!-- Toggle Switch -->
-          <div class="modal__form-col modal__form-col--toggle">
+          <div class="modal__form-col">
             <label class="modal__toggle">
               Email
               <div class="modal__toggle-box">
