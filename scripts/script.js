@@ -4821,12 +4821,12 @@ document.addEventListener("DOMContentLoaded", function () {
     resendBtn.addEventListener("click", () => {
       startTimer(60);
 
-      // Відображення successModal11
-      const successModal11 = document.getElementById("successModal11");
-      if (successModal11) {
-        successModal11.classList.add("active");
+      // Відображення successModal14
+      const successModal14 = document.getElementById("successModal14");
+      if (successModal14) {
+        successModal14.classList.add("active");
         setTimeout(() => {
-          successModal11.classList.remove("active");
+          successModal14.classList.remove("active");
         }, 3000);
       }
     });
